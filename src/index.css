@@ -1,0 +1,1224 @@
+@import 'tailwindcss';
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+/* Poppins: fuente de todo el texto de la pagina (body y titulos). Se importan
+   solo los pesos usados y el subset latino para no inflar el bundle. */
+@import "@fontsource/poppins/latin-300.css";
+@import "@fontsource/poppins/latin-400.css";
+@import "@fontsource/poppins/latin-400-italic.css";
+@import "@fontsource/poppins/latin-500.css";
+@import "@fontsource/poppins/latin-500-italic.css";
+@import "@fontsource/poppins/latin-600.css";
+@import "@fontsource/poppins/latin-700.css";
+/* Fraunces: solo para la palabra en italica que enfatiza los titulos (<em>) */
+@import "@fontsource-variable/fraunces";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    /* Poppins para todo el texto; cae a la pila del sistema si no cargo */
+    --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* titulos: misma familia Poppins, usada en pesos altos (600/700) */
+    --font-display: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    /* acento de titulo: la italica "rara" (Fraunces) para la palabra <em> */
+    --font-accent: 'Fraunces Variable', ui-serif, Georgia, serif;
+    /* navy profundo del logo, para los heros de las paginas de paquete */
+    --color-twilight-950: #0c1f3a;
+    --color-twilight-900: #122a4c;
+    --color-twilight-800: #1a375e;
+    /* PRUEBA 1 — paleta del logo: rampa azul-oscuro -> cian -> celeste,
+       muestreada del propio logo (navy "Tour" #153a5b, cian "Che" #00a6ba).
+       Sin dorado ni arena calida: toda la gama queda dentro del azul del logo. */
+    --color-sea-950: #0e2a44;
+    --color-sea-700: #155e7e;
+    --color-sea-600: #0f7b96;
+    --color-turquoise-500: #00a6ba; /* cian del logo */
+    --color-turquoise-300: #7fd6e1; /* celeste claro */
+    --color-gold-400: #159aae; /* antes dorado; ahora cian medio para no salir de la gama */
+    --color-sand: #e4f1f4; /* antes arena calida; ahora celeste muy palido */
+    --color-mist: #dbedf3;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+    --background: oklch(0.94 0.021 224);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.33 0.07 245); /* navy del logo */
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.72 0.09 215);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+    --background: oklch(0.17 0.042 250);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.9 0.035 215); /* celeste palido del logo */
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.6 0.08 215);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply text-foreground;
+    /* Un único degradé para toda la página (no uno por sección) para que no
+       haya costuras de color entre Hero/GlobeSection/Packages: esas secciones
+       van con fondo transparente y dejan ver este. Los stops están en vh (no
+       %) a propósito: así el punto de transición queda fijo relativo al scroll
+       real y no se corre si cambia el alto de una sección de más abajo.
+       El "hinchazón" turquesa está puesto para caer sobre GlobeSection, que
+       arranca cerca de los 120vh (después del Hero) y mide ~1.4 viewports;
+       después vuelve a "mist" para las secciones de contenido y recién sobre
+       el final (~650vh, altura total ~760vh) pasa a "sand". Si se agrega
+       mucho contenido, correr los stops de abajo hacia abajo. */
+    background: linear-gradient(
+      180deg,
+      var(--color-mist) 0,
+      var(--color-mist) 90vh,
+      color-mix(in oklab, var(--color-mist) 78%, var(--color-turquoise-300) 22%) 170vh,
+      var(--color-mist) 300vh,
+      var(--color-sand) 650vh,
+      var(--color-sand) 100%
+    );
+    }
+  .dark body {
+    background: var(--background);
+    }
+  html {
+    @apply font-sans;
+    }
+}
+
+@keyframes blob-move {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, -6%) scale(1.1); }
+  66% { transform: translate(-3%, 4%) scale(0.95); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-blob {
+  animation: blob-move 16s ease-in-out infinite;
+}
+.animate-blob-slow {
+  animation: blob-move 22s ease-in-out infinite;
+}
+.animate-float-y {
+  animation: float-y 5s ease-in-out infinite;
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* ============================================================
+   Hero — carrusel de destinos a pantalla completa
+   Portado del artefacto "CheTour Viajes". El componente Hero.tsx
+   solo agrega/saca la clase .is-active; las transiciones (cross-fade
+   del fondo, ken-burns, entrada de la copy) viven acá para no llenar
+   el JSX de estilos. Usa los tokens de color del proyecto
+   (--color-sea-*, --color-turquoise-300) y --font-display (Fraunces).
+   ============================================================ */
+:root {
+  --hero-wrap: 72rem; /* mismo ancho que max-w-6xl del resto de la home */
+  --hero-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.hero-carousel {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+  align-items: center;
+  color: #f4f0e7;
+}
+
+.hero-bgs {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.06);
+  transition:
+    opacity 1s var(--hero-ease),
+    transform 8s var(--hero-ease);
+}
+.hero-bg.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+/* fondo del slide de cierre: color plano; las fotos las ponen los paneles */
+.hero-bg--solid {
+  background: var(--color-sea-950);
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 20, 27, 0.86) 0%,
+      rgba(7, 20, 27, 0.55) 38%,
+      rgba(7, 20, 27, 0.14) 64%,
+      rgba(7, 20, 27, 0.34) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(7, 20, 27, 0.55) 0%,
+      rgba(7, 20, 27, 0.08) 28%,
+      rgba(7, 20, 27, 0.6) 100%
+    );
+}
+
+.hero-rail {
+  position: absolute;
+  left: max(1rem, calc((100vw - var(--hero-wrap)) / 2 - 2rem));
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  transition:
+    opacity 0.4s var(--hero-ease),
+    visibility 0.4s;
+}
+/* el riel se esconde en el slide de cierre (las 4 fotos) y reaparece al
+   volver al primero — Hero.tsx agrega .is-hidden segun el slide activo */
+.hero-rail.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.hero-rail-line {
+  position: absolute;
+  top: -1.6rem;
+  bottom: -1.6rem;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+}
+/* barra de "seguimiento": se llena de arriba hacia el punto activo */
+.hero-rail-fill {
+  position: absolute;
+  top: -1.6rem;
+  bottom: -1.6rem;
+  width: 1px;
+  background: linear-gradient(180deg, var(--color-turquoise-300), rgba(143, 208, 222, 0.35));
+  transform-origin: top;
+  transform: scaleY(var(--rail-progress, 0));
+  transition: transform 0.5s var(--hero-ease);
+}
+.hero-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  padding: 0;
+  transition:
+    transform 0.3s var(--hero-ease),
+    background-color 0.3s;
+}
+.hero-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+.hero-dot.is-active {
+  background: var(--color-turquoise-300);
+  transform: scale(1.7);
+  box-shadow: 0 0 0 3px rgba(143, 208, 222, 0.18);
+}
+
+.hero-main {
+  position: relative;
+  z-index: 3;
+  width: min(100% - 2.4rem, var(--hero-wrap));
+  margin-inline: auto;
+  padding-left: 2.4rem;
+  pointer-events: none;
+  display: grid;
+}
+.hero-copy {
+  grid-area: 1 / 1;
+  max-width: 32rem;
+  opacity: 0;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition:
+    opacity 0.3s var(--hero-ease),
+    transform 0.3s var(--hero-ease);
+}
+.hero-copy.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  transition:
+    opacity 0.6s var(--hero-ease) 0.22s,
+    transform 0.7s var(--hero-ease) 0.16s;
+}
+.hero-region {
+  margin: 0 0 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-turquoise-300);
+}
+.hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  /* Poppins pide algo mas de peso que Fraunces para leerse como titular */
+  font-weight: 600;
+  font-size: clamp(2.8rem, 7vw, 5.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35);
+}
+/* enfasis del titular: la italica de Fraunces (contrasta con el Poppins) */
+.hero-title em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  color: #fff;
+}
+.hero-blurb {
+  margin: 1.2rem 0 0;
+  max-width: 40ch;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.5;
+  color: #e4dfd2;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 1.8rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #16242c;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition:
+    transform 0.18s var(--hero-ease),
+    background-color 0.2s,
+    color 0.2s;
+}
+.hero-cta:hover {
+  transform: translateY(-2px);
+  background: var(--color-turquoise-300);
+  color: var(--color-sea-950);
+}
+
+/* CTA del hero: es el <InteractiveHoverButton> de ui/, adaptado a este
+   contexto (siempre va sobre foto oscura, sin importar el tema claro/oscuro).
+   Redefinimos en este scope los tokens que usa el componente:
+   - --background: la pastilla en reposo -> vidrio esmerilado (blanco
+     translúcido + backdrop-blur), con texto oscuro.
+   - --primary: el círculo que en hover se expande y llena la pastilla -> el
+     celeste de siempre.
+   - --primary-foreground: el texto + la flecha del estado hover -> blanco. */
+.hero-cta-btn {
+  --background: rgba(255, 255, 255, 0.7);
+  --primary: var(--color-turquoise-300);
+  --primary-foreground: #ffffff;
+  width: auto;
+  min-width: 8.5rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.4rem;
+  color: var(--color-sea-950);
+  /* sin contorno (era blanco). Si se quisiera algo de definición:
+     border-color: var(--color-turquoise-300); */
+  border-color: transparent;
+  font-size: 0.85rem;
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+}
+.hero-cta-btn svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+/* texto/flecha del estado hover: blanco apenas difuso para que asiente sobre
+   el celeste */
+.hero-cta-btn .text-primary-foreground {
+  text-shadow: 0 1px 10px rgba(11, 61, 92, 0.45);
+}
+/* capa de texto del hover: el componente la ancla al borde del contenido, así
+   que con el padding grande queda corrida a la derecha. La alineamos a la
+   caja del botón y anulamos el translate del hover para que el texto y la
+   flecha queden centrados. */
+.hero-cta-btn > div:nth-child(2) {
+  left: 0;
+}
+.hero-cta-btn:hover > div:nth-child(2) {
+  translate: none;
+}
+/* el puntito decorativo: dentro del padding izquierdo y del mismo color que
+   el texto en reposo (sobre la pastilla clara, en celeste no se veía). Al
+   hover la regla group-hover del componente vuelve a pintarlo de celeste y lo
+   expande para llenar la pastilla. */
+.hero-cta-btn > div:last-child {
+  left: 0.85rem;
+  /* puntito (h-2 = 8px) a la misma altura que el texto; al hover el
+     group-hover del componente lo lleva a top:0 y lo expande */
+  top: calc(50% - 4px);
+  background-color: var(--color-sea-950);
+}
+
+/* slide de cierre ("Próximos destinos"): grilla de 4 paneles con paneo,
+   nombre de continente y CTA centrado encima (portado de .cs-multi) */
+.hero-multi {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition:
+    opacity 0.3s var(--hero-ease),
+    transform 0.3s var(--hero-ease);
+}
+.hero-multi.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  transition:
+    opacity 0.6s var(--hero-ease) 0.22s,
+    transform 0.7s var(--hero-ease) 0.16s;
+}
+/* con el slide de cierre activo, las miniaturas sobran */
+.hero-multi.is-active ~ .hero-previews {
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-multi-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  /* fondo oscuro (antes era un blanco translúcido que se veía como una línea
+     en la unión de los paneles) */
+  background: var(--color-sea-950);
+}
+.hero-multi-panel {
+  position: relative;
+  background-size: cover;
+  background-position: 50% 45%;
+  overflow: hidden;
+  /* cada panel se estira 1px sobre el vecino para tapar la costura sub-pixel
+     de la unión; el sobrante de los bordes exteriores lo recorta el hero */
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+.hero-multi.is-active .hero-multi-panel {
+  animation: hero-panel-pan 24s ease-out forwards;
+}
+.hero-multi.is-active .hero-multi-panel:nth-child(even) {
+  animation-name: hero-panel-pan-up;
+}
+@keyframes hero-panel-pan {
+  from {
+    background-position: 50% 38%;
+  }
+  to {
+    background-position: 50% 60%;
+  }
+}
+@keyframes hero-panel-pan-up {
+  from {
+    background-position: 50% 62%;
+  }
+  to {
+    background-position: 50% 40%;
+  }
+}
+.hero-multi-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 20, 27, 0.5) 0%,
+    rgba(7, 20, 27, 0.1) 26%,
+    rgba(7, 20, 27, 0.16) 54%,
+    rgba(7, 20, 27, 0.64) 100%
+  );
+}
+.hero-multi-name {
+  position: absolute;
+  z-index: 2;
+  /* abajo, centrados entre las flechas y el texto del medio */
+  bottom: clamp(4.25rem, 8.5vh, 6rem);
+  top: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 1.5vw, 1.4rem);
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.6);
+  padding-inline: 0.4rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s var(--hero-ease),
+    transform 0.5s var(--hero-ease);
+}
+.hero-multi.is-active .hero-multi-name {
+  opacity: 0.72;
+  transform: none;
+}
+.hero-multi.is-active .hero-multi-panel:nth-child(1) .hero-multi-name {
+  transition-delay: 0.3s;
+}
+.hero-multi.is-active .hero-multi-panel:nth-child(2) .hero-multi-name {
+  transition-delay: 0.37s;
+}
+.hero-multi.is-active .hero-multi-panel:nth-child(3) .hero-multi-name {
+  transition-delay: 0.44s;
+}
+.hero-multi.is-active .hero-multi-panel:nth-child(4) .hero-multi-name {
+  transition-delay: 0.51s;
+}
+.hero-multi-cta {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 60%;
+  translate: -50% -50%;
+  display: grid;
+  justify-items: center;
+  gap: 1.2rem;
+  width: min(90%, 42rem);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s var(--hero-ease) 0.28s,
+    transform 0.55s var(--hero-ease) 0.28s;
+}
+.hero-multi.is-active .hero-multi-cta {
+  opacity: 1;
+  transform: none;
+}
+.hero-multi-cta::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -4.5rem -7rem;
+  /* solo un leve oscurecido radial para contraste del texto, sin blur;
+     el gradiente ya se desvanece a transparente, sin borde recto */
+  background: radial-gradient(60% 64% at 50% 50%, rgba(7, 20, 27, 0.5), rgba(7, 20, 27, 0) 78%);
+}
+.hero-multi-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.65rem, 3.4vw, 2.9rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #fff;
+  text-shadow: 0 2px 26px rgba(0, 0, 0, 0.5);
+}
+.hero-multi-title em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-previews {
+  position: absolute;
+  right: max(1.4rem, calc((100vw - var(--hero-wrap)) / 2));
+  bottom: 4.4rem;
+  z-index: 3;
+  display: flex;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: opacity 0.35s var(--hero-ease);
+}
+.hero-preview {
+  display: block;
+  width: clamp(84px, 9vw, 116px);
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  opacity: 0.82;
+  transition:
+    opacity 0.3s var(--hero-ease),
+    transform 0.3s var(--hero-ease);
+}
+.hero-preview:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+.hero-preview-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.hero-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 42%, rgba(6, 18, 24, 0.82));
+}
+.hero-preview-cap {
+  position: absolute;
+  z-index: 2;
+  inset: auto 0.5rem 0.45rem;
+  display: grid;
+  gap: 0.05rem;
+  text-align: left;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+.hero-preview-cap small {
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #cfe6ec;
+}
+.hero-preview-cap strong {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.78rem;
+}
+
+/* flechas minimalistas: solo el chevron, sin circulo ni fondo */
+.hero-arrows {
+  position: absolute;
+  left: 50%;
+  bottom: 1.7rem;
+  translate: -50% 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.hero-arrow {
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  color: rgba(255, 255, 255, 0.6);
+  transition:
+    color 0.2s,
+    transform 0.2s var(--hero-ease);
+}
+.hero-arrow:hover {
+  color: #fff;
+}
+.hero-arrow:first-child:hover {
+  transform: translateX(-3px);
+}
+.hero-arrow:last-child:hover {
+  transform: translateX(3px);
+}
+.hero-arrow:active {
+  transform: scale(0.85);
+}
+
+.hero-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
+  height: 2px;
+  width: 0;
+  background: var(--color-turquoise-300);
+  animation-name: hero-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes hero-progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .hero-rail {
+    left: 0.8rem;
+  }
+  .hero-main {
+    padding-left: 2.6rem;
+  }
+  .hero-previews {
+    right: 1.2rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-carousel {
+    align-items: flex-end;
+  }
+  .hero-main {
+    padding: 0 1.2rem 8.5rem;
+  }
+  .hero-copy {
+    max-width: 100%;
+  }
+  .hero-title {
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
+  }
+  .hero-blurb {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  .hero-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 20, 27, 0.45) 0%,
+      rgba(7, 20, 27, 0.12) 28%,
+      rgba(7, 20, 27, 0.9) 100%
+    );
+  }
+  .hero-rail {
+    flex-direction: row;
+    left: 1.2rem;
+    right: auto;
+    top: auto;
+    bottom: 5.2rem;
+    translate: 0 0;
+    gap: 0.55rem;
+  }
+  .hero-rail-line,
+  .hero-rail-fill {
+    display: none;
+  }
+  .hero-previews {
+    display: none;
+  }
+  .hero-arrows {
+    left: auto;
+    right: 1.2rem;
+    bottom: 4.6rem;
+    translate: 0 0;
+  }
+  .hero-multi {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding-bottom: 76px;
+  }
+  .hero-multi-grid {
+    position: relative;
+    inset: auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+  }
+  .hero-multi-name {
+    /* en el grid 2x2 cada nombre vuelve arriba de su celda */
+    top: 0.7rem;
+    bottom: auto;
+    font-size: clamp(0.72rem, 3vw, 1rem);
+    letter-spacing: 0.16em;
+    padding-inline: 0.35rem;
+  }
+  .hero-multi-cta {
+    position: relative;
+    inset: auto;
+    left: auto;
+    top: auto;
+    translate: 0 0;
+    width: 100%;
+    padding: 1.5rem 1.2rem 1.7rem;
+    background: var(--color-sea-950);
+    gap: 0.9rem;
+  }
+  .hero-multi-cta::before {
+    display: none;
+  }
+  .hero-multi-title {
+    font-size: clamp(1.1rem, 4.8vw, 1.6rem);
+  }
+  .hero-multi.is-active ~ .hero-arrows {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg,
+  .hero-copy,
+  .hero-multi,
+  .hero-multi-name,
+  .hero-multi-cta {
+    transition: none !important;
+  }
+  .hero-bg.is-active {
+    transform: none;
+  }
+  .hero-multi-name {
+    opacity: 0.72;
+    transform: none;
+  }
+  .hero-multi-cta {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-multi.is-active .hero-multi-panel {
+    animation: none;
+  }
+  .hero-progress {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Transición Hero → GlobeSection: efecto "persiana".
+   La GlobeSection queda QUIETA en su lugar y el Hero —una capa
+   superpuesta por encima— se desliza hacia arriba y sale por el
+   borde superior, destapándola. Lo orquesta Home.tsx.
+
+   - .hero-reveal__pin: sticky top:0. Mantiene la GlobeSection
+     inmóvil mientras el Hero se levanta.
+   - .hero-reveal__spacer: 100svh. Es el "runway" de la persiana:
+     hace que el sticky se suelte exactamente 1 viewport después de
+     arrancar (el punto de soltado = altoContenedor − altoPin =
+     altoSpacer), sin importar el alto de la GlobeSection ni si aún
+     está cargando. Ese mismo viewport es lo que Home.tsx tarda en
+     subir el Hero → sin scroll muerto ni hueco antes de Packages.
+   - .hero-reveal__hero: capa del Hero, absolute pegada arriba del
+     pin, 100svh de alto. Home.tsx le anima translateY 0 → -100%.
+   - .hero-reveal__anchor: ancla de #destinos, donde la persiana
+     termina de abrir (no arriba de todo, tapada por el Hero).
+   ============================================================ */
+.hero-reveal {
+  position: relative;
+}
+.hero-reveal__pin {
+  position: sticky;
+  top: 0;
+}
+.hero-reveal__globe {
+  position: relative;
+  z-index: 1;
+}
+.hero-reveal__hero {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100svh;
+  z-index: 2; /* el Hero viaja por encima de la GlobeSection */
+  overflow: hidden; /* recorta el Hero al viewport mientras sube */
+  /* fondo opaco: el carrusel hace cross-fade entre imágenes (~1s) y en ese
+     lapso quedaría semi-transparente, dejando ver la GlobeSection pinneada
+     detrás. Este color tapa ese hueco (mismo tono que el scrim del Hero). */
+  background-color: var(--color-sea-950);
+  will-change: transform;
+}
+.hero-reveal__spacer {
+  height: 100svh;
+}
+.hero-reveal__anchor {
+  position: absolute;
+  /* 100svh (fin de la persiana) + 88px que compensan el NAV_OFFSET negativo
+     de use-hash-scroll, para que al navegar a #destinos se aterrice con el
+     Hero ya afuera y la GlobeSection ocupando el viewport */
+  top: calc(100svh + 88px);
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* sin scroll-driven: Hero y GlobeSection vuelven al flujo normal
+     (Home.tsx tampoco aplica la transformación). */
+  .hero-reveal__pin {
+    position: static;
+  }
+  .hero-reveal__hero {
+    position: relative;
+    inset: auto;
+    height: auto;
+    overflow: visible;
+    will-change: auto;
+  }
+  .hero-reveal__spacer {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Header — barra fija portada del artefacto "CheTour Viajes".
+   Transparente sobre el hero; al hacer scroll (>24px) el componente
+   Nav.tsx agrega .is-scrolled y pasa a "vidrio esmerilado"
+   (fondo translúcido + backdrop-blur), no a un bloque sólido.
+   En < 860px el menú se vuelve panel desplegable (.is-open).
+   ============================================================ */
+.site-header {
+  --header-h: 74px;
+  --header-ink: #0e2a44; /* navy del logo (era gris azulado) */
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  /* blur(0) en el estado transparente para que el blur del estado con
+     scroll pueda animar en vez de aparecer de golpe */
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+  transition:
+    background 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s,
+    -webkit-backdrop-filter 0.3s,
+    backdrop-filter 0.3s;
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: var(--header-h);
+  width: min(100% - 2.4rem, 72rem);
+  margin-inline: auto;
+  transition: min-height 0.3s;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-right: auto;
+  color: #f4f0e7;
+  transition: color 0.3s;
+}
+.site-header__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(
+    140deg,
+    var(--color-sea-950),
+    var(--color-sea-600) 55%,
+    var(--color-turquoise-300)
+  );
+  color: #fff;
+}
+.site-header__mark svg {
+  width: 16px;
+  height: 16px;
+}
+.site-header__brand-accent {
+  color: var(--color-turquoise-300);
+  transition: color 0.3s;
+}
+
+.site-header__nav ul {
+  display: flex;
+  gap: 1.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-header__nav a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #e9e6dd;
+  padding: 0.4rem 0;
+  transition: color 0.2s;
+}
+.site-header__nav a:hover {
+  color: #fff;
+}
+
+.site-header__toggle {
+  display: none;
+}
+
+.site-header__cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.18s;
+}
+.site-header__cta:hover {
+  background: #fff;
+  color: var(--header-ink);
+  transform: translateY(-1px);
+}
+
+/* ---- estado con scroll: vidrio esmerilado (sin fondo sólido) ---- */
+.site-header.is-scrolled {
+  /* mismo tinte celeste que antes pero translúcido: el backdrop-filter
+     hace el resto. 80% de opacidad mantiene el texto legible aunque
+     detrás pase el azul oscuro del globo; saturate le da vibra sutil. */
+  background: color-mix(in srgb, #eef6f9 80%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border-color: rgba(14, 42, 68, 0.08);
+  /* borde superior de luz + sombra suave y difusa = canto de "vidrio" */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 12px 32px -16px rgba(12, 43, 58, 0.28);
+}
+.site-header.is-scrolled .site-header__inner {
+  min-height: 60px;
+}
+.site-header.is-scrolled .site-header__brand {
+  color: var(--header-ink);
+}
+.site-header.is-scrolled .site-header__brand-accent {
+  color: var(--color-sea-600); /* teal del logo: más contraste que el oro sobre el vidrio claro */
+}
+.site-header.is-scrolled .site-header__nav a {
+  color: rgba(14, 42, 68, 0.78); /* navy translúcido: legible sobre el vidrio, sin ser un negro plano */
+}
+.site-header.is-scrolled .site-header__nav a:hover {
+  color: var(--header-ink);
+}
+.site-header.is-scrolled .site-header__cta {
+  /* pastilla sólida navy: la acción primaria sigue destacando sobre el
+     vidrio, ahora con una sombra que la despega */
+  background: var(--header-ink);
+  color: #f4f8fa;
+  border-color: var(--header-ink);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: 0 10px 24px -10px rgba(14, 42, 68, 0.5);
+}
+.site-header.is-scrolled .site-header__cta:hover {
+  background: #16324f;
+  color: #fff;
+}
+
+/* ---- dark mode: vidrio esmerilado oscuro ---- */
+.dark .site-header.is-scrolled {
+  background: color-mix(in srgb, oklch(0.22 0.03 240) 58%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 32px -16px rgba(0, 0, 0, 0.55);
+}
+.dark .site-header.is-scrolled .site-header__brand {
+  color: #f4f0e7;
+}
+.dark .site-header.is-scrolled .site-header__brand-accent {
+  color: var(--color-turquoise-300);
+}
+.dark .site-header.is-scrolled .site-header__nav a {
+  color: #b9c2c4;
+}
+.dark .site-header.is-scrolled .site-header__nav a:hover {
+  color: #fff;
+}
+.dark .site-header.is-scrolled .site-header__cta {
+  background: #f4f0e7;
+  color: #16242c;
+  border-color: #f4f0e7;
+}
+
+@media (max-width: 860px) {
+  .site-header__toggle {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    margin-left: auto;
+    color: #f4f0e7;
+    transition: color 0.3s;
+  }
+  .site-header.is-scrolled .site-header__toggle {
+    color: var(--header-ink);
+  }
+  .dark .site-header.is-scrolled .site-header__toggle {
+    color: #f4f0e7;
+  }
+  .site-header__toggle span:not(.sr-only) {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    transition: 0.3s;
+  }
+  .site-header__cta {
+    display: none;
+  }
+  .site-header__nav ul {
+    position: fixed;
+    inset: var(--header-h) 0 auto 0;
+    background: var(--color-sea-950);
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 1.2rem 1.6rem;
+    box-shadow: 0 18px 40px -18px rgba(12, 43, 58, 0.5);
+    transform: translateY(-120%);
+    transition: transform 0.4s var(--hero-ease);
+    max-height: calc(100dvh - var(--header-h));
+    overflow: auto;
+  }
+  .site-header.is-open .site-header__nav ul {
+    transform: translateY(0);
+  }
+  .site-header__nav li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .site-header__nav a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1rem;
+    color: #e9e6dd;
+  }
+  .site-header.is-scrolled .site-header__nav a {
+    color: #e9e6dd;
+  }
+  .site-header.is-open .site-header__toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .site-header.is-open .site-header__toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .site-header.is-open .site-header__toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header__inner,
+  .site-header__nav ul {
+    transition: none;
+  }
+}
