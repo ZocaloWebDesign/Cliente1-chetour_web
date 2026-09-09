@@ -215,6 +215,12 @@ export type GlobeCardEntry = {
   image: string
   /** Modalidad, cuando el destino se ofrece de varias formas. Se muestra como etiqueta. */
   mode?: string
+  /** Categoría corta para el chip de la card destacada (ej. "Naturaleza", "Aventura"). */
+  category?: string
+  /** Frase evocadora breve para la card destacada del destino. */
+  shortDescription?: string
+  /** Slug del paquete al que apunta el CTA de la card destacada (ver `packages`). Si todavía no tiene uno cargado, el CTA cae en la sección de paquetes. */
+  packageSlug?: string
 }
 
 export type GlobeCard = {
@@ -236,25 +242,62 @@ export const globeCountryCards: Record<string, GlobeCountryCards> = {
     left: [
       {
         entries: [
-          { name: 'Salta, Humahuaca y Cafayate', image: cardSaltaHumahuacaCafayate },
-          { name: 'San Juan bajo las estrellas', image: cardSanJuanEstrellas, mode: 'Aéreo · Bus' },
+          {
+            name: 'Salta, Humahuaca y Cafayate',
+            image: cardSaltaHumahuacaCafayate,
+            category: 'Cultura y paisajes',
+            shortDescription: 'Paisajes andinos, quebradas de colores y pueblos con historia.',
+          },
+          {
+            name: 'San Juan bajo las estrellas',
+            image: cardSanJuanEstrellas,
+            mode: 'Aéreo · Bus',
+            category: 'Aventura',
+            shortDescription: 'Cielos despejados, dunas y noches enteras de observación de estrellas.',
+          },
           {
             name: 'Talampaya con luna llena, Laguna Brava y Valle de la Luna',
             image: cardTalampaya,
             mode: 'Aéreo · Bus',
+            category: 'Naturaleza',
+            shortDescription: 'Cañones milenarios y paisajes lunares iluminados por la luna llena.',
           },
         ],
       },
     ],
     right: [
       {
-        entries: [{ name: 'Cataratas del Iguazú', image: cardCataratasIguazu, mode: 'Aéreo · Bus' }],
+        entries: [
+          {
+            name: 'Cataratas del Iguazú',
+            image: cardCataratasIguazu,
+            mode: 'Aéreo · Bus',
+            category: 'Naturaleza',
+            shortDescription: 'Una de las maravillas naturales más impresionantes de Sudamérica.',
+          },
+        ],
       },
       {
         entries: [
-          { name: 'Bariloche', image: cardBariloche, mode: 'Aéreo · Bus' },
-          { name: 'Neuquén y Caviahue', image: cardNeuquenCaviahue },
-          { name: 'Ushuaia y Calafate', image: cardUshuaiaCalafate },
+          {
+            name: 'Bariloche',
+            image: cardBariloche,
+            mode: 'Aéreo · Bus',
+            category: 'Lagos y montañas',
+            shortDescription: 'Bosques andinos, lagos turquesa y chocolate patagónico.',
+          },
+          {
+            name: 'Neuquén y Caviahue',
+            image: cardNeuquenCaviahue,
+            category: 'Montañas',
+            shortDescription: 'Volcanes, termas y paisajes de montaña en la Patagonia norte.',
+          },
+          {
+            name: 'Ushuaia y Calafate',
+            image: cardUshuaiaCalafate,
+            category: 'El fin del mundo',
+            shortDescription: 'Glaciares imponentes y el confín austral de América.',
+          },
         ],
       },
     ],
@@ -264,20 +307,68 @@ export const globeCountryCards: Record<string, GlobeCountryCards> = {
     left: [
       {
         entries: [
-          { name: 'Camboriú', image: cardCamboriu, mode: 'Aéreo · Bus' },
-          { name: 'Canasvieiras', image: cardCanasvieiras, mode: 'Aéreo · Bus' },
-          { name: 'Bombinhas', image: cardBombinhas, mode: 'Aéreo · Bus' },
-          { name: 'Bombas', image: cardBombas, mode: 'Bus' },
+          {
+            name: 'Camboriú',
+            image: cardCamboriu,
+            mode: 'Aéreo · Bus',
+            category: 'Playas y vida nocturna',
+            shortDescription: 'Rascacielos frente al mar y playas urbanas en el sur de Brasil.',
+            packageSlug: 'camboriu-aereo',
+          },
+          {
+            name: 'Canasvieiras',
+            image: cardCanasvieiras,
+            mode: 'Aéreo · Bus',
+            category: 'Playas familiares',
+            shortDescription: 'Playas tranquilas en la isla de Florianópolis.',
+            packageSlug: 'canasvieiras-aereo',
+          },
+          {
+            name: 'Bombinhas',
+            image: cardBombinhas,
+            mode: 'Aéreo · Bus',
+            category: 'Playas y buceo',
+            shortDescription: 'Aguas cristalinas ideales para el buceo en Santa Catarina.',
+          },
+          {
+            name: 'Bombas',
+            image: cardBombas,
+            mode: 'Bus',
+            category: 'Playas',
+            shortDescription: 'Una playa tranquila junto a Bombinhas, ideal para relajarse.',
+          },
         ],
       },
     ],
     right: [
       {
         entries: [
-          { name: 'Ingleses', image: cardIngleses, mode: 'Aéreo' },
-          { name: 'Quatro Ilhas', image: cardQuatroIlhas },
-          { name: 'Gramados y Canela con Torres', image: cardGramadosCanelaTorres, mode: 'Bus' },
-          { name: 'Río de Janeiro', image: cardRioDeJaneiro },
+          {
+            name: 'Ingleses',
+            image: cardIngleses,
+            mode: 'Aéreo',
+            category: 'Playas',
+            shortDescription: 'Una de las playas más extensas del norte de Florianópolis.',
+          },
+          {
+            name: 'Quatro Ilhas',
+            image: cardQuatroIlhas,
+            category: 'Naturaleza y playas',
+            shortDescription: 'Arena blanca y mar cristalino entre morros verdes.',
+          },
+          {
+            name: 'Gramados y Canela con Torres',
+            image: cardGramadosCanelaTorres,
+            mode: 'Bus',
+            category: 'Montañas y cultura',
+            shortDescription: 'Clima de montaña, arquitectura europea y cañones en Torres.',
+          },
+          {
+            name: 'Río de Janeiro',
+            image: cardRioDeJaneiro,
+            category: 'Cultura y playas',
+            shortDescription: 'Playas icónicas, el Cristo Redentor y el espíritu carioca.',
+          },
         ],
       },
     ],
@@ -293,6 +384,8 @@ export const globeCountryCards: Record<string, GlobeCountryCards> = {
             name: 'Estados Unidos de costa a costa',
             image: cardUsaCostaACosta,
             mode: 'San Francisco · Los Ángeles · Las Vegas · Washington D.C. · Nueva York · Miami',
+            category: 'Gran circuito',
+            shortDescription: 'Un recorrido por las ciudades más icónicas de Estados Unidos.',
           },
         ],
       },
@@ -300,8 +393,19 @@ export const globeCountryCards: Record<string, GlobeCountryCards> = {
     right: [
       {
         entries: [
-          { name: 'Disney a Medida', image: cardDisneyMedida },
-          { name: 'Nueva York y Miami', image: cardNuevaYorkMiami },
+          {
+            name: 'Disney a Medida',
+            image: cardDisneyMedida,
+            category: 'Magia y diversión',
+            shortDescription: 'Los parques de Orlando, armados a tu manera.',
+            packageSlug: 'disney-a-medida',
+          },
+          {
+            name: 'Nueva York y Miami',
+            image: cardNuevaYorkMiami,
+            category: 'Ciudad y playa',
+            shortDescription: 'Rascacielos, compras y playas en un mismo viaje.',
+          },
         ],
       },
     ],
@@ -310,12 +414,28 @@ export const globeCountryCards: Record<string, GlobeCountryCards> = {
   PER: {
     left: [
       {
-        entries: [{ name: 'Perú', image: cardPeruAereo, mode: 'Aéreo' }],
+        entries: [
+          {
+            name: 'Perú',
+            image: cardPeruAereo,
+            mode: 'Aéreo',
+            category: 'Cultura e historia',
+            shortDescription: 'Machu Picchu, Cusco y los Andes peruanos.',
+          },
+        ],
       },
     ],
     right: [
       {
-        entries: [{ name: 'Perú y Bolivia', image: cardPeruBoliviaBus, mode: 'Bus' }],
+        entries: [
+          {
+            name: 'Perú y Bolivia',
+            image: cardPeruBoliviaBus,
+            mode: 'Bus',
+            category: 'Aventura y altura',
+            shortDescription: 'El Salar de Uyuni y los paisajes andinos en un mismo recorrido.',
+          },
+        ],
       },
     ],
   },
@@ -324,7 +444,13 @@ export const globeCountryCards: Record<string, GlobeCountryCards> = {
     left: [
       {
         entries: [
-          { name: 'Chile', image: cardChileFiordosGlaciares, mode: 'Crucero por fiordos y glaciares' },
+          {
+            name: 'Chile',
+            image: cardChileFiordosGlaciares,
+            mode: 'Crucero por fiordos y glaciares',
+            category: 'Naturaleza extrema',
+            shortDescription: 'Fiordos y glaciares patagónicos navegando por Chile.',
+          },
         ],
       },
     ],

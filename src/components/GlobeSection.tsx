@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { useHashScroll } from '@/hooks/use-hash-scroll'
+import { ArrowRight, Bus, Plane as PlaneIcon } from 'lucide-react'
 import { ShaderBackground } from '@/components/ui/shader-59f0538a'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import ConicPolygonGeometry from 'three-conic-polygon-geometry'
-import { availableCountries, globeCountryCards, type GlobeCard } from '@/data'
+import { availableCountries, globeCountryCards, type GlobeCardEntry } from '@/data'
 import earthTextureUrl from '@/assets/globe/earth-texture.jpg'
 import countriesGeoJson from '@/assets/globe/countries.geo.json'
 import { buildStylizedEarthTexture, buildAtmosphereMaterial } from '@/lib/earth-texture'
@@ -70,12 +73,38 @@ function cx(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-// --- Animación de aparición / desaparición de las tarjetas ------------------
-// Aparición: la columna entra deslizándose desde su lado (`dir` -1 izquierda,
-// +1 derecha) mientras cada tarjeta sube y aparece, escalonada por su índice.
-// Desaparición: la columna se va corto hacia el mismo lado y se desvanece.
-// Todo rápido, para no demorar el cambio de país.
-function columnMotion(dir: 1 | -1, reduced: boolean) {
+// --- Datos: aplanar las tarjetas de un país en una única lista ordenada -----
+// `globeCountryCards` sigue guardando sus columnas `left`/`right` (más fáciles
+// de armar a mano, agrupadas por tema); acá se concatenan en un solo listado
+// para alimentar tanto la lista de la izquierda como la card destacada.
+function flattenCountryEntries(code: string | null): GlobeCardEntry[] {
+  if (!code) return []
+  const cards = globeCountryCards[code]
+  if (!cards) return []
+  return [...(cards.left ?? []), ...(cards.right ?? [])].flatMap((card) => card.entries)
+}
+
+// La modalidad se guarda como texto libre en `mode` (ver `data.ts`): a veces
+// es realmente el medio de transporte ("Aéreo · Bus") y a veces una
+// descripción del recorrido ("San Francisco · Los Ángeles · ..."). Solo en el
+// primer caso se puede mostrar como íconos; si no matchea, `mode` se muestra
+// tal cual, como texto.
+function parseTransport(mode?: string): ('aereo' | 'bus')[] {
+  if (!mode) return []
+  const tags: ('aereo' | 'bus')[] = []
+  if (/aéreo/i.test(mode)) tags.push('aereo')
+  if (/\bbus\b/i.test(mode)) tags.push('bus')
+  return tags
+}
+
+const TRANSPORT_LABEL: Record<'aereo' | 'bus', string> = { aereo: 'Aéreo', bus: 'Bus' }
+
+// --- Animaciones de la lista y la card destacada ----------------------------
+// Lista: la columna entera cruza con un fundido/leve deslizamiento al cambiar
+// de país; cada item entra escalonado por índice. Card: fundido + zoom
+// extremadamente sutil al cambiar de destino activo (cinematográfico, no un
+// corte brusco).
+function listColumnMotion(reduced: boolean) {
   if (reduced) {
     return {
       initial: { opacity: 0 },
@@ -84,13 +113,13 @@ function columnMotion(dir: 1 | -1, reduced: boolean) {
     }
   }
   return {
-    initial: { opacity: 0, x: dir * 26 },
-    animate: { opacity: 1, x: 0, transition: { duration: 0.26, ease: [0.22, 1, 0.36, 1] as const } },
-    exit: { opacity: 0, x: dir * 18, transition: { duration: 0.16, ease: 'easeIn' as const } },
+    initial: { opacity: 0, x: -18 },
+    animate: { opacity: 1, x: 0, transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] as const } },
+    exit: { opacity: 0, x: -12, transition: { duration: 0.16, ease: 'easeIn' as const } },
   }
 }
 
-function cardMotion(index: number, reduced: boolean) {
+function listItemMotion(index: number, reduced: boolean) {
   if (reduced) {
     return {
       initial: { opacity: 0 },
@@ -98,66 +127,115 @@ function cardMotion(index: number, reduced: boolean) {
     }
   }
   return {
-    initial: { opacity: 0, y: 14, scale: 0.97 },
+    initial: { opacity: 0, y: 10 },
     animate: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as const, delay: 0.04 + index * 0.05 },
+      transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] as const, delay: 0.04 + index * 0.045 },
     },
   }
 }
 
-// Tarjeta de destinos que aparece al costado del globo cuando un país queda
-// fijado. Mismo formato para todos: lista de destinos con su modalidad y una
-// miniatura debajo de cada uno, separados por una línea. El nombre del país no
-// va acá: ya está rotulado sobre el globo (chip de país activo).
-function DestinationCard({
+function featuredCardMotion(reduced: boolean) {
+  if (reduced) {
+    return {
+      initial: { opacity: 0 },
+      animate: { opacity: 1, transition: { duration: 0.18 } },
+      exit: { opacity: 0, transition: { duration: 0.15 } },
+    }
+  }
+  return {
+    initial: { opacity: 0, scale: 1.03 },
+    animate: { opacity: 1, scale: 1, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const } },
+    exit: { opacity: 0, scale: 0.99, transition: { duration: 0.22, ease: 'easeIn' as const } },
+  }
+}
+
+// Item compacto de la lista de destinos: thumbnail + nombre + transporte.
+// El activo (hover propio o el primero por default) queda más luminoso, con
+// un glow sutil — nada exagerado.
+function DestinationListItem({
   index,
-  card,
+  entry,
+  active,
   reduced,
-  onEnter,
-  onLeave,
+  onActivate,
 }: {
   index: number
-  card: GlobeCard
+  entry: GlobeCardEntry
+  active: boolean
   reduced: boolean
-  onEnter: () => void
-  onLeave: () => void
+  onActivate: () => void
 }) {
-  const { initial, animate } = cardMotion(index, reduced)
+  const transport = parseTransport(entry.mode)
   return (
-    <motion.div
-      onMouseEnter={onEnter}
-      onMouseLeave={onLeave}
-      // aparición escalonada por índice; la salida la cubre el fundido/deslizar
-      // de la columna (esta tarjeta no es hija directa de AnimatePresence).
-      initial={initial}
-      animate={animate}
-      className="pointer-events-auto w-52 rounded-2xl border border-neutral-200/70 bg-white/85 p-4 shadow-xl shadow-sea-950/10 backdrop-blur-md xl:w-60 dark:border-neutral-800 dark:bg-neutral-900/85"
-    >
-      <ul>
-        {card.entries.map((entry, i) => (
-          <li key={entry.name}>
-            {i > 0 && <div className="my-3 h-px bg-neutral-200/70 dark:bg-neutral-800" />}
-            <p className="text-[13px] leading-snug font-medium text-neutral-900 dark:text-white">
-              {entry.name}
-            </p>
-            {entry.mode && (
-              <p className="mt-0.5 text-[10px] font-medium tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
-                {entry.mode}
-              </p>
+    <motion.li {...listItemMotion(index, reduced)}>
+      <button
+        type="button"
+        onMouseEnter={onActivate}
+        onFocus={onActivate}
+        className={cx(
+          'group flex w-full items-center gap-3 rounded-2xl border px-2.5 py-2.5 text-left transition-all duration-300 ease-out',
+          active
+            ? 'border-white/35 bg-white/15 shadow-[0_0_20px_rgba(255,255,255,0.14)]'
+            : 'border-transparent bg-white/[0.04] hover:border-white/15 hover:bg-white/10',
+        )}
+      >
+        <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl">
+          <img
+            src={entry.image}
+            alt=""
+            loading="lazy"
+            className={cx(
+              'h-full w-full object-cover transition-[filter,transform] duration-300',
+              active ? 'brightness-100' : 'brightness-90 group-hover:brightness-100',
             )}
-            <img
-              src={entry.image}
-              alt={entry.name}
-              loading="lazy"
-              className="mt-2 h-16 w-full rounded-lg object-cover"
-            />
-          </li>
-        ))}
-      </ul>
-    </motion.div>
+          />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="flex items-baseline gap-2">
+            <span className="text-[11px] font-semibold tabular-nums text-white/45">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span
+              className={cx(
+                'truncate text-[13px] leading-snug font-medium transition-colors duration-300',
+                active ? 'text-white' : 'text-white/80',
+              )}
+            >
+              {entry.name}
+            </span>
+          </span>
+          <span className="mt-0.5 flex items-center gap-2 pl-[22px] text-[11px] text-white/55">
+            {transport.length > 0 ? (
+              transport.map((tag) =>
+                tag === 'aereo' ? (
+                  <span key={tag} className="inline-flex items-center gap-1">
+                    <PlaneIcon className="h-3 w-3" /> {TRANSPORT_LABEL[tag]}
+                  </span>
+                ) : (
+                  <span key={tag} className="inline-flex items-center gap-1">
+                    <Bus className="h-3 w-3" /> {TRANSPORT_LABEL[tag]}
+                  </span>
+                ),
+              )
+            ) : entry.category ? (
+              <span className="truncate">{entry.category}</span>
+            ) : null}
+          </span>
+        </span>
+      </button>
+    </motion.li>
+  )
+}
+
+// Placeholder liviano de la lista/card mientras no hay país en hover: mismo
+// tamaño aproximado que el contenido real, para que el layout no salte.
+function IdlePanel({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex h-full min-h-40 flex-col items-center justify-center gap-2 rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-10 text-center backdrop-blur-sm">
+      {children}
+    </div>
   )
 }
 
@@ -176,6 +254,7 @@ export function GlobeSection() {
   const hoverSourceRef = useRef<'canvas' | 'list' | null>(null)
 
   const reduceMotion = useReducedMotion()
+  const handleHashClick = useHashScroll()
 
   // País cuyas tarjetas están a la vista. A diferencia de `hoveredCode` no se
   // limpia al salir del país: queda fijo (y mantiene el globo frenado) hasta que
@@ -186,6 +265,11 @@ export function GlobeSection() {
   // cursor sobre alguna de las tarjetas: mientras sea true, no se desvanecen.
   const [cardHovered, setCardHovered] = useState(false)
   const cardHoveredRef = useRef(false)
+
+  // Destino activo dentro de la lista del país fijado: índice sobre la lista
+  // aplanada de `activeCardCode` (ver `flattenCountryEntries`). Alimenta tanto
+  // el resaltado de la lista como la card destacada de la derecha.
+  const [activeEntryIndex, setActiveEntryIndex] = useState(0)
 
   useEffect(() => {
     hoveredCodeRef.current = hoveredCode
@@ -403,8 +487,12 @@ export function GlobeSection() {
           hoveredCodeRef.current = code
           setHoveredCode(code)
           // apuntar a un país con tarjetas las fija hasta que el usuario se
-          // aleje o haga scroll; salir del país no las cierra.
-          if (code && code in globeCountryCards) setActiveCardCode(code)
+          // aleje o haga scroll; salir del país no las cierra. El destino
+          // activo vuelve a ser el primero de la lista del país nuevo.
+          if (code && code in globeCountryCards) {
+            setActiveCardCode(code)
+            setActiveEntryIndex(0)
+          }
         }
       }
 
@@ -534,7 +622,10 @@ export function GlobeSection() {
     hoverSourceRef.current = 'list'
     hoveredCodeRef.current = code
     setHoveredCode(code)
-    if (code in globeCountryCards) setActiveCardCode(code)
+    if (code in globeCountryCards) {
+      setActiveCardCode(code)
+      setActiveEntryIndex(0)
+    }
   }
   const clearFromList = () => {
     if (hoverSourceRef.current !== 'list') return
@@ -551,9 +642,13 @@ export function GlobeSection() {
     }
   }
 
-  const activeCards = activeCardCode ? globeCountryCards[activeCardCode] : undefined
-  const leftCards = activeCards?.left ?? []
-  const rightCards = activeCards?.right ?? []
+  // Lista aplanada del país fijado (memoizada: cambia solo cuando cambia el
+  // país, no en cada render) + el destino activo que consumen la lista y la
+  // card destacada — mismos datos, sin lógica duplicada.
+  const activeEntries = useMemo(() => flattenCountryEntries(activeCardCode), [activeCardCode])
+  const activeEntry = activeEntries[activeEntryIndex] ?? activeEntries[0]
+  const activeCountryName = activeCardCode ? (countryMetaByCode.get(activeCardCode)?.name ?? '') : ''
+  const activeEntryHref = activeEntry?.packageSlug ? `/paquetes/${activeEntry.packageSlug}` : '/#paquetes'
 
   return (
     // El ancla #destinos vive en Home.tsx (.hero-reveal__anchor), ubicada donde
@@ -595,75 +690,124 @@ export function GlobeSection() {
         </h2>
       </div>
 
-      <div className="relative mx-auto mt-10 w-full max-w-[34rem] lg:max-w-[62rem] xl:max-w-[70rem]">
-        {/* Capa de tarjetas: sólo en pantallas grandes (el hover no existe en táctil). */}
-        {/* Cada columna es UN solo bloque animado por país (keyed con
-            `activeCardCode`). El bloque saliente y el entrante se apilan en la
-            MISMA caja (`absolute inset-0`): el cambio de país cruza en el lugar.
-            Entrada: la columna desliza desde su lado y las tarjetas asoman
-            escalonadas (variantes `hidden`/`show`). Salida: `hide`, corta. */}
-        <div className="pointer-events-none absolute inset-0 z-20 hidden lg:block">
-          <div className="absolute inset-y-0 left-0 w-52 xl:w-60">
-            <AnimatePresence>
-              {leftCards.length > 0 && (
-                <motion.div
+      {/* Tres columnas — lista / globo / card destacada — sobre el hover de
+          país que ya maneja el globo (raycast en el canvas o los chips de
+          abajo). En mobile/tablet se apilan: globo primero (protagonista),
+          card, lista; en desktop vuelven a su orden natural con `order-*`. */}
+      <div className="relative mx-auto mt-10 w-full max-w-[34rem] px-6 lg:max-w-[78rem] xl:max-w-[86rem]">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,20rem)_minmax(0,34rem)_minmax(0,20rem)] lg:justify-center lg:gap-6 xl:grid-cols-[minmax(0,22rem)_minmax(0,34rem)_minmax(0,22rem)] xl:gap-10">
+          {/* Columna izquierda: lista de destinos del país fijado. */}
+          <div className="order-3 w-full lg:order-1">
+            <AnimatePresence mode="wait">
+              {activeEntries.length > 0 ? (
+                <motion.ul
                   key={activeCardCode}
-                  {...columnMotion(-1, !!reduceMotion)}
-                  className="absolute inset-0 flex flex-col justify-center gap-5"
+                  {...listColumnMotion(!!reduceMotion)}
+                  onMouseEnter={onCardEnter}
+                  onMouseLeave={onCardLeave}
+                  className="flex flex-col gap-1.5 rounded-3xl border border-white/10 bg-white/[0.06] p-2.5 shadow-xl shadow-sea-950/20 backdrop-blur-md"
                 >
-                  {leftCards.map((card, i) => (
-                    <DestinationCard
-                      key={i}
+                  {activeEntries.map((entry, i) => (
+                    <DestinationListItem
+                      key={entry.name}
                       index={i}
-                      card={card}
+                      entry={entry}
+                      active={i === activeEntryIndex}
                       reduced={!!reduceMotion}
-                      onEnter={onCardEnter}
-                      onLeave={onCardLeave}
+                      onActivate={() => setActiveEntryIndex(i)}
                     />
                   ))}
-                </motion.div>
+                </motion.ul>
+              ) : (
+                <IdlePanel>
+                  <span className="text-sm font-medium text-white/70">Pasá el cursor sobre un país</span>
+                  <span className="text-xs text-white/45">o elegí uno de la lista de abajo</span>
+                </IdlePanel>
               )}
             </AnimatePresence>
           </div>
-          <div className="absolute inset-y-0 right-0 w-52 xl:w-60">
-            <AnimatePresence>
-              {rightCards.length > 0 && (
-                <motion.div
-                  key={activeCardCode}
-                  {...columnMotion(1, !!reduceMotion)}
-                  className={cx(
-                    'absolute inset-0 flex flex-col gap-5',
-                    rightCards.length > 1 ? 'justify-between' : 'justify-center',
-                  )}
-                >
-                  {rightCards.map((card, i) => (
-                    <DestinationCard
-                      key={i}
-                      index={i}
-                      card={card}
-                      reduced={!!reduceMotion}
-                      onEnter={onCardEnter}
-                      onLeave={onCardLeave}
-                    />
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
 
-        <div
-          ref={containerRef}
-          className="relative mx-auto aspect-square w-full max-w-[34rem] cursor-grab touch-none select-none active:cursor-grabbing"
-        >
-          <canvas ref={canvasRef} className="h-full w-full" />
-          {hoveredName && (
-            <div className="pointer-events-none absolute inset-x-0 -top-6 flex justify-center">
-              <span className="rounded-full bg-white/90 px-3 py-1 text-sm font-medium text-neutral-900 shadow-lg backdrop-blur dark:bg-neutral-900/90 dark:text-white">
-                {hoveredName}
-              </span>
+          {/* Centro: el globo — sin cambios respecto a la versión anterior. */}
+          <div className="order-1 lg:order-2">
+            <div
+              ref={containerRef}
+              className="relative mx-auto aspect-square w-full max-w-[34rem] cursor-grab touch-none select-none active:cursor-grabbing"
+            >
+              <canvas ref={canvasRef} className="h-full w-full" />
+              {hoveredName && (
+                <div className="pointer-events-none absolute inset-x-0 -top-6 flex justify-center">
+                  <span className="rounded-full bg-white/90 px-3 py-1 text-sm font-medium text-neutral-900 shadow-lg backdrop-blur dark:bg-neutral-900/90 dark:text-white">
+                    {hoveredName}
+                  </span>
+                </div>
+              )}
             </div>
-          )}
+          </div>
+
+          {/* Columna derecha: card destacada del destino activo. */}
+          <div className="order-2 w-full lg:order-3">
+            <AnimatePresence mode="wait">
+              {activeEntry ? (
+                <motion.div
+                  key={`${activeCardCode}-${activeEntry.name}`}
+                  {...featuredCardMotion(!!reduceMotion)}
+                  onMouseEnter={onCardEnter}
+                  onMouseLeave={onCardLeave}
+                  className="group relative flex h-72 w-full flex-col justify-end overflow-hidden rounded-3xl border border-white/15 shadow-2xl shadow-sea-950/30 sm:h-80 lg:h-[26rem]"
+                >
+                  <img
+                    src={activeEntry.image}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-sea-950/95 via-sea-950/45 to-transparent" />
+                  <div className="relative flex flex-col gap-2 p-5 sm:p-6">
+                    {activeCountryName && (
+                      <span className="text-[11px] font-semibold tracking-[0.2em] text-white/70 uppercase">
+                        {activeCountryName}
+                      </span>
+                    )}
+                    <h3 className="text-xl leading-tight font-semibold text-white sm:text-2xl">
+                      {activeEntry.name}
+                    </h3>
+                    {activeEntry.shortDescription && (
+                      <p className="text-sm text-white/80">{activeEntry.shortDescription}</p>
+                    )}
+                    <div className="mt-2 flex items-center justify-between gap-3">
+                      {activeEntry.category ? (
+                        <span className="inline-flex items-center gap-1.5 text-xs font-medium text-turquoise-200">
+                          ✦ {activeEntry.category}
+                        </span>
+                      ) : (
+                        <span />
+                      )}
+                      {activeEntry.packageSlug ? (
+                        <Link
+                          to={activeEntryHref}
+                          className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-sea-950 transition-transform duration-300 hover:scale-105"
+                        >
+                          Ver paquete <ArrowRight className="h-3.5 w-3.5" />
+                        </Link>
+                      ) : (
+                        <a
+                          href={activeEntryHref}
+                          onClick={(e) => handleHashClick(e, activeEntryHref)}
+                          className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-sea-950 transition-transform duration-300 hover:scale-105"
+                        >
+                          Explorar destino <ArrowRight className="h-3.5 w-3.5" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                <IdlePanel>
+                  <span className="text-sm font-medium text-white/70">Elegí un destino en el mapa</span>
+                  <span className="text-xs text-white/45">y acá va a aparecer su vistazo</span>
+                </IdlePanel>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
 
