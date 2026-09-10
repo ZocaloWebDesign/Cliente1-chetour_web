@@ -20,13 +20,24 @@ const GLOBE_RADIUS = 1.7
 // así que 1.0 = superficie del globo.
 const COUNTRY_BASE = GLOBE_RADIUS * 1.001
 const COUNTRY_TOP = GLOBE_RADIUS * 1.022
-const HOVER_SCALE = 1.035 // cuánto más se levanta el país al pasarle el mouse/dedo
-const FLYTO_EASE = 0.14 // qué tan rápido el globo se gira hacia el país en hover
+const HOVER_SCALE = 1.035 // cuánto se eleva el país en HOVER (feedback leve)
+const ACTIVE_SCALE = 1.05 // cuánto se eleva el país SELECCIONADO (más contraste)
+const FLYTO_EASE = 0.14 // qué tan rápido el globo se gira hacia el país
+const FLYTO_HOLD_MS = 1400 // tras un click, el globo se centra en el país este rato y luego lo suelta
+const DESELECT_MS = 10000 // sin el cursor sobre la lista, la card ni el globo, se deselecciona el país (solo con mouse)
 
-// Las tarjetas de un país quedan fijas (y el globo, frenado) después de dejar
-// de apuntar al país; se desvanecen solas cuando el usuario se va o hace scroll.
-const CARD_IDLE_MS = 3000 // sin cursor sobre la tarjeta ni el país
-const CARD_SCROLL_MS = 1600 // margen tras hacer scroll antes de retomar el giro
+// Colores del relieve de los países. HOVER = claro/luminoso (indica "se puede
+// elegir"); ACTIVE = más oscuro/saturado + anillo dorado (indica "elegido") y
+// tiene prioridad visual sobre el hover. Se interpolan por frame en el loop.
+const CAP_BASE = new THREE.Color(0x2e9cb8)
+const CAP_HOVER = new THREE.Color(0x8fdcec)
+const CAP_ACTIVE = new THREE.Color(0x17a3bd)
+const SIDE_BASE = new THREE.Color(0x1b6e96)
+const SIDE_HOVER = new THREE.Color(0x53a6c6)
+const SIDE_ACTIVE = new THREE.Color(0x0d5a7c)
+const OUTLINE_BASE = new THREE.Color(0x8fd0de)
+const OUTLINE_HOVER = new THREE.Color(0xc9eef5)
+const OUTLINE_ACTIVE = new THREE.Color(0xf4c15e)
 
 // A partir de cuántos destinos la lista pasa a un tamaño de ítem más chico
 // (para que todos entren siempre en la misma caja, sin cambiar su alto).
@@ -73,9 +84,10 @@ type CountryObject = {
   capMaterial: THREE.MeshBasicMaterial
   sideMaterial: THREE.MeshBasicMaterial
   outlineMaterial: THREE.LineBasicMaterial
-  /** Dirección (mundo) del centro del país: hacia acá encara la cámara en hover. */
+  /** Dirección (mundo) del centro del país: hacia acá encara la cámara. */
   centerDir: THREE.Vector3
-  hover: number // 0..1, animado en el loop
+  hoverAmt: number // 0..1, animado en el loop — solo cuando NO está seleccionado
+  activeAmt: number // 0..1, animado en el loop — país seleccionado por click
 }
 
 function lerp(a: number, b: number, t: number) {
@@ -222,8 +234,11 @@ function DestinationListItem({
     <motion.li {...listItemMotion(index, reduced)}>
       <button
         type="button"
+        // hover (desktop) / focus (teclado) / tap (táctil) → este paquete pasa
+        // a la card derecha. No hace falta click en desktop.
         onMouseEnter={onActivate}
         onFocus={onActivate}
+        onClick={onActivate}
         className={cx(
           'group flex w-full items-center rounded-2xl border text-left transition-all duration-300 ease-out',
           d.button,
@@ -289,21 +304,17 @@ function DestinationListItem({
 // de la cuenta, los ítems se achican (ver `densityFor`/`ITEM_DENSITY`) para
 // que la caja no crezca desmedidamente igual.
 function DestinationListPanel({
-  activeCardCode,
+  activeCountry,
   entries,
   activeIndex,
   reduced,
   onActivate,
-  onEnter,
-  onLeave,
 }: {
-  activeCardCode: string | null
+  activeCountry: string | null
   entries: GlobeCardEntry[]
   activeIndex: number
   reduced: boolean
   onActivate: (index: number) => void
-  onEnter: () => void
-  onLeave: () => void
 }) {
   const density = densityFor(entries.length)
 
@@ -311,10 +322,8 @@ function DestinationListPanel({
     <AnimatePresence mode="wait">
       {entries.length > 0 ? (
         <motion.div
-          key={activeCardCode}
+          key={activeCountry}
           {...listColumnMotion(reduced)}
-          onMouseEnter={onEnter}
-          onMouseLeave={onLeave}
           className="flex w-full flex-col rounded-3xl border border-white/10 bg-white/[0.06] p-2.5 shadow-xl shadow-sea-950/20 backdrop-blur-md"
         >
           <ul className={cx('flex flex-col', ITEM_DENSITY[density].gap)}>
@@ -337,32 +346,26 @@ function DestinationListPanel({
 }
 
 function FeaturedCard({
-  activeCardCode,
+  activeCountry,
   entry,
   countryName,
   href,
   reduced,
-  onEnter,
-  onLeave,
   onHashClick,
 }: {
-  activeCardCode: string | null
+  activeCountry: string | null
   entry: GlobeCardEntry | undefined
   countryName: string
   href: string
   reduced: boolean
-  onEnter: () => void
-  onLeave: () => void
   onHashClick: ReturnType<typeof useHashScroll>
 }) {
   return (
     <AnimatePresence mode="wait">
       {entry ? (
         <motion.div
-          key={`${activeCardCode}-${entry.name}`}
+          key={`${activeCountry}-${entry.name}`}
           {...featuredCardMotion(reduced)}
-          onMouseEnter={onEnter}
-          onMouseLeave={onLeave}
           className="group relative flex h-72 w-full flex-col justify-end overflow-hidden rounded-3xl border border-white/15 shadow-2xl shadow-sea-950/30 sm:h-80 lg:h-[26rem]"
         >
           <img
@@ -421,38 +424,44 @@ function FeaturedCard({
 export function GlobeSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [hoveredCode, setHoveredCode] = useState<string | null>(null)
-  // espejo del estado para que el loop de animación lo lea sin re-suscribirse
-  const hoveredCodeRef = useRef<string | null>(null)
+  // hoveredCountry: SOLO feedback visual del país bajo el mouse (glow/elevación
+  // leve). Nunca cambia la lista, la card ni el país seleccionado.
+  const [hoveredCountry, setHoveredCountry] = useState<string | null>(null)
+  const hoveredCountryRef = useRef<string | null>(null)
   // de dónde vino el hover actual: 'canvas' (raycast sobre el globo) o 'list'
-  // (chip de abajo). Sirve para decidir qué lo limpia.
+  // (chip de abajo). Sirve para decidir qué lo limpia y para el fly-to.
   const hoverSourceRef = useRef<'canvas' | 'list' | null>(null)
 
   const reduceMotion = useReducedMotion()
   const handleHashClick = useHashScroll()
 
-  // País cuyas tarjetas están a la vista. A diferencia de `hoveredCode` no se
-  // limpia al salir del país: queda fijo (y mantiene el globo frenado) hasta que
-  // el usuario se aleja de la tarjeta o hace scroll. Solo lo activan los países
-  // con tarjetas cargadas en `globeCountryCards`.
-  const [activeCardCode, setActiveCardCode] = useState<string | null>(null)
-  const activeCardCodeRef = useRef<string | null>(null)
-  // cursor sobre alguna de las tarjetas: mientras sea true, no se desvanecen.
-  const [cardHovered, setCardHovered] = useState(false)
-  const cardHoveredRef = useRef(false)
+  // activeCountry: país SELECCIONADO por click/tap (país del globo o chip).
+  // Persiste — no lo cambia el hover ni se descarta solo. Solo otro click lo
+  // reemplaza. Mientras exista, se muestran su lista y su card.
+  const [activeCountry, setActiveCountry] = useState<string | null>(null)
+  const activeCountryRef = useRef<string | null>(null)
+  // hasta cuándo el globo se mantiene centrado en el país recién seleccionado
+  // (después lo suelta). Lo leen el loop de Three.js y los handlers de click.
+  const flyToActiveUntilRef = useRef(0)
 
-  // Destino activo dentro de la lista del país fijado: índice sobre la lista
-  // aplanada de `activeCardCode` (ver `flattenCountryEntries`). Alimenta tanto
-  // el resaltado de la lista como la card destacada de la derecha.
-  const [activeEntryIndex, setActiveEntryIndex] = useState(0)
+  // activePackage: índice del paquete que muestra la card derecha, dentro de la
+  // lista aplanada del `activeCountry`. Lo mueve el HOVER sobre la lista; queda
+  // fijo en el último que recibió hover (no vuelve solo al primero).
+  const [activePackageIndex, setActivePackageIndex] = useState(0)
+
+  // Cursor sobre alguna de las zonas interactivas (lista + globo + card) o
+  // sobre los chips. Si sale de todas y hay un país seleccionado, a los
+  // DESELECT_MS se deselecciona (solo con mouse; en táctil no hay "cursor").
+  const [overPanels, setOverPanels] = useState(false)
+  const [overChips, setOverChips] = useState(false)
 
   useEffect(() => {
-    hoveredCodeRef.current = hoveredCode
-  }, [hoveredCode])
+    hoveredCountryRef.current = hoveredCountry
+  }, [hoveredCountry])
 
   useEffect(() => {
-    activeCardCodeRef.current = activeCardCode
-  }, [activeCardCode])
+    activeCountryRef.current = activeCountry
+  }, [activeCountry])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -571,7 +580,8 @@ export function GlobeSection() {
         sideMaterial,
         outlineMaterial,
         centerDir,
-        hover: 0,
+        hoverAmt: 0,
+        activeAmt: 0,
       }
       countryObjects.push(countryObject)
       countryByCode.set(code, countryObject)
@@ -619,13 +629,45 @@ export function GlobeSection() {
       // si el hover lo puso el globo (no un chip), al salir del canvas se limpia
       if (hoverSourceRef.current === 'canvas') {
         hoverSourceRef.current = null
-        hoveredCodeRef.current = null
-        setHoveredCode(null)
+        hoveredCountryRef.current = null
+        setHoveredCountry(null)
       }
     }
+
+    // --- Click / tap = seleccionar país -------------------------------------
+    // El hover es solo visual (ver el raycast del loop); la SELECCIÓN pasa
+    // únicamente por acá. Se distingue de un arrastre para rotar el globo: un
+    // click/tap es un pointerup cerca de donde bajó y en poco tiempo.
+    let downX = 0
+    let downY = 0
+    let downT = 0
+    const onPointerDownTap = (event: PointerEvent) => {
+      downX = event.clientX
+      downY = event.clientY
+      downT = performance.now()
+    }
+    const onPointerUpTap = (event: PointerEvent) => {
+      const moved = Math.hypot(event.clientX - downX, event.clientY - downY)
+      if (moved > 6 || performance.now() - downT > 500) return // fue un arrastre
+      const rect = renderer.domElement.getBoundingClientRect()
+      pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+      pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
+      const code = pickHoveredCode()
+      if (code && code in globeCountryCards) {
+        hoverSourceRef.current = 'canvas'
+        hoveredCountryRef.current = code
+        setHoveredCountry(code)
+        setActiveCountry(code)
+        setActivePackageIndex(0)
+        flyToActiveUntilRef.current = performance.now() + FLYTO_HOLD_MS
+      }
+    }
+
     renderer.domElement.addEventListener('pointermove', onPointerMove)
     renderer.domElement.addEventListener('pointerdown', onPointerDown)
     renderer.domElement.addEventListener('pointerleave', onPointerLeave)
+    renderer.domElement.addEventListener('pointerdown', onPointerDownTap)
+    renderer.domElement.addEventListener('pointerup', onPointerUpTap)
 
     function pickHoveredCode(): string | null {
       raycaster.setFromCamera(pointer, camera)
@@ -657,29 +699,33 @@ export function GlobeSection() {
       if (pointerInside && pointerDirty) {
         pointerDirty = false
         const code = pickHoveredCode()
-        if (code !== hoveredCodeRef.current) {
+        if (code !== hoveredCountryRef.current) {
+          // SOLO feedback visual: el hover nunca selecciona el país ni toca la
+          // lista/card. La selección pasa por click/tap (onPointerUpTap) o por
+          // click en un chip.
           hoverSourceRef.current = code ? 'canvas' : null
-          hoveredCodeRef.current = code
-          setHoveredCode(code)
-          // apuntar a un país con tarjetas las fija hasta que el usuario se
-          // aleje o haga scroll; salir del país no las cierra. El destino
-          // activo vuelve a ser el primero de la lista del país nuevo.
-          if (code && code in globeCountryCards) {
-            setActiveCardCode(code)
-            setActiveEntryIndex(0)
-          }
+          hoveredCountryRef.current = code
+          setHoveredCountry(code)
         }
       }
 
-      const targetCode = hoveredCodeRef.current
-      const targetCountry = targetCode ? countryByCode.get(targetCode) : undefined
+      const hoverCode = hoveredCountryRef.current
+      const activeCode = activeCountryRef.current
 
-      // El globo se gira para encarar el país SOLO cuando el hover viene de los
-      // chips de abajo (sirven de referencia/índice). Si el hover nace del
-      // propio globo —el cursor encima mientras se explora o se arrastra— el
-      // país se levanta y el giro se frena, pero la cámara no se mueve sola.
-      const flyToCountry =
-        targetCountry && hoverSourceRef.current === 'list' && !isUserDragging ? targetCountry : undefined
+      // Fly-to: al hacer click en un país, el globo se centra en él por
+      // FLYTO_HOLD_MS y después lo suelta (queda libre para arrastrar, no
+      // "vuelve" solo). Pasado ese rato, hover sobre un chip hace un preview
+      // (gira el globo hacia ese país) — el hover sobre el canvas nunca mueve
+      // la cámara.
+      const now = performance.now()
+      // un click en un país/chip dejó el ref en -1: recién acá le ponemos el
+      // deadline real (evita llamar performance.now() en render).
+      if (flyToActiveUntilRef.current === -1) flyToActiveUntilRef.current = now + FLYTO_HOLD_MS
+      const flyToActive =
+        activeCode && now < flyToActiveUntilRef.current ? countryByCode.get(activeCode) : undefined
+      const previewCountry =
+        hoverSourceRef.current === 'list' && hoverCode ? countryByCode.get(hoverCode) : undefined
+      const flyToCountry = isUserDragging ? undefined : (flyToActive ?? previewCountry)
 
       if (flyToCountry) {
         const dir = flyToCountry.centerDir
@@ -698,28 +744,35 @@ export function GlobeSection() {
         controls.rotateUp(-dPolar * FLYTO_EASE)
       }
 
-      // gira solo cuando: no hay país en hover, no hay tarjetas fijas, no se
+      // gira solo cuando: no hay país en hover, ninguno seleccionado, no se
       // está arrastrando, ya pasó el margen tras soltar y el usuario no pidió
       // menos movimiento.
       controls.autoRotate =
         !prefersReducedMotion &&
-        !targetCode &&
-        !activeCardCodeRef.current &&
+        !hoverCode &&
+        !activeCode &&
         !isUserDragging &&
-        performance.now() > dragResumeAt
+        now > dragResumeAt
       controls.update()
 
       for (const country of countryObjects) {
-        // el país queda levantado mientras se lo apunta o mientras sus tarjetas
-        // siguen a la vista.
-        const target =
-          country.code === targetCode || country.code === activeCardCodeRef.current ? 1 : 0
-        country.hover = lerp(country.hover, target, 0.15)
-        const scale = 1 + (HOVER_SCALE - 1) * country.hover
-        country.group.scale.setScalar(scale)
-        country.capMaterial.opacity = lerp(0.2, 0.42, country.hover)
-        country.sideMaterial.opacity = lerp(0.32, 0.55, country.hover)
-        country.outlineMaterial.opacity = lerp(0.55, 0.95, country.hover)
+        const isActive = country.code === activeCode
+        // el hover no se pinta sobre el país ya seleccionado: ACTIVE manda.
+        const isHover = country.code === hoverCode && !isActive
+        country.hoverAmt = lerp(country.hoverAmt, isHover ? 1 : 0, 0.18)
+        country.activeAmt = lerp(country.activeAmt, isActive ? 1 : 0, 0.18)
+        const h = country.hoverAmt
+        const a = country.activeAmt
+
+        // elevación: leve en hover, un poco más en el seleccionado.
+        country.group.scale.setScalar(1 + (HOVER_SCALE - 1) * h + (ACTIVE_SCALE - 1) * a)
+
+        country.capMaterial.color.copy(CAP_BASE).lerp(CAP_HOVER, h).lerp(CAP_ACTIVE, a)
+        country.capMaterial.opacity = 0.2 + 0.22 * h + 0.34 * a
+        country.sideMaterial.color.copy(SIDE_BASE).lerp(SIDE_HOVER, h).lerp(SIDE_ACTIVE, a)
+        country.sideMaterial.opacity = 0.32 + 0.2 * h + 0.3 * a
+        country.outlineMaterial.color.copy(OUTLINE_BASE).lerp(OUTLINE_HOVER, h).lerp(OUTLINE_ACTIVE, a)
+        country.outlineMaterial.opacity = 0.5 + 0.35 * h + 0.5 * a
       }
 
       renderer.render(scene, camera)
@@ -732,6 +785,8 @@ export function GlobeSection() {
       renderer.domElement.removeEventListener('pointermove', onPointerMove)
       renderer.domElement.removeEventListener('pointerdown', onPointerDown)
       renderer.domElement.removeEventListener('pointerleave', onPointerLeave)
+      renderer.domElement.removeEventListener('pointerdown', onPointerDownTap)
+      renderer.domElement.removeEventListener('pointerup', onPointerUpTap)
       controls.dispose()
       renderer.dispose()
       earth.geometry.dispose()
@@ -750,80 +805,56 @@ export function GlobeSection() {
     }
   }, [])
 
-  // Rótulo sobre el globo: mientras las tarjetas de un país estén fijas queda su
-  // nombre aunque el cursor ya no apunte al país; sólo entonces cae al hover.
-  const labelCode = hoveredCode ?? activeCardCode
+  // Rótulo sobre el globo: si hay país seleccionado, muestra SIEMPRE ese
+  // (no lo pisa el hover de otro país); recién sin selección muestra el hover.
+  const labelCode = activeCountry ?? hoveredCountry
   const hoveredName = labelCode ? (countryMetaByCode.get(labelCode)?.name ?? null) : null
 
-  // Desvanecer las tarjetas cuando el usuario no las está mirando: ni el cursor
-  // sobre ellas ni sobre el país que las abrió.
+  // Auto-deselección: si hay país seleccionado y el cursor sale de la lista,
+  // el globo, la card y los chips, a los DESELECT_MS todo vuelve al estado
+  // inicial (sin país). Solo con mouse — en táctil no hay "cursor" que se
+  // vaya, así que la selección persiste hasta el próximo tap.
   useEffect(() => {
-    if (!activeCardCode) return
-    const engaged = cardHovered || hoveredCode === activeCardCode
-    if (engaged) return
-    const id = window.setTimeout(() => setActiveCardCode(null), CARD_IDLE_MS)
+    if (!activeCountry || overPanels || overChips) return
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    const id = window.setTimeout(() => {
+      setActiveCountry(null)
+      setActivePackageIndex(0)
+    }, DESELECT_MS)
     return () => window.clearTimeout(id)
-  }, [activeCardCode, cardHovered, hoveredCode])
+  }, [activeCountry, overPanels, overChips])
 
-  // Al hacer scroll, las tarjetas se van (y el globo retoma el giro) salvo que
-  // el cursor esté sobre una tarjeta.
-  useEffect(() => {
-    if (!activeCardCode) return
-    let id = 0
-    const onScroll = () => {
-      // si el cursor sigue sobre la tarjeta o sobre el país que la abrió, el
-      // scroll no la cierra: el usuario todavía la está mirando.
-      if (cardHoveredRef.current || hoveredCodeRef.current === activeCardCodeRef.current) return
-      window.clearTimeout(id)
-      id = window.setTimeout(() => setActiveCardCode(null), CARD_SCROLL_MS)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.clearTimeout(id)
-    }
-  }, [activeCardCode])
-
-  const onCardEnter = () => {
-    cardHoveredRef.current = true
-    setCardHovered(true)
-  }
-  const onCardLeave = () => {
-    cardHoveredRef.current = false
-    setCardHovered(false)
-  }
-
-  const selectFromList = (code: string) => {
+  // Chips de "Países disponibles": hover = preview visual (no selecciona),
+  // click = selección.
+  const previewCountry = (code: string) => {
     hoverSourceRef.current = 'list'
-    hoveredCodeRef.current = code
-    setHoveredCode(code)
-    if (code in globeCountryCards) {
-      setActiveCardCode(code)
-      setActiveEntryIndex(0)
-    }
+    hoveredCountryRef.current = code
+    setHoveredCountry(code)
   }
-  const clearFromList = () => {
+  const clearPreview = () => {
     if (hoverSourceRef.current !== 'list') return
     hoverSourceRef.current = null
-    hoveredCodeRef.current = null
-    setHoveredCode(null)
+    hoveredCountryRef.current = null
+    setHoveredCountry(null)
   }
-  const toggleFromList = (code: string) => {
-    if (hoveredCode === code) {
-      clearFromList()
-      if (activeCardCode === code) setActiveCardCode(null)
-    } else {
-      selectFromList(code)
-    }
+  const selectCountry = (code: string) => {
+    hoverSourceRef.current = 'list'
+    hoveredCountryRef.current = code
+    setHoveredCountry(code)
+    setActiveCountry(code)
+    setActivePackageIndex(0)
+    // -1 = "arrancá el fly-to en el próximo frame"; el loop lo convierte en un
+    // timestamp real (así no llamamos performance.now() en render).
+    flyToActiveUntilRef.current = -1
   }
 
   // Lista aplanada del país fijado (memoizada: cambia solo cuando cambia el
   // país, no en cada render) + el destino activo que consumen la lista y la
   // card destacada — mismos datos, sin lógica duplicada.
-  const activeEntries = useMemo(() => flattenCountryEntries(activeCardCode), [activeCardCode])
-  const activeEntry = activeEntries[activeEntryIndex] ?? activeEntries[0]
-  const activeCountryName = activeCardCode ? (countryMetaByCode.get(activeCardCode)?.name ?? '') : ''
-  const activeEntryHref = activeEntry?.packageSlug ? `/paquetes/${activeEntry.packageSlug}` : '/#paquetes'
+  const activePackages = useMemo(() => flattenCountryEntries(activeCountry), [activeCountry])
+  const activePackage = activePackages[activePackageIndex] ?? activePackages[0]
+  const activeCountryName = activeCountry ? (countryMetaByCode.get(activeCountry)?.name ?? '') : ''
+  const activePackageHref = activePackage?.packageSlug ? `/paquetes/${activePackage.packageSlug}` : '/#paquetes'
 
   return (
     // El ancla #destinos vive en Home.tsx (.hero-reveal__anchor), ubicada donde
@@ -873,7 +904,11 @@ export function GlobeSection() {
           (que además se achican para no crecer demasiado, ver `densityFor`).
           En mobile/tablet, `order-*` apila: globo primero (protagonista),
           card, lista. */}
-      <div className="relative mx-auto mt-10 w-full max-w-[34rem] px-6 lg:max-w-[78rem] xl:max-w-[86rem]">
+      <div
+        className="relative mx-auto mt-10 w-full max-w-[34rem] px-6 lg:max-w-[78rem] xl:max-w-[86rem]"
+        onMouseEnter={() => setOverPanels(true)}
+        onMouseLeave={() => setOverPanels(false)}
+      >
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,20rem)_minmax(0,34rem)_minmax(0,20rem)] lg:gap-6 xl:grid-cols-[minmax(0,22rem)_minmax(0,34rem)_minmax(0,22rem)] xl:gap-10">
           {/* Columna izquierda: lista de destinos del país fijado. La caja
               se ajusta a su contenido (sin alto forzado ni relleno para
@@ -882,21 +917,24 @@ export function GlobeSection() {
               fila (que define el globo) en vez de forzarla ella misma. */}
           <div className="order-3 w-full lg:order-1 lg:self-center">
             <DestinationListPanel
-              activeCardCode={activeCardCode}
-              entries={activeEntries}
-              activeIndex={activeEntryIndex}
+              activeCountry={activeCountry}
+              entries={activePackages}
+              activeIndex={activePackageIndex}
               reduced={!!reduceMotion}
-              onActivate={setActiveEntryIndex}
-              onEnter={onCardEnter}
-              onLeave={onCardLeave}
+              onActivate={setActivePackageIndex}
             />
           </div>
 
-          {/* Centro: el globo — sin cambios de tamaño/comportamiento. */}
+          {/* Centro: el globo — sin cambios de tamaño/comportamiento. El cursor
+              pasa a "pointer" cuando hay un país bajo el mouse (indica que se
+              puede seleccionar); si no, queda "grab" para arrastrar el globo. */}
           <div className="order-1 lg:order-2">
             <div
               ref={containerRef}
-              className="relative mx-auto aspect-square w-full max-w-[34rem] cursor-grab touch-none select-none active:cursor-grabbing"
+              className={cx(
+                'relative mx-auto aspect-square w-full max-w-[34rem] touch-none select-none active:cursor-grabbing',
+                hoveredCountry ? 'cursor-pointer' : 'cursor-grab',
+              )}
             >
               <canvas ref={canvasRef} className="h-full w-full" />
               {hoveredName && (
@@ -915,58 +953,65 @@ export function GlobeSection() {
               altura del globo pase lo que pase con la lista. */}
           <div className="order-2 w-full lg:order-3 lg:flex lg:h-[34rem] lg:items-center">
             <FeaturedCard
-              activeCardCode={activeCardCode}
-              entry={activeEntry}
+              activeCountry={activeCountry}
+              entry={activePackage}
               countryName={activeCountryName}
-              href={activeEntryHref}
+              href={activePackageHref}
               reduced={!!reduceMotion}
-              onEnter={onCardEnter}
-              onLeave={onCardLeave}
               onHashClick={handleHashClick}
             />
           </div>
         </div>
       </div>
 
-      {/* Este bloque va siempre sobre el shader (teal), en cualquier tema: por
-          eso el tratamiento es fijo claro-sobre-oscuro (como .hero-cta-btn en
-          index.css), sin variantes dark:. Chips = pastillas de vidrio; el país
-          apuntado se invierte a pastilla blanca sólida. */}
-      <div className="relative mx-auto mt-10 max-w-3xl px-6">
+      {/* Chips = índice de países. Mismo criterio que el globo: HOVER es
+          preview visual (resalta el país en el globo, no selecciona), CLICK
+          selecciona. Solo se listan los países con paquetes cargados. El chip
+          del país SELECCIONADO queda como pastilla blanca sólida; el que está
+          en hover (acá o sobre el globo), semi-resaltado. */}
+      <div
+        className="relative mx-auto mt-10 max-w-3xl px-6"
+        onMouseEnter={() => setOverChips(true)}
+        onMouseLeave={() => setOverChips(false)}
+      >
         <p className="mb-4 text-center text-xs font-semibold tracking-[0.2em] text-white/75 uppercase [text-shadow:0_1px_10px_rgba(8,47,63,0.55)]">
           Países disponibles
         </p>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5">
-          {availableCountries.map((country) => {
-            const active = hoveredCode === country.code
-            return (
-              <button
-                key={country.code}
-                type="button"
-                onMouseEnter={() => selectFromList(country.code)}
-                onMouseLeave={clearFromList}
-                onFocus={() => selectFromList(country.code)}
-                onBlur={clearFromList}
-                onClick={() => toggleFromList(country.code)}
-                className={cx(
-                  'group inline-flex items-center gap-3 rounded-full border px-3.5 py-1.5 text-sm font-medium backdrop-blur-md transition-all duration-300 ease-out focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none',
-                  active
-                    ? '-translate-y-0.5 border-white bg-white text-sea-950 shadow-lg shadow-sea-950/25'
-                    : 'border-white/25 bg-white/10 text-white/80 shadow-sm shadow-sea-950/10 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/20 hover:text-white hover:shadow-md hover:shadow-sea-950/20',
-                )}
-              >
-                <span
+          {availableCountries
+            .filter((country) => country.code in globeCountryCards)
+            .map((country) => {
+              const isActive = activeCountry === country.code
+              const isHover = hoveredCountry === country.code && !isActive
+              return (
+                <button
+                  key={country.code}
+                  type="button"
+                  onMouseEnter={() => previewCountry(country.code)}
+                  onMouseLeave={clearPreview}
+                  onFocus={() => previewCountry(country.code)}
+                  onBlur={clearPreview}
+                  onClick={() => selectCountry(country.code)}
+                  aria-pressed={isActive}
                   className={cx(
-                    'h-1.5 w-1.5 rounded-full transition-colors duration-300',
-                    active
-                      ? 'bg-turquoise-500'
-                      : 'bg-white/45 group-hover:bg-white',
+                    'group inline-flex items-center gap-3 rounded-full border px-3.5 py-1.5 text-sm font-medium backdrop-blur-md transition-all duration-300 ease-out focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none',
+                    isActive
+                      ? '-translate-y-0.5 border-white bg-white text-sea-950 shadow-lg shadow-sea-950/25'
+                      : isHover
+                        ? '-translate-y-0.5 border-white/60 bg-white/25 text-white shadow-md shadow-sea-950/20'
+                        : 'border-white/25 bg-white/10 text-white/80 shadow-sm shadow-sea-950/10 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/20 hover:text-white hover:shadow-md hover:shadow-sea-950/20',
                   )}
-                />
-                {country.name}
-              </button>
-            )
-          })}
+                >
+                  <span
+                    className={cx(
+                      'h-1.5 w-1.5 rounded-full transition-colors duration-300',
+                      isActive ? 'bg-turquoise-500' : isHover ? 'bg-white' : 'bg-white/45 group-hover:bg-white',
+                    )}
+                  />
+                  {country.name}
+                </button>
+              )
+            })}
         </div>
       </div>
     </section>
