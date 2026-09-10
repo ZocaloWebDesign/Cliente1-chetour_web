@@ -23,6 +23,18 @@ import cardNuevaYorkMiami from '@/assets/globe/cards/nueva-york-miami.jpg'
 import cardPeruAereo from '@/assets/globe/cards/peru-aereo.jpg'
 import cardPeruBoliviaBus from '@/assets/globe/cards/peru-bolivia-bus.jpg'
 import cardChileFiordosGlaciares from '@/assets/globe/cards/chile-fiordos-glaciares.jpg'
+import cardAfricaTodoIncluido from '@/assets/globe/cards/africa-todo-incluido.jpg'
+import cardEuropaClasicaEspana from '@/assets/globe/cards/europa-clasica-espana.jpg'
+import cardEuropaClasicaItalia from '@/assets/globe/cards/europa-clasica-italia.jpg'
+import cardEuropaClasicaFrancia from '@/assets/globe/cards/europa-clasica-francia.jpg'
+import cardEuropaMaximoReinoUnido from '@/assets/globe/cards/europa-maximo-reino-unido.webp'
+import cardEuropaMaximoFrancia from '@/assets/globe/cards/europa-maximo-francia.jpg'
+import cardEuropaMaximoAlemania from '@/assets/globe/cards/europa-maximo-alemania.jpg'
+import cardEuropaMaximoSuiza from '@/assets/globe/cards/europa-maximo-suiza.jpg'
+import cardEuropaMaximoItalia from '@/assets/globe/cards/europa-maximo-italia.jpg'
+import cardEuropaMaximoEspana from '@/assets/globe/cards/europa-maximo-espana.jpg'
+import cardEgiptoDubaiEgipto from '@/assets/globe/cards/egipto-dubai-egipto.jpg'
+import cardEgiptoDubaiDubai from '@/assets/globe/cards/egipto-dubai-dubai.webp'
 
 // ---------------------------------------------------------------------------
 // Paquetes
@@ -221,6 +233,8 @@ export type GlobeCardEntry = {
   shortDescription?: string
   /** Slug del paquete al que apunta el CTA de la card destacada (ver `packages`). Si todavía no tiene uno cargado, el CTA cae en la sección de paquetes. */
   packageSlug?: string
+  /** Crédito de la foto, si la licencia lo exige (ej. Wikimedia CC BY-SA) — mismo criterio que `TravelPackage.heroCredit`. */
+  credit?: string
 }
 
 export type GlobeCard = {
@@ -450,6 +464,183 @@ export const globeCountryCards: Record<string, GlobeCountryCards> = {
             mode: 'Crucero por fiordos y glaciares',
             category: 'Naturaleza extrema',
             shortDescription: 'Fiordos y glaciares patagónicos navegando por Chile.',
+          },
+        ],
+      },
+    ],
+  },
+  // Tanzania: solo una tarjeta a la izquierda (un único viaje por ahora),
+  // igual que Chile. Datos sacados de "África Todo Incluido"
+  // (chetour.empretienda.com.ar/salidas/internacionales/africa-todo-incluido):
+  // safari por Tarangire, Serengeti y Ngorongoro + cierre de playa en Zanzíbar.
+  TZA: {
+    left: [
+      {
+        entries: [
+          {
+            name: 'Tanzania',
+            image: cardAfricaTodoIncluido,
+            mode: 'Safari y playas de Zanzíbar',
+            category: 'Safari y playas',
+            shortDescription: 'Elefantes, leones y sabana en el Serengeti, con un final de playa en Zanzíbar.',
+          },
+        ],
+      },
+    ],
+  },
+  // "Europa Clásica, con Costa Amalfitana y La Toscana" pasa por tres países
+  // (España, Italia, Francia): el mismo paquete aparece en los tres, cada uno
+  // con la foto y la bajada de SU tramo del circuito. Datos sacados de
+  // chetour.empretienda.com.ar/salidas/internacionales/europa-clasica-con-costa-amalfitana-y-la-toscana
+  // "Europa al Máximo, de Londres a Madrid" pasa por SEIS países (Reino
+  // Unido, Francia, Alemania, Suiza, Italia, España) — un circuito distinto
+  // al de arriba, así que en España/Italia/Francia se suma como un segundo
+  // destino en la misma lista, y Reino Unido/Alemania/Suiza son países
+  // nuevos. Datos sacados de
+  // chetour.empretienda.com.ar/salidas/internacionales/europa-al-maximo-de-londres-a-madrid
+  ESP: {
+    left: [
+      {
+        entries: [
+          {
+            name: 'Europa Clásica, Costa Amalfitana y Toscana',
+            image: cardEuropaClasicaEspana,
+            mode: 'Aéreo',
+            category: 'Ciudades imperiales',
+            shortDescription: 'Madrid, Toledo y Barcelona, la puerta de entrada a lo mejor de Europa.',
+            credit: 'Foto: Carlos Delgado / Wikimedia Commons (CC BY-SA)',
+          },
+          {
+            name: 'Europa al Máximo, de Londres a Madrid',
+            image: cardEuropaMaximoEspana,
+            mode: 'Aéreo · Bus',
+            category: 'Barcelona y Madrid',
+            shortDescription: 'Barcelona y Madrid, el cierre de un recorrido de punta a punta por Europa.',
+          },
+        ],
+      },
+    ],
+  },
+  ITA: {
+    left: [
+      {
+        entries: [
+          {
+            name: 'Europa Clásica, Costa Amalfitana y Toscana',
+            image: cardEuropaClasicaItalia,
+            mode: 'Aéreo',
+            category: 'Amalfi y Toscana',
+            shortDescription: 'Nápoles, la Costa Amalfitana, Capri, Roma, la Toscana y Venecia en un mismo circuito.',
+          },
+          {
+            name: 'Europa al Máximo, de Londres a Madrid',
+            image: cardEuropaMaximoItalia,
+            mode: 'Aéreo · Bus',
+            category: 'Roma, Florencia y Venecia',
+            shortDescription: 'Venecia, Roma y Florencia, el corazón italiano de un gran circuito europeo.',
+          },
+        ],
+      },
+    ],
+  },
+  FRA: {
+    left: [
+      {
+        entries: [
+          {
+            name: 'Europa Clásica, Costa Amalfitana y Toscana',
+            image: cardEuropaClasicaFrancia,
+            mode: 'Aéreo',
+            category: 'París y el Sena',
+            shortDescription: 'París y un crucero por el Sena, el cierre de un recorrido por lo mejor de Europa.',
+          },
+          {
+            name: 'Europa al Máximo, de Londres a Madrid',
+            image: cardEuropaMaximoFrancia,
+            mode: 'Aéreo · Bus',
+            category: 'Costa Azul y Riviera',
+            shortDescription: 'París y la Costa Azul, dos caras bien distintas de Francia en un mismo viaje.',
+            credit: 'Foto: Rafael Puerto / Wikimedia Commons (CC BY-SA)',
+          },
+        ],
+      },
+    ],
+  },
+  GBR: {
+    left: [
+      {
+        entries: [
+          {
+            name: 'Europa al Máximo, de Londres a Madrid',
+            image: cardEuropaMaximoReinoUnido,
+            mode: 'Aéreo · Bus',
+            category: 'Londres icónico',
+            shortDescription: 'Londres, punto de partida de un gran circuito de 21 días por Europa.',
+          },
+        ],
+      },
+    ],
+  },
+  DEU: {
+    left: [
+      {
+        entries: [
+          {
+            name: 'Europa al Máximo, de Londres a Madrid',
+            image: cardEuropaMaximoAlemania,
+            mode: 'Aéreo · Bus',
+            category: 'Frankfurt y Múnich',
+            shortDescription: 'Frankfurt y Múnich, la escala centroeuropea de un gran circuito por el continente.',
+            credit: 'Foto: Saptarshi Pal / Wikimedia Commons (CC BY-SA)',
+          },
+        ],
+      },
+    ],
+  },
+  CHE: {
+    left: [
+      {
+        entries: [
+          {
+            name: 'Europa al Máximo, de Londres a Madrid',
+            image: cardEuropaMaximoSuiza,
+            mode: 'Aéreo · Bus',
+            category: 'Lagos y Alpes suizos',
+            shortDescription: 'Zúrich, entre Múnich y Venecia, en un recorrido a fondo por Europa.',
+            credit: 'Foto: Chensiyuan / Wikimedia Commons (CC BY-SA)',
+          },
+        ],
+      },
+    ],
+  },
+  // "Egipto y Dubái con crucero en el Río Nilo" pasa por dos países: cada uno
+  // suma su primer destino (ninguno tenía tarjetas todavía). Datos sacados de
+  // chetour.empretienda.com.ar/salidas/internacionales/egipto-y-dubai-con-crucero-en-el-rio-nilo
+  EGY: {
+    left: [
+      {
+        entries: [
+          {
+            name: 'Egipto y Dubái con crucero en el Nilo',
+            image: cardEgiptoDubaiEgipto,
+            mode: 'Aéreo',
+            category: 'Pirámides y crucero por el Nilo',
+            shortDescription: 'El Cairo, Abú Simbel y un crucero por el Nilo, entre pirámides y templos milenarios.',
+          },
+        ],
+      },
+    ],
+  },
+  ARE: {
+    left: [
+      {
+        entries: [
+          {
+            name: 'Egipto y Dubái con crucero en el Nilo',
+            image: cardEgiptoDubaiDubai,
+            mode: 'Aéreo',
+            category: 'Rascacielos y desierto',
+            shortDescription: 'Dubái y su safari en el desierto, el cierre moderno de un viaje entre faraones.',
           },
         ],
       },

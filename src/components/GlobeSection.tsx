@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useHashScroll } from '@/hooks/use-hash-scroll'
@@ -27,6 +27,19 @@ const FLYTO_EASE = 0.14 // qué tan rápido el globo se gira hacia el país en h
 // de apuntar al país; se desvanecen solas cuando el usuario se va o hace scroll.
 const CARD_IDLE_MS = 3000 // sin cursor sobre la tarjeta ni el país
 const CARD_SCROLL_MS = 1600 // margen tras hacer scroll antes de retomar el giro
+
+// A partir de cuántos destinos la lista pasa a un tamaño de ítem más chico
+// (para que todos entren siempre en la misma caja, sin cambiar su alto).
+const LIST_COMPACT_AT = 7
+const LIST_TIGHT_AT = 8
+
+type ListDensity = 'normal' | 'compact' | 'tight'
+
+function densityFor(count: number): ListDensity {
+  if (count >= LIST_TIGHT_AT) return 'tight'
+  if (count >= LIST_COMPACT_AT) return 'compact'
+  return 'normal'
+}
 
 // ConicPolygonGeometry proyecta (lng,lat) con theta = 90-lng; la esfera con la
 // textura equirectangular de este proyecto usa theta = lng+180. La diferencia es
@@ -151,6 +164,40 @@ function featuredCardMotion(reduced: boolean) {
   }
 }
 
+// Tamaños por densidad: `normal` es el de siempre; `compact`/`tight` achican
+// thumbnail, tipografía y paddings a medida que entran más destinos, para que
+// la lista completa (sin flechita, sin recortar) siga entrando siempre en la
+// misma caja — ver `densityFor` y el alto fijo de DestinationListPanel.
+const ITEM_DENSITY = {
+  normal: {
+    gap: 'gap-1.5',
+    button: 'gap-3 px-2.5 py-2.5',
+    thumb: 'h-12 w-12',
+    number: 'text-[11px]',
+    name: 'text-[13px]',
+    caption: 'text-[11px] mt-0.5',
+    icon: 'h-3 w-3',
+  },
+  compact: {
+    gap: 'gap-1',
+    button: 'gap-2.5 px-2 py-2',
+    thumb: 'h-10 w-10',
+    number: 'text-[10px]',
+    name: 'text-[12px]',
+    caption: 'text-[10px] mt-0.5',
+    icon: 'h-2.5 w-2.5',
+  },
+  tight: {
+    gap: 'gap-0.5',
+    button: 'gap-2 px-2 py-1.5',
+    thumb: 'h-9 w-9',
+    number: 'text-[10px]',
+    name: 'text-[11px]',
+    caption: 'text-[10px] mt-0',
+    icon: 'h-2.5 w-2.5',
+  },
+} as const satisfies Record<ListDensity, Record<string, string>>
+
 // Item compacto de la lista de destinos: thumbnail + nombre + transporte.
 // El activo (hover propio o el primero por default) queda más luminoso, con
 // un glow sutil — nada exagerado.
@@ -159,15 +206,18 @@ function DestinationListItem({
   entry,
   active,
   reduced,
+  density,
   onActivate,
 }: {
   index: number
   entry: GlobeCardEntry
   active: boolean
   reduced: boolean
+  density: ListDensity
   onActivate: () => void
 }) {
   const transport = parseTransport(entry.mode)
+  const d = ITEM_DENSITY[density]
   return (
     <motion.li {...listItemMotion(index, reduced)}>
       <button
@@ -175,13 +225,14 @@ function DestinationListItem({
         onMouseEnter={onActivate}
         onFocus={onActivate}
         className={cx(
-          'group flex w-full items-center gap-3 rounded-2xl border px-2.5 py-2.5 text-left transition-all duration-300 ease-out',
+          'group flex w-full items-center rounded-2xl border text-left transition-all duration-300 ease-out',
+          d.button,
           active
             ? 'border-white/35 bg-white/15 shadow-[0_0_20px_rgba(255,255,255,0.14)]'
             : 'border-transparent bg-white/[0.04] hover:border-white/15 hover:bg-white/10',
         )}
       >
-        <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl">
+        <span className={cx('relative shrink-0 overflow-hidden rounded-xl', d.thumb)}>
           <img
             src={entry.image}
             alt=""
@@ -194,28 +245,29 @@ function DestinationListItem({
         </span>
         <span className="min-w-0 flex-1">
           <span className="flex items-baseline gap-2">
-            <span className="text-[11px] font-semibold tabular-nums text-white/45">
+            <span className={cx('font-semibold tabular-nums text-white/45', d.number)}>
               {String(index + 1).padStart(2, '0')}
             </span>
             <span
               className={cx(
-                'truncate text-[13px] leading-snug font-medium transition-colors duration-300',
+                'truncate leading-snug font-medium transition-colors duration-300',
+                d.name,
                 active ? 'text-white' : 'text-white/80',
               )}
             >
               {entry.name}
             </span>
           </span>
-          <span className="mt-0.5 flex items-center gap-2 pl-[22px] text-[11px] text-white/55">
+          <span className={cx('flex items-center gap-2 pl-[22px] text-white/55', d.caption)}>
             {transport.length > 0 ? (
               transport.map((tag) =>
                 tag === 'aereo' ? (
                   <span key={tag} className="inline-flex items-center gap-1">
-                    <PlaneIcon className="h-3 w-3" /> {TRANSPORT_LABEL[tag]}
+                    <PlaneIcon className={d.icon} /> {TRANSPORT_LABEL[tag]}
                   </span>
                 ) : (
                   <span key={tag} className="inline-flex items-center gap-1">
-                    <Bus className="h-3 w-3" /> {TRANSPORT_LABEL[tag]}
+                    <Bus className={d.icon} /> {TRANSPORT_LABEL[tag]}
                   </span>
                 ),
               )
@@ -229,13 +281,136 @@ function DestinationListItem({
   )
 }
 
-// Placeholder liviano de la lista/card mientras no hay país en hover: mismo
-// tamaño aproximado que el contenido real, para que el layout no salte.
-function IdlePanel({ children }: { children: ReactNode }) {
+// Lista de destinos del país fijado: un solo bloque (mismo para mobile y
+// desktop, `order-*` los reordena en el grid del return), SIEMPRE con todos
+// los destinos — sin flechita ni recorte. La caja se ajusta a su contenido
+// (sin alto forzado ni relleno para centrarlo): así nunca queda espacio
+// muerto arriba/abajo, tenga 1 destino u 8. Cuando el país tiene más destinos
+// de la cuenta, los ítems se achican (ver `densityFor`/`ITEM_DENSITY`) para
+// que la caja no crezca desmedidamente igual.
+function DestinationListPanel({
+  activeCardCode,
+  entries,
+  activeIndex,
+  reduced,
+  onActivate,
+  onEnter,
+  onLeave,
+}: {
+  activeCardCode: string | null
+  entries: GlobeCardEntry[]
+  activeIndex: number
+  reduced: boolean
+  onActivate: (index: number) => void
+  onEnter: () => void
+  onLeave: () => void
+}) {
+  const density = densityFor(entries.length)
+
   return (
-    <div className="flex h-full min-h-40 flex-col items-center justify-center gap-2 rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-10 text-center backdrop-blur-sm">
-      {children}
-    </div>
+    <AnimatePresence mode="wait">
+      {entries.length > 0 ? (
+        <motion.div
+          key={activeCardCode}
+          {...listColumnMotion(reduced)}
+          onMouseEnter={onEnter}
+          onMouseLeave={onLeave}
+          className="flex w-full flex-col rounded-3xl border border-white/10 bg-white/[0.06] p-2.5 shadow-xl shadow-sea-950/20 backdrop-blur-md"
+        >
+          <ul className={cx('flex flex-col', ITEM_DENSITY[density].gap)}>
+            {entries.map((entry, i) => (
+              <DestinationListItem
+                key={entry.name}
+                index={i}
+                entry={entry}
+                active={i === activeIndex}
+                reduced={reduced}
+                density={density}
+                onActivate={() => onActivate(i)}
+              />
+            ))}
+          </ul>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  )
+}
+
+function FeaturedCard({
+  activeCardCode,
+  entry,
+  countryName,
+  href,
+  reduced,
+  onEnter,
+  onLeave,
+  onHashClick,
+}: {
+  activeCardCode: string | null
+  entry: GlobeCardEntry | undefined
+  countryName: string
+  href: string
+  reduced: boolean
+  onEnter: () => void
+  onLeave: () => void
+  onHashClick: ReturnType<typeof useHashScroll>
+}) {
+  return (
+    <AnimatePresence mode="wait">
+      {entry ? (
+        <motion.div
+          key={`${activeCardCode}-${entry.name}`}
+          {...featuredCardMotion(reduced)}
+          onMouseEnter={onEnter}
+          onMouseLeave={onLeave}
+          className="group relative flex h-72 w-full flex-col justify-end overflow-hidden rounded-3xl border border-white/15 shadow-2xl shadow-sea-950/30 sm:h-80 lg:h-[26rem]"
+        >
+          <img
+            src={entry.image}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-sea-950/95 via-sea-950/45 to-transparent" />
+          {entry.credit && (
+            <span className="absolute top-3 right-3 text-[10px] text-white/50">{entry.credit}</span>
+          )}
+          <div className="relative flex flex-col gap-2 p-5 sm:p-6">
+            {countryName && (
+              <span className="text-[11px] font-semibold tracking-[0.2em] text-white/70 uppercase">
+                {countryName}
+              </span>
+            )}
+            <h3 className="text-xl leading-tight font-semibold text-white sm:text-2xl">{entry.name}</h3>
+            {entry.shortDescription && <p className="text-sm text-white/80">{entry.shortDescription}</p>}
+            <div className="mt-2 flex items-center justify-between gap-3">
+              {entry.category ? (
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-turquoise-200">
+                  ✦ {entry.category}
+                </span>
+              ) : (
+                <span />
+              )}
+              {entry.packageSlug ? (
+                <Link
+                  to={href}
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-sea-950 transition-transform duration-300 hover:scale-105"
+                >
+                  Ver paquete <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              ) : (
+                <a
+                  href={href}
+                  onClick={(e) => onHashClick(e, href)}
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-sea-950 transition-transform duration-300 hover:scale-105"
+                >
+                  Explorar destino <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
   )
 }
 
@@ -690,44 +865,34 @@ export function GlobeSection() {
         </h2>
       </div>
 
-      {/* Tres columnas — lista / globo / card destacada — sobre el hover de
-          país que ya maneja el globo (raycast en el canvas o los chips de
-          abajo). En mobile/tablet se apilan: globo primero (protagonista),
-          card, lista; en desktop vuelven a su orden natural con `order-*`. */}
+      {/* Grid de 3 columnas — lista / globo / card — en flujo normal (no hay
+          overlay absoluto). `lg:items-start` para que el globo/card (alto
+          fijo) no dependan de la lista. La lista, en cambio, se ajusta a su
+          contenido y queda centrada contra esa fila (`lg:self-center`): sin
+          espacio muerto propio, tenga 1 destino o los 8 de un país cargado
+          (que además se achican para no crecer demasiado, ver `densityFor`).
+          En mobile/tablet, `order-*` apila: globo primero (protagonista),
+          card, lista. */}
       <div className="relative mx-auto mt-10 w-full max-w-[34rem] px-6 lg:max-w-[78rem] xl:max-w-[86rem]">
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,20rem)_minmax(0,34rem)_minmax(0,20rem)] lg:justify-center lg:gap-6 xl:grid-cols-[minmax(0,22rem)_minmax(0,34rem)_minmax(0,22rem)] xl:gap-10">
-          {/* Columna izquierda: lista de destinos del país fijado. */}
-          <div className="order-3 w-full lg:order-1">
-            <AnimatePresence mode="wait">
-              {activeEntries.length > 0 ? (
-                <motion.ul
-                  key={activeCardCode}
-                  {...listColumnMotion(!!reduceMotion)}
-                  onMouseEnter={onCardEnter}
-                  onMouseLeave={onCardLeave}
-                  className="flex flex-col gap-1.5 rounded-3xl border border-white/10 bg-white/[0.06] p-2.5 shadow-xl shadow-sea-950/20 backdrop-blur-md"
-                >
-                  {activeEntries.map((entry, i) => (
-                    <DestinationListItem
-                      key={entry.name}
-                      index={i}
-                      entry={entry}
-                      active={i === activeEntryIndex}
-                      reduced={!!reduceMotion}
-                      onActivate={() => setActiveEntryIndex(i)}
-                    />
-                  ))}
-                </motion.ul>
-              ) : (
-                <IdlePanel>
-                  <span className="text-sm font-medium text-white/70">Pasá el cursor sobre un país</span>
-                  <span className="text-xs text-white/45">o elegí uno de la lista de abajo</span>
-                </IdlePanel>
-              )}
-            </AnimatePresence>
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,20rem)_minmax(0,34rem)_minmax(0,20rem)] lg:gap-6 xl:grid-cols-[minmax(0,22rem)_minmax(0,34rem)_minmax(0,22rem)] xl:gap-10">
+          {/* Columna izquierda: lista de destinos del país fijado. La caja
+              se ajusta a su contenido (sin alto forzado ni relleno para
+              centrarlo) — así nunca queda espacio muerto arriba/abajo, tenga
+              1 destino u 8. `lg:self-center` la centra contra el alto de la
+              fila (que define el globo) en vez de forzarla ella misma. */}
+          <div className="order-3 w-full lg:order-1 lg:self-center">
+            <DestinationListPanel
+              activeCardCode={activeCardCode}
+              entries={activeEntries}
+              activeIndex={activeEntryIndex}
+              reduced={!!reduceMotion}
+              onActivate={setActiveEntryIndex}
+              onEnter={onCardEnter}
+              onLeave={onCardLeave}
+            />
           </div>
 
-          {/* Centro: el globo — sin cambios respecto a la versión anterior. */}
+          {/* Centro: el globo — sin cambios de tamaño/comportamiento. */}
           <div className="order-1 lg:order-2">
             <div
               ref={containerRef}
@@ -744,69 +909,21 @@ export function GlobeSection() {
             </div>
           </div>
 
-          {/* Columna derecha: card destacada del destino activo. */}
-          <div className="order-2 w-full lg:order-3">
-            <AnimatePresence mode="wait">
-              {activeEntry ? (
-                <motion.div
-                  key={`${activeCardCode}-${activeEntry.name}`}
-                  {...featuredCardMotion(!!reduceMotion)}
-                  onMouseEnter={onCardEnter}
-                  onMouseLeave={onCardLeave}
-                  className="group relative flex h-72 w-full flex-col justify-end overflow-hidden rounded-3xl border border-white/15 shadow-2xl shadow-sea-950/30 sm:h-80 lg:h-[26rem]"
-                >
-                  <img
-                    src={activeEntry.image}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-sea-950/95 via-sea-950/45 to-transparent" />
-                  <div className="relative flex flex-col gap-2 p-5 sm:p-6">
-                    {activeCountryName && (
-                      <span className="text-[11px] font-semibold tracking-[0.2em] text-white/70 uppercase">
-                        {activeCountryName}
-                      </span>
-                    )}
-                    <h3 className="text-xl leading-tight font-semibold text-white sm:text-2xl">
-                      {activeEntry.name}
-                    </h3>
-                    {activeEntry.shortDescription && (
-                      <p className="text-sm text-white/80">{activeEntry.shortDescription}</p>
-                    )}
-                    <div className="mt-2 flex items-center justify-between gap-3">
-                      {activeEntry.category ? (
-                        <span className="inline-flex items-center gap-1.5 text-xs font-medium text-turquoise-200">
-                          ✦ {activeEntry.category}
-                        </span>
-                      ) : (
-                        <span />
-                      )}
-                      {activeEntry.packageSlug ? (
-                        <Link
-                          to={activeEntryHref}
-                          className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-sea-950 transition-transform duration-300 hover:scale-105"
-                        >
-                          Ver paquete <ArrowRight className="h-3.5 w-3.5" />
-                        </Link>
-                      ) : (
-                        <a
-                          href={activeEntryHref}
-                          onClick={(e) => handleHashClick(e, activeEntryHref)}
-                          className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-sea-950 transition-transform duration-300 hover:scale-105"
-                        >
-                          Explorar destino <ArrowRight className="h-3.5 w-3.5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              ) : (
-                <IdlePanel>
-                  <span className="text-sm font-medium text-white/70">Elegí un destino en el mapa</span>
-                  <span className="text-xs text-white/45">y acá va a aparecer su vistazo</span>
-                </IdlePanel>
-              )}
-            </AnimatePresence>
+          {/* Columna derecha: card destacada del destino activo. Alto fijo
+              igual al del globo (no al de la fila, que puede crecer si la
+              lista está expandida) y centrada adentro — así se mantiene a la
+              altura del globo pase lo que pase con la lista. */}
+          <div className="order-2 w-full lg:order-3 lg:flex lg:h-[34rem] lg:items-center">
+            <FeaturedCard
+              activeCardCode={activeCardCode}
+              entry={activeEntry}
+              countryName={activeCountryName}
+              href={activeEntryHref}
+              reduced={!!reduceMotion}
+              onEnter={onCardEnter}
+              onLeave={onCardLeave}
+              onHashClick={handleHashClick}
+            />
           </div>
         </div>
       </div>
