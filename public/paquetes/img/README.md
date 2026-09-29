@@ -118,3 +118,33 @@ _Ushuaia y Calafate — Aéreo desde Córdoba, 7 u 8 días | CheTour Viajes_
 - `ushuaia-2.jpg` — El faro Les Éclaireurs en el Canal Beagle, cerca de Ushuaia.
 - `ushuaia-3.jpg` — Glaciares y témpanos entre las montañas de la Patagonia austral.
 
+## nueva-york-y-miami
+_Nueva York y Miami — 12 días de ciudad y playa | CheTour Viajes_
+
+- `nyc-miami-1.jpg` — Times Square iluminada, en el corazón de Manhattan.
+- `nyc-miami-2.jpg` — El puente de Brooklyn y el skyline del Bajo Manhattan al atardecer.
+- `nyc-miami-3.jpg` — Una calle del Bajo Manhattan con vista a los rascacielos del Financial District.
+- `nyc-miami-4.jpg` — Vista aérea de South Beach y la costa de Miami.
+- `nyc-miami-5.jpg` — Rascacielos y avenidas de Brickell, el distrito financiero de Miami.
+- `nyc-miami-6.jpg` — Ocean Drive, la icónica avenida Art Déco de Miami Beach.
+
+## egipto-dubai-crucero-nilo
+_Egipto y Dubái con Crucero en el Nilo — Pirámides y desierto | CheTour Viajes_
+
+- `egipto-dubai-1.jpg` — Las pirámides de Guiza en El Cairo, Egipto.
+- `egipto-dubai-2.jpg` — La Ciudadela y la Mezquita de Muhammad Ali sobre la ciudad de El Cairo.
+- `egipto-dubai-3.jpg` — Callejón del Bazar Khan El Khalili en El Cairo.
+- `egipto-dubai-4.jpg` — Los templos de Abú Simbel, tallados en la roca junto al Nilo.
+- `egipto-dubai-5.jpg` — El Burj Khalifa y el skyline de Dubái.
+- `egipto-dubai-6.jpg` — Dunas del desierto de Dubái, con el skyline de la ciudad de fondo.
+
+## rio-de-janeiro
+_Río de Janeiro — Copacabana desde Córdoba | CheTour Viajes_
+
+- `rio-1.jpg` — El Cristo Redentor y el Pan de Azúcar, con la Bahía de Guanabara de fondo.
+- `rio-2.jpg` — Vista aérea de la playa de Copacabana y su costanera.
+- `rio-3.jpg` — Fachada del Océano Copacabana Hotel, donde te alojás.
+- `rio-4.jpg` — Otra vista aérea de Copacabana, entre el mar y la ciudad.
+- `rio-5.jpg` — La playa de Ipanema, con el cerro Dois Irmãos de fondo.
+- `rio-6.jpg` — Atardecer en las playas de Río de Janeiro.
+

@@ -254,5 +254,53 @@
     ],
     "price": "$1.375.000",
     "image": "/paquetes/img/ushuaia-1.jpg"
+  },
+  {
+    "slug": "nueva-york-y-miami",
+    "name": "Nueva York y Miami",
+    "destination": "12 días de ciudad y playa",
+    "category": "Internacionales",
+    "duration": "12 días",
+    "departure": "Salida: 21 de Julio",
+    "mode": "Conectividad aérea",
+    "includes": [
+      "Conectividad aérea",
+      "Nueva York + Miami",
+      "Media pensión"
+    ],
+    "price": "USD 4.988",
+    "image": "/paquetes/img/nyc-miami-1.jpg"
+  },
+  {
+    "slug": "egipto-dubai-crucero-nilo",
+    "name": "Egipto y Dubái con Crucero en el Nilo",
+    "destination": "Pirámides y desierto",
+    "category": "Internacionales",
+    "duration": "Duración a confirmar",
+    "departure": "Salida a confirmar",
+    "mode": "Conectividad aérea",
+    "includes": [
+      "Conectividad aérea",
+      "Egipto + Dubái",
+      "Pensión completa"
+    ],
+    "price": "Consultar",
+    "image": "/paquetes/img/egipto-dubai-1.jpg"
+  },
+  {
+    "slug": "rio-de-janeiro",
+    "name": "Río de Janeiro",
+    "destination": "Copacabana desde Córdoba",
+    "category": "Internacionales",
+    "duration": "8 días / 7 noches",
+    "departure": "Salida: 29 de Marzo",
+    "mode": "Aéreo desde Córdoba",
+    "includes": [
+      "Aéreo desde Córdoba",
+      "Desayuno incluido",
+      "Asistencia médica"
+    ],
+    "price": "USD 1.326",
+    "image": "/paquetes/img/rio-1.jpg"
   }
 ]

@@ -1746,3 +1746,12 @@
 .pkg-page .scroll-plane img {
   object-fit: contain;
 }
+/* Avión un poco más grande y con más contraste (menos "difuminado" a 46px);
+   el rumbo (arriba/abajo) lo decide runtime.ts según la dirección del scroll,
+   por eso el transform ya no fija una rotación estática. */
+.pkg-page .scroll-plane {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 4px 10px rgba(0, 81, 135, 0.55)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+  transition: top 0.05s linear, transform 0.3s ease;
+}

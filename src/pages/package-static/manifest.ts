@@ -10,6 +10,8 @@ export type PackageStaticEntry = {
   title: string
   description: string
   price: number | null
+  /** '$' (pesos, pegado al número) o 'USD ' (con espacio) — según formatCurrency() de la ficha original. */
+  currencyPrefix: string
   initialQty: number
   waLabel: string
   shareText: string
@@ -23,6 +25,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "África Todo Incluido — Safari en Tanzania y Zanzíbar | CheTour Viajes",
     "description": "África Todo Incluido: 16 días, salida 6 de julio. Safari por Tarangire, Serengeti y el Cráter de Ngorongoro, Santuario Serval y cierre All Inclusive en Zanzíbar. Todo incluido — aéreos, traslados, alojamiento, excursiones y pensión completa. USD 8.035 por persona en base doble.",
     "price": 8035,
+    "currencyPrefix": "USD ",
     "initialQty": 2,
     "waLabel": "África Todo Incluido (Salida 6 de julio)",
     "shareText": "¡Mirá este viaje África Todo Incluido (safari + Zanzíbar) con CheTour Viajes!",
@@ -47,6 +50,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Bariloche Aéreo — Escapada a la Patagonia desde Córdoba | CheTour Viajes",
     "description": "Bariloche Aéreo: escapada a San Carlos de Bariloche con vuelo desde Córdoba (Aerolíneas Argentinas), alojamiento con desayuno en hoteles Tierra Gaucha o Kenton, traslados in/out y asistencia médica. 6 salidas entre febrero y junio, 6 o 7 días. Desde $620.000 por persona en base doble.",
     "price": 620000,
+    "currencyPrefix": "$",
     "initialQty": 2,
     "waLabel": "Bariloche Aéreo",
     "shareText": "¡Mirá esta escapada aérea a Bariloche con CheTour Viajes!",
@@ -71,6 +75,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Camboriú en Bus — 10 días / 7 noches en el sur de Brasil | CheTour Viajes",
     "description": "Camboriú en Bus: 10 días y 7 noches en Balneário Camboriú, con salidas de diciembre de 2026 a abril de 2027. Bus semicama o cama, alojamiento en Hotel Sagres o Ilha da Madeira, desayuno y cena, coordinador en viaje y Assist Card. Desde USD 449 por persona en base doble.",
     "price": 449,
+    "currencyPrefix": "USD ",
     "initialQty": 2,
     "waLabel": "Camboriú en Bus",
     "shareText": "¡Mirá este viaje a Camboriú en bus con CheTour Viajes!",
@@ -95,6 +100,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Canasvieiras Aéreo — 8 días / 7 noches en Florianópolis | CheTour Viajes",
     "description": "Canasvieiras Aéreo: 8 días y 7 noches en Canasvieiras, Florianópolis, con salidas de enero a marzo. Aéreo y traslados, alojamiento en el Hotel Canasvieiras Internacional, desayuno y cena, asistencia al viajero y coordinación. Precio a consultar según la fecha.",
     "price": null,
+    "currencyPrefix": "$",
     "initialQty": 2,
     "waLabel": "Canasvieiras Aéreo",
     "shareText": "¡Mirá este viaje aéreo a Canasvieiras con CheTour Viajes!",
@@ -119,6 +125,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Cataratas del Iguazú Aéreo — Escapada a Puerto Iguazú | CheTour Viajes",
     "description": "Cataratas del Iguazú Aéreo: escapada de 4 o 5 días a Puerto Iguazú con vuelo de Aerolíneas Argentinas, alojamiento en Cadena Bagú o Complejo Americano, traslados in/out y excursiones a las Cataratas (sin entrada). 11 salidas entre enero y junio. $840.000 por persona en base doble.",
     "price": 840000,
+    "currencyPrefix": "$",
     "initialQty": 2,
     "waLabel": "Cataratas del Iguazú Aéreo",
     "shareText": "¡Mirá esta escapada aérea a las Cataratas del Iguazú con CheTour Viajes!",
@@ -143,6 +150,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Crucero por Fiordos y Glaciares Chilenos — Salida Grupal Aérea | CheTour Viajes",
     "description": "Crucero por los fiordos y glaciares chilenos: salida grupal 10 de abril, conectividad aérea. Travesía marítima de 4 noches entre glaciares (Amalia, El Brujo, Fiordo Calvo, Bernal y Herman) y navegación frente al Glaciar Perito Moreno en El Calafate. Todo incluido.",
     "price": 3790,
+    "currencyPrefix": "USD ",
     "initialQty": 2,
     "waLabel": "el Crucero por Fiordos y Glaciares Chilenos (Salida 10 de abril)",
     "shareText": "¡Mirá este Crucero por Fiordos y Glaciares Chilenos con CheTour Viajes!",
@@ -167,6 +175,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Esencias Centroeuropeas — Circuito de 14 noches | CheTour Viajes",
     "description": "Esencias Centroeuropeas: circuito de 14 noches por el corazón de Centroeuropa, salida 16 de junio. Vuelos por Air France / KLM vía Ámsterdam, hoteles turista / primera, guía acompañante de habla hispana, excursiones y entradas incluidas según programa y Assist Card 100K. USD 4.980 por persona en base doble.",
     "price": 4980,
+    "currencyPrefix": "USD ",
     "initialQty": 2,
     "waLabel": "Esencias Centroeuropeas (Salida 16 de junio)",
     "shareText": "¡Mirá este circuito Esencias Centroeuropeas con CheTour Viajes!",
@@ -191,6 +200,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Estados Unidos de Costa a Costa — 19 días con el Gran Cañón | CheTour Viajes",
     "description": "Estados Unidos de Costa a Costa: circuito todo incluido de 19 días, salida 29 de abril. San Francisco, Los Ángeles, Las Vegas, el Gran Cañón del Colorado (helicóptero, navegación y Skywalk), Washington D.C., Nueva York y Miami. Aéreos, alojamiento y pensión completa. USD 9.660 por persona en base doble.",
     "price": 9660,
+    "currencyPrefix": "USD ",
     "initialQty": 2,
     "waLabel": "Estados Unidos de Costa a Costa (Salida 29 de abril)",
     "shareText": "¡Mirá este circuito Estados Unidos de Costa a Costa con CheTour Viajes!",
@@ -215,6 +225,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Europa al Máximo, de Londres a Madrid — 21 días | CheTour Viajes",
     "description": "Europa al Máximo, de Londres a Madrid: circuito de 21 días y 19 noches por 11 ciudades — Londres, París, los Alpes, Roma, Florencia, Barcelona y Madrid. Salidas 16 de mayo y 19 de septiembre, aéreo desde Córdoba. Desde USD 5.112 por persona en base doble.",
     "price": 5112,
+    "currencyPrefix": "USD ",
     "initialQty": 2,
     "waLabel": "Europa al Máximo, de Londres a Madrid (21 días)",
     "shareText": "¡Mirá este circuito Europa al Máximo, de Londres a Madrid, con CheTour Viajes!",
@@ -239,6 +250,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Europa Clásica, con Costa Amalfitana y la Toscana — 20 días | CheTour Viajes",
     "description": "Europa Clásica, con Costa Amalfitana y la Toscana: circuito todo incluido de 20 días, salida 12 de octubre. Madrid, Toledo, Barcelona, Nápoles, Sorrento, Costa Amalfitana, Capri, Roma, la Toscana, Florencia, Venecia (góndola) y París (crucero por el Sena). Hoteles 4★, pensión completa. USD 9.525 por persona en base doble.",
     "price": 9525,
+    "currencyPrefix": "USD ",
     "initialQty": 2,
     "waLabel": "Europa Clásica, con Costa Amalfitana y la Toscana (Salida 12 de octubre)",
     "shareText": "¡Mirá este circuito Europa Clásica, con Costa Amalfitana y la Toscana, de CheTour Viajes!",
@@ -263,6 +275,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Gramado y Canela con Torres — Bus cama, 7 días | CheTour Viajes",
     "description": "Gramado y Canela con Torres: viaje en bus cama de última generación de 7 días, salida 30 de marzo. Alojamiento y media pensión en Gramado (Hotel Ski Gramado) y Torres (Hotel A Furninha), city tour de Gramado y Canela y visitas a la Fábrica de Chocolate, la Catedral de Pedra y el Parque Caracol. USD 670 por persona en base doble.",
     "price": 670,
+    "currencyPrefix": "USD ",
     "initialQty": 2,
     "waLabel": "Gramado y Canela con Torres (Salida 30 de marzo)",
     "shareText": "¡Mirá este viaje a Gramado y Canela con Torres, de CheTour Viajes!",
@@ -287,6 +300,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Neuquén y Caviahue — Escapada Aérea con Termas de Copahue | CheTour Viajes",
     "description": "Neuquén y Caviahue: escapada aérea de 5 días / 4 noches, salida 1 de abril. Vuelo desde Córdoba con Flybondi, alojamiento con desayuno en Caviahue, traslados in/out y excursión con guía a las Termas de Copahue. Asistencia médica incluida. $990.000 por persona en base doble.",
     "price": 990000,
+    "currencyPrefix": "$",
     "initialQty": 2,
     "waLabel": "Neuquén y Caviahue (Salida 1 de abril)",
     "shareText": "¡Mirá esta escapada a Neuquén y Caviahue con CheTour Viajes!",
@@ -311,6 +325,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Salta, Humahuaca y Cafayate — Viaje Grupal Aéreo | CheTour Viajes",
     "description": "Salta, Humahuaca y Cafayate: 5 días, salida 3 de julio, conectividad aérea. Todo incluido — traslados IN/OUT, alojamiento, excursiones, pensión completa, asistencia al viajero y coordinación permanente.",
     "price": 1510000,
+    "currencyPrefix": "$",
     "initialQty": 2,
     "waLabel": "el viaje a Salta, Humahuaca y Cafayate (Salida 3 de julio)",
     "shareText": "¡Mirá este viaje grupal a Salta, Humahuaca y Cafayate con CheTour Viajes!",
@@ -347,6 +362,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "San Juan Bajo las Estrellas — Astroturismo en Bus, 7 días | CheTour Viajes",
     "description": "San Juan Bajo las Estrellas: viaje en bus cama 5★ de 7 días, salida 16 de abril. Astroturismo en Pampa del Leoncito, Parque Nacional El Leoncito, Circuito del Sol (Rodeo y Pismanta), Ruta del Vino y Parque Nacional Sierra de las Quijadas. Todo incluido con pensión completa. $1.869.000 por persona en base doble.",
     "price": 1869000,
+    "currencyPrefix": "$",
     "initialQty": 2,
     "waLabel": "San Juan Bajo las Estrellas (Salida 16 de abril)",
     "shareText": "¡Mirá este viaje San Juan Bajo las Estrellas con CheTour Viajes!",
@@ -367,6 +383,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna — Bus, 6 días | CheTour Viajes",
     "description": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna: viaje grupal en bus cama 5★ de 6 días, salida 29 de abril. Valle de la Luna, el Cañón de Talampaya bajo la luna llena y Laguna Brava en la cordillera de los Andes. Todo incluido con pensión completa. $1.625.000 por persona en base doble.",
     "price": 1625000,
+    "currencyPrefix": "$",
     "initialQty": 2,
     "waLabel": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna (Salida 29 de abril)",
     "shareText": "¡Mirá este viaje a Talampaya con Luna Llena, Laguna Brava y Valle de la Luna, con CheTour Viajes!",
@@ -391,6 +408,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "title": "Ushuaia y Calafate — Aéreo desde Córdoba, 7 u 8 días | CheTour Viajes",
     "description": "Ushuaia y Calafate: salida aérea desde Córdoba de 7 u 8 días, con fechas de enero a marzo. Vuelo con Aerolíneas Argentinas, alojamiento con desayuno, traslados in/out y excursiones al Parque Nacional Tierra del Fuego y al Parque Nacional Los Glaciares (sin entradas). Desde $1.375.000 por persona en base doble.",
     "price": 1375000,
+    "currencyPrefix": "$",
     "initialQty": 2,
     "waLabel": "Ushuaia y Calafate",
     "shareText": "¡Mirá este viaje a Ushuaia y Calafate con CheTour Viajes!",
@@ -407,6 +425,117 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       {
         "src": "/paquetes/img/ushuaia-3.jpg",
         "caption": "Glaciares y témpanos entre las montañas de la Patagonia austral."
+      }
+    ]
+  },
+  'nueva-york-y-miami': {
+    "slug": "nueva-york-y-miami",
+    "title": "Nueva York y Miami — 12 días de ciudad y playa | CheTour Viajes",
+    "description": "Nueva York y Miami: 12 días, salida 21 de julio, con conectividad aérea. City tour por el Bajo y Alto Manhattan, Harlem, el Bronx, Queens y Brooklyn, y en Miami city tour, navegación por la Bahía de Biscayne y tiempo libre para playa y shopping. Aéreos, alojamiento y media pensión con una bebida. USD 4.988 por persona en base doble.",
+    "price": 4988,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Nueva York y Miami (Salida 21 de julio)",
+    "shareText": "¡Mirá este viaje a Nueva York y Miami con CheTour Viajes!",
+    "shareTitle": "Nueva York y Miami — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/nyc-miami-1.jpg",
+        "caption": "Times Square iluminada, en el corazón de Manhattan."
+      },
+      {
+        "src": "/paquetes/img/nyc-miami-2.jpg",
+        "caption": "El puente de Brooklyn y el skyline del Bajo Manhattan al atardecer."
+      },
+      {
+        "src": "/paquetes/img/nyc-miami-3.jpg",
+        "caption": "Una calle del Bajo Manhattan con vista a los rascacielos del Financial District."
+      },
+      {
+        "src": "/paquetes/img/nyc-miami-4.jpg",
+        "caption": "Vista aérea de South Beach y la costa de Miami."
+      },
+      {
+        "src": "/paquetes/img/nyc-miami-5.jpg",
+        "caption": "Rascacielos y avenidas de Brickell, el distrito financiero de Miami."
+      },
+      {
+        "src": "/paquetes/img/nyc-miami-6.jpg",
+        "caption": "Ocean Drive, la icónica avenida Art Déco de Miami Beach."
+      }
+    ]
+  },
+  'egipto-dubai-crucero-nilo': {
+    "slug": "egipto-dubai-crucero-nilo",
+    "title": "Egipto y Dubái con Crucero en el Nilo — Pirámides y desierto | CheTour Viajes",
+    "description": "Egipto y Dubái con Crucero en el Nilo: El Cairo (pirámides de Guiza, la Esfinge, templos y el Bazar Khan El Khalili), un crucero por el río Nilo con parada en Abú Simbel, y un cierre en Dubái con safari por el desierto. Aéreos, traslados, alojamiento en hoteles 5 estrellas, excursiones, pensión completa, asistencia al viajero y coordinación permanente. Precio a consultar según la fecha de salida.",
+    "price": null,
+    "currencyPrefix": "$",
+    "initialQty": 2,
+    "waLabel": "Egipto y Dubái con Crucero en el Nilo",
+    "shareText": "¡Mirá este viaje a Egipto y Dubái con Crucero en el Nilo, de CheTour Viajes!",
+    "shareTitle": "Egipto y Dubái con Crucero en el Nilo — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/egipto-dubai-1.jpg",
+        "caption": "Las pirámides de Guiza en El Cairo, Egipto."
+      },
+      {
+        "src": "/paquetes/img/egipto-dubai-2.jpg",
+        "caption": "La Ciudadela y la Mezquita de Muhammad Ali sobre la ciudad de El Cairo."
+      },
+      {
+        "src": "/paquetes/img/egipto-dubai-3.jpg",
+        "caption": "Callejón del Bazar Khan El Khalili en El Cairo."
+      },
+      {
+        "src": "/paquetes/img/egipto-dubai-4.jpg",
+        "caption": "Los templos de Abú Simbel, tallados en la roca junto al Nilo."
+      },
+      {
+        "src": "/paquetes/img/egipto-dubai-5.jpg",
+        "caption": "El Burj Khalifa y el skyline de Dubái."
+      },
+      {
+        "src": "/paquetes/img/egipto-dubai-6.jpg",
+        "caption": "Dunas del desierto de Dubái, con el skyline de la ciudad de fondo."
+      }
+    ]
+  },
+  'rio-de-janeiro': {
+    "slug": "rio-de-janeiro",
+    "title": "Río de Janeiro — Copacabana desde Córdoba | CheTour Viajes",
+    "description": "Río de Janeiro: 8 días / 7 noches, salida 29 de marzo, con vuelo desde Córdoba (Aerolíneas Argentinas). Alojamiento con desayuno en el Océano Copacabana Hotel, equipaje de mano, traslados in/out y asistencia médica Master Plus con cobertura hasta 40K. USD 1.326 por persona en base doble.",
+    "price": 1326,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Río de Janeiro (Salida 29 de marzo)",
+    "shareText": "¡Mirá esta escapada a Río de Janeiro con CheTour Viajes!",
+    "shareTitle": "Río de Janeiro — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/rio-1.jpg",
+        "caption": "El Cristo Redentor y el Pan de Azúcar, con la Bahía de Guanabara de fondo."
+      },
+      {
+        "src": "/paquetes/img/rio-2.jpg",
+        "caption": "Vista aérea de la playa de Copacabana y su costanera."
+      },
+      {
+        "src": "/paquetes/img/rio-3.jpg",
+        "caption": "Fachada del Océano Copacabana Hotel, donde te alojás."
+      },
+      {
+        "src": "/paquetes/img/rio-4.jpg",
+        "caption": "Otra vista aérea de Copacabana, entre el mar y la ciudad."
+      },
+      {
+        "src": "/paquetes/img/rio-5.jpg",
+        "caption": "La playa de Ipanema, con el cerro Dois Irmãos de fondo."
+      },
+      {
+        "src": "/paquetes/img/rio-6.jpg",
+        "caption": "Atardecer en las playas de Río de Janeiro."
       }
     ]
   },

@@ -60,6 +60,9 @@ const SLUGS = [
   'san-juan-bajo-las-estrellas-bus',
   'talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-bus',
   'ushuaia-y-calafate',
+  'nueva-york-y-miami',
+  'egipto-dubai-crucero-nilo',
+  'rio-de-janeiro',
 ]
 
 mkdirSync(FRAGMENTS_DIR, { recursive: true })
@@ -182,6 +185,13 @@ function extractData(src, slug) {
   const priceMatch = matchOne(src, /const PRICE_PER_PERSON = (\d+);/, { required: false })
   const price = priceMatch ? Number(priceMatch[1]) : null
 
+  // Las fichas en pesos usan '$' pegado al número ("$620.000"); las que
+  // cotizan en dólares usan 'USD ' con espacio ("USD 9.660") — dos formatos
+  // reales, no uno solo con "moneda" fija, así que se toma tal cual del
+  // propio formatCurrency() de cada ficha en vez de asumirlo.
+  const currencyMatch = matchOne(src, /function formatCurrency\(val\) \{\s*return '([^']*)' \+/, { required: false })
+  const currencyPrefix = currencyMatch ? currencyMatch[1] : '$'
+
   const qtyMatch = matchOne(src, /let currentQty = (\d+);/)
   const initialQty = Number(qtyMatch[1])
 
@@ -211,6 +221,7 @@ function extractData(src, slug) {
     name,
     categoryLabel,
     price,
+    currencyPrefix,
     initialQty,
     waLabel,
     shareText,
@@ -235,6 +246,15 @@ const MANUAL_CSS_FIXUPS = `
 /* --- Ajustes manuales (no generados) --- */
 .pkg-page .scroll-plane img {
   object-fit: contain;
+}
+/* Avión un poco más grande y con más contraste (menos "difuminado" a 46px);
+   el rumbo (arriba/abajo) lo decide runtime.ts según la dirección del scroll,
+   por eso el transform ya no fija una rotación estática. */
+.pkg-page .scroll-plane {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 4px 10px rgba(0, 81, 135, 0.55)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+  transition: top 0.05s linear, transform 0.3s ease;
 }
 `
 
@@ -281,6 +301,8 @@ export type PackageStaticEntry = {
   title: string
   description: string
   price: number | null
+  /** '$' (pesos, pegado al número) o 'USD ' (con espacio) — según formatCurrency() de la ficha original. */
+  currencyPrefix: string
   initialQty: number
   waLabel: string
   shareText: string
@@ -297,6 +319,7 @@ ${manifestEntries
         title: e.title,
         description: e.description,
         price: e.price,
+        currencyPrefix: e.currencyPrefix,
         initialQty: e.initialQty,
         waLabel: e.waLabel,
         shareText: e.shareText,

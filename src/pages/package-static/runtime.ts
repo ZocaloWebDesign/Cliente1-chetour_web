@@ -5,8 +5,8 @@ const NAV_OFFSET = -88
 
 type LenisLike = { scrollTo: (target: HTMLElement, opts?: { offset?: number }) => void } | null | undefined
 
-function formatCurrency(value: number) {
-  return '$' + value.toLocaleString('es-AR')
+function formatCurrency(value: number, prefix: string) {
+  return prefix + value.toLocaleString('es-AR')
 }
 
 /**
@@ -72,7 +72,9 @@ export function initPackageStaticPage(
     if (qtyDisplay) qtyDisplay.textContent = String(currentQty)
     const label = currentQty === 1 ? 'pasajero' : 'pasajeros'
     if (calcQtyTxt) calcQtyTxt.textContent = `${currentQty} ${label}`
-    if (calcTotalVal && data.price !== null) calcTotalVal.textContent = formatCurrency(currentQty * data.price)
+    if (calcTotalVal && data.price !== null) {
+      calcTotalVal.textContent = formatCurrency(currentQty * data.price, data.currencyPrefix)
+    }
 
     const msg = encodeURIComponent(`Hola CheTour! Quiero consultar por ${data.waLabel} para ${currentQty} ${label}.`)
     const url = `https://wa.me/543564651568?text=${msg}`
@@ -248,15 +250,25 @@ export function initPackageStaticPage(
   const plane = q<HTMLElement>('#scrollPlane')
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   let ticking = false
+  let lastScrollTop = window.scrollY || document.documentElement.scrollTop
+  let planeDirection: 'down' | 'up' = 'down'
 
   function updatePlane() {
     if (!plane) return
     const scrollTop = window.scrollY || document.documentElement.scrollTop
+    // Umbral chico para no invertir el rumbo por ruido de sub-píxel del scroll.
+    const delta = scrollTop - lastScrollTop
+    if (Math.abs(delta) > 2) {
+      planeDirection = delta > 0 ? 'down' : 'up'
+      lastScrollTop = scrollTop
+    }
     const docH = document.documentElement.scrollHeight - window.innerHeight
     const progress = docH > 0 ? Math.min(scrollTop / docH, 1) : 0
     const headerH = parseInt(getComputedStyle(container).getPropertyValue('--header-h')) || 74
     const trackH = window.innerHeight - headerH - 40
     plane.style.top = `${progress * trackH}px`
+    // El ícono trae el morro apuntando hacia abajo en su orientación natural (0°).
+    plane.style.transform = `translateX(-50%) rotate(${planeDirection === 'down' ? 0 : 180}deg)`
     ticking = false
   }
 
