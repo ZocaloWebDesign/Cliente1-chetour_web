@@ -1,0 +1,681 @@
+<main>
+    <!-- ==================== PRODUCT TOP (Header + Mosaico) ==================== -->
+    <section class="product-intro">
+      <div class="wrap">
+        <!-- Bloque de Título y Badges -->
+        <div class="product-title-row">
+          <div class="product-title-box">
+            <span class="eyebrow">Circuito Europeo Aéreo</span>
+            <h1>Europa al Máximo, de Londres a Madrid</h1>
+            <div class="product-badges">
+              <span class="badge-pill highlight">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                21 días / 19 noches
+              </span>
+              <span class="badge-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Salidas: 16 May y 19 Sep
+              </span>
+              <span class="badge-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                Aéreo desde Córdoba (COR)
+              </span>
+              <span class="badge-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                11 ciudades
+              </span>
+              <span class="badge-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                Desayuno diario
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mosaico Fotográfico -->
+        <div class="photo-mosaic" id="gallery-mosaic">
+          <!-- Foto Principal (Londres) -->
+          <div class="photo-mosaic-main photo-item" onclick="openLightbox(0)">
+            <img src="/paquetes/img/europa-1.jpg" alt="El London Eye y el río Támesis iluminados de noche en Londres" fetchpriority="high">
+            <span class="photo-caption-badge">Londres · Inicio del circuito</span>
+          </div>
+
+          <!-- Fotos Secundarias Laterales -->
+          <div class="photo-mosaic-side">
+            <div class="photo-item" onclick="openLightbox(1)">
+              <img src="/paquetes/img/europa-2.jpg" alt="Los tejados de París y la Torre Eiffel al atardecer">
+              <span class="photo-caption-badge">París · 3 noches</span>
+            </div>
+            <div class="photo-item" onclick="openLightbox(2)">
+              <img src="/paquetes/img/europa-3.jpg" alt="El Coliseo de Roma iluminado al anochecer">
+              <span class="photo-caption-badge">Roma · 3 noches</span>
+            </div>
+          </div>
+
+          <!-- Botón Flotante para abrir visor completo -->
+          <button class="btn-all-photos" onclick="openLightbox(0)" aria-label="Ver todas las fotos del destino">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Ver fotos (3)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SUB-NAV STICKY ==================== -->
+    <div class="subnav-bar">
+      <div class="wrap">
+        <div class="subnav-inner">
+          <a href="#itinerario" class="subnav-link active">El Recorrido</a>
+          <a href="#incluye" class="subnav-link">Qué Incluye</a>
+          <a href="#como-viajamos" class="subnav-link">Cómo Funciona</a>
+          <a href="#faq" class="subnav-link">Preguntas Frecuentes</a>
+          <a href="#recomendados" class="subnav-link">Otros Destinos</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== DETAIL LAYOUT ==================== -->
+    <section class="wrap detail-layout">
+
+      <!-- COLUMNA IZQUIERDA: CONTENIDO -->
+      <div class="detail-content">
+        <!-- Narrativa de Apertura -->
+        <p class="narrative-lead reveal">
+          <strong>Un circuito de 21 días que une Londres con Madrid pasando por París, los Alpes, Italia y Barcelona.</strong> Diecinueve noches en once ciudades europeas, con vuelos desde Córdoba, autocar de lujo, guía acompañante durante todo el recorrido, desayuno diario y visitas con guías locales en las grandes capitales.
+        </p>
+
+        <!-- Highlights Rápidos -->
+        <h2 class="sr-only">Lo más destacado del viaje</h2>
+        <div class="highlights-grid reveal">
+          <div class="hl-card">
+            <div class="hl-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h3>11 ciudades en un circuito</h3>
+              <p>Londres, París, los Alpes alemanes y suizos, Italia y España encadenados en 21 días.</p>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9Z"/></svg>
+            </div>
+            <div>
+              <h3>Ciudades con guía local</h3>
+              <p>Visitas en Londres, París, Roma, Florencia y Madrid con guías locales expertos y audioguía.</p>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+            </div>
+            <div>
+              <h3>Todo resuelto</h3>
+              <p>Vuelos desde Córdoba, autocar de lujo, desayuno diario, guía acompañante y seguro turístico.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIMELINE: ITINERARIO -->
+        <div class="section-block" id="itinerario">
+          <div class="section-block-head reveal">
+            <span class="eyebrow">El viaje en detalle</span>
+            <h2>El Recorrido</h2>
+            <p>De Londres a Madrid en 21 días: once ciudades europeas encadenadas en un solo circuito, con guía acompañante y autocar de lujo.</p>
+          </div>
+
+          <div class="timeline">
+            <!-- Parada 1 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">1</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">3 noches</span>
+                  <h3 class="tl-location">Londres</h3>
+                </div>
+                <p>Arrancamos el circuito en Londres, con traslado de llegada y visita de la ciudad con guía local experto y audioguía.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Inicio del circuito</span>
+                  <span class="tl-tag">Visita con guía local</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 2 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">2</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">3 noches</span>
+                  <h3 class="tl-location">París</h3>
+                </div>
+                <p>Tres noches en la capital francesa, con visita de la ciudad acompañados por guías locales.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Visita con guía local</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 3 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">3</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">1 noche</span>
+                  <h3 class="tl-location">Frankfurt</h3>
+                </div>
+                <p>Cruzamos a Alemania en autocar de lujo para una noche en Frankfurt, a orillas del río Meno.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">En ruta por Alemania</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 4 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">4</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">1 noche</span>
+                  <h3 class="tl-location">Zúrich</h3>
+                </div>
+                <p>Noche en Zúrich, la principal ciudad de Suiza, entre lago y montañas.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Alpes suizos</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 5 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">5</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">1 noche</span>
+                  <h3 class="tl-location">Múnich</h3>
+                </div>
+                <p>Parada de una noche en Múnich, capital de Baviera, antes de bajar hacia Italia.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Baviera</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 6 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">6</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">1 noche</span>
+                  <h3 class="tl-location">Venecia</h3>
+                </div>
+                <p>Llegamos a Italia con una noche en Venecia, la ciudad de los canales.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Ciudad de los canales</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 7 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">7</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">3 noches</span>
+                  <h3 class="tl-location">Roma</h3>
+                </div>
+                <p>Tres noches en la Ciudad Eterna, con visita de Roma acompañados por guías locales expertos.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Visita con guía local</span>
+                  <span class="tl-tag">Ciudad Eterna</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 8 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">8</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">1 noche</span>
+                  <h3 class="tl-location">Florencia</h3>
+                </div>
+                <p>Noche en Florencia, cuna del Renacimiento, con visita de la ciudad con guía local.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Visita con guía local</span>
+                  <span class="tl-tag">Renacimiento</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 9 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">9</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">1 noche</span>
+                  <h3 class="tl-location">Costa Azul</h3>
+                </div>
+                <p>Una noche en la Riviera francesa camino a España.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Riviera francesa</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 10 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">10</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">1 noche</span>
+                  <h3 class="tl-location">Barcelona</h3>
+                </div>
+                <p>Noche en Barcelona, entre el modernismo catalán y el Mediterráneo.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Mediterráneo</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 11 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">11</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">3 noches</span>
+                  <h3 class="tl-location">Madrid</h3>
+                </div>
+                <p>Cierre del circuito con tres noches en Madrid, visita de la ciudad con guía local y traslado de salida.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Visita con guía local</span>
+                  <span class="tl-tag">Fin del circuito</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUÉ INCLUYE / QUÉ NO INCLUYE -->
+        <div class="section-block" id="incluye">
+          <div class="section-block-head reveal">
+            <span class="eyebrow">Transparencia total</span>
+            <h2>Qué incluye tu viaje</h2>
+            <p>Sin letra chica ni sorpresas en destino. Todo especificado antes de salir.</p>
+          </div>
+
+          <!-- Micro-ficha visual de servicios clave -->
+          <div class="services-spec-grid reveal">
+            <div class="spec-card">
+              <div class="spec-card-icon hotel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7v14M21 7v14M6 11h2M6 15h2M10 11h2M10 15h2M14 11h2M14 15h2M18 11h2M18 15h2M9 3h6v4H9z"/></svg>
+              </div>
+              <div class="spec-card-body">
+                <span class="spec-tag">Alojamiento</span>
+                <h3>19 noches en 11 ciudades</h3>
+                <p>Hoteles durante todo el circuito con desayuno diario incluido.</p>
+              </div>
+            </div>
+
+            <div class="spec-card">
+              <div class="spec-card-icon flight">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+              </div>
+              <div class="spec-card-body">
+                <span class="spec-tag">Transporte</span>
+                <h3>Aéreo desde Córdoba</h3>
+                <p>Vuelo internacional por Air Europa (UX) desde Córdoba (COR). Equipaje: carry on + 1 maleta de hasta 23 kg.</p>
+              </div>
+            </div>
+
+            <div class="spec-card">
+              <div class="spec-card-icon bus">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="16" rx="3"/><path d="M3 10h18M7 19v2M17 19v2M7 15h.01M17 15h.01"/></svg>
+              </div>
+              <div class="spec-card-body">
+                <span class="spec-tag">Circuito</span>
+                <h3>Autocar de lujo + guía</h3>
+                <p>Traslado de llegada y de salida, más autocar de lujo y guía acompañante durante todo el recorrido.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="incl-grid reveal">
+            <!-- Incluye -->
+            <div class="incl-box yes">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--wa-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                El viaje incluye
+              </h3>
+              <ul>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Traslado de llegada.</b></span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Guía acompañante</b> durante todo el recorrido.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Desayuno diario.</b></span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Autocar de lujo</b> durante el circuito.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Visitas con guías locales expertos</b> en Londres, París, Roma, Florencia y Madrid.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Audioguía.</b></span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Seguro turístico.</b></span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Traslado de salida.</b></span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- A tener en cuenta -->
+            <div class="incl-box no">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--brass)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                A tener en cuenta
+              </h3>
+              <ul>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span><b>Asistencia al viajero:</b> en la salida del 16 de mayo no está incluida (consultar opcionales); en la del 19 de septiembre, incluida.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span><b>Vuelos</b> desde Córdoba (COR) por Air Europa (UX). Equipaje: carry on + 1 maleta de hasta 23 kg.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span><b>Precio según fecha:</b> 16 de mayo USD 5.112 · 19 de septiembre USD 5.175 (por persona en base doble).</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- CÓMO VIAJAMOS (4 Pasos) -->
+        <div class="section-block" id="como-viajamos">
+          <div class="section-block-head reveal">
+            <span class="eyebrow">Experiencia sin estrés</span>
+            <h2>Cómo se viaja con CheTour</h2>
+            <p>Desde la primera consulta hasta que regresas a casa, estamos con vos.</p>
+          </div>
+
+          <div class="steps-grid reveal">
+            <div class="step-card">
+              <div class="step-number">01</div>
+              <h3>Hacés tu consulta</h3>
+              <p>Nos escribís por WhatsApp con la fecha y cantidad de pasajeros. Te enviamos el detalle del paquete y resolvemos dudas.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">02</div>
+              <h3>Elegís cómo pagar</h3>
+              <p>Congelás tu lugar con una seña inicial. Podés abonar por transferencia, tarjeta o cuotas según promociones bancarias.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">03</div>
+              <h3>Recibís tus vouchers</h3>
+              <p>Con anticipación te entregamos toda la documentación de vuelo, hoteles, itinerario detallado y contactos del coordinador.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">04</div>
+              <h3>Solo te queda viajar</h3>
+              <p>Te sumás al grupo en el aeropuerto o en destino. Nuestro equipo se encarga de que todo salga perfecto.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PREGUNTAS FRECUENTES -->
+        <div class="section-block" id="faq">
+          <div class="section-block-head reveal">
+            <span class="eyebrow">Dudas habituales</span>
+            <h2>Preguntas Frecuentes</h2>
+          </div>
+
+          <div class="faq-stack reveal">
+            <details class="faq-item">
+              <summary>¿Cuánto dura el viaje y qué ciudades incluye?</summary>
+              <div class="faq-content">
+                Son 21 días y 19 noches, visitando 11 ciudades: Londres (3 noches), París (3), Frankfurt (1), Zúrich (1), Múnich (1), Venecia (1), Roma (3), Florencia (1), Costa Azul (1), Barcelona (1) y Madrid (3).
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>¿Cuál es el precio y desde dónde salen los vuelos?</summary>
+              <div class="faq-content">
+                USD 5.112 por persona en base doble para la salida del 16 de mayo y USD 5.175 para la del 19 de septiembre. El vuelo internacional es desde Córdoba (COR) por Air Europa (UX), con equipaje carry on + 1 maleta de hasta 23 kg.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>¿La asistencia al viajero está incluida?</summary>
+              <div class="faq-content">
+                En la salida del 19 de septiembre está incluida. En la del 16 de mayo no está incluida, pero se puede contratar como opcional. Consultanos por WhatsApp.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>¿Cómo hago la reserva?</summary>
+              <div class="faq-content">
+                Escribinos por WhatsApp o dejá tus datos en el formulario de contacto y te ayudamos a coordinar la reserva y las formas de pago disponibles.
+              </div>
+            </details>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLUMNA DERECHA: STICKY BOOKING CARD -->
+      <aside class="book-sticky" aria-label="Cotización y Consulta">
+        <!-- Estado de cupos -->
+        <div class="book-status-badge">
+          <span class="pulse-dot"></span>
+          2 salidas: 16 May y 19 Sep · Cupos Limitados
+        </div>
+
+        <!-- Precio -->
+        <div class="book-pricing-box">
+          <div class="book-price-label">Tarifa por persona (desde)</div>
+          <div class="book-price-amount">
+            <span>USD 5.112</span>
+          </div>
+          <div class="book-price-sub">en base doble · salida 16 de mayo · 19 de septiembre USD 5.175</div>
+        </div>
+
+        <!-- Especificaciones rápidas -->
+        <ul class="book-specs">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Duración: <strong>21 días / 19 noches</strong></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            <span>Salidas: <strong>16 de mayo · 19 de septiembre</strong></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            <span>Transporte: <strong>Aéreo desde Córdoba (Air Europa)</strong></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Régimen: <strong>Desayuno diario</strong></span>
+          </li>
+        </ul>
+
+        <!-- Selector de Pasajeros -->
+        <div class="qty-widget">
+          <div class="qty-widget-info">
+            <span class="qty-widget-title">Pasajeros</span>
+            <span class="qty-widget-sub">Elegí cuántos viajan</span>
+          </div>
+          <div class="qty-stepper">
+            <button type="button" class="qty-btn" id="btn-minus" aria-label="Quitar un pasajero">−</button>
+            <span class="qty-display" id="qty-val">2</span>
+            <button type="button" class="qty-btn" id="btn-plus" aria-label="Sumar un pasajero">+</button>
+          </div>
+        </div>
+
+        <!-- Calculadora dinámica en tiempo real -->
+        <div class="price-calculator">
+          <span class="price-calc-label">Total estimado (<span id="calc-qty-txt">2 pasajeros</span>):</span>
+          <span class="price-calc-val" id="calc-total-val">USD 10.224</span>
+        </div>
+
+        <!-- Desglose de precios por fecha -->
+        <details class="tax-breakdown">
+          <summary class="tax-summary">Ver precios por fecha de salida y notas</summary>
+          <div class="tax-details">
+            • Salida 16 de mayo: <b>USD 5.112</b> por persona (base doble). Asistencia al viajero no incluida (consultar opcionales).<br>
+            • Salida 19 de septiembre: <b>USD 5.175</b> por persona (base doble). Asistencia al viajero incluida.<br>
+            • Vuelo internacional desde Córdoba (COR) por Air Europa. Equipaje: carry on + 1 maleta de 23 kg.
+          </div>
+        </details>
+
+        <!-- Botones de Acción / WhatsApp y Compartir -->
+        <div class="book-btn-wrap">
+          <a class="btn btn-wa" id="btn-whatsapp-cta" href="https://wa.me/543564651568?text=Hola%20CheTour!%20Quiero%20consultar%20por%20Europa%20al%20M%C3%A1ximo,%20de%20Londres%20a%20Madrid%20(21%20d%C3%ADas)%20para%202%20pasajeros." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3"/></svg>
+            Consultar por WhatsApp
+          </a>
+          <button type="button" class="btn btn-outline btn-share" id="btn-share" onclick="shareTrip()" aria-label="Compartir viaje">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span id="share-txt">Compartir viaje con acompañante</span>
+          </button>
+        </div>
+
+        <div class="book-help-contact">
+          <a href="tel:+543564651568">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            03564 65-1568
+          </a>
+          <a href="/contacto">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Dejar mensaje
+          </a>
+        </div>
+
+        <!-- Sellos de confianza -->
+        <div class="book-guarantee">
+          <div class="guarantee-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Operador oficial registrado y habilitado.</span>
+          </div>
+          <div class="guarantee-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Respuesta personalizada en menos de 24 horas.</span>
+          </div>
+        </div>
+      </aside>
+
+    </section>
+
+    <!-- ==================== PAQUETES RECOMENDADOS ==================== -->
+    <section class="recommended-section" id="recomendados">
+      <div class="wrap">
+        <div class="rec-head reveal">
+          <span class="eyebrow">Seguí explorando</span>
+          <h2>Otros viajes que te pueden interesar</h2>
+        </div>
+
+        <div class="rec-grid">
+          <!-- Crucero por Fiordos y Glaciares Chilenos -->
+          <article class="rec-card reveal">
+            <div class="rec-card-media">
+              <img src="/paquetes/img/crucero-1.jpg" alt="Crucero navegando entre fiordos y montañas nevadas de la Patagonia" loading="lazy">
+              <span class="rec-card-badge">Internacional · Aéreo</span>
+            </div>
+            <div class="rec-card-body">
+              <h3>Crucero por Fiordos y Glaciares Chilenos</h3>
+              <p class="rec-card-meta">Travesía de 4 noches · Salida 10 de abril</p>
+              <p style="font-size:0.88rem; color:var(--ink-soft); margin-bottom:1rem;">Navegación por los fiordos patagónicos entre glaciares y témpanos, con extensión a El Calafate.</p>
+              <div class="rec-card-foot">
+                <span class="rec-card-price">USD 3.790</span>
+                <a class="btn btn-outline" href="/paquetes/crucero-fiordos-glaciares-chilenos">Ver detalle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Salta, Humahuaca y Cafayate -->
+          <article class="rec-card reveal">
+            <div class="rec-card-media">
+              <img src="/paquetes/img/nqa-2.jpg" alt="Serranía del Hornocal, cerro de los 14 colores en Humahuaca" loading="lazy">
+              <span class="rec-card-badge">Norte Argentino · Aéreo</span>
+            </div>
+            <div class="rec-card-body">
+              <h3>Salta, Humahuaca y Cafayate</h3>
+              <p class="rec-card-meta">5 días · Salida 3 de julio</p>
+              <p style="font-size:0.88rem; color:var(--ink-soft); margin-bottom:1rem;">Cerro de colores, castillos de arena roja y peña salteña, con todo incluido.</p>
+              <div class="rec-card-foot">
+                <span class="rec-card-price">$1.510.000</span>
+                <a class="btn btn-outline" href="/paquetes/salta-humahuaca-cafayate">Ver detalle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Disney -->
+          <article class="rec-card reveal">
+            <div class="rec-card-media">
+              <img src="/paquetes/img/dest-disney.jpg" alt="Castillo de Magic Kingdom en Walt Disney World" loading="lazy">
+              <span class="rec-card-badge">Orlando · Aéreo</span>
+            </div>
+            <div class="rec-card-body">
+              <h3>Walt Disney World & Orlando</h3>
+              <p class="rec-card-meta">A medida · Parques y hotelería temática</p>
+              <p style="font-size:0.88rem; color:var(--ink-soft); margin-bottom:1rem;">Armamos tu viaje soñado día a día: días de parque, hotelería y traslados.</p>
+              <div class="rec-card-foot">
+                <span class="rec-card-price">A medida</span>
+                <a class="btn btn-outline" href="/paquetes/disney-a-medida">Ver detalle</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== BARRA FLOTANTE MÓVIL ==================== -->
+  <div class="mobile-booking-bar">
+    <div class="mobile-bar-inner">
+      <div class="mobile-bar-price">
+        <span class="label">Por persona (desde)</span>
+        <span class="val">USD 5.112</span>
+      </div>
+      <a class="btn btn-wa" id="mobile-cta-btn" href="https://wa.me/543564651568?text=Hola%20CheTour!%20Quiero%20consultar%20por%20Europa%20al%20M%C3%A1ximo,%20de%20Londres%20a%20Madrid." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3"/></svg>
+        Consultar WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL LIGHTBOX ==================== -->
+  <div class="lightbox-modal" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de fotos">
+    <div class="lightbox-container">
+      <div class="lightbox-topbar">
+        <span class="lightbox-count" id="lb-count">1 / 3</span>
+        <button class="lightbox-close" id="lb-close" aria-label="Cerrar visor">✕</button>
+      </div>
+      <div class="lightbox-stage">
+        <button class="lightbox-nav prev" id="lb-prev" aria-label="Foto anterior">‹</button>
+        <img src="" alt="" id="lb-img">
+        <div class="lightbox-caption" id="lb-caption"></div>
+        <button class="lightbox-nav next" id="lb-next" aria-label="Foto siguiente">›</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-plane-wrap" aria-hidden="true">
+    <div class="scroll-plane" id="scrollPlane">
+      <img src="/paquetes/img/avion-scroll.png" alt="">
+    </div>
+  </div>

@@ -16,17 +16,24 @@ const links = [
   { href: '/contacto', label: 'Contacto' },
 ]
 
-export function Nav() {
-  const [scrolled, setScrolled] = useState(false)
+/**
+ * `forceSolid`: el header arranca transparente con texto claro, pensado
+ * para flotar sobre un hero oscuro (así son todas las demás páginas). Las
+ * páginas de paquete "ported" desde /paquetes no tienen ese hero — arrancan
+ * con la ficha de producto sobre fondo claro — así que necesitan el header
+ * ya "sólido" desde el primer frame, no recién al scrollear.
+ */
+export function Nav({ forceSolid = false }: { forceSolid?: boolean } = {}) {
+  const [scrolled, setScrolled] = useState(forceSolid)
   const [open, setOpen] = useState(false)
   const handleHashClick = useHashScroll()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(forceSolid || window.scrollY > 24)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [forceSolid])
 
   const headerClass = [
     'site-header',

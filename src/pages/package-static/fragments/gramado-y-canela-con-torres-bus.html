@@ -1,0 +1,570 @@
+<main>
+    <!-- ==================== PRODUCT TOP (Header + Mosaico) ==================== -->
+    <section class="product-intro">
+      <div class="wrap">
+        <!-- Bloque de Título y Badges -->
+        <div class="product-title-row">
+          <div class="product-title-box">
+            <span class="eyebrow">Salida Internacional en Bus</span>
+            <h1>Gramado y Canela con Torres</h1>
+            <div class="product-badges">
+              <span class="badge-pill highlight">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                7 días / 4 noches
+              </span>
+              <span class="badge-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Salida: 30 de Marzo
+              </span>
+              <span class="badge-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="16" rx="3"/><path d="M3 10h18M7 19v2M17 19v2M7 15h.01M17 15h.01"/></svg>
+                Bus cama última generación
+              </span>
+              <span class="badge-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                Media pensión
+              </span>
+              <span class="badge-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Gramado + Torres
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mosaico Fotográfico -->
+        <div class="photo-mosaic" id="gallery-mosaic">
+          <!-- Foto Principal (Gramado) -->
+          <div class="photo-mosaic-main photo-item" onclick="openLightbox(0)">
+            <img src="/paquetes/img/gramado-1.jpg" alt="La arquitectura alpina de una calle de Gramado, en la Serra Gaúcha" fetchpriority="high">
+            <span class="photo-caption-badge">Gramado</span>
+          </div>
+
+          <!-- Fotos Secundarias Laterales -->
+          <div class="photo-mosaic-side">
+            <div class="photo-item" onclick="openLightbox(1)">
+              <img src="/paquetes/img/gramado-2.jpg" alt="La playa de Torres y sus formaciones rocosas sobre el mar">
+              <span class="photo-caption-badge">Playa de Torres</span>
+            </div>
+            <div class="photo-item" onclick="openLightbox(2)">
+              <img src="/paquetes/img/gramado-3.jpg" alt="Vista aérea de Torres con la Torre Norte y el litoral gaúcho">
+              <span class="photo-caption-badge">Litoral gaúcho</span>
+            </div>
+          </div>
+
+          <!-- Botón Flotante para abrir visor completo -->
+          <button class="btn-all-photos" onclick="openLightbox(0)" aria-label="Ver todas las fotos del destino">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Ver fotos (3)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SUB-NAV STICKY ==================== -->
+    <div class="subnav-bar">
+      <div class="wrap">
+        <div class="subnav-inner">
+          <a href="#itinerario" class="subnav-link active">El Recorrido</a>
+          <a href="#incluye" class="subnav-link">Qué Incluye</a>
+          <a href="#como-viajamos" class="subnav-link">Cómo Funciona</a>
+          <a href="#faq" class="subnav-link">Preguntas Frecuentes</a>
+          <a href="#recomendados" class="subnav-link">Otros Destinos</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== DETAIL LAYOUT ==================== -->
+    <section class="wrap detail-layout">
+
+      <!-- COLUMNA IZQUIERDA: CONTENIDO -->
+      <div class="detail-content">
+        <!-- Narrativa de Apertura -->
+        <p class="narrative-lead reveal">
+          <strong>La Serra Gaúcha y el litoral: Gramado, Canela y la playa de Torres en un mismo viaje.</strong> Una salida de 7 días en bus cama de última generación —con bar a bordo, snack y bebidas—, con alojamiento y media pensión en Gramado y en Torres, city tour completo y visitas incluidas.
+        </p>
+
+        <!-- Highlights Rápidos -->
+        <h2 class="sr-only">Lo más destacado del viaje</h2>
+        <div class="highlights-grid reveal">
+          <div class="hl-card">
+            <div class="hl-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V9l6-5 6 5v12M10 21v-4h4v4"/></svg>
+            </div>
+            <div>
+              <h3>Gramado y Canela</h3>
+              <p>City tour completo: Pórticos de entrada, Calle Techada, Lago Negro y Mini Mundo.</p>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9Z"/></svg>
+            </div>
+            <div>
+              <h3>Chocolate, Catedral y Caracol</h3>
+              <p>Visita a la Fábrica de Chocolate, la Catedral de Pedra y el Parque Caracol (ingresos no incluidos).</p>
+            </div>
+          </div>
+          <div class="hl-card">
+            <div class="hl-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M3 11h18M7 21v-2M17 21v-2"/></svg>
+            </div>
+            <div>
+              <h3>Bus cama y Torres</h3>
+              <p>Bus cama de última generación con bar a bordo, y días en Torres con media pensión.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIMELINE: ITINERARIO -->
+        <div class="section-block" id="itinerario">
+          <div class="section-block-head reveal">
+            <span class="eyebrow">El viaje en detalle</span>
+            <h2>El Recorrido</h2>
+            <p>De la arquitectura alpina de Gramado y Canela a la playa de Torres, con bus cama, media pensión y excursiones.</p>
+          </div>
+
+          <div class="timeline">
+            <!-- Parada 1 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">1</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">Ida</span>
+                  <h3 class="tl-location">Salida en bus</h3>
+                </div>
+                <p>Viajamos en bus cama de última generación, con servicio de bar a bordo, snack y bebidas.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Bus cama última generación</span>
+                  <span class="tl-tag">Bar a bordo</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 2 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">2</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">Serra Gaúcha</span>
+                  <h3 class="tl-location">Gramado y Canela</h3>
+                </div>
+                <p>Alojamiento en el Hotel Ski Gramado (Matriz), con media pensión (2 noches con buffet completo). City tour completo por Gramado y Canela —Pórticos de entrada, Calle Techada, Lago Negro y Mini Mundo— y visita a la Fábrica de Chocolate, la Catedral de Pedra y el Parque Caracol (ingresos no incluidos).</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">City tour completo</span>
+                  <span class="tl-tag">Mini Mundo</span>
+                  <span class="tl-tag">Catedral de Pedra</span>
+                  <span class="tl-tag">Parque Caracol</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 3 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">3</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">Litoral</span>
+                  <h3 class="tl-location">Torres</h3>
+                </div>
+                <p>Traslado a Torres, con alojamiento en el Hotel A Furninha y media pensión, sobre el litoral de Río Grande do Sul.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">Hotel A Furninha</span>
+                  <span class="tl-tag">Media pensión</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parada 4 -->
+            <div class="tl-stop reveal">
+              <div class="tl-marker">4</div>
+              <div class="tl-card">
+                <div class="tl-header">
+                  <span class="tl-day">Regreso</span>
+                  <h3 class="tl-location">Vuelta en bus</h3>
+                </div>
+                <p>Regreso en bus cama al cierre del programa, completando los 7 días del viaje.</p>
+                <div class="tl-tags">
+                  <span class="tl-tag">7 días en total</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUÉ INCLUYE / QUÉ NO INCLUYE -->
+        <div class="section-block" id="incluye">
+          <div class="section-block-head reveal">
+            <span class="eyebrow">Transparencia total</span>
+            <h2>Qué incluye tu viaje</h2>
+            <p>Sin letra chica ni sorpresas en destino. Todo especificado antes de salir.</p>
+          </div>
+
+          <!-- Micro-ficha visual de servicios clave -->
+          <div class="services-spec-grid reveal">
+            <div class="spec-card">
+              <div class="spec-card-icon hotel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 7v14M21 7v14M6 11h2M6 15h2M10 11h2M10 15h2M14 11h2M14 15h2M18 11h2M18 15h2M9 3h6v4H9z"/></svg>
+              </div>
+              <div class="spec-card-body">
+                <span class="spec-tag">Alojamiento</span>
+                <h3>Ski Gramado y A Furninha</h3>
+                <p>Hotel Ski Gramado (Matriz) en Gramado y Hotel A Furninha en Torres, con media pensión (2 noches de buffet completo en Gramado).</p>
+              </div>
+            </div>
+
+            <div class="spec-card">
+              <div class="spec-card-icon flight">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M3 11h18M7 21v-2M17 21v-2M7 15h.01M17 15h.01"/></svg>
+              </div>
+              <div class="spec-card-body">
+                <span class="spec-tag">Transporte</span>
+                <h3>Bus cama última generación</h3>
+                <p>Con servicio de bar a bordo, snack y bebidas.</p>
+              </div>
+            </div>
+
+            <div class="spec-card">
+              <div class="spec-card-icon bus">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="spec-card-body">
+                <span class="spec-tag">En destino</span>
+                <h3>Excursiones y coordinación</h3>
+                <p>City tour de Gramado y Canela, visitas a la Fábrica de Chocolate, Catedral de Pedra y Parque Caracol (ingresos no incluidos), asistencia médica Universal Assistance sin límite de edad y coordinación.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="incl-grid reveal">
+            <!-- Incluye -->
+            <div class="incl-box yes">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--wa-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                El viaje incluye
+              </h3>
+              <ul>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Transporte en bus cama.</b></span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Alojamiento</b> en Gramado (Hotel Ski Gramado Matriz) y Torres (Hotel A Furninha).</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Excursiones:</b> city tour de Gramado y Canela + visita a la Fábrica de Chocolate, la Catedral de Pedra y el Parque Caracol.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Media pensión</b> (en Gramado, 2 noches con buffet completo).</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Asistencia médica</b> Universal Assistance sin límite de edad.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><b>Coordinación.</b></span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- A tener en cuenta -->
+            <div class="incl-box no">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--brass)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                A tener en cuenta
+              </h3>
+              <ul>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span>Los <b>ingresos</b> a la Fábrica de Chocolate, la Catedral de Pedra y el Parque Caracol no están incluidos.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span>El <b>régimen es media pensión</b>; en Gramado, 2 de las noches con buffet completo.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span><b>Alojamiento:</b> Hotel Ski Gramado (Matriz) en Gramado y Hotel A Furninha en Torres.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- CÓMO VIAJAMOS (4 Pasos) -->
+        <div class="section-block" id="como-viajamos">
+          <div class="section-block-head reveal">
+            <span class="eyebrow">Experiencia sin estrés</span>
+            <h2>Cómo se viaja con CheTour</h2>
+            <p>Desde la primera consulta hasta que regresas a casa, estamos con vos.</p>
+          </div>
+
+          <div class="steps-grid reveal">
+            <div class="step-card">
+              <div class="step-number">01</div>
+              <h3>Hacés tu consulta</h3>
+              <p>Nos escribís por WhatsApp con la fecha y cantidad de pasajeros. Te enviamos el detalle del paquete y resolvemos dudas.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">02</div>
+              <h3>Elegís cómo pagar</h3>
+              <p>Congelás tu lugar con una seña inicial. Podés abonar por transferencia, tarjeta o cuotas según promociones bancarias.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">03</div>
+              <h3>Recibís tus vouchers</h3>
+              <p>Con anticipación te entregamos toda la documentación de vuelo, hoteles, itinerario detallado y contactos del coordinador.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-number">04</div>
+              <h3>Solo te queda viajar</h3>
+              <p>Te sumás al grupo en el aeropuerto o en destino. Nuestro equipo se encarga de que todo salga perfecto.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PREGUNTAS FRECUENTES -->
+        <div class="section-block" id="faq">
+          <div class="section-block-head reveal">
+            <span class="eyebrow">Dudas habituales</span>
+            <h2>Preguntas Frecuentes</h2>
+          </div>
+
+          <div class="faq-stack reveal">
+            <details class="faq-item">
+              <summary>¿Qué incluye el precio?</summary>
+              <div class="faq-content">
+                USD 670 por persona en base doble: transporte en bus cama, alojamiento en Gramado (Hotel Ski Gramado Matriz) y Torres (Hotel A Furninha), excursiones, media pensión, asistencia médica Universal Assistance sin límite de edad y coordinación.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>¿Qué excursiones están incluidas?</summary>
+              <div class="faq-content">
+                El city tour completo de Gramado y Canela (Pórticos de entrada, Calle Techada, Lago Negro y Mini Mundo) y la visita a la Fábrica de Chocolate, la Catedral de Pedra y el Parque Caracol. Los ingresos a estos tres últimos no están incluidos.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>¿Cómo es el bus?</summary>
+              <div class="faq-content">
+                Bus cama de última generación, con servicio de bar a bordo, snack y bebidas.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>¿Cómo hago la reserva?</summary>
+              <div class="faq-content">
+                Escribinos por WhatsApp o dejá tus datos en el formulario de contacto y te ayudamos a coordinar la reserva y las formas de pago disponibles.
+              </div>
+            </details>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLUMNA DERECHA: STICKY BOOKING CARD -->
+      <aside class="book-sticky" aria-label="Cotización y Consulta">
+        <!-- Estado de cupos -->
+        <div class="book-status-badge">
+          <span class="pulse-dot"></span>
+          Salida 30 de Marzo · Cupos Limitados
+        </div>
+
+        <!-- Precio -->
+        <div class="book-pricing-box">
+          <div class="book-price-label">Tarifa por persona</div>
+          <div class="book-price-amount">
+            <span>USD 670</span>
+          </div>
+          <div class="book-price-sub">en base doble</div>
+        </div>
+
+        <!-- Especificaciones rápidas -->
+        <ul class="book-specs">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Duración: <strong>7 días / 4 noches</strong></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            <span>Salida fija: <strong>30 de marzo</strong></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="16" rx="3"/><path d="M3 10h18M7 19v2M17 19v2M7 15h.01M17 15h.01"/></svg>
+            <span>Transporte: <strong>Bus cama última generación</strong></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Régimen: <strong>Media pensión</strong></span>
+          </li>
+        </ul>
+
+        <!-- Selector de Pasajeros -->
+        <div class="qty-widget">
+          <div class="qty-widget-info">
+            <span class="qty-widget-title">Pasajeros</span>
+            <span class="qty-widget-sub">Elegí cuántos viajan</span>
+          </div>
+          <div class="qty-stepper">
+            <button type="button" class="qty-btn" id="btn-minus" aria-label="Quitar un pasajero">−</button>
+            <span class="qty-display" id="qty-val">2</span>
+            <button type="button" class="qty-btn" id="btn-plus" aria-label="Sumar un pasajero">+</button>
+          </div>
+        </div>
+
+        <!-- Calculadora dinámica en tiempo real -->
+        <div class="price-calculator">
+          <span class="price-calc-label">Total estimado (<span id="calc-qty-txt">2 pasajeros</span>):</span>
+          <span class="price-calc-val" id="calc-total-val">USD 1.340</span>
+        </div>
+
+        <!-- Detalle del paquete -->
+        <details class="tax-breakdown">
+          <summary class="tax-summary">Ver detalle del paquete</summary>
+          <div class="tax-details">
+            • Hoteles: Ski Gramado (Matriz) en Gramado y A Furninha en Torres.<br>
+            • Régimen: media pensión (en Gramado, 2 noches con buffet completo).<br>
+            • Excursiones incluidas; los ingresos a la Fábrica de Chocolate, la Catedral de Pedra y el Parque Caracol no están incluidos.<br>
+            • Bus cama de última generación con bar a bordo, snack y bebidas.
+          </div>
+        </details>
+
+        <!-- Botones de Acción / WhatsApp y Compartir -->
+        <div class="book-btn-wrap">
+          <a class="btn btn-wa" id="btn-whatsapp-cta" href="https://wa.me/543564651568?text=Hola%20CheTour!%20Quiero%20consultar%20por%20Gramado%20y%20Canela%20con%20Torres%20(Salida%2030%20de%20marzo)%20para%202%20pasajeros." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3"/></svg>
+            Consultar por WhatsApp
+          </a>
+          <button type="button" class="btn btn-outline btn-share" id="btn-share" onclick="shareTrip()" aria-label="Compartir viaje">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span id="share-txt">Compartir viaje con acompañante</span>
+          </button>
+        </div>
+
+        <div class="book-help-contact">
+          <a href="tel:+543564651568">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            03564 65-1568
+          </a>
+          <a href="/contacto">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Dejar mensaje
+          </a>
+        </div>
+
+        <!-- Sellos de confianza -->
+        <div class="book-guarantee">
+          <div class="guarantee-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Operador oficial registrado y habilitado.</span>
+          </div>
+          <div class="guarantee-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Respuesta personalizada en menos de 24 horas.</span>
+          </div>
+        </div>
+      </aside>
+
+    </section>
+
+    <!-- ==================== PAQUETES RECOMENDADOS ==================== -->
+    <section class="recommended-section" id="recomendados">
+      <div class="wrap">
+        <div class="rec-head reveal">
+          <span class="eyebrow">Seguí explorando</span>
+          <h2>Otros viajes que te pueden interesar</h2>
+        </div>
+
+        <div class="rec-grid">
+          <!-- Camboriú en Bus -->
+          <article class="rec-card reveal">
+            <div class="rec-card-media">
+              <img src="/paquetes/img/camboriu-1.jpg" alt="La Playa Central de Balneário Camboriú y su fila de rascacielos sobre el mar" loading="lazy">
+              <span class="rec-card-badge">Sur de Brasil · Bus</span>
+            </div>
+            <div class="rec-card-body">
+              <h3>Camboriú en Bus</h3>
+              <p class="rec-card-meta">10 días / 7 noches · Diciembre a abril</p>
+              <p style="font-size:0.88rem; color:var(--ink-soft); margin-bottom:1rem;">Siete noches en Balneário Camboriú, en bus semicama o cama, con desayuno y cena.</p>
+              <div class="rec-card-foot">
+                <span class="rec-card-price">Desde USD 449</span>
+                <a class="btn btn-outline" href="/paquetes/camboriu-bus">Ver detalle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Canasvieiras Aéreo -->
+          <article class="rec-card reveal">
+            <div class="rec-card-media">
+              <img src="/paquetes/img/canasvieiras-1.jpg" alt="La playa de Canasvieiras con sus sombrillas y el mar del norte de la isla" loading="lazy">
+              <span class="rec-card-badge">Sur de Brasil · Aéreo</span>
+            </div>
+            <div class="rec-card-body">
+              <h3>Canasvieiras Aéreo</h3>
+              <p class="rec-card-meta">8 días / 7 noches · Salidas de enero a marzo</p>
+              <p style="font-size:0.88rem; color:var(--ink-soft); margin-bottom:1rem;">Siete noches en el Hotel Canasvieiras Internacional, Florianópolis, con desayuno y cena.</p>
+              <div class="rec-card-foot">
+                <span class="rec-card-price">Consultar</span>
+                <a class="btn btn-outline" href="/paquetes/canasvieiras-aereo">Ver detalle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cataratas del Iguazú Aéreo -->
+          <article class="rec-card reveal">
+            <div class="rec-card-media">
+              <img src="/paquetes/img/iguazu-1.jpg" alt="Panorámica de las Cataratas del Iguazú desde las pasarelas" loading="lazy">
+              <span class="rec-card-badge">Puerto Iguazú · Aéreo</span>
+            </div>
+            <div class="rec-card-body">
+              <h3>Cataratas del Iguazú Aéreo</h3>
+              <p class="rec-card-meta">4 o 5 días · Salidas de enero a junio</p>
+              <p style="font-size:0.88rem; color:var(--ink-soft); margin-bottom:1rem;">Escapada a Puerto Iguazú con vuelo de Aerolíneas, hotel y excursiones a las Cataratas.</p>
+              <div class="rec-card-foot">
+                <span class="rec-card-price">$840.000</span>
+                <a class="btn btn-outline" href="/paquetes/cataratas-del-iguazu-aereo">Ver detalle</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== BARRA FLOTANTE MÓVIL ==================== -->
+  <div class="mobile-booking-bar">
+    <div class="mobile-bar-inner">
+      <div class="mobile-bar-price">
+        <span class="label">Precio por persona</span>
+        <span class="val">USD 670</span>
+      </div>
+      <a class="btn btn-wa" id="mobile-cta-btn" href="https://wa.me/543564651568?text=Hola%20CheTour!%20Quiero%20consultar%20por%20Gramado%20y%20Canela%20con%20Torres." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3"/></svg>
+        Consultar WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL LIGHTBOX ==================== -->
+  <div class="lightbox-modal" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de fotos">
+    <div class="lightbox-container">
+      <div class="lightbox-topbar">
+        <span class="lightbox-count" id="lb-count">1 / 3</span>
+        <button class="lightbox-close" id="lb-close" aria-label="Cerrar visor">✕</button>
+      </div>
+      <div class="lightbox-stage">
+        <button class="lightbox-nav prev" id="lb-prev" aria-label="Foto anterior">‹</button>
+        <img src="" alt="" id="lb-img">
+        <div class="lightbox-caption" id="lb-caption"></div>
+        <button class="lightbox-nav next" id="lb-next" aria-label="Foto siguiente">›</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-plane-wrap" aria-hidden="true">
+    <div class="scroll-plane" id="scrollPlane">
+      <img src="/paquetes/img/avion-scroll.png" alt="">
+    </div>
+  </div>

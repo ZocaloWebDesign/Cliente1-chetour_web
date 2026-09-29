@@ -1,0 +1,258 @@
+[
+  {
+    "slug": "africa-todo-incluido",
+    "name": "África Todo Incluido",
+    "destination": "Safari en Tanzania y Zanzíbar",
+    "category": "Internacionales",
+    "duration": "16 Días",
+    "departure": "Salida: 6 de Julio",
+    "mode": "Conectividad aérea",
+    "includes": [
+      "Conectividad aérea",
+      "Safari + Zanzíbar",
+      "Todo incluido"
+    ],
+    "price": "USD 8.035",
+    "image": "/paquetes/img/africa-1.jpg"
+  },
+  {
+    "slug": "bariloche-aereo",
+    "name": "Bariloche Aéreo",
+    "destination": "Escapada a la Patagonia desde Córdoba",
+    "category": "Nacionales",
+    "duration": "6 o 7 días",
+    "departure": "6 fechas: feb a jun",
+    "mode": "Aéreo desde Córdoba",
+    "includes": [
+      "Aéreo desde Córdoba",
+      "Desayuno incluido",
+      "Asistencia médica"
+    ],
+    "price": "$620.000",
+    "image": "/paquetes/img/bariloche-1.jpg"
+  },
+  {
+    "slug": "camboriu-bus",
+    "name": "Camboriú en Bus",
+    "destination": "10 días / 7 noches en el sur de Brasil",
+    "category": "Sur de Brasil",
+    "duration": "10 días / 7 noches",
+    "departure": "Temporada 2026 / 2027",
+    "mode": "Bus semicama o cama",
+    "includes": [
+      "Bus semicama o cama",
+      "Desayuno y cena",
+      "Assist Card"
+    ],
+    "price": "USD 449",
+    "image": "/paquetes/img/camboriu-1.jpg"
+  },
+  {
+    "slug": "canasvieiras-aereo",
+    "name": "Canasvieiras Aéreo",
+    "destination": "8 días / 7 noches en Florianópolis",
+    "category": "Sur de Brasil",
+    "duration": "8 días / 7 noches",
+    "departure": "Salidas: enero a marzo",
+    "mode": "Aéreo y traslados",
+    "includes": [
+      "Aéreo y traslados",
+      "Desayuno y cena",
+      "Coordinación"
+    ],
+    "price": "Consultar",
+    "image": "/paquetes/img/canasvieiras-1.jpg"
+  },
+  {
+    "slug": "cataratas-del-iguazu-aereo",
+    "name": "Cataratas del Iguazú Aéreo",
+    "destination": "Escapada a Puerto Iguazú",
+    "category": "Nacionales",
+    "duration": "4 o 5 días",
+    "departure": "11 fechas: enero a junio",
+    "mode": "Aéreo (Aerolíneas Argentinas)",
+    "includes": [
+      "Aéreo (Aerolíneas Argentinas)",
+      "Excursiones a las Cataratas",
+      "Asistencia médica"
+    ],
+    "price": "$840.000",
+    "image": "/paquetes/img/iguazu-1.jpg"
+  },
+  {
+    "slug": "crucero-fiordos-glaciares-chilenos",
+    "name": "Crucero por Fiordos y Glaciares Chilenos",
+    "destination": "Salida Grupal Aérea",
+    "category": "Internacionales",
+    "duration": "Travesía de 4 noches",
+    "departure": "Salida: 10 de Abril",
+    "mode": "Conectividad aérea",
+    "includes": [
+      "Conectividad aérea",
+      "Pensión completa",
+      "Coordinación permanente"
+    ],
+    "price": "USD 3.790",
+    "image": "/paquetes/img/crucero-1.jpg"
+  },
+  {
+    "slug": "esencias-centroeuropeas",
+    "name": "Esencias Centroeuropeas",
+    "destination": "Circuito de 14 noches",
+    "category": "Internacionales",
+    "duration": "14 noches",
+    "departure": "Salida: 16 de Junio",
+    "mode": "Aéreo vía Ámsterdam (Air France / KLM)",
+    "includes": [
+      "Aéreo vía Ámsterdam (Air France / KLM)",
+      "Guía de habla hispana",
+      "Assist Card 100K"
+    ],
+    "price": "USD 4.980",
+    "image": "/paquetes/img/centroeuropa-1.jpg"
+  },
+  {
+    "slug": "estados-unidos-costa-a-costa",
+    "name": "Estados Unidos de Costa a Costa",
+    "destination": "19 días con el Gran Cañón",
+    "category": "Internacionales",
+    "duration": "19 días",
+    "departure": "Salida: 29 de Abril",
+    "mode": "Conectividad aérea",
+    "includes": [
+      "Conectividad aérea",
+      "Costa a costa",
+      "Pensión completa"
+    ],
+    "price": "USD 9.660",
+    "image": "/paquetes/img/usa-1.jpg"
+  },
+  {
+    "slug": "europa-al-maximo-londres-madrid",
+    "name": "Europa al Máximo, de Londres a Madrid",
+    "destination": "21 días",
+    "category": "Internacionales",
+    "duration": "21 días / 19 noches",
+    "departure": "Salidas: 16 May y 19 Sep",
+    "mode": "Aéreo desde Córdoba (COR)",
+    "includes": [
+      "Aéreo desde Córdoba (COR)",
+      "11 ciudades",
+      "Desayuno diario"
+    ],
+    "price": "USD 5.112",
+    "image": "/paquetes/img/europa-1.jpg"
+  },
+  {
+    "slug": "europa-clasica-costa-amalfitana-toscana",
+    "name": "Europa Clásica, con Costa Amalfitana y la Toscana",
+    "destination": "20 días",
+    "category": "Internacionales",
+    "duration": "20 días",
+    "departure": "Salida: 12 de Octubre",
+    "mode": "Conectividad aérea",
+    "includes": [
+      "Conectividad aérea",
+      "Hoteles 4★",
+      "Pensión completa"
+    ],
+    "price": "USD 9.525",
+    "image": "/paquetes/img/europaclasica-1.jpg"
+  },
+  {
+    "slug": "gramado-y-canela-con-torres-bus",
+    "name": "Gramado y Canela con Torres",
+    "destination": "Bus cama, 7 días",
+    "category": "Internacionales",
+    "duration": "7 días / 4 noches",
+    "departure": "Salida: 30 de Marzo",
+    "mode": "Bus cama última generación",
+    "includes": [
+      "Bus cama última generación",
+      "Media pensión",
+      "Gramado + Torres"
+    ],
+    "price": "USD 670",
+    "image": "/paquetes/img/gramado-1.jpg"
+  },
+  {
+    "slug": "neuquen-y-caviahue",
+    "name": "Neuquén y Caviahue",
+    "destination": "Escapada Aérea con Termas de Copahue",
+    "category": "Nacionales",
+    "duration": "5 días / 4 noches",
+    "departure": "Salida: 1 de Abril",
+    "mode": "Aéreo desde Córdoba (Flybondi)",
+    "includes": [
+      "Aéreo desde Córdoba (Flybondi)",
+      "Desayuno incluido",
+      "Excursión a Termas de Copahue"
+    ],
+    "price": "$990.000",
+    "image": "/paquetes/img/caviahue-1.jpg"
+  },
+  {
+    "slug": "salta-humahuaca-cafayate",
+    "name": "Salta, Humahuaca y Cafayate",
+    "destination": "Viaje Grupal Aéreo",
+    "category": "Nacionales",
+    "duration": "5 Días",
+    "departure": "Salida: 3 de Julio",
+    "mode": "Conectividad aérea",
+    "includes": [
+      "Conectividad aérea",
+      "Pensión completa",
+      "Coordinación permanente"
+    ],
+    "price": "$1.510.000",
+    "image": "/paquetes/img/nqa-2.jpg"
+  },
+  {
+    "slug": "san-juan-bajo-las-estrellas-bus",
+    "name": "San Juan Bajo las Estrellas",
+    "destination": "Astroturismo en Bus, 7 días",
+    "category": "Nacionales",
+    "duration": "7 días",
+    "departure": "Salida: 16 de Abril",
+    "mode": "Bus cama 5★",
+    "includes": [
+      "Bus cama 5★",
+      "Pensión completa",
+      "Astroturismo"
+    ],
+    "price": "$1.869.000",
+    "image": "/paquetes/img/sanjuan-1.jpg"
+  },
+  {
+    "slug": "talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-bus",
+    "name": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna",
+    "destination": "Bus, 6 días",
+    "category": "Nacionales",
+    "duration": "6 días",
+    "departure": "Salida: 29 de Abril",
+    "mode": "Bus cama 5★",
+    "includes": [
+      "Bus cama 5★",
+      "Pensión completa",
+      "Con luna llena"
+    ],
+    "price": "$1.625.000",
+    "image": "/paquetes/img/talampaya-1.jpg"
+  },
+  {
+    "slug": "ushuaia-y-calafate",
+    "name": "Ushuaia y Calafate",
+    "destination": "Aéreo desde Córdoba, 7 u 8 días",
+    "category": "Nacionales",
+    "duration": "7 u 8 días",
+    "departure": "5 fechas: enero a marzo",
+    "mode": "Aéreo desde Córdoba",
+    "includes": [
+      "Aéreo desde Córdoba",
+      "Desayuno incluido",
+      "2 Parques Nacionales"
+    ],
+    "price": "$1.375.000",
+    "image": "/paquetes/img/ushuaia-1.jpg"
+  }
+]

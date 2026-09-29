@@ -1,0 +1,413 @@
+// Generado por scripts/build-static-package-pages.mjs — no editar a mano.
+// Datos que el runtime de las fichas ported (src/pages/package-static/runtime.ts)
+// necesita para la calculadora de precio, el lightbox y "compartir viaje".
+// Volver a generar con: node scripts/build-static-package-pages.mjs
+
+export type PackageStaticPhoto = { src: string; caption: string }
+
+export type PackageStaticEntry = {
+  slug: string
+  title: string
+  description: string
+  price: number | null
+  initialQty: number
+  waLabel: string
+  shareText: string
+  shareTitle: string
+  photos: PackageStaticPhoto[]
+}
+
+export const packageStaticPages: Record<string, PackageStaticEntry> = {
+  'africa-todo-incluido': {
+    "slug": "africa-todo-incluido",
+    "title": "África Todo Incluido — Safari en Tanzania y Zanzíbar | CheTour Viajes",
+    "description": "África Todo Incluido: 16 días, salida 6 de julio. Safari por Tarangire, Serengeti y el Cráter de Ngorongoro, Santuario Serval y cierre All Inclusive en Zanzíbar. Todo incluido — aéreos, traslados, alojamiento, excursiones y pensión completa. USD 8.035 por persona en base doble.",
+    "price": 8035,
+    "initialQty": 2,
+    "waLabel": "África Todo Incluido (Salida 6 de julio)",
+    "shareText": "¡Mirá este viaje África Todo Incluido (safari + Zanzíbar) con CheTour Viajes!",
+    "shareTitle": "África Todo Incluido — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/africa-1.jpg",
+        "caption": "Safari en Tanzania: un león descansa junto al vehículo en plena sabana."
+      },
+      {
+        "src": "/paquetes/img/africa-2.jpg",
+        "caption": "Elefantes al paso del 4x4 en el Parque Nacional Tarangire."
+      },
+      {
+        "src": "/paquetes/img/africa-3.jpg",
+        "caption": "Zanzíbar: hotel All Inclusive frente a las playas de arena blanca del océano Índico."
+      }
+    ]
+  },
+  'bariloche-aereo': {
+    "slug": "bariloche-aereo",
+    "title": "Bariloche Aéreo — Escapada a la Patagonia desde Córdoba | CheTour Viajes",
+    "description": "Bariloche Aéreo: escapada a San Carlos de Bariloche con vuelo desde Córdoba (Aerolíneas Argentinas), alojamiento con desayuno en hoteles Tierra Gaucha o Kenton, traslados in/out y asistencia médica. 6 salidas entre febrero y junio, 6 o 7 días. Desde $620.000 por persona en base doble.",
+    "price": 620000,
+    "initialQty": 2,
+    "waLabel": "Bariloche Aéreo",
+    "shareText": "¡Mirá esta escapada aérea a Bariloche con CheTour Viajes!",
+    "shareTitle": "Bariloche Aéreo — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/bariloche-1.jpg",
+        "caption": "El lago Nahuel Huapi y los cerros nevados, postal de San Carlos de Bariloche."
+      },
+      {
+        "src": "/paquetes/img/bariloche-2.jpg",
+        "caption": "Bahía de aguas turquesas y muelle entre el bosque andino patagónico."
+      },
+      {
+        "src": "/paquetes/img/bariloche-3.jpg",
+        "caption": "Vista aérea del laberinto de lagos y penínsulas boscosas de la región."
+      }
+    ]
+  },
+  'camboriu-bus': {
+    "slug": "camboriu-bus",
+    "title": "Camboriú en Bus — 10 días / 7 noches en el sur de Brasil | CheTour Viajes",
+    "description": "Camboriú en Bus: 10 días y 7 noches en Balneário Camboriú, con salidas de diciembre de 2026 a abril de 2027. Bus semicama o cama, alojamiento en Hotel Sagres o Ilha da Madeira, desayuno y cena, coordinador en viaje y Assist Card. Desde USD 449 por persona en base doble.",
+    "price": 449,
+    "initialQty": 2,
+    "waLabel": "Camboriú en Bus",
+    "shareText": "¡Mirá este viaje a Camboriú en bus con CheTour Viajes!",
+    "shareTitle": "Camboriú en Bus — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/camboriu-1.jpg",
+        "caption": "La Playa Central de Balneário Camboriú y su fila de rascacielos sobre el mar."
+      },
+      {
+        "src": "/paquetes/img/camboriu-2.jpg",
+        "caption": "La rueda gigante de Camboriú y el skyline iluminado al atardecer."
+      },
+      {
+        "src": "/paquetes/img/camboriu-3.jpg",
+        "caption": "Vista aérea de la bahía de Camboriú, entre el río y el Atlántico."
+      }
+    ]
+  },
+  'canasvieiras-aereo': {
+    "slug": "canasvieiras-aereo",
+    "title": "Canasvieiras Aéreo — 8 días / 7 noches en Florianópolis | CheTour Viajes",
+    "description": "Canasvieiras Aéreo: 8 días y 7 noches en Canasvieiras, Florianópolis, con salidas de enero a marzo. Aéreo y traslados, alojamiento en el Hotel Canasvieiras Internacional, desayuno y cena, asistencia al viajero y coordinación. Precio a consultar según la fecha.",
+    "price": null,
+    "initialQty": 2,
+    "waLabel": "Canasvieiras Aéreo",
+    "shareText": "¡Mirá este viaje aéreo a Canasvieiras con CheTour Viajes!",
+    "shareTitle": "Canasvieiras Aéreo — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/canasvieiras-1.jpg",
+        "caption": "La playa de Canasvieiras, con sus sombrillas y el mar del norte de la isla."
+      },
+      {
+        "src": "/paquetes/img/canasvieiras-2.jpg",
+        "caption": "Vista aérea de una playa del norte de Florianópolis al atardecer."
+      },
+      {
+        "src": "/paquetes/img/canasvieiras-3.jpg",
+        "caption": "Playa de aguas turquesas entre rocas y vegetación en Florianópolis."
+      }
+    ]
+  },
+  'cataratas-del-iguazu-aereo': {
+    "slug": "cataratas-del-iguazu-aereo",
+    "title": "Cataratas del Iguazú Aéreo — Escapada a Puerto Iguazú | CheTour Viajes",
+    "description": "Cataratas del Iguazú Aéreo: escapada de 4 o 5 días a Puerto Iguazú con vuelo de Aerolíneas Argentinas, alojamiento en Cadena Bagú o Complejo Americano, traslados in/out y excursiones a las Cataratas (sin entrada). 11 salidas entre enero y junio. $840.000 por persona en base doble.",
+    "price": 840000,
+    "initialQty": 2,
+    "waLabel": "Cataratas del Iguazú Aéreo",
+    "shareText": "¡Mirá esta escapada aérea a las Cataratas del Iguazú con CheTour Viajes!",
+    "shareTitle": "Cataratas del Iguazú Aéreo — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/iguazu-1.jpg",
+        "caption": "Panorámica de las Cataratas del Iguazú desde las pasarelas."
+      },
+      {
+        "src": "/paquetes/img/iguazu-2.jpg",
+        "caption": "Los saltos de agua entre la vegetación selvática de Iguazú."
+      },
+      {
+        "src": "/paquetes/img/iguazu-3.jpg",
+        "caption": "Las pasarelas sobre el río, frente a la cortina de agua."
+      }
+    ]
+  },
+  'crucero-fiordos-glaciares-chilenos': {
+    "slug": "crucero-fiordos-glaciares-chilenos",
+    "title": "Crucero por Fiordos y Glaciares Chilenos — Salida Grupal Aérea | CheTour Viajes",
+    "description": "Crucero por los fiordos y glaciares chilenos: salida grupal 10 de abril, conectividad aérea. Travesía marítima de 4 noches entre glaciares (Amalia, El Brujo, Fiordo Calvo, Bernal y Herman) y navegación frente al Glaciar Perito Moreno en El Calafate. Todo incluido.",
+    "price": 3790,
+    "initialQty": 2,
+    "waLabel": "el Crucero por Fiordos y Glaciares Chilenos (Salida 10 de abril)",
+    "shareText": "¡Mirá este Crucero por Fiordos y Glaciares Chilenos con CheTour Viajes!",
+    "shareTitle": "Crucero por Fiordos y Glaciares Chilenos — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/crucero-1.jpg",
+        "caption": "Navegación entre los fiordos y canales patagónicos a bordo de un crucero de expedición."
+      },
+      {
+        "src": "/paquetes/img/crucero-2.jpg",
+        "caption": "Frente de glaciar y témpanos de hielo azul en los canales del sur."
+      },
+      {
+        "src": "/paquetes/img/crucero-3.jpg",
+        "caption": "Glaciar descendiendo entre montañas hacia los canales de la Patagonia chilena."
+      }
+    ]
+  },
+  'esencias-centroeuropeas': {
+    "slug": "esencias-centroeuropeas",
+    "title": "Esencias Centroeuropeas — Circuito de 14 noches | CheTour Viajes",
+    "description": "Esencias Centroeuropeas: circuito de 14 noches por el corazón de Centroeuropa, salida 16 de junio. Vuelos por Air France / KLM vía Ámsterdam, hoteles turista / primera, guía acompañante de habla hispana, excursiones y entradas incluidas según programa y Assist Card 100K. USD 4.980 por persona en base doble.",
+    "price": 4980,
+    "initialQty": 2,
+    "waLabel": "Esencias Centroeuropeas (Salida 16 de junio)",
+    "shareText": "¡Mirá este circuito Esencias Centroeuropeas con CheTour Viajes!",
+    "shareTitle": "Esencias Centroeuropeas — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/centroeuropa-1.jpg",
+        "caption": "Ámsterdam: los canales y las casas históricas al atardecer, puerta de entrada del circuito."
+      },
+      {
+        "src": "/paquetes/img/centroeuropa-2.jpg",
+        "caption": "Viena: la fachada curva de la Hofburg, el antiguo palacio imperial."
+      },
+      {
+        "src": "/paquetes/img/centroeuropa-3.jpg",
+        "caption": "Múnich: el casco antiguo y la torre de la Peterskirche desde las alturas."
+      }
+    ]
+  },
+  'estados-unidos-costa-a-costa': {
+    "slug": "estados-unidos-costa-a-costa",
+    "title": "Estados Unidos de Costa a Costa — 19 días con el Gran Cañón | CheTour Viajes",
+    "description": "Estados Unidos de Costa a Costa: circuito todo incluido de 19 días, salida 29 de abril. San Francisco, Los Ángeles, Las Vegas, el Gran Cañón del Colorado (helicóptero, navegación y Skywalk), Washington D.C., Nueva York y Miami. Aéreos, alojamiento y pensión completa. USD 9.660 por persona en base doble.",
+    "price": 9660,
+    "initialQty": 2,
+    "waLabel": "Estados Unidos de Costa a Costa (Salida 29 de abril)",
+    "shareText": "¡Mirá este circuito Estados Unidos de Costa a Costa con CheTour Viajes!",
+    "shareTitle": "Estados Unidos de Costa a Costa — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/usa-1.jpg",
+        "caption": "Gran Cañón del Colorado: sobrevuelo en helicóptero sobre los cañones."
+      },
+      {
+        "src": "/paquetes/img/usa-2.jpg",
+        "caption": "Nueva York: el Empire State y el skyline de Manhattan al atardecer."
+      },
+      {
+        "src": "/paquetes/img/usa-3.jpg",
+        "caption": "Skylines y rascacielos de las grandes ciudades de Estados Unidos."
+      }
+    ]
+  },
+  'europa-al-maximo-londres-madrid': {
+    "slug": "europa-al-maximo-londres-madrid",
+    "title": "Europa al Máximo, de Londres a Madrid — 21 días | CheTour Viajes",
+    "description": "Europa al Máximo, de Londres a Madrid: circuito de 21 días y 19 noches por 11 ciudades — Londres, París, los Alpes, Roma, Florencia, Barcelona y Madrid. Salidas 16 de mayo y 19 de septiembre, aéreo desde Córdoba. Desde USD 5.112 por persona en base doble.",
+    "price": 5112,
+    "initialQty": 2,
+    "waLabel": "Europa al Máximo, de Londres a Madrid (21 días)",
+    "shareText": "¡Mirá este circuito Europa al Máximo, de Londres a Madrid, con CheTour Viajes!",
+    "shareTitle": "Europa al Máximo, de Londres a Madrid — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/europa-1.jpg",
+        "caption": "Londres: el London Eye y el Támesis iluminados, punto de partida del circuito."
+      },
+      {
+        "src": "/paquetes/img/europa-2.jpg",
+        "caption": "París: los tejados de la ciudad y la Torre Eiffel al atardecer."
+      },
+      {
+        "src": "/paquetes/img/europa-3.jpg",
+        "caption": "Roma: el Coliseo iluminado, tres noches en la Ciudad Eterna."
+      }
+    ]
+  },
+  'europa-clasica-costa-amalfitana-toscana': {
+    "slug": "europa-clasica-costa-amalfitana-toscana",
+    "title": "Europa Clásica, con Costa Amalfitana y la Toscana — 20 días | CheTour Viajes",
+    "description": "Europa Clásica, con Costa Amalfitana y la Toscana: circuito todo incluido de 20 días, salida 12 de octubre. Madrid, Toledo, Barcelona, Nápoles, Sorrento, Costa Amalfitana, Capri, Roma, la Toscana, Florencia, Venecia (góndola) y París (crucero por el Sena). Hoteles 4★, pensión completa. USD 9.525 por persona en base doble.",
+    "price": 9525,
+    "initialQty": 2,
+    "waLabel": "Europa Clásica, con Costa Amalfitana y la Toscana (Salida 12 de octubre)",
+    "shareText": "¡Mirá este circuito Europa Clásica, con Costa Amalfitana y la Toscana, de CheTour Viajes!",
+    "shareTitle": "Europa Clásica, con Costa Amalfitana y la Toscana — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/europaclasica-1.jpg",
+        "caption": "La Costa Amalfitana: pueblos blancos sobre el mar turquesa, entre limoneros."
+      },
+      {
+        "src": "/paquetes/img/europaclasica-2.jpg",
+        "caption": "Positano, con sus casas de colores colgadas de la ladera sobre el mar."
+      },
+      {
+        "src": "/paquetes/img/europaclasica-3.jpg",
+        "caption": "Florencia: el Ponte Vecchio sobre el río Arno."
+      }
+    ]
+  },
+  'gramado-y-canela-con-torres-bus': {
+    "slug": "gramado-y-canela-con-torres-bus",
+    "title": "Gramado y Canela con Torres — Bus cama, 7 días | CheTour Viajes",
+    "description": "Gramado y Canela con Torres: viaje en bus cama de última generación de 7 días, salida 30 de marzo. Alojamiento y media pensión en Gramado (Hotel Ski Gramado) y Torres (Hotel A Furninha), city tour de Gramado y Canela y visitas a la Fábrica de Chocolate, la Catedral de Pedra y el Parque Caracol. USD 670 por persona en base doble.",
+    "price": 670,
+    "initialQty": 2,
+    "waLabel": "Gramado y Canela con Torres (Salida 30 de marzo)",
+    "shareText": "¡Mirá este viaje a Gramado y Canela con Torres, de CheTour Viajes!",
+    "shareTitle": "Gramado y Canela con Torres — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/gramado-1.jpg",
+        "caption": "La arquitectura alpina de Gramado, en la Serra Gaúcha."
+      },
+      {
+        "src": "/paquetes/img/gramado-2.jpg",
+        "caption": "La playa de Torres y sus formaciones rocosas sobre el mar."
+      },
+      {
+        "src": "/paquetes/img/gramado-3.jpg",
+        "caption": "Vista aérea de Torres, con la Torre Norte y el litoral de Río Grande do Sul."
+      }
+    ]
+  },
+  'neuquen-y-caviahue': {
+    "slug": "neuquen-y-caviahue",
+    "title": "Neuquén y Caviahue — Escapada Aérea con Termas de Copahue | CheTour Viajes",
+    "description": "Neuquén y Caviahue: escapada aérea de 5 días / 4 noches, salida 1 de abril. Vuelo desde Córdoba con Flybondi, alojamiento con desayuno en Caviahue, traslados in/out y excursión con guía a las Termas de Copahue. Asistencia médica incluida. $990.000 por persona en base doble.",
+    "price": 990000,
+    "initialQty": 2,
+    "waLabel": "Neuquén y Caviahue (Salida 1 de abril)",
+    "shareText": "¡Mirá esta escapada a Neuquén y Caviahue con CheTour Viajes!",
+    "shareTitle": "Neuquén y Caviahue — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/caviahue-1.jpg",
+        "caption": "El lago Caviahue y el volcán Copahue nevado, con el pueblo de Caviahue a la orilla."
+      },
+      {
+        "src": "/paquetes/img/caviahue-2.jpg",
+        "caption": "El Salto del Agrio: cascada entre rocas rojizas, con un arcoíris al pie."
+      },
+      {
+        "src": "/paquetes/img/caviahue-3.jpg",
+        "caption": "Ríos de deshielo y bosque andino en los alrededores de Caviahue."
+      }
+    ]
+  },
+  'salta-humahuaca-cafayate': {
+    "slug": "salta-humahuaca-cafayate",
+    "title": "Salta, Humahuaca y Cafayate — Viaje Grupal Aéreo | CheTour Viajes",
+    "description": "Salta, Humahuaca y Cafayate: 5 días, salida 3 de julio, conectividad aérea. Todo incluido — traslados IN/OUT, alojamiento, excursiones, pensión completa, asistencia al viajero y coordinación permanente.",
+    "price": 1510000,
+    "initialQty": 2,
+    "waLabel": "el viaje a Salta, Humahuaca y Cafayate (Salida 3 de julio)",
+    "shareText": "¡Mirá este viaje grupal a Salta, Humahuaca y Cafayate con CheTour Viajes!",
+    "shareTitle": "Salta, Humahuaca y Cafayate — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/nqa-2.jpg",
+        "caption": "Serranía del Hornocal: Cerro de los 14 colores en Humahuaca, Jujuy."
+      },
+      {
+        "src": "/paquetes/img/nqa-3.jpg",
+        "caption": "Formaciones de arenisca rojiza en la Quebrada de las Conchas, Cafayate."
+      },
+      {
+        "src": "/paquetes/img/nqa-5.jpg",
+        "caption": "Agujas minerales en la Quebrada de las Flechas sobre la mítica Ruta 40."
+      },
+      {
+        "src": "/paquetes/img/nqa-6.jpg",
+        "caption": "Los Castillos y cañones naturales camino a Cafayate."
+      },
+      {
+        "src": "/paquetes/img/nqa-1.jpg",
+        "caption": "Panorámica de los valles andinos y la arquitectura colonial."
+      },
+      {
+        "src": "/paquetes/img/nqa-4.jpg",
+        "caption": "Serranías y cielo despejado en el altiplano argentino."
+      }
+    ]
+  },
+  'san-juan-bajo-las-estrellas-bus': {
+    "slug": "san-juan-bajo-las-estrellas-bus",
+    "title": "San Juan Bajo las Estrellas — Astroturismo en Bus, 7 días | CheTour Viajes",
+    "description": "San Juan Bajo las Estrellas: viaje en bus cama 5★ de 7 días, salida 16 de abril. Astroturismo en Pampa del Leoncito, Parque Nacional El Leoncito, Circuito del Sol (Rodeo y Pismanta), Ruta del Vino y Parque Nacional Sierra de las Quijadas. Todo incluido con pensión completa. $1.869.000 por persona en base doble.",
+    "price": 1869000,
+    "initialQty": 2,
+    "waLabel": "San Juan Bajo las Estrellas (Salida 16 de abril)",
+    "shareText": "¡Mirá este viaje San Juan Bajo las Estrellas con CheTour Viajes!",
+    "shareTitle": "San Juan Bajo las Estrellas — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/sanjuan-1.jpg",
+        "caption": "Trekking entre los cerros de colores de la precordillera de San Juan."
+      },
+      {
+        "src": "/paquetes/img/sanjuan-2.jpg",
+        "caption": "Panorámica del valle sanjuanino con la cordillera nevada al fondo."
+      }
+    ]
+  },
+  'talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-bus': {
+    "slug": "talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-bus",
+    "title": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna — Bus, 6 días | CheTour Viajes",
+    "description": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna: viaje grupal en bus cama 5★ de 6 días, salida 29 de abril. Valle de la Luna, el Cañón de Talampaya bajo la luna llena y Laguna Brava en la cordillera de los Andes. Todo incluido con pensión completa. $1.625.000 por persona en base doble.",
+    "price": 1625000,
+    "initialQty": 2,
+    "waLabel": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna (Salida 29 de abril)",
+    "shareText": "¡Mirá este viaje a Talampaya con Luna Llena, Laguna Brava y Valle de la Luna, con CheTour Viajes!",
+    "shareTitle": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/talampaya-1.jpg",
+        "caption": "Los grandes paredones rojizos del Cañón de Talampaya."
+      },
+      {
+        "src": "/paquetes/img/talampaya-2.jpg",
+        "caption": "Los cerros de arcilla de colores del Valle de la Luna."
+      },
+      {
+        "src": "/paquetes/img/talampaya-3.jpg",
+        "caption": "Laguna Brava, con flamencos y la cordillera de los Andes al fondo."
+      }
+    ]
+  },
+  'ushuaia-y-calafate': {
+    "slug": "ushuaia-y-calafate",
+    "title": "Ushuaia y Calafate — Aéreo desde Córdoba, 7 u 8 días | CheTour Viajes",
+    "description": "Ushuaia y Calafate: salida aérea desde Córdoba de 7 u 8 días, con fechas de enero a marzo. Vuelo con Aerolíneas Argentinas, alojamiento con desayuno, traslados in/out y excursiones al Parque Nacional Tierra del Fuego y al Parque Nacional Los Glaciares (sin entradas). Desde $1.375.000 por persona en base doble.",
+    "price": 1375000,
+    "initialQty": 2,
+    "waLabel": "Ushuaia y Calafate",
+    "shareText": "¡Mirá este viaje a Ushuaia y Calafate con CheTour Viajes!",
+    "shareTitle": "Ushuaia y Calafate — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/ushuaia-1.jpg",
+        "caption": "El frente del Glaciar Perito Moreno, en el Parque Nacional Los Glaciares."
+      },
+      {
+        "src": "/paquetes/img/ushuaia-2.jpg",
+        "caption": "El faro Les Éclaireurs en el Canal Beagle, cerca de Ushuaia."
+      },
+      {
+        "src": "/paquetes/img/ushuaia-3.jpg",
+        "caption": "Glaciares y témpanos entre las montañas de la Patagonia austral."
+      }
+    ]
+  },
+}

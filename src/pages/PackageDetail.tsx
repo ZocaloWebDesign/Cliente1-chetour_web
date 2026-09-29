@@ -23,6 +23,8 @@ import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import { WhatsappButton } from '@/components/WhatsappButton'
 import { Badge } from '@/components/ui'
+import { packageStaticPages } from '@/pages/package-static/manifest'
+import { PackageStaticPage } from '@/pages/package-static/PackageStaticPage'
 
 const SIGNATURE_ICONS: Record<SignatureIconName, typeof Calendar> = {
   calendar: CalendarDays,
@@ -73,12 +75,20 @@ function splitAccent(name: string) {
 
 export function PackageDetail() {
   const { slug } = useParams<{ slug: string }>()
+
+  // Las fichas "ported" desde /paquetes (ver src/pages/package-static/) traen
+  // su propio diseño completo — tienen prioridad sobre el template genérico
+  // de abajo, que solo se usa para paquetes cargados directamente en data.ts.
+  if (slug && packageStaticPages[slug]) {
+    return <PackageStaticPage key={slug} slug={slug} />
+  }
+
   const pkg = packages.find((p) => p.slug === slug)
 
   if (!pkg) {
     return (
       <div className="min-h-screen text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-        <Nav />
+        <Nav forceSolid />
         <main className="mx-auto flex max-w-2xl flex-col items-center px-6 py-40 text-center">
           <h1 className="text-2xl font-semibold">No encontramos ese paquete</h1>
           <p className="mt-3 text-neutral-500 dark:text-neutral-400">
