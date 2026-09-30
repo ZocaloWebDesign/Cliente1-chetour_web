@@ -428,6 +428,80 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       }
     ]
   },
+  'peru-aereo': {
+    "slug": "peru-aereo",
+    "title": "Perú — Cusco, Valle Sagrado y Machu Picchu | CheTour Viajes",
+    "description": "Perú: 8 días / 7 noches con conectividad aérea, salida 13 de abril. Lima, Cusco, el Valle Sagrado de los Incas y Machu Picchu, con alojamiento, desayuno y media pensión según programa, traslados en destino, excursiones, asistencia médica y coordinación permanente. USD 1.391 por persona en base doble.",
+    "price": 1391,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Perú (Salida 13 de abril)",
+    "shareText": "¡Mirá este viaje a Perú con CheTour Viajes!",
+    "shareTitle": "Perú — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/peru-1.webp",
+        "caption": "La ciudadela inca de Machu Picchu, con una llama entre las terrazas."
+      },
+      {
+        "src": "/paquetes/img/peru-5.webp",
+        "caption": "La Plaza de Armas y la Catedral de Cusco, vistas desde los techos del centro histórico."
+      },
+      {
+        "src": "/paquetes/img/peru-6.webp",
+        "caption": "Los andenes circulares de Moray, en el Valle Sagrado de los Incas."
+      },
+      {
+        "src": "/paquetes/img/peru-4.webp",
+        "caption": "El Palacio de Gobierno, en la Plaza de Armas de Lima."
+      },
+      {
+        "src": "/paquetes/img/peru-3.webp",
+        "caption": "El pueblo y las terrazas incas de Ollantaytambo, en el Valle Sagrado."
+      },
+      {
+        "src": "/paquetes/img/peru-2.webp",
+        "caption": "Otra vista de la ciudadela de Machu Picchu, entre las montañas de los Andes."
+      }
+    ]
+  },
+  'peru-y-bolivia-bus': {
+    "slug": "peru-y-bolivia-bus",
+    "title": "Perú y Bolivia — Bus cama, 17 días | CheTour Viajes",
+    "description": "Perú y Bolivia: circuito de 17 días en bus cama por el norte argentino, Bolivia y Perú, con 6 salidas entre abril y noviembre. Alojamiento, media pensión, excursiones (Purmamarca, Arequipa, el Lago Titicaca y Cusco con sus 4 Ruinas), asistencia al viajero y coordinación permanente. USD 1.699 por persona en base doble.",
+    "price": 1699,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Perú y Bolivia",
+    "shareText": "¡Mirá este viaje a Perú y Bolivia con CheTour Viajes!",
+    "shareTitle": "Perú y Bolivia — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/peru-bolivia-3.jpg",
+        "caption": "El Lago Titicaca, el lago navegable más alto del mundo, entre Bolivia y Perú."
+      },
+      {
+        "src": "/paquetes/img/peru-bolivia-6.jpg",
+        "caption": "La Plaza de Armas de Cusco, vista desde lo alto."
+      },
+      {
+        "src": "/paquetes/img/peru-bolivia-5.jpg",
+        "caption": "El Cerro de los Siete Colores, en Purmamarca."
+      },
+      {
+        "src": "/paquetes/img/peru-bolivia-2.jpg",
+        "caption": "Arequipa, la Ciudad Blanca, con el volcán Misti de fondo."
+      },
+      {
+        "src": "/paquetes/img/peru-bolivia-4.jpg",
+        "caption": "Sacsayhuamán, una de las 4 Ruinas incas cerca de Cusco."
+      },
+      {
+        "src": "/paquetes/img/peru-bolivia-1.webp",
+        "caption": "Los cerros multicolores del norte argentino, camino al circuito."
+      }
+    ]
+  },
   'nueva-york-y-miami': {
     "slug": "nueva-york-y-miami",
     "title": "Nueva York y Miami — 12 días de ciudad y playa | CheTour Viajes",
