@@ -15,7 +15,7 @@ export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number 
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.45, delay: (index % 3) * 0.1 }}
       whileHover={{ y: -8 }}
-      className="group gap-0 rounded-3xl p-0 shadow-sm transition-shadow duration-300 hover:shadow-xl"
+      className="group h-full gap-0 rounded-3xl p-0 shadow-sm transition-shadow duration-300 hover:shadow-xl"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img

@@ -45,6 +45,31 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       }
     ]
   },
+  'bariloche-bus': {
+    "slug": "bariloche-bus",
+    "title": "Bariloche en Bus — 7 días, 4 fechas | CheTour Viajes",
+    "description": "Bariloche en Bus: viaje en bus mix de 7 días, con alojamiento en hotel Cambria, desayuno y cena incluidos, y asistencia médica. 4 fechas fijas: 10 y 23 de marzo, 4 y 9 de abril. $429.000 por persona en base doble.",
+    "price": 429000,
+    "currencyPrefix": "$",
+    "initialQty": 2,
+    "waLabel": "Bariloche en Bus",
+    "shareText": "¡Mirá este viaje a Bariloche en bus con CheTour Viajes!",
+    "shareTitle": "Bariloche en Bus — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/bariloche-1.jpg",
+        "caption": "El lago Nahuel Huapi y los cerros nevados, postal de San Carlos de Bariloche."
+      },
+      {
+        "src": "/paquetes/img/bariloche-2.jpg",
+        "caption": "Bahía de aguas turquesas y muelle entre el bosque andino patagónico."
+      },
+      {
+        "src": "/paquetes/img/bariloche-3.jpg",
+        "caption": "Vista aérea del laberinto de lagos y penínsulas boscosas de Bariloche."
+      }
+    ]
+  },
   'bariloche-aereo': {
     "slug": "bariloche-aereo",
     "title": "Bariloche Aéreo — Escapada a la Patagonia desde Córdoba | CheTour Viajes",
@@ -378,6 +403,27 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       }
     ]
   },
+  'san-juan-bajo-las-estrellas-aereo': {
+    "slug": "san-juan-bajo-las-estrellas-aereo",
+    "title": "San Juan Bajo las Estrellas Aéreo — Astroturismo, 6 días | CheTour Viajes",
+    "description": "San Juan Bajo las Estrellas Aéreo: viaje con conectividad aérea de 6 días, salida 16 de abril. Astroturismo en Pampa del Leoncito, Parque Nacional El Leoncito, Circuito del Sol (Rodeo y Pismanta), Ruta del Vino y Parque Nacional Sierra de las Quijadas. Pensión completa incluida. $1.869.000 por persona en base doble + aéreos.",
+    "price": 1869000,
+    "currencyPrefix": "$",
+    "initialQty": 2,
+    "waLabel": "San Juan Bajo las Estrellas Aéreo (Salida 16 de abril)",
+    "shareText": "¡Mirá este viaje San Juan Bajo las Estrellas Aéreo con CheTour Viajes!",
+    "shareTitle": "San Juan Bajo las Estrellas Aéreo — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/sanjuan-1.jpg",
+        "caption": "Trekking entre los cerros de colores de la precordillera de San Juan."
+      },
+      {
+        "src": "/paquetes/img/sanjuan-2.jpg",
+        "caption": "Panorámica del valle sanjuanino con la cordillera nevada al fondo."
+      }
+    ]
+  },
   'talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-bus': {
     "slug": "talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-bus",
     "title": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna — Bus, 6 días | CheTour Viajes",
@@ -388,6 +434,31 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "waLabel": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna (Salida 29 de abril)",
     "shareText": "¡Mirá este viaje a Talampaya con Luna Llena, Laguna Brava y Valle de la Luna, con CheTour Viajes!",
     "shareTitle": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/talampaya-1.jpg",
+        "caption": "Los grandes paredones rojizos del Cañón de Talampaya."
+      },
+      {
+        "src": "/paquetes/img/talampaya-2.jpg",
+        "caption": "Los cerros de arcilla de colores del Valle de la Luna."
+      },
+      {
+        "src": "/paquetes/img/talampaya-3.jpg",
+        "caption": "Laguna Brava, con flamencos y la cordillera de los Andes al fondo."
+      }
+    ]
+  },
+  'talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-aereo': {
+    "slug": "talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-aereo",
+    "title": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna Aéreo — 5 días | CheTour Viajes",
+    "description": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna Aéreo: viaje grupal con conectividad aérea de 5 días, salida 29 de abril. Valle de la Luna, el Cañón de Talampaya bajo la luna llena y Laguna Brava en la cordillera de los Andes. Pensión completa incluida. $1.625.000 por persona en base doble + aéreos.",
+    "price": 1625000,
+    "currencyPrefix": "$",
+    "initialQty": 2,
+    "waLabel": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna Aéreo (Salida 29 de abril)",
+    "shareText": "¡Mirá este viaje a Talampaya con Luna Llena, Laguna Brava y Valle de la Luna Aéreo, con CheTour Viajes!",
+    "shareTitle": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna Aéreo — CheTour Viajes",
     "photos": [
       {
         "src": "/paquetes/img/talampaya-1.jpg",
@@ -573,6 +644,81 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       {
         "src": "/paquetes/img/disney-6.jpg",
         "caption": "Uno de los resorts temáticos dentro del complejo Walt Disney World."
+      }
+    ]
+  },
+  'ingleses-aereo': {
+    "slug": "ingleses-aereo",
+    "title": "Ingleses Aéreo, 8 días | CheTour Viajes",
+    "description": "Ingleses Aéreo: 8 días y 7 noches en Ingleses, una de las playas más extensas del norte de Florianópolis. Aéreo desde Córdoba, traslados in/out, desayuno, carry 12Kg, coordinador en viaje y asistencia al viajero. Salidas todo el año: enero USD 1.575, febrero USD 1.470, marzo USD 1.315, por persona en base doble.",
+    "price": 1315,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Ingleses Aéreo",
+    "shareText": "¡Mirá este viaje aéreo a Ingleses con CheTour Viajes!",
+    "shareTitle": "Ingleses Aéreo — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/ingleses-1.jpg",
+        "caption": "La Praia dos Ingleses, una de las playas más extensas del norte de Florianópolis."
+      },
+      {
+        "src": "/paquetes/img/ingleses-2.jpg",
+        "caption": "Vista aérea de la Praia dos Ingleses, en Florianópolis."
+      },
+      {
+        "src": "/paquetes/img/ingleses-3.jpg",
+        "caption": "Las dunas de arena junto a la Praia dos Ingleses."
+      }
+    ]
+  },
+  'bombinhas-aereo': {
+    "slug": "bombinhas-aereo",
+    "title": "Bombinhas Aéreo, 8 días | CheTour Viajes",
+    "description": "Bombinhas Aéreo: 8 días y 7 noches en Bombinhas, Santa Catarina, con aguas cristalinas ideales para el buceo. Aéreo desde Córdoba, traslados in/out, desayuno, carry 12Kg, coordinador en viaje y asistencia al viajero. Salidas todo el año: enero USD 1.420, febrero USD 1.240, marzo USD 1.045, por persona en base doble.",
+    "price": 1045,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Bombinhas Aéreo",
+    "shareText": "¡Mirá este viaje aéreo a Bombinhas con CheTour Viajes!",
+    "shareTitle": "Bombinhas Aéreo — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/bombinhas-1.jpg",
+        "caption": "Aguas cristalinas de Bombinhas, ideales para el buceo en Santa Catarina."
+      },
+      {
+        "src": "/paquetes/img/bombinhas-2.jpg",
+        "caption": "Vista aérea de las playas de Bombinhas, en Santa Catarina."
+      },
+      {
+        "src": "/paquetes/img/bombinhas-3.jpg",
+        "caption": "Buceo entre las aguas transparentes de Bombinhas."
+      }
+    ]
+  },
+  'bombinhas-bus': {
+    "slug": "bombinhas-bus",
+    "title": "Bombinhas en Bus, 10 días | CheTour Viajes",
+    "description": "Bombinhas: 10 días y 7 noches en Bombinhas, Santa Catarina, con aguas cristalinas ideales para el buceo. Bus mix última generación (semicama o cama), traslados in/out, desayuno, coordinador en viaje y asistencia al viajero. 4 fechas fijas en abril. USD 749 por persona en base doble.",
+    "price": 749,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Bombinhas",
+    "shareText": "¡Mirá este viaje a Bombinhas con CheTour Viajes!",
+    "shareTitle": "Bombinhas — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/bombinhas-1.jpg",
+        "caption": "Aguas cristalinas de Bombinhas, ideales para el buceo en Santa Catarina."
+      },
+      {
+        "src": "/paquetes/img/bombinhas-2.jpg",
+        "caption": "Vista aérea de las playas de Bombinhas, en Santa Catarina."
+      },
+      {
+        "src": "/paquetes/img/bombinhas-3.jpg",
+        "caption": "Buceo entre las aguas transparentes de Bombinhas."
       }
     ]
   },
