@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { useHashScroll } from '@/hooks/use-hash-scroll'
 import { ArrowRight, Bus, Plane as PlaneIcon } from 'lucide-react'
 import { ShaderBackground } from '@/components/ui/shader-59f0538a'
 import * as THREE from 'three'
@@ -351,14 +350,12 @@ function FeaturedCard({
   countryName,
   href,
   reduced,
-  onHashClick,
 }: {
   activeCountry: string | null
   entry: GlobeCardEntry | undefined
   countryName: string
   href: string
   reduced: boolean
-  onHashClick: ReturnType<typeof useHashScroll>
 }) {
   return (
     <AnimatePresence mode="wait">
@@ -387,28 +384,18 @@ function FeaturedCard({
             {entry.shortDescription && <p className="text-sm text-white/80">{entry.shortDescription}</p>}
             <div className="mt-2 flex items-center justify-between gap-3">
               {entry.category ? (
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-turquoise-200">
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-turquoise-300">
                   ✦ {entry.category}
                 </span>
               ) : (
                 <span />
               )}
-              {entry.packageSlug ? (
-                <Link
-                  to={href}
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-sea-950 transition-transform duration-300 hover:scale-105"
-                >
-                  Ver paquete <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              ) : (
-                <a
-                  href={href}
-                  onClick={(e) => onHashClick(e, href)}
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-sea-950 transition-transform duration-300 hover:scale-105"
-                >
-                  Explorar destino <ArrowRight className="h-3.5 w-3.5" />
-                </a>
-              )}
+              <Link
+                to={href}
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-sea-950 transition-transform duration-300 hover:scale-105"
+              >
+                {entry.packageSlug ? 'Ver paquete' : 'Explorar destino'} <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
             </div>
           </div>
         </motion.div>
@@ -433,7 +420,6 @@ export function GlobeSection() {
   const hoverSourceRef = useRef<'canvas' | 'list' | null>(null)
 
   const reduceMotion = useReducedMotion()
-  const handleHashClick = useHashScroll()
 
   // activeCountry: país SELECCIONADO por click/tap (país del globo o chip).
   // Persiste — no lo cambia el hover ni se descarta solo. Solo otro click lo
@@ -854,7 +840,7 @@ export function GlobeSection() {
   const activePackages = useMemo(() => flattenCountryEntries(activeCountry), [activeCountry])
   const activePackage = activePackages[activePackageIndex] ?? activePackages[0]
   const activeCountryName = activeCountry ? (countryMetaByCode.get(activeCountry)?.name ?? '') : ''
-  const activePackageHref = activePackage?.packageSlug ? `/paquetes/${activePackage.packageSlug}` : '/#paquetes'
+  const activePackageHref = activePackage?.packageSlug ? `/paquetes/${activePackage.packageSlug}` : '/paquetes'
 
   return (
     // El ancla #destinos vive en Home.tsx (.hero-reveal__anchor), ubicada donde
@@ -958,7 +944,6 @@ export function GlobeSection() {
               countryName={activeCountryName}
               href={activePackageHref}
               reduced={!!reduceMotion}
-              onHashClick={handleHashClick}
             />
           </div>
         </div>

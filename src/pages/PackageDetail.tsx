@@ -95,7 +95,7 @@ export function PackageDetail() {
             Puede que el link esté mal escrito o el paquete ya no esté disponible.
           </p>
           <Link
-            to="/#paquetes"
+            to="/paquetes"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-semibold text-white dark:bg-white dark:text-neutral-950"
           >
             <ArrowLeft className="h-4 w-4" /> Ver todos los paquetes

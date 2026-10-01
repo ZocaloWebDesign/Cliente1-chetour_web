@@ -1,4 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { AtSign, Check, Clock, Globe, Mail, MessageCircle } from 'lucide-react'
 import { siteInfo } from '@/data'
@@ -481,12 +482,12 @@ export function Contact() {
               >
                 Escribir por WhatsApp
               </a>
-              <a
-                href="/#paquetes"
+              <Link
+                to="/paquetes"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
               >
                 Ver todos los viajes
-              </a>
+              </Link>
             </div>
           </div>
         </section>

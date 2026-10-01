@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { ReactLenis, useLenis } from 'lenis/react'
 import { Home } from '@/pages/Home'
+import { AllPackages } from '@/pages/AllPackages'
 import { PackageDetail } from '@/pages/PackageDetail'
 import { Contact } from '@/pages/Contact'
 import { NotFound } from '@/pages/NotFound'
@@ -45,6 +46,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/paquetes" element={<AllPackages />} />
           <Route path="/paquetes/:slug" element={<PackageDetail />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

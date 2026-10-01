@@ -502,6 +502,192 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       }
     ]
   },
+  'quatro-ilhas': {
+    "slug": "quatro-ilhas",
+    "title": "Quatro Ilhas — Bombinhas en Bus, 10 días | CheTour Viajes",
+    "description": "Quatro Ilhas: 10 días y 7 noches en la zona de Quatro Ilhas, Bombinhas, con salidas todo el año. Bus mix última generación (semicama o cama), traslados in/out, desayuno, coordinador en viaje y asistencia al viajero. USD 299 por persona en base doble.",
+    "price": 299,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Quatro Ilhas",
+    "shareText": "¡Mirá este viaje a Quatro Ilhas con CheTour Viajes!",
+    "shareTitle": "Quatro Ilhas — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/quatro-ilhas-1.jpg",
+        "caption": "La Praia de Quatro Ilhas, con arena blanca y mar cristalino entre morros verdes."
+      },
+      {
+        "src": "/paquetes/img/quatro-ilhas-2.jpg",
+        "caption": "Vista aérea de Quatro Ilhas, en Bombinhas."
+      },
+      {
+        "src": "/paquetes/img/quatro-ilhas-3.jpg",
+        "caption": "Los morros verdes que enmarcan la playa de Quatro Ilhas."
+      },
+      {
+        "src": "/paquetes/img/quatro-ilhas-4.jpg",
+        "caption": "El mar transparente de Quatro Ilhas, ideal para esnórquel y buceo."
+      },
+      {
+        "src": "/paquetes/img/quatro-ilhas-5.jpg",
+        "caption": "Bombinhas, con sus playas escondidas entre la vegetación."
+      },
+      {
+        "src": "/paquetes/img/quatro-ilhas-6.jpg",
+        "caption": "Atardecer en una de las playas de Bombinhas."
+      }
+    ]
+  },
+  'disney-a-medida': {
+    "slug": "disney-a-medida",
+    "title": "Disney a Medida — Walt Disney World 100% personalizado | CheTour Viajes",
+    "description": "Disney a Medida: tu viaje a Walt Disney World armado 100% a tu gusto — elegís fechas, duración, hotel (dentro o fuera del complejo Disney) y parques. Incluye traslados en destino, entradas a los parques, asistencia al viajero y coordinación con asesoramiento personalizado; los aéreos se suman de forma opcional. Cotización personalizada según fechas y servicios elegidos.",
+    "price": null,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Disney a Medida",
+    "shareText": "¡Mirá este viaje a Walt Disney World armado a tu medida, con CheTour Viajes!",
+    "shareTitle": "Disney a Medida — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/disney-1.jpg",
+        "caption": "El castillo de Cenicienta en Magic Kingdom, Walt Disney World."
+      },
+      {
+        "src": "/paquetes/img/disney-2.jpg",
+        "caption": "La esfera de Epcot en Walt Disney World."
+      },
+      {
+        "src": "/paquetes/img/disney-3.jpg",
+        "caption": "Fuegos artificiales sobre el castillo de Magic Kingdom."
+      },
+      {
+        "src": "/paquetes/img/disney-4.jpg",
+        "caption": "Hollywood Studios, uno de los cuatro parques de Walt Disney World."
+      },
+      {
+        "src": "/paquetes/img/disney-5.jpg",
+        "caption": "Animal Kingdom, el parque temático dedicado a la naturaleza y los animales."
+      },
+      {
+        "src": "/paquetes/img/disney-6.jpg",
+        "caption": "Uno de los resorts temáticos dentro del complejo Walt Disney World."
+      }
+    ]
+  },
+  'bombas-bus': {
+    "slug": "bombas-bus",
+    "title": "Bombas — Bombinhas en Bus, 10 días | CheTour Viajes",
+    "description": "Bombas: 10 días y 7 noches en la Praia de Bombas, junto a Bombinhas, con salidas todo el año. Bus mix última generación (semicama o cama), traslados in/out, desayuno, coordinador en viaje y asistencia al viajero. USD 699 por persona en base doble.",
+    "price": 699,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Bombas",
+    "shareText": "¡Mirá este viaje a Bombas con CheTour Viajes!",
+    "shareTitle": "Bombas — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/bombas-1.jpg",
+        "caption": "La Praia de Bombas, una playa tranquila junto a Bombinhas."
+      },
+      {
+        "src": "/paquetes/img/bombas-2.jpg",
+        "caption": "Vista aérea de la Praia de Bombas, en Santa Catarina."
+      },
+      {
+        "src": "/paquetes/img/bombas-3.jpg",
+        "caption": "El mar tranquilo de Bombas, junto a Bombinhas."
+      },
+      {
+        "src": "/paquetes/img/bombas-4.jpg",
+        "caption": "Atardecer en la Praia de Bombas."
+      },
+      {
+        "src": "/paquetes/img/bombas-5.jpg",
+        "caption": "La costa de Bombas, entre Bombinhas y Itajaí."
+      },
+      {
+        "src": "/paquetes/img/bombas-6.jpg",
+        "caption": "Una tarde tranquila en la Praia de Bombas."
+      }
+    ]
+  },
+  'camboriu-aereo': {
+    "slug": "camboriu-aereo",
+    "title": "Camboriú Aéreo — Balneário Camboriú, 8 días | CheTour Viajes",
+    "description": "Camboriú Aéreo: 8 días y 7 noches en Balneário Camboriú, con salidas de enero a marzo. Aéreo y traslados, alojamiento en el Hotel Sagres, desayuno y cena, asistencia al viajero y coordinación. Precio a consultar según la fecha.",
+    "price": null,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Camboriú Aéreo",
+    "shareText": "¡Mirá este viaje aéreo a Camboriú con CheTour Viajes!",
+    "shareTitle": "Camboriú Aéreo — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/camboriu-1.jpg",
+        "caption": "La Playa Central de Balneário Camboriú y su fila de rascacielos sobre el mar."
+      },
+      {
+        "src": "/paquetes/img/camboriu-2.jpg",
+        "caption": "La rueda gigante de Camboriú y el skyline iluminado al atardecer."
+      },
+      {
+        "src": "/paquetes/img/camboriu-3.jpg",
+        "caption": "Vista aérea de la bahía de Camboriú, entre el río y el Atlántico."
+      }
+    ]
+  },
+  'canasvieiras-bus': {
+    "slug": "canasvieiras-bus",
+    "title": "Canasvieiras en Bus — Florianópolis, 10 días | CheTour Viajes",
+    "description": "Canasvieiras en Bus: 10 días y 7 noches en Canasvieiras, Florianópolis, con salidas de diciembre de 2026 a abril de 2027. Bus semicama o cama, alojamiento en el Hotel Canasvieiras Internacional, desayuno y cena, coordinador en viaje y Assist Card. Desde USD 549 por persona en base doble.",
+    "price": 549,
+    "currencyPrefix": "USD ",
+    "initialQty": 2,
+    "waLabel": "Canasvieiras en Bus",
+    "shareText": "¡Mirá este viaje a Canasvieiras en bus con CheTour Viajes!",
+    "shareTitle": "Canasvieiras en Bus — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/canasvieiras-1.jpg",
+        "caption": "La playa de Canasvieiras, con sus sombrillas y el mar del norte de la isla."
+      },
+      {
+        "src": "/paquetes/img/canasvieiras-2.jpg",
+        "caption": "Vista aérea de una playa del norte de Florianópolis al atardecer."
+      },
+      {
+        "src": "/paquetes/img/canasvieiras-3.jpg",
+        "caption": "Playa de aguas turquesas entre rocas y vegetación en Florianópolis."
+      }
+    ]
+  },
+  'cataratas-del-iguazu-bus': {
+    "slug": "cataratas-del-iguazu-bus",
+    "title": "Cataratas del Iguazú en Bus — San Ignacio y Wanda, 7 días | CheTour Viajes",
+    "description": "Cataratas del Iguazú en Bus: 7 días y 4 noches por Misiones, con 17 fechas entre marzo y junio. Bus mix, alojamiento con media pensión, excursiones a las Ruinas de San Ignacio, las Minas de Wanda y ambos lados de las Cataratas, asistencia médica y coordinación permanente. $399.900 por persona en base doble.",
+    "price": 399900,
+    "currencyPrefix": "$",
+    "initialQty": 2,
+    "waLabel": "Cataratas del Iguazú en Bus",
+    "shareText": "¡Mirá este viaje a las Cataratas del Iguazú en bus con CheTour Viajes!",
+    "shareTitle": "Cataratas del Iguazú en Bus — CheTour Viajes",
+    "photos": [
+      {
+        "src": "/paquetes/img/iguazu-1.jpg",
+        "caption": "Panorámica de las Cataratas del Iguazú desde las pasarelas."
+      },
+      {
+        "src": "/paquetes/img/iguazu-2.jpg",
+        "caption": "Saltos de agua entre la vegetación selvática de Iguazú."
+      },
+      {
+        "src": "/paquetes/img/iguazu-3.jpg",
+        "caption": "Pasarelas sobre el río frente a la cortina de agua de las Cataratas."
+      }
+    ]
+  },
   'nueva-york-y-miami': {
     "slug": "nueva-york-y-miami",
     "title": "Nueva York y Miami — 12 días de ciudad y playa | CheTour Viajes",

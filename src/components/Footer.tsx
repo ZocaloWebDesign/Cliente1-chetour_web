@@ -6,7 +6,7 @@ import { useHashScroll } from '@/hooks/use-hash-scroll'
 import { COUNTRY_FLAGS } from '@/components/flag-icons'
 
 const nav = [
-  { href: '/#paquetes', label: 'Paquetes' },
+  { href: '/paquetes', label: 'Paquetes' },
   { href: '/#destinos', label: 'Destinos' },
   { href: '/#experiencias', label: 'Experiencias' },
   { href: '/#nosotros', label: 'Nosotros' },

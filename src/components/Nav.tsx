@@ -9,7 +9,7 @@ import { useHashScroll } from '@/hooks/use-hash-scroll'
 // viven en index.css bajo .site-header*.
 
 const links = [
-  { href: '/#paquetes', label: 'Paquetes' },
+  { href: '/paquetes', label: 'Paquetes' },
   { href: '/#destinos', label: 'Destinos' },
   { href: '/#experiencias', label: 'Experiencias' },
   { href: '/#nosotros', label: 'Nosotros' },
