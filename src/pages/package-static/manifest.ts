@@ -33,15 +33,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/africa-1.jpg",
-        "caption": "Safari en Tanzania: un león descansa junto al vehículo en plena sabana."
+        "caption": "Vehículo de safari recorriendo la sabana de Tanzania."
       },
       {
         "src": "/paquetes/img/africa-2.jpg",
-        "caption": "Elefantes al paso del 4x4 en el Parque Nacional Tarangire."
+        "caption": "Elefantes al paso del vehículo en el Parque Nacional Tarangire."
       },
       {
         "src": "/paquetes/img/africa-3.jpg",
-        "caption": "Zanzíbar: hotel All Inclusive frente a las playas de arena blanca del océano Índico."
+        "caption": "Las playas de arena blanca de Zanzíbar, frente al océano Índico."
       }
     ]
   },
@@ -58,15 +58,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/bariloche-1.jpg",
-        "caption": "El lago Nahuel Huapi y los cerros nevados, postal de San Carlos de Bariloche."
+        "caption": "El lago Nahuel Huapi y los cerros nevados de Bariloche."
       },
       {
         "src": "/paquetes/img/bariloche-2.jpg",
-        "caption": "Bahía de aguas turquesas y muelle entre el bosque andino patagónico."
+        "caption": "Una bahía de aguas turquesas entre el bosque andino patagónico."
       },
       {
         "src": "/paquetes/img/bariloche-3.jpg",
-        "caption": "Vista aérea del laberinto de lagos y penínsulas boscosas de Bariloche."
+        "caption": "Vista aérea de los lagos y bosques de la Patagonia andina."
       }
     ]
   },
@@ -83,15 +83,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/bariloche-1.jpg",
-        "caption": "El lago Nahuel Huapi y los cerros nevados, postal de San Carlos de Bariloche."
+        "caption": "El lago Nahuel Huapi y los cerros nevados de Bariloche."
       },
       {
         "src": "/paquetes/img/bariloche-2.jpg",
-        "caption": "Bahía de aguas turquesas y muelle entre el bosque andino patagónico."
+        "caption": "Una bahía de aguas turquesas entre el bosque andino patagónico."
       },
       {
         "src": "/paquetes/img/bariloche-3.jpg",
-        "caption": "Vista aérea del laberinto de lagos y penínsulas boscosas de la región."
+        "caption": "Vista aérea de los lagos y bosques de la Patagonia andina."
       }
     ]
   },
@@ -116,7 +116,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/camboriu-3.jpg",
-        "caption": "Vista aérea de la bahía de Camboriú, entre el río y el Atlántico."
+        "caption": "Vista desde el mar hacia el skyline de Balneário Camboriú."
       }
     ]
   },
@@ -133,15 +133,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/canasvieiras-1.jpg",
-        "caption": "La playa de Canasvieiras, con sus sombrillas y el mar del norte de la isla."
+        "caption": "Vista aérea de la Praia de Canasvieiras y su costanera."
       },
       {
         "src": "/paquetes/img/canasvieiras-2.jpg",
-        "caption": "Vista aérea de una playa del norte de Florianópolis al atardecer."
+        "caption": "Atardecer de fuego sobre la playa de Canasvieiras."
       },
       {
         "src": "/paquetes/img/canasvieiras-3.jpg",
-        "caption": "Playa de aguas turquesas entre rocas y vegetación en Florianópolis."
+        "caption": "Costa rocosa de Canasvieiras, con una isla frente a la playa."
       }
     ]
   },
@@ -208,7 +208,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/centroeuropa-1.jpg",
-        "caption": "Ámsterdam: los canales y las casas históricas al atardecer, puerta de entrada del circuito."
+        "caption": "Ámsterdam: los canales y las casas históricas al atardecer."
       },
       {
         "src": "/paquetes/img/centroeuropa-2.jpg",
@@ -216,7 +216,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/centroeuropa-3.jpg",
-        "caption": "Múnich: el casco antiguo y la torre de la Peterskirche desde las alturas."
+        "caption": "Múnich: el casco antiguo desde las alturas."
       }
     ]
   },
@@ -258,7 +258,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/europa-1.jpg",
-        "caption": "Londres: el London Eye y el Támesis iluminados, punto de partida del circuito."
+        "caption": "Londres: el London Eye y el Támesis iluminados."
       },
       {
         "src": "/paquetes/img/europa-2.jpg",
@@ -266,7 +266,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/europa-3.jpg",
-        "caption": "Roma: el Coliseo iluminado, tres noches en la Ciudad Eterna."
+        "caption": "Roma: el Coliseo iluminado."
       }
     ]
   },
@@ -283,7 +283,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/europaclasica-1.jpg",
-        "caption": "La Costa Amalfitana: pueblos blancos sobre el mar turquesa, entre limoneros."
+        "caption": "La Costa Amalfitana: pueblos blancos sobre el mar turquesa."
       },
       {
         "src": "/paquetes/img/europaclasica-2.jpg",
@@ -308,7 +308,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/gramado-1.jpg",
-        "caption": "La arquitectura alpina de Gramado, en la Serra Gaúcha."
+        "caption": "La arquitectura alpina de Gramado, con su torre reloj al atardecer."
       },
       {
         "src": "/paquetes/img/gramado-2.jpg",
@@ -316,7 +316,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/gramado-3.jpg",
-        "caption": "Vista aérea de Torres, con la Torre Norte y el litoral de Río Grande do Sul."
+        "caption": "Vista aérea de Torres, con el litoral de Río Grande do Sul."
       }
     ]
   },
@@ -333,15 +333,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/caviahue-1.jpg",
-        "caption": "El lago Caviahue y el volcán Copahue nevado, con el pueblo de Caviahue a la orilla."
+        "caption": "El lago Caviahue y el volcán Copahue nevado."
       },
       {
         "src": "/paquetes/img/caviahue-2.jpg",
-        "caption": "El Salto del Agrio: cascada entre rocas rojizas, con un arcoíris al pie."
+        "caption": "El Salto del Agrio, cascada entre rocas rojizas."
       },
       {
         "src": "/paquetes/img/caviahue-3.jpg",
-        "caption": "Ríos de deshielo y bosque andino en los alrededores de Caviahue."
+        "caption": "Bosque andino en los alrededores de Caviahue."
       }
     ]
   },
@@ -358,7 +358,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/nqa-2.jpg",
-        "caption": "Serranía del Hornocal: Cerro de los 14 colores en Humahuaca, Jujuy."
+        "caption": "Serranía del Hornocal, cerro de los 14 colores en Humahuaca."
       },
       {
         "src": "/paquetes/img/nqa-3.jpg",
@@ -366,21 +366,9 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/nqa-5.jpg",
-        "caption": "Agujas minerales en la Quebrada de las Flechas sobre la mítica Ruta 40."
-      },
-      {
-        "src": "/paquetes/img/nqa-6.jpg",
-        "caption": "Los Castillos y cañones naturales camino a Cafayate."
-      },
-      {
-        "src": "/paquetes/img/nqa-1.jpg",
-        "caption": "Panorámica de los valles andinos y la arquitectura colonial."
-      },
-      {
-        "src": "/paquetes/img/nqa-4.jpg",
-        "caption": "Serranías y cielo despejado en el altiplano argentino."
+        "caption": "Paisaje de cañones y viñedos camino a Cafayate."
       }
-    ]
+                      ]
   },
   'san-juan-bajo-las-estrellas-bus': {
     "slug": "san-juan-bajo-las-estrellas-bus",
@@ -395,11 +383,11 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/sanjuan-1.jpg",
-        "caption": "Trekking entre los cerros de colores de la precordillera de San Juan."
+        "caption": "Formaciones rocosas del Parque Nacional Sierra de las Quijadas, en San Juan."
       },
       {
         "src": "/paquetes/img/sanjuan-2.jpg",
-        "caption": "Panorámica del valle sanjuanino con la cordillera nevada al fondo."
+        "caption": "La Pampa del Leoncito, bajo el cielo despejado de San Juan."
       }
     ]
   },
@@ -416,11 +404,11 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/sanjuan-1.jpg",
-        "caption": "Trekking entre los cerros de colores de la precordillera de San Juan."
+        "caption": "Formaciones rocosas del Parque Nacional Sierra de las Quijadas, en San Juan."
       },
       {
         "src": "/paquetes/img/sanjuan-2.jpg",
-        "caption": "Panorámica del valle sanjuanino con la cordillera nevada al fondo."
+        "caption": "La Pampa del Leoncito, bajo el cielo despejado de San Juan."
       }
     ]
   },
@@ -437,7 +425,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/talampaya-1.jpg",
-        "caption": "Los grandes paredones rojizos del Cañón de Talampaya."
+        "caption": "Laguna Brava, con flamencos andinos y la cordillera nevada de fondo."
       },
       {
         "src": "/paquetes/img/talampaya-2.jpg",
@@ -445,7 +433,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/talampaya-3.jpg",
-        "caption": "Laguna Brava, con flamencos y la cordillera de los Andes al fondo."
+        "caption": "Flamencos volando sobre Laguna Brava, con el volcán nevado de fondo."
       }
     ]
   },
@@ -462,7 +450,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/talampaya-1.jpg",
-        "caption": "Los grandes paredones rojizos del Cañón de Talampaya."
+        "caption": "Laguna Brava, con flamencos andinos y la cordillera nevada de fondo."
       },
       {
         "src": "/paquetes/img/talampaya-2.jpg",
@@ -470,7 +458,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/talampaya-3.jpg",
-        "caption": "Laguna Brava, con flamencos y la cordillera de los Andes al fondo."
+        "caption": "Flamencos volando sobre Laguna Brava, con el volcán nevado de fondo."
       }
     ]
   },
@@ -487,7 +475,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/ushuaia-1.jpg",
-        "caption": "El frente del Glaciar Perito Moreno, en el Parque Nacional Los Glaciares."
+        "caption": "El Glaciar Perito Moreno, en el Parque Nacional Los Glaciares."
       },
       {
         "src": "/paquetes/img/ushuaia-2.jpg",
@@ -512,7 +500,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/peru-1.webp",
-        "caption": "La ciudadela inca de Machu Picchu, con una llama entre las terrazas."
+        "caption": "La ciudadela inca de Machu Picchu, entre las montañas de los Andes."
       },
       {
         "src": "/paquetes/img/peru-5.webp",
@@ -522,17 +510,13 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
         "src": "/paquetes/img/peru-6.webp",
         "caption": "Los andenes circulares de Moray, en el Valle Sagrado de los Incas."
       },
-      {
-        "src": "/paquetes/img/peru-4.webp",
-        "caption": "El Palacio de Gobierno, en la Plaza de Armas de Lima."
-      },
-      {
+            {
         "src": "/paquetes/img/peru-3.webp",
         "caption": "El pueblo y las terrazas incas de Ollantaytambo, en el Valle Sagrado."
       },
       {
         "src": "/paquetes/img/peru-2.webp",
-        "caption": "Otra vista de la ciudadela de Machu Picchu, entre las montañas de los Andes."
+        "caption": "El Palacio de Gobierno, en la Plaza de Armas de Lima."
       }
     ]
   },
@@ -553,25 +537,17 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/peru-bolivia-6.jpg",
-        "caption": "La Plaza de Armas de Cusco, vista desde lo alto."
+        "caption": "La Plaza de Armas de Cusco, iluminada al atardecer."
       },
       {
         "src": "/paquetes/img/peru-bolivia-5.jpg",
-        "caption": "El Cerro de los Siete Colores, en Purmamarca."
-      },
-      {
-        "src": "/paquetes/img/peru-bolivia-2.jpg",
         "caption": "Arequipa, la Ciudad Blanca, con el volcán Misti de fondo."
       },
       {
-        "src": "/paquetes/img/peru-bolivia-4.jpg",
-        "caption": "Sacsayhuamán, una de las 4 Ruinas incas cerca de Cusco."
-      },
-      {
-        "src": "/paquetes/img/peru-bolivia-1.webp",
-        "caption": "Los cerros multicolores del norte argentino, camino al circuito."
+        "src": "/paquetes/img/peru-bolivia-2.jpg",
+        "caption": "El Cerro de los Siete Colores, sobre el pueblo de Purmamarca."
       }
-    ]
+                ]
   },
   'quatro-ilhas': {
     "slug": "quatro-ilhas",
@@ -586,29 +562,17 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/quatro-ilhas-1.jpg",
-        "caption": "La Praia de Quatro Ilhas, con arena blanca y mar cristalino entre morros verdes."
+        "caption": "Vista aérea de la Praia de Quatro Ilhas, una bahía de arena blanca entre morros verdes."
       },
       {
         "src": "/paquetes/img/quatro-ilhas-2.jpg",
-        "caption": "Vista aérea de Quatro Ilhas, en Bombinhas."
+        "caption": "Vista aérea de Quatro Ilhas a pleno verano, con la playa repleta de sombrillas de colores."
       },
       {
         "src": "/paquetes/img/quatro-ilhas-3.jpg",
-        "caption": "Los morros verdes que enmarcan la playa de Quatro Ilhas."
-      },
-      {
-        "src": "/paquetes/img/quatro-ilhas-4.jpg",
-        "caption": "El mar transparente de Quatro Ilhas, ideal para esnórquel y buceo."
-      },
-      {
-        "src": "/paquetes/img/quatro-ilhas-5.jpg",
-        "caption": "Bombinhas, con sus playas escondidas entre la vegetación."
-      },
-      {
-        "src": "/paquetes/img/quatro-ilhas-6.jpg",
-        "caption": "Atardecer en una de las playas de Bombinhas."
+        "caption": "Las casas de colores sobre la playa de Quatro Ilhas, con el morro verde de fondo."
       }
-    ]
+                      ]
   },
   'disney-a-medida': {
     "slug": "disney-a-medida",
@@ -627,25 +591,17 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/disney-2.jpg",
-        "caption": "La esfera de Epcot en Walt Disney World."
-      },
-      {
-        "src": "/paquetes/img/disney-3.jpg",
         "caption": "Fuegos artificiales sobre el castillo de Magic Kingdom."
       },
       {
+        "src": "/paquetes/img/disney-3.jpg",
+        "caption": "La esfera de Epcot en Walt Disney World."
+      },
+      {
         "src": "/paquetes/img/disney-4.jpg",
-        "caption": "Hollywood Studios, uno de los cuatro parques de Walt Disney World."
-      },
-      {
-        "src": "/paquetes/img/disney-5.jpg",
         "caption": "Animal Kingdom, el parque temático dedicado a la naturaleza y los animales."
-      },
-      {
-        "src": "/paquetes/img/disney-6.jpg",
-        "caption": "Uno de los resorts temáticos dentro del complejo Walt Disney World."
       }
-    ]
+                ]
   },
   'ingleses-aereo': {
     "slug": "ingleses-aereo",
@@ -660,15 +616,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/ingleses-1.jpg",
-        "caption": "La Praia dos Ingleses, una de las playas más extensas del norte de Florianópolis."
+        "caption": "La Praia dos Ingleses, con olas abiertas al Atlántico y los morros al fondo."
       },
       {
         "src": "/paquetes/img/ingleses-2.jpg",
-        "caption": "Vista aérea de la Praia dos Ingleses, en Florianópolis."
+        "caption": "Puesto de guardavidas y sombrillas de colores en las playas del norte de Florianópolis."
       },
       {
         "src": "/paquetes/img/ingleses-3.jpg",
-        "caption": "Las dunas de arena junto a la Praia dos Ingleses."
+        "caption": "Vista aérea de la Praia dos Ingleses, con sus dunas y el pueblo frente al mar."
       }
     ]
   },
@@ -685,15 +641,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/bombinhas-1.jpg",
-        "caption": "Aguas cristalinas de Bombinhas, ideales para el buceo en Santa Catarina."
+        "caption": "Vista aérea de una cala escondida de aguas turquesas en Bombinhas."
       },
       {
         "src": "/paquetes/img/bombinhas-2.jpg",
-        "caption": "Vista aérea de las playas de Bombinhas, en Santa Catarina."
+        "caption": "Vista aérea de la península de Bombinhas, entre dos playas."
       },
       {
         "src": "/paquetes/img/bombinhas-3.jpg",
-        "caption": "Buceo entre las aguas transparentes de Bombinhas."
+        "caption": "Panorámica aérea de la bahía y el centro de Bombinhas."
       }
     ]
   },
@@ -710,15 +666,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/bombinhas-1.jpg",
-        "caption": "Aguas cristalinas de Bombinhas, ideales para el buceo en Santa Catarina."
+        "caption": "Vista aérea de una cala escondida de aguas turquesas en Bombinhas."
       },
       {
         "src": "/paquetes/img/bombinhas-2.jpg",
-        "caption": "Vista aérea de las playas de Bombinhas, en Santa Catarina."
+        "caption": "Vista aérea de la península de Bombinhas, entre dos playas."
       },
       {
         "src": "/paquetes/img/bombinhas-3.jpg",
-        "caption": "Buceo entre las aguas transparentes de Bombinhas."
+        "caption": "Panorámica aérea de la bahía y el centro de Bombinhas."
       }
     ]
   },
@@ -735,29 +691,21 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/bombas-1.jpg",
-        "caption": "La Praia de Bombas, una playa tranquila junto a Bombinhas."
+        "caption": "El mar tranquilo de la Praia de Bombas, en Santa Catarina."
       },
       {
         "src": "/paquetes/img/bombas-2.jpg",
-        "caption": "Vista aérea de la Praia de Bombas, en Santa Catarina."
+        "caption": "La Praia de Bombas, junto a Bombinhas."
       },
       {
         "src": "/paquetes/img/bombas-3.jpg",
-        "caption": "El mar tranquilo de Bombas, junto a Bombinhas."
-      },
-      {
-        "src": "/paquetes/img/bombas-4.jpg",
         "caption": "Atardecer en la Praia de Bombas."
       },
       {
-        "src": "/paquetes/img/bombas-5.jpg",
-        "caption": "La costa de Bombas, entre Bombinhas y Itajaí."
-      },
-      {
-        "src": "/paquetes/img/bombas-6.jpg",
-        "caption": "Una tarde tranquila en la Praia de Bombas."
+        "src": "/paquetes/img/bombas-4.jpg",
+        "caption": "Vista aérea de la Praia de Bombas."
       }
-    ]
+                ]
   },
   'camboriu-aereo': {
     "slug": "camboriu-aereo",
@@ -780,7 +728,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/camboriu-3.jpg",
-        "caption": "Vista aérea de la bahía de Camboriú, entre el río y el Atlántico."
+        "caption": "Vista desde el mar hacia el skyline de Balneário Camboriú."
       }
     ]
   },
@@ -797,15 +745,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/canasvieiras-1.jpg",
-        "caption": "La playa de Canasvieiras, con sus sombrillas y el mar del norte de la isla."
+        "caption": "Vista aérea de la Praia de Canasvieiras y su costanera."
       },
       {
         "src": "/paquetes/img/canasvieiras-2.jpg",
-        "caption": "Vista aérea de una playa del norte de Florianópolis al atardecer."
+        "caption": "Atardecer de fuego sobre la playa de Canasvieiras."
       },
       {
         "src": "/paquetes/img/canasvieiras-3.jpg",
-        "caption": "Playa de aguas turquesas entre rocas y vegetación en Florianópolis."
+        "caption": "Costa rocosa de Canasvieiras, con una isla frente a la playa."
       }
     ]
   },
@@ -826,11 +774,11 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/iguazu-2.jpg",
-        "caption": "Saltos de agua entre la vegetación selvática de Iguazú."
+        "caption": "Los saltos de agua entre la vegetación selvática de Iguazú."
       },
       {
         "src": "/paquetes/img/iguazu-3.jpg",
-        "caption": "Pasarelas sobre el río frente a la cortina de agua de las Cataratas."
+        "caption": "Las pasarelas sobre el río, frente a la cortina de agua."
       }
     ]
   },
@@ -859,7 +807,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/nyc-miami-4.jpg",
-        "caption": "Vista aérea de South Beach y la costa de Miami."
+        "caption": "Vista aérea de la costa de Miami."
       },
       {
         "src": "/paquetes/img/nyc-miami-5.jpg",
@@ -896,7 +844,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/egipto-dubai-4.jpg",
-        "caption": "Los templos de Abú Simbel, tallados en la roca junto al Nilo."
+        "caption": "Dunas del desierto de Dubái."
       },
       {
         "src": "/paquetes/img/egipto-dubai-5.jpg",
@@ -904,7 +852,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/egipto-dubai-6.jpg",
-        "caption": "Dunas del desierto de Dubái, con el skyline de la ciudad de fondo."
+        "caption": "Los templos de Abú Simbel, tallados en la roca junto al Nilo."
       }
     ]
   },
@@ -921,7 +869,7 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "photos": [
       {
         "src": "/paquetes/img/rio-1.jpg",
-        "caption": "El Cristo Redentor y el Pan de Azúcar, con la Bahía de Guanabara de fondo."
+        "caption": "El Cristo Redentor, con la Bahía de Guanabara de fondo."
       },
       {
         "src": "/paquetes/img/rio-2.jpg",
@@ -929,20 +877,8 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
       },
       {
         "src": "/paquetes/img/rio-3.jpg",
-        "caption": "Fachada del Océano Copacabana Hotel, donde te alojás."
-      },
-      {
-        "src": "/paquetes/img/rio-4.jpg",
-        "caption": "Otra vista aérea de Copacabana, entre el mar y la ciudad."
-      },
-      {
-        "src": "/paquetes/img/rio-5.jpg",
         "caption": "La playa de Ipanema, con el cerro Dois Irmãos de fondo."
-      },
-      {
-        "src": "/paquetes/img/rio-6.jpg",
-        "caption": "Atardecer en las playas de Río de Janeiro."
       }
-    ]
+                      ]
   },
 }
