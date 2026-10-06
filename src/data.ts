@@ -35,6 +35,9 @@ import cardEuropaMaximoItalia from '@/assets/globe/cards/europa-maximo-italia.jp
 import cardEuropaMaximoEspana from '@/assets/globe/cards/europa-maximo-espana.jpg'
 import cardEgiptoDubaiEgipto from '@/assets/globe/cards/egipto-dubai-egipto.jpg'
 import cardEgiptoDubaiDubai from '@/assets/globe/cards/egipto-dubai-dubai.webp'
+import camboriuGrupo1 from '@/assets/experiences/camboriu-grupo-1.jpg'
+import camboriuGrupo2 from '@/assets/experiences/camboriu-grupo-2.jpg'
+import camboriuGrupo3 from '@/assets/experiences/camboriu-grupo-3.jpg'
 
 // ---------------------------------------------------------------------------
 // Paquetes
@@ -1132,4 +1135,8 @@ export type Experience = {
  * 2. Importalo arriba y agregá un objeto al array:
  *    { image: mariaCamboriu, travelerName: 'María', destination: 'Camboriú', quote: 'Un viaje increíble!' }
  */
-export const experiences: Experience[] = []
+export const experiences: Experience[] = [
+  { image: camboriuGrupo1, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
+  { image: camboriuGrupo2, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
+  { image: camboriuGrupo3, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
+]
