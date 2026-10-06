@@ -625,21 +625,28 @@
   z-index: 3;
   left: 50%;
   top: 60%;
-  translate: -50% -50%;
+  /* --cta-x/--cta-y (centrado, distinto en mobile) y --cta-enter-y (offset de
+     entrada) se combinan en un único "transform": el minificador de CSS del
+     build de producción descarta la propiedad "translate" cuando convive con
+     "transform" en el mismo selector, dejando el bloque corrido abajo a la
+     derecha. Con todo adentro de "transform" no hay nada que descartar. */
+  --cta-x: -50%;
+  --cta-y: -50%;
+  --cta-enter-y: 14px;
   display: grid;
   justify-items: center;
   gap: 1.2rem;
   width: min(90%, 42rem);
   text-align: center;
   opacity: 0;
-  transform: translateY(14px);
+  transform: translate(var(--cta-x), calc(var(--cta-y) + var(--cta-enter-y)));
   transition:
     opacity 0.55s var(--hero-ease) 0.28s,
     transform 0.55s var(--hero-ease) 0.28s;
 }
 .hero-multi.is-active .hero-multi-cta {
   opacity: 1;
-  transform: none;
+  --cta-enter-y: 0px;
 }
 .hero-multi-cta::before {
   content: '';
@@ -867,7 +874,8 @@
     inset: auto;
     left: auto;
     top: auto;
-    translate: 0 0;
+    --cta-x: 0px;
+    --cta-y: 0px;
     width: 100%;
     padding: 1.5rem 1.2rem 1.7rem;
     background: var(--color-sea-950);
@@ -901,7 +909,7 @@
   }
   .hero-multi-cta {
     opacity: 1;
-    transform: none;
+    --cta-enter-y: 0px;
   }
   .hero-multi.is-active .hero-multi-panel-bg {
     animation: none;
