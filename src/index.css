@@ -244,14 +244,15 @@
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transform: scale(1.06);
+  transform: scale(1.06) translateZ(0);
+  will-change: opacity, transform;
   transition:
     opacity 1s var(--hero-ease),
     transform 8s var(--hero-ease);
 }
 .hero-bg.is-active {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) translateZ(0);
 }
 /* fondo del slide de cierre: color plano; las fotos las ponen los paneles */
 .hero-bg--solid {
@@ -287,7 +288,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.7rem;
+  gap: 2px;
   transition:
     opacity 0.4s var(--hero-ease),
     visibility 0.4s;
@@ -299,41 +300,60 @@
   visibility: hidden;
   pointer-events: none;
 }
+/* La línea y el relleno van de centro a centro de los puntos (mitad del
+   botón, 10px = 20px/2) — antes se pasaban 1.6rem por arriba y por abajo del
+   primero/último punto y quedaban como dos cabos sueltos flotando. */
 .hero-rail-line {
   position: absolute;
-  top: -1.6rem;
-  bottom: -1.6rem;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
   width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  background: rgba(255, 255, 255, 0.25);
 }
 /* barra de "seguimiento": se llena de arriba hacia el punto activo */
 .hero-rail-fill {
   position: absolute;
-  top: -1.6rem;
-  bottom: -1.6rem;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
   width: 1px;
-  background: linear-gradient(180deg, var(--color-turquoise-300), rgba(143, 208, 222, 0.35));
+  background: var(--color-turquoise-300);
   transform-origin: top;
   transform: scaleY(var(--rail-progress, 0));
   transition: transform 0.5s var(--hero-ease);
 }
+/* El punto visible (::after) es chico a propósito; el botón es el área de
+   toque real (20px) — antes el hitbox era el punto de 7px, difícil de tocar
+   en mobile. */
 .hero-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
   padding: 0;
+}
+.hero-dot::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
   transition:
     transform 0.3s var(--hero-ease),
     background-color 0.3s;
 }
-.hero-dot:hover {
-  background: rgba(255, 255, 255, 0.7);
+.hero-dot:hover::after {
+  background: rgba(255, 255, 255, 0.75);
 }
-.hero-dot.is-active {
+.hero-dot.is-active::after {
   background: var(--color-turquoise-300);
-  transform: scale(1.7);
-  box-shadow: 0 0 0 3px rgba(143, 208, 222, 0.18);
+  transform: scale(1.6);
+  box-shadow: 0 0 0 4px rgba(143, 208, 222, 0.16);
 }
 
 .hero-main {
@@ -510,34 +530,43 @@
 }
 .hero-multi-panel {
   position: relative;
-  background-size: cover;
-  background-position: 50% 45%;
   overflow: hidden;
   /* cada panel se estira 1px sobre el vecino para tapar la costura sub-pixel
      de la unión; el sobrante de los bordes exteriores lo recorta el hero */
   margin-right: -1px;
   margin-bottom: -1px;
 }
-.hero-multi.is-active .hero-multi-panel {
+/* El paneo "ken burns" anima transform (compositor) en vez de
+   background-position (que fuerza repintado en cada frame); por eso la
+   imagen vive en esta capa aparte, agrandada verticalmente para que el
+   translateY no deje ver el borde. */
+.hero-multi-panel-bg {
+  position: absolute;
+  inset: -16% 0;
+  background-size: cover;
+  background-position: 50% 45%;
+  will-change: transform;
+}
+.hero-multi.is-active .hero-multi-panel-bg {
   animation: hero-panel-pan 24s ease-out forwards;
 }
-.hero-multi.is-active .hero-multi-panel:nth-child(even) {
+.hero-multi.is-active .hero-multi-panel:nth-child(even) .hero-multi-panel-bg {
   animation-name: hero-panel-pan-up;
 }
 @keyframes hero-panel-pan {
   from {
-    background-position: 50% 38%;
+    transform: translateY(-7%) translateZ(0);
   }
   to {
-    background-position: 50% 60%;
+    transform: translateY(7%) translateZ(0);
   }
 }
 @keyframes hero-panel-pan-up {
   from {
-    background-position: 50% 62%;
+    transform: translateY(7%) translateZ(0);
   }
   to {
-    background-position: 50% 40%;
+    transform: translateY(-7%) translateZ(0);
   }
 }
 .hero-multi-panel::after {
@@ -874,7 +903,7 @@
     opacity: 1;
     transform: none;
   }
-  .hero-multi.is-active .hero-multi-panel {
+  .hero-multi.is-active .hero-multi-panel-bg {
     animation: none;
   }
   .hero-progress {

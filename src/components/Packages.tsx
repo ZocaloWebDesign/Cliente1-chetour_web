@@ -90,16 +90,16 @@ export function Packages() {
       </div>
 
       <div
-        className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
+        className="overflow-hidden py-12 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
         <div
           ref={trackRef}
-          className="flex w-max gap-10 px-6 will-change-transform"
+          className="flex w-max gap-14 px-6 will-change-transform"
         >
           {(reduced ? suggested : [...suggested, ...suggested]).map((pkg, i) => (
-            <div key={`${pkg.slug}-${i}`} className="w-[320px] shrink-0 sm:w-[360px]">
+            <div key={`${pkg.slug}-${i}`} className="w-[260px] shrink-0 sm:w-[300px]">
               <PackageCard pkg={pkg} index={i} />
             </div>
           ))}

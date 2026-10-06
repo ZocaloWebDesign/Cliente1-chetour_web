@@ -294,11 +294,11 @@ export function Hero() {
       >
         <div className="hero-multi-grid" aria-hidden="true">
           {multiPanels.map((p) => (
-            <div
-              key={p.name}
-              className="hero-multi-panel"
-              style={{ backgroundImage: `url(${p.image})` }}
-            >
+            <div key={p.name} className="hero-multi-panel">
+              <div
+                className="hero-multi-panel-bg"
+                style={{ backgroundImage: `url(${p.image})` }}
+              />
               <span className="hero-multi-name">{p.name}</span>
             </div>
           ))}

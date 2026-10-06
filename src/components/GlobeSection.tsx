@@ -584,6 +584,9 @@ export function GlobeSection() {
     controls.minPolarAngle = 0.2
     controls.maxPolarAngle = Math.PI - 0.2
     controls.autoRotateSpeed = 0.35 // giro lento de fondo
+    // un dedo queda libre para scrollear la página (ver touch-pan-y más abajo);
+    // arrastrar para girar el globo sigue andando con mouse (no pasa por acá).
+    controls.touches.ONE = undefined
 
     let isUserDragging = false
     let dragResumeAt = 0 // timestamp hasta el cual no se reanuda el giro tras soltar
@@ -913,12 +916,16 @@ export function GlobeSection() {
 
           {/* Centro: el globo — sin cambios de tamaño/comportamiento. El cursor
               pasa a "pointer" cuando hay un país bajo el mouse (indica que se
-              puede seleccionar); si no, queda "grab" para arrastrar el globo. */}
+              puede seleccionar); si no, queda "grab" para arrastrar el globo.
+              touch-pan-y (en vez de touch-none): un dedo sigue scrolleando la
+              página en vertical sobre el globo — arrastrar para girar queda
+              para mouse (controls.touches.ONE se deshabilita arriba), así en
+              mobile/tablet el globo no "traba" el scroll. */}
           <div className="order-1 lg:order-2">
             <div
               ref={containerRef}
               className={cx(
-                'relative mx-auto aspect-square w-full max-w-[34rem] touch-none select-none active:cursor-grabbing',
+                'relative mx-auto aspect-square w-full max-w-[34rem] touch-pan-y select-none active:cursor-grabbing',
                 hoveredCountry ? 'cursor-pointer' : 'cursor-grab',
               )}
             >

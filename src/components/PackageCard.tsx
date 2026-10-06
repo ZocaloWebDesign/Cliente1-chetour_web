@@ -14,14 +14,18 @@ export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.45, delay: (index % 3) * 0.1 }}
-      whileHover={{ y: -8 }}
-      className="group h-full gap-0 rounded-3xl p-0 shadow-sm transition-shadow duration-300 hover:shadow-xl"
+      whileHover={{
+        scale: 1.06,
+        zIndex: 10,
+        transition: { type: 'spring', stiffness: 300, damping: 22 },
+      }}
+      className="group relative h-full gap-0 rounded-3xl p-0 shadow-sm transition-shadow duration-300 hover:shadow-[0_16px_32px_-14px_rgba(15,23,42,0.3)]"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={pkg.image}
           alt={pkg.destination}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent" />
         {pkg.highlight && (
@@ -35,7 +39,7 @@ export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number 
         </span>
       </div>
 
-      <CardContent className="flex flex-1 flex-col p-6">
+      <CardContent className="flex flex-1 flex-col p-5">
         <h3 className="text-lg font-semibold text-neutral-950 dark:text-white">{pkg.name}</h3>
         <p className="text-sm text-neutral-500 dark:text-neutral-400">{pkg.destination}</p>
 
@@ -54,7 +58,7 @@ export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number 
         </ul>
       </CardContent>
 
-      <CardFooter className="flex items-end justify-between gap-3 border-t border-neutral-100 bg-transparent px-6 py-4 dark:border-neutral-800">
+      <CardFooter className="flex items-end justify-between gap-3 border-t border-neutral-100 bg-transparent px-5 py-4 dark:border-neutral-800">
         <div>
           <p className="text-base font-semibold text-neutral-950 dark:text-white">{pkg.price}</p>
           {pkg.priceNote && (
