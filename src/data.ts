@@ -35,9 +35,10 @@ import cardEuropaMaximoItalia from '@/assets/globe/cards/europa-maximo-italia.jp
 import cardEuropaMaximoEspana from '@/assets/globe/cards/europa-maximo-espana.jpg'
 import cardEgiptoDubaiEgipto from '@/assets/globe/cards/egipto-dubai-egipto.jpg'
 import cardEgiptoDubaiDubai from '@/assets/globe/cards/egipto-dubai-dubai.webp'
-import camboriuGrupo1 from '@/assets/experiences/camboriu-grupo-1.jpg'
 import camboriuGrupo2 from '@/assets/experiences/camboriu-grupo-2.jpg'
 import camboriuGrupo3 from '@/assets/experiences/camboriu-grupo-3.jpg'
+import disneyGrupo from '@/assets/experiences/disney-grupo.jpg'
+import dubaiGrupo from '@/assets/experiences/dubai-grupo.jpg'
 
 // ---------------------------------------------------------------------------
 // Paquetes
@@ -1136,7 +1137,8 @@ export type Experience = {
  *    { image: mariaCamboriu, travelerName: 'María', destination: 'Camboriú', quote: 'Un viaje increíble!' }
  */
 export const experiences: Experience[] = [
-  { image: camboriuGrupo1, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
+  { image: disneyGrupo, travelerName: 'Grupo de amigos', destination: 'Disney' },
   { image: camboriuGrupo2, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
   { image: camboriuGrupo3, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
+  { image: dubaiGrupo, travelerName: 'Grupo de amigos', destination: 'Dubái' },
 ]
