@@ -39,16 +39,16 @@ export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number 
         </span>
       </div>
 
-      <CardContent className="flex flex-1 flex-col p-5">
+      <CardContent className="flex flex-1 flex-col px-5 pt-4 pb-2">
         <h3 className="text-lg font-semibold text-neutral-950 dark:text-white">{pkg.name}</h3>
         <p className="text-sm text-neutral-500 dark:text-neutral-400">{pkg.destination}</p>
 
-        <div className="mt-3 flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
+        <div className="mt-2 flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
           <Calendar className="h-3.5 w-3.5" />
           {pkg.duration} · {pkg.departure}
         </div>
 
-        <ul className="mt-4 space-y-1.5">
+        <ul className="mt-3 space-y-1">
           {pkg.includes.slice(0, 3).map((item) => (
             <li key={item} className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-300">
               <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
@@ -58,7 +58,7 @@ export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number 
         </ul>
       </CardContent>
 
-      <CardFooter className="flex items-end justify-between gap-3 border-t border-neutral-100 bg-transparent px-5 py-4 dark:border-neutral-800">
+      <CardFooter className="flex items-end justify-between gap-3 border-t border-neutral-100 bg-transparent px-5 py-3 dark:border-neutral-800">
         <div>
           <p className="text-base font-semibold text-neutral-950 dark:text-white">{pkg.price}</p>
           {pkg.priceNote && (
