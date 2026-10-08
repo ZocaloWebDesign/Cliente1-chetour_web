@@ -10,6 +10,7 @@ import {
 import { useReducedMotion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLenis } from 'lenis/react'
+import { useNavigate } from 'react-router-dom'
 import camboriuSkyline from '@/assets/destinations/camboriu-skyline.jpg'
 import barilocheLago from '@/assets/destinations/bariloche-lago.jpg'
 import disneyPanorama from '@/assets/destinations/disney-castle-panorama.jpg'
@@ -52,7 +53,7 @@ const destinationSlides: DestinationSlide[] = [
     blurb:
       'La «Dubái brasileña»: playa urbana, el teleférico del Parque Unipraias y la vida nocturna más famosa del sur de Brasil.',
     ctaLabel: 'Consultar',
-    ctaHref: '#paquetes',
+    ctaHref: '/paquetes/camboriu-aereo',
     image: camboriuSkyline,
     previewCaption: 'Praia Central, Brasil',
   },
@@ -65,7 +66,7 @@ const destinationSlides: DestinationSlide[] = [
     blurb:
       'Lagos glaciares, bosque andino-patagónico y montaña. El clásico argentino, a pocas horas en avión y con salidas todo el año.',
     ctaLabel: 'Consultar',
-    ctaHref: '#contacto',
+    ctaHref: '/paquetes/bariloche-aereo',
     image: barilocheLago,
     previewCaption: 'Lago Nahuel Huapi',
   },
@@ -78,7 +79,7 @@ const destinationSlides: DestinationSlide[] = [
     blurb:
       'El viaje soñado, armado día por día a tu presupuesto: días de parque, categoría de hotel, entradas y traslados a tu medida.',
     ctaLabel: 'Consultar',
-    ctaHref: '#paquetes',
+    ctaHref: '/paquetes/disney-a-medida',
     image: disneyPanorama,
     previewCaption: 'Magic Kingdom, Florida',
   },
@@ -91,7 +92,7 @@ const destinationSlides: DestinationSlide[] = [
     blurb:
       'Aguas calmas y poca profundidad en la Isla de la Magia. La playa preferida por las familias para un primer viaje a Brasil.',
     ctaLabel: 'Consultar',
-    ctaHref: '#paquetes',
+    ctaHref: '/paquetes/canasvieiras-aereo',
     image: canasvieirasPraia,
     previewCaption: 'Ilha de Santa Catarina',
   },
@@ -138,19 +139,24 @@ const INTERVAL = 4000
 export function Hero() {
   const reduced = useReducedMotion()
   const lenis = useLenis()
+  const navigate = useNavigate()
 
-  // Los CTA del hero apuntan a anclas de la home (#paquetes, #contacto,
-  // #destinos). Scroll suave con Lenis; si todavía no está listo, cae al
-  // scroll nativo.
-  const scrollToHash = useCallback(
+  // Los CTA de los 4 destinos llevan a su página de paquete (/paquetes/:slug);
+  // el del slide de cierre sigue siendo un ancla de la home (#destinos).
+  // Scroll suave con Lenis; si todavía no está listo, cae al scroll nativo.
+  const goToHref = useCallback(
     (href: string) => {
+      if (href.startsWith('/')) {
+        navigate(href)
+        return
+      }
       const el = document.getElementById(href.slice(href.indexOf('#') + 1))
       if (!el) return
       history.pushState(null, '', href)
       if (lenis) lenis.scrollTo(el, { offset: NAV_OFFSET })
       else el.scrollIntoView({ behavior: 'smooth' })
     },
-    [lenis],
+    [lenis, navigate],
   )
 
   const [cur, setCur] = useState(0)
@@ -280,7 +286,7 @@ export function Hero() {
                 type="button"
                 className="hero-cta-btn"
                 text={s.ctaLabel}
-                onClick={() => scrollToHash(s.ctaHref)}
+                onClick={() => goToHref(s.ctaHref)}
                 tabIndex={active ? 0 : -1}
               />
             </div>
@@ -311,7 +317,7 @@ export function Hero() {
             type="button"
             className="hero-cta-btn"
             text={finalSlide.ctaLabel}
-            onClick={() => scrollToHash(finalSlide.ctaHref)}
+            onClick={() => goToHref(finalSlide.ctaHref)}
             tabIndex={cur === LAST ? 0 : -1}
           />
         </div>
