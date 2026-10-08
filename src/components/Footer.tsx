@@ -169,6 +169,17 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {siteInfo.name}. Todos los derechos reservados.
         </p>
+        <p className="mt-1.5 text-xs text-muted-foreground/70">
+          Sitio diseñado y desarrollado por{' '}
+          <a
+            href="https://zocalo-digital.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-muted-foreground underline decoration-dotted underline-offset-4 transition-colors hover:text-sea-600 dark:hover:text-turquoise-300"
+          >
+            Zócalo Digital
+          </a>
+        </p>
       </motion.div>
     </footer>
   )
