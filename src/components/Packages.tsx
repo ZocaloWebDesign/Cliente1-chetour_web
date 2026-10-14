@@ -20,8 +20,11 @@ const SUGGESTED_SLUGS = [
 // Velocidad base del auto-scroll, en px/segundo.
 const BASE_SPEED = 44
 // Qué tan rápido la velocidad actual persigue a la velocidad objetivo (0 en
-// hover, BASE_SPEED fuera de hover): más alto = frenada/arranque más lento.
+// hover/drag, BASE_SPEED en reposo): más alto = frenada/arranque más lento.
 const EASE_PER_SECOND = 2.6
+// Movimiento mínimo (px) para considerar que hubo arrastre y no un
+// click/tap — mismo criterio que usa el globo para distinguir tap de drag.
+const DRAG_CLICK_THRESHOLD = 6
 
 export function Packages() {
   const suggested = SUGGESTED_SLUGS.map((slug) => packages.find((p) => p.slug === slug)).filter(
@@ -30,6 +33,7 @@ export function Packages() {
   const reduced = useReducedMotion()
 
   const trackRef = useRef<HTMLDivElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
   const hoveredRef = useRef(false)
   const [hovered, setHovered] = useState(false)
 
@@ -37,35 +41,130 @@ export function Packages() {
     hoveredRef.current = hovered
   }, [hovered])
 
+  // Arrastrable con mouse y touch (Pointer Events cubre ambos). Con
+  // prefers-reduced-motion no hay auto-scroll ni loop infinito: el track no
+  // se duplica (ver el map más abajo) y el arrastre queda acotado entre las
+  // puntas en vez de dar la vuelta.
   useEffect(() => {
     const track = trackRef.current
-    if (!track || reduced) return
+    const wrapEl = wrapRef.current
+    if (!track || !wrapEl) return
 
     let raf = 0
     let last = performance.now()
     let offset = 0
     let speed = 0
+    let dragging = false
+    let pointerId: number | null = null
+    let startX = 0
+    let startOffset = 0
+    let moved = 0
+    let captured = false
+    let suppressClick = false
+    let suppressTimer = 0
+
+    const maxOffset = () => Math.max(0, track.scrollWidth - wrapEl.clientWidth)
+
+    const wrapOffset = (v: number) => {
+      if (reduced) return Math.min(Math.max(v, 0), maxOffset())
+      const half = track.scrollWidth / 2
+      if (half <= 0) return 0
+      v %= half
+      if (v < 0) v += half
+      return v
+    }
+
+    const applyTransform = () => {
+      track.style.transform = `translateX(-${offset}px)`
+    }
 
     const tick = (now: number) => {
       const dt = Math.min((now - last) / 1000, 0.05)
       last = now
 
-      const target = hoveredRef.current ? 0 : BASE_SPEED
-      // Suavizado exponencial: nunca un corte/arranque abrupto.
-      speed += (target - speed) * Math.min(1, EASE_PER_SECOND * dt)
-      offset += speed * dt
+      if (!dragging) {
+        const target = hoveredRef.current ? 0 : BASE_SPEED
+        // Suavizado exponencial: nunca un corte/arranque abrupto.
+        speed += (target - speed) * Math.min(1, EASE_PER_SECOND * dt)
+        offset = wrapOffset(offset + speed * dt)
+        applyTransform()
+      }
 
-      // El track renderiza los paquetes dos veces seguidas: al pasar la
-      // mitad del ancho, restamos esa mitad y el loop queda sin costuras.
-      const half = track.scrollWidth / 2
-      if (half > 0 && offset >= half) offset -= half
-
-      track.style.transform = `translateX(-${offset}px)`
       raf = requestAnimationFrame(tick)
     }
 
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      dragging = true
+      moved = 0
+      captured = false
+      pointerId = e.pointerId
+      startX = e.clientX
+      startOffset = offset
+      speed = 0
+      // Ojo: NO se captura el puntero acá. Capturar en pointerdown redirige
+      // el mouseup/click nativo al track aunque no haya habido arrastre, y
+      // eso rompe el click de los <Link> de adentro (p. ej. "Ver más") aun
+      // en un simple tap. Recién se captura más abajo, al confirmar drag.
+    }
+    const onPointerMove = (e: PointerEvent) => {
+      if (!dragging || e.pointerId !== pointerId) return
+      const dx = startX - e.clientX
+      moved = Math.max(moved, Math.abs(dx))
+      if (!captured && moved > DRAG_CLICK_THRESHOLD) {
+        captured = true
+        track.setPointerCapture(e.pointerId)
+      }
+      offset = wrapOffset(startOffset + dx)
+      applyTransform()
+    }
+    const endDrag = (e: PointerEvent) => {
+      if (!dragging || e.pointerId !== pointerId) return
+      dragging = false
+      pointerId = null
+      if (moved > DRAG_CLICK_THRESHOLD) {
+        // Fue un arrastre, no un tap: el click fantasma que dispara el
+        // navegador al soltar no debe navegar (p. ej. si cae sobre "Ver
+        // más"). Se limpia solo al consumir ese click, o a los 300ms si no
+        // llega ninguno, para no tragarse un click futuro sin relación.
+        suppressClick = true
+        window.clearTimeout(suppressTimer)
+        suppressTimer = window.setTimeout(() => {
+          suppressClick = false
+        }, 300)
+      }
+      if (captured) {
+        try {
+          track.releasePointerCapture(e.pointerId)
+        } catch {
+          // el pointer ya pudo soltarse solo (p. ej. pointercancel)
+        }
+      }
+    }
+    const onClickCapture = (e: MouseEvent) => {
+      if (!suppressClick) return
+      e.preventDefault()
+      e.stopPropagation()
+      suppressClick = false
+    }
+
+    track.addEventListener('pointerdown', onPointerDown)
+    track.addEventListener('pointermove', onPointerMove)
+    track.addEventListener('pointerup', endDrag)
+    track.addEventListener('pointercancel', endDrag)
+    track.addEventListener('click', onClickCapture, true)
+
+    if (!reduced) raf = requestAnimationFrame(tick)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      window.clearTimeout(suppressTimer)
+      track.removeEventListener('pointerdown', onPointerDown)
+      track.removeEventListener('pointermove', onPointerMove)
+      track.removeEventListener('pointerup', endDrag)
+      track.removeEventListener('pointercancel', endDrag)
+      track.removeEventListener('click', onClickCapture, true)
+    }
   }, [reduced])
 
   return (
@@ -90,13 +189,14 @@ export function Packages() {
       </div>
 
       <div
+        ref={wrapRef}
         className="overflow-hidden py-12 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
         <div
           ref={trackRef}
-          className="flex w-max gap-14 px-6 will-change-transform"
+          className="flex w-max cursor-grab touch-pan-y gap-14 px-6 will-change-transform select-none active:cursor-grabbing"
         >
           {(reduced ? suggested : [...suggested, ...suggested]).map((pkg, i) => (
             <div key={`${pkg.slug}-${i}`} className="w-[260px] shrink-0 sm:w-[300px]">

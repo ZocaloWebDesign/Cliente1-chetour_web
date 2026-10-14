@@ -584,9 +584,12 @@ export function GlobeSection() {
     controls.minPolarAngle = 0.2
     controls.maxPolarAngle = Math.PI - 0.2
     controls.autoRotateSpeed = 0.35 // giro lento de fondo
-    // un dedo queda libre para scrollear la página (ver touch-pan-y más abajo);
-    // arrastrar para girar el globo sigue andando con mouse (no pasa por acá).
-    controls.touches.ONE = undefined
+    // Un dedo gira el globo (igual que arrastrar con mouse). Se probó dejar
+    // ese gesto libre para scrollear la página (touches.ONE = undefined +
+    // touch-action: pan-y), pero en Chrome/Safari mobile terminaba sin dejar
+    // agarrar el globo en pantallas chicas — acá el drag táctil es la
+    // interacción principal (el título ya dice "Girá el globo"), así que se
+    // prioriza eso; para pasar de largo alcanza con deslizar fuera del globo.
 
     let isUserDragging = false
     let dragResumeAt = 0 // timestamp hasta el cual no se reanuda el giro tras soltar
@@ -917,15 +920,14 @@ export function GlobeSection() {
           {/* Centro: el globo — sin cambios de tamaño/comportamiento. El cursor
               pasa a "pointer" cuando hay un país bajo el mouse (indica que se
               puede seleccionar); si no, queda "grab" para arrastrar el globo.
-              touch-pan-y (en vez de touch-none): un dedo sigue scrolleando la
-              página en vertical sobre el globo — arrastrar para girar queda
-              para mouse (controls.touches.ONE se deshabilita arriba), así en
-              mobile/tablet el globo no "traba" el scroll. */}
+              touch-none: el gesto táctil acá adentro es para girar el globo,
+              no para scrollear la página (ver nota en OrbitControls más
+              arriba). */}
           <div className="order-1 lg:order-2">
             <div
               ref={containerRef}
               className={cx(
-                'relative mx-auto aspect-square w-full max-w-[34rem] touch-pan-y select-none active:cursor-grabbing',
+                'relative mx-auto aspect-square w-full max-w-[34rem] touch-none select-none active:cursor-grabbing',
                 hoveredCountry ? 'cursor-pointer' : 'cursor-grab',
               )}
             >

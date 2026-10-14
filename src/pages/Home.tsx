@@ -71,8 +71,8 @@ export function Home() {
         </div>
 
         <Packages />
-        <Experiences />
         <About />
+        <Experiences />
         <Cta />
       </main>
       <Footer />

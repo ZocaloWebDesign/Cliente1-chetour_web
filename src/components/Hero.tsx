@@ -310,9 +310,13 @@ export function Hero() {
           ))}
         </div>
         <div className="hero-multi-cta">
+          <p className="hero-multi-eyebrow">{finalSlide.label}</p>
           <h2 className="hero-multi-title">
             Tu próxima historia empieza con un <em>viaje</em>
           </h2>
+          <p className="hero-multi-blurb">
+            Girá el globo interactivo y descubrí a dónde más te podemos llevar.
+          </p>
           <InteractiveHoverButton
             type="button"
             className="hero-cta-btn"

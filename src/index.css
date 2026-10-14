@@ -569,6 +569,24 @@
     transform: translateY(-7%) translateZ(0);
   }
 }
+/* variante horizontal: en mobile los paneles se apilan como franjas anchas y
+   bajas (ver media query), así que el paneo pasa de vertical a izq/der. */
+@keyframes hero-panel-pan-x {
+  from {
+    transform: translateX(-7%) translateZ(0);
+  }
+  to {
+    transform: translateX(7%) translateZ(0);
+  }
+}
+@keyframes hero-panel-pan-x-rev {
+  from {
+    transform: translateX(7%) translateZ(0);
+  }
+  to {
+    transform: translateX(-7%) translateZ(0);
+  }
+}
 .hero-multi-panel::after {
   content: '';
   position: absolute;
@@ -671,6 +689,23 @@
   font-family: var(--font-accent);
   font-style: italic;
   font-weight: 400;
+}
+/* mismo tratamiento de "ojo" que .hero-region, centrado para este bloque */
+.hero-multi-eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-turquoise-300);
+}
+.hero-multi-blurb {
+  margin: 0;
+  max-width: 34ch;
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  line-height: 1.5;
+  color: #e4dfd2;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero-previews {
@@ -858,14 +893,33 @@
   .hero-multi-grid {
     position: relative;
     inset: auto;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
+    /* franjas horizontales apiladas (una arriba de la otra) en vez de la
+       grilla 2x2: cada panel es ancho y bajo, como en desktop pero girado. */
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+  .hero-multi-panel {
+    margin-right: 0;
+  }
+  /* la imagen se agranda a los costados (no arriba/abajo) para que el paneo
+     sea horizontal, a tono con la franja ancha y baja de cada panel. */
+  .hero-multi-panel-bg {
+    inset: 0 -16%;
+  }
+  .hero-multi.is-active .hero-multi-panel-bg {
+    animation-name: hero-panel-pan-x;
+  }
+  .hero-multi.is-active .hero-multi-panel:nth-child(even) .hero-multi-panel-bg {
+    animation-name: hero-panel-pan-x-rev;
   }
   .hero-multi-name {
-    /* en el grid 2x2 cada nombre vuelve arriba de su celda */
-    top: 0.7rem;
-    bottom: auto;
-    font-size: clamp(0.72rem, 3vw, 1rem);
+    /* centrado en la franja (antes iba arriba, pensado para la celda 2x2) */
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.72rem, 3vw, 0.85rem);
     letter-spacing: 0.16em;
     padding-inline: 0.35rem;
   }
@@ -1221,7 +1275,12 @@
     gap: 0;
     padding: 1rem 1.2rem 1.6rem;
     box-shadow: 0 18px 40px -18px rgba(12, 43, 58, 0.5);
-    transform: translateY(-120%);
+    /* -100% de su propio alto + los 74px que ya lo bajan (top: var(--header-h))
+       = el borde de abajo queda justo en y:0, cerrado del todo. Un -120% fijo
+       dependía de que el menú fuera lo bastante alto; con menos links (o
+       pantallas chicas) se quedaba corto y asomaba una franja arriba del
+       header. */
+    transform: translateY(calc(-100% - var(--header-h)));
     transition: transform 0.4s var(--hero-ease);
     max-height: calc(100dvh - var(--header-h));
     overflow: auto;
