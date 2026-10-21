@@ -7,6 +7,7 @@
 
 
 import { useEffect, useRef } from "react"
+import { heroCoversGlobe } from "@/lib/hero-cover"
 
 const VERT = `attribute vec2 a_position;
 void main() {
@@ -428,7 +429,7 @@ export function ShaderBackground({ className }: { className?: string }) {
     }
 
     function requestRender() {
-      if (!disposed && visible && inView && raf === 0) {
+      if (!disposed && visible && inView && !heroCoversGlobe() && raf === 0) {
         raf = requestAnimationFrame(render)
       }
     }
@@ -506,10 +507,16 @@ export function ShaderBackground({ className }: { className?: string }) {
       }
     }
     document.addEventListener("visibilitychange", onVisibilityChange)
+    // al salir del scroll 0 el hero empieza a destapar el shader: retomar
+    window.addEventListener("scroll", requestRender, { passive: true })
 
     const render = (now: number) => {
       raf = 0
       if (disposed || !visible || !inView) return
+      if (heroCoversGlobe()) {
+        lastNow = null
+        return
+      }
       const dt = lastNow === null ? 0 : Math.min((now - lastNow) / 1000, 0.1)
       lastNow = now
       const follow = 1 - Math.exp(-12 * dt)
@@ -555,6 +562,7 @@ export function ShaderBackground({ className }: { className?: string }) {
       resizeObserver.disconnect()
       intersectionObserver.disconnect()
       document.removeEventListener("visibilitychange", onVisibilityChange)
+      window.removeEventListener("scroll", requestRender)
       window.removeEventListener("resize", updateLayout)
       if (UNIFORMS.cursorEnabled) {
         window.removeEventListener("pointermove", onPointerMove)

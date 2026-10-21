@@ -811,18 +811,20 @@
   bottom: 0;
   z-index: 4;
   height: 2px;
-  width: 0;
+  width: 100%;
+  transform-origin: left;
   background: var(--color-turquoise-300);
   animation-name: hero-progress;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
 @keyframes hero-progress {
+  /* scaleX en vez de width: no dispara layout en cada frame */
   from {
-    width: 0;
+    transform: scaleX(0);
   }
   to {
-    width: 100%;
+    transform: scaleX(1);
   }
 }
 

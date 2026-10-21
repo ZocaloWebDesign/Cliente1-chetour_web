@@ -182,6 +182,18 @@ export function Hero() {
     return () => window.clearTimeout(t)
   }, [cur, paused, reduced])
 
+  // Los fondos inactivos están en opacity 0, así que el navegador no los
+  // decodifica hasta el primer cambio: ese decode de un JPG de ~2000px en pleno
+  // cross-fade era el tirón. Se decodifican por adelantado.
+  useEffect(() => {
+    for (const it of railItems) {
+      if (!it.bg) continue
+      const img = new Image()
+      img.src = it.bg
+      img.decode().catch(() => {})
+    }
+  }, [])
+
   useEffect(() => {
     const onVisibility = () => setTabHidden(document.hidden)
     document.addEventListener('visibilitychange', onVisibility)

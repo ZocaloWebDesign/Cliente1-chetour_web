@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Bus, Plane as PlaneIcon } from 'lucide-react'
 import { ShaderBackground } from '@/components/ui/shader-59f0538a'
+import { heroCoversGlobe } from '@/lib/hero-cover'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import ConicPolygonGeometry from 'three-conic-polygon-geometry'
@@ -371,9 +372,6 @@ function FeaturedCard({
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-sea-950/95 via-sea-950/45 to-transparent" />
-          {entry.credit && (
-            <span className="absolute top-3 right-3 text-[10px] text-white/50">{entry.credit}</span>
-          )}
           <div className="relative flex flex-col gap-2 p-5 sm:p-6">
             {countryName && (
               <span className="text-[11px] font-semibold tracking-[0.2em] text-white/70 uppercase">
@@ -685,6 +683,10 @@ export function GlobeSection() {
 
     // --- Loop ----------------------------------------------------------
     let frame = requestAnimationFrame(function loop() {
+      if (heroCoversGlobe()) {
+        frame = requestAnimationFrame(loop)
+        return
+      }
       // el raycast corre solo cuando el puntero realmente se movió: así, cuando
       // el globo gira hacia un país en hover, el país no "se escapa" del cursor
       // quieto ni se apaga el hover a mitad de camino.
