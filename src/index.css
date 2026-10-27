@@ -1320,3 +1320,94 @@
     transition: none;
   }
 }
+/* ---- Pantalla de carga (Loader.tsx) ------------------------------------- */
+/* Dos mitades claras recortadas con clip-path desde JS; el avión y la estela
+   (blanca, con degradé) viajan por la línea central. Colores sacados del logo:
+   "Che" y el avioncito en teal, "Tour" en azul casi negro. */
+.loader {
+  --loader-bg: #f4f2f0;
+  --loader-teal: #189ca8;
+  --loader-ink: #0c1e30;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+}
+.loader-half {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--loader-bg);
+  color: var(--loader-ink);
+  will-change: clip-path;
+}
+.loader-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0 1.25rem;
+  animation: loader-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.loader-logo {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1.6vw, 1.1rem);
+}
+.loader-logo__icon {
+  width: clamp(2.6rem, 9vw, 6.4rem);
+  height: auto;
+  color: var(--loader-teal);
+}
+.loader-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(3rem, 12vw, 8.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--loader-ink);
+}
+.loader-name__che {
+  color: var(--loader-teal);
+}
+.loader-tag {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1rem, 2.4vw, 1.6rem);
+  text-align: center;
+  color: var(--loader-ink);
+  opacity: 0.75;
+}
+.loader-trail {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 3px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 100%);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
+  border-radius: 3px;
+}
+.loader-plane {
+  position: absolute;
+  top: 50%;
+  /* centra el avión sobre la punta de la estela */
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 4px 10px rgba(12, 30, 48, 0.35));
+  line-height: 0;
+}
+.loader.is-fading {
+  animation: loader-fade 0.4s ease forwards;
+}
+@keyframes loader-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes loader-fade {
+  to { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loader-mark { animation: none; }
+}

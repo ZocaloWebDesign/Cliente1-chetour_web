@@ -20,6 +20,7 @@ import proximosEeuu from '@/assets/destinations/proximos/estados-unidos.jpg'
 import proximosEuropa from '@/assets/destinations/proximos/europa.jpg'
 import proximosEgipto from '@/assets/destinations/proximos/egipto.jpg'
 import { NAV_OFFSET } from '@/hooks/use-hash-scroll'
+import { useSiteOpen } from '@/hooks/use-site-open'
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button'
 
 // El "hero" es un carrusel de destinos a pantalla completa (portado del
@@ -168,7 +169,9 @@ export function Hero() {
   // dentro del carrusel o con prefers-reduced-motion. NO se pausa con hover:
   // el hero ocupa toda la pantalla y cualquier movimiento del mouse lo dejaría
   // congelado.
-  const paused = tabHidden || focusPause
+  // También espera a que la pantalla de carga termine de abrirse.
+  const siteOpen = useSiteOpen()
+  const paused = tabHidden || focusPause || !siteOpen
 
   const go = useCallback((i: number) => setCur(((i % N) + N) % N), [])
 

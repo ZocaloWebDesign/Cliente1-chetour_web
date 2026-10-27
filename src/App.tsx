@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { ReactLenis, useLenis } from 'lenis/react'
 import { Home } from '@/pages/Home'
@@ -7,6 +7,8 @@ import { PackageDetail } from '@/pages/PackageDetail'
 import { Contact } from '@/pages/Contact'
 import { NotFound } from '@/pages/NotFound'
 import { NAV_OFFSET } from '@/hooks/use-hash-scroll'
+import { Loader } from '@/components/Loader'
+import { SiteOpenContext } from '@/hooks/use-site-open'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -40,18 +42,27 @@ function App() {
     [],
   )
 
+  // El sitio se monta desde el principio, tapado por el Loader, para que las
+  // fotos y three.js se inicialicen antes del vuelo. `siteOpen` pasa a true
+  // cuando sale el avión: el carrusel del Hero arranca recién ahí.
+  const [siteOpen, setSiteOpen] = useState(false)
+  const handleOpen = useCallback(() => setSiteOpen(true), [])
+
   return (
     <ReactLenis root options={{ smoothWheel: !prefersReducedMotion, syncTouch: !prefersReducedMotion }}>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/paquetes" element={<AllPackages />} />
-          <Route path="/paquetes/:slug" element={<PackageDetail />} />
-          <Route path="/contacto" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <SiteOpenContext.Provider value={siteOpen}>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/paquetes" element={<AllPackages />} />
+            <Route path="/paquetes/:slug" element={<PackageDetail />} />
+            <Route path="/contacto" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </SiteOpenContext.Provider>
+      <Loader onOpen={handleOpen} />
     </ReactLenis>
   )
 }
