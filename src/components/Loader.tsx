@@ -150,7 +150,6 @@ export function Loader({ onOpen }: { onOpen: () => void }) {
   const clipTop = useTransform(x, half('top'))
   const clipBottom = useTransform(x, half('bottom'))
   const planeLeft = useTransform(x, (v) => `${v}%`)
-  const trailWidth = useTransform(x, (v) => `${Math.max(v, 0)}%`)
 
   if (phase === 'done') return null
 
@@ -173,9 +172,11 @@ export function Loader({ onOpen }: { onOpen: () => void }) {
 
       {phase === 'flying' && !reduced && (
         <>
+          {/* cola corta pegada al avión: viaja con él y sale por el borde derecho,
+              así no queda una línea larga que se corte de golpe al terminar */}
           <motion.span
             className="loader-trail"
-            style={{ width: trailWidth }}
+            style={{ left: planeLeft }}
             aria-hidden="true"
           />
           <motion.span

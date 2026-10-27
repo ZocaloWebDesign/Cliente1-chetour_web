@@ -1382,13 +1382,14 @@
 }
 .loader-trail {
   position: absolute;
-  left: 0;
   top: 50%;
-  height: 3px;
-  transform: translateY(-50%);
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 100%);
+  width: 24%;
+  height: 7px;
+  /* la punta (derecha) queda en el avión; hacia atrás se afina y se desvanece */
+  transform: translate(-100%, -50%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.95) 100%);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
-  border-radius: 3px;
 }
 .loader-plane {
   position: absolute;
