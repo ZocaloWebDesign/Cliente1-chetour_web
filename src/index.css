@@ -179,6 +179,14 @@
   html {
     @apply font-sans;
     }
+  /* Las secciones que entran deslizándose (x: ±30) arrancan corridas y
+     ensanchaban la página en celulares. Se recorta en #root y no en body: en
+     body el overflow se traslada al viewport y no alcanza. "clip" (a diferencia
+     de "hidden") no crea un contenedor de scroll, así el sticky de la persiana
+     Hero → Globo sigue funcionando. */
+  #root {
+    overflow-x: clip;
+    }
 }
 
 @keyframes blob-move {
@@ -241,6 +249,7 @@
 .hero-bg {
   position: absolute;
   inset: 0;
+  background-image: var(--bg);
   background-size: cover;
   background-position: center;
   opacity: 0;
@@ -249,6 +258,12 @@
   transition:
     opacity 1s var(--hero-ease),
     transform 8s var(--hero-ease);
+}
+/* celulares y tablets chicas: foto de 900 px (ver SMALL_SCREEN en Hero.tsx) */
+@media (max-width: 820px) {
+  .hero-bg {
+    background-image: var(--bg-sm, var(--bg));
+  }
 }
 .hero-bg.is-active {
   opacity: 1;
@@ -1326,7 +1341,7 @@
    "Che" y el avioncito en teal, "Tour" en azul casi negro. */
 .loader {
   --loader-bg: #f4f2f0;
-  --loader-teal: #189ca8;
+  --loader-teal: #16949f; /* teal del logo, apenas más oscuro para llegar a contraste 3:1 en texto grande */
   --loader-ink: #0c1e30;
   position: fixed;
   inset: 0;

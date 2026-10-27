@@ -8,7 +8,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import ConicPolygonGeometry from 'three-conic-polygon-geometry'
 import { availableCountries, globeCountryCards, type GlobeCardEntry } from '@/data'
-import earthTextureUrl from '@/assets/globe/earth-texture.jpg'
+import earthTextureUrl from '@/assets/globe/earth-texture.webp'
 import countriesGeoJson from '@/assets/globe/countries.geo.json'
 import { buildStylizedEarthTexture, buildAtmosphereMaterial } from '@/lib/earth-texture'
 
@@ -369,6 +369,7 @@ function FeaturedCard({
           <img
             src={entry.image}
             alt=""
+            decoding="async"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-sea-950/95 via-sea-950/45 to-transparent" />
@@ -459,7 +460,18 @@ export function GlobeSection() {
     camera.position.set(0, 0.3, 5.2)
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    // en pantallas táctiles (celulares/tablets, DPR 3) 1.5 se ve igual de nítido
+    // y rinde bastante menos píxeles por frame
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, coarsePointer ? 1.5 : 2))
+
+    // el globo queda pinneado solo un tramo del scroll: fuera de pantalla o con
+    // la pestaña oculta no hace falta renderizar
+    let globeInView = true
+    const viewObserver = new IntersectionObserver(([entry]) => {
+      globeInView = entry.isIntersecting
+    })
+    viewObserver.observe(canvas)
 
     const globeGroup = new THREE.Group()
     scene.add(globeGroup)
@@ -683,7 +695,7 @@ export function GlobeSection() {
 
     // --- Loop ----------------------------------------------------------
     let frame = requestAnimationFrame(function loop() {
-      if (heroCoversGlobe()) {
+      if (heroCoversGlobe() || !globeInView || document.hidden) {
         frame = requestAnimationFrame(loop)
         return
       }
@@ -775,6 +787,7 @@ export function GlobeSection() {
 
     return () => {
       cancelAnimationFrame(frame)
+      viewObserver.disconnect()
       resizeObserver.disconnect()
       renderer.domElement.removeEventListener('pointermove', onPointerMove)
       renderer.domElement.removeEventListener('pointerdown', onPointerDown)

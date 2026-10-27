@@ -13,7 +13,7 @@
       "Todo incluido"
     ],
     "price": "USD 8.035",
-    "image": "/paquetes/img/africa-1.jpg"
+    "image": "/paquetes/img/africa-1.webp"
   },
   {
     "slug": "bariloche-aereo",
@@ -29,7 +29,7 @@
       "Asistencia médica"
     ],
     "price": "$620.000",
-    "image": "/paquetes/img/bariloche-1.jpg"
+    "image": "/paquetes/img/bariloche-1.webp"
   },
   {
     "slug": "camboriu-bus",
@@ -45,7 +45,7 @@
       "Assist Card"
     ],
     "price": "USD 449",
-    "image": "/paquetes/img/camboriu-1.jpg"
+    "image": "/paquetes/img/camboriu-1.webp"
   },
   {
     "slug": "canasvieiras-aereo",
@@ -61,7 +61,7 @@
       "Coordinación"
     ],
     "price": "Consultar",
-    "image": "/paquetes/img/canasvieiras-1.jpg"
+    "image": "/paquetes/img/canasvieiras-1.webp"
   },
   {
     "slug": "cataratas-del-iguazu-aereo",
@@ -77,7 +77,7 @@
       "Asistencia médica"
     ],
     "price": "$840.000",
-    "image": "/paquetes/img/iguazu-1.jpg"
+    "image": "/paquetes/img/iguazu-1.webp"
   },
   {
     "slug": "crucero-fiordos-glaciares-chilenos",
@@ -93,7 +93,7 @@
       "Coordinación permanente"
     ],
     "price": "USD 3.790",
-    "image": "/paquetes/img/crucero-1.jpg"
+    "image": "/paquetes/img/crucero-1.webp"
   },
   {
     "slug": "esencias-centroeuropeas",
@@ -109,7 +109,7 @@
       "Assist Card 100K"
     ],
     "price": "USD 4.980",
-    "image": "/paquetes/img/centroeuropa-1.jpg"
+    "image": "/paquetes/img/centroeuropa-1.webp"
   },
   {
     "slug": "estados-unidos-costa-a-costa",
@@ -125,7 +125,7 @@
       "Pensión completa"
     ],
     "price": "USD 9.660",
-    "image": "/paquetes/img/usa-1.jpg"
+    "image": "/paquetes/img/usa-1.webp"
   },
   {
     "slug": "europa-al-maximo-londres-madrid",
@@ -141,7 +141,7 @@
       "Desayuno diario"
     ],
     "price": "USD 5.112",
-    "image": "/paquetes/img/europa-1.jpg"
+    "image": "/paquetes/img/europa-1.webp"
   },
   {
     "slug": "europa-clasica-costa-amalfitana-toscana",
@@ -157,7 +157,7 @@
       "Pensión completa"
     ],
     "price": "USD 9.525",
-    "image": "/paquetes/img/europaclasica-1.jpg"
+    "image": "/paquetes/img/europaclasica-1.webp"
   },
   {
     "slug": "gramado-y-canela-con-torres-bus",
@@ -173,7 +173,7 @@
       "Gramado + Torres"
     ],
     "price": "USD 670",
-    "image": "/paquetes/img/gramado-1.jpg"
+    "image": "/paquetes/img/gramado-1.webp"
   },
   {
     "slug": "neuquen-y-caviahue",
@@ -189,7 +189,7 @@
       "Excursión a Termas de Copahue"
     ],
     "price": "$990.000",
-    "image": "/paquetes/img/caviahue-1.jpg"
+    "image": "/paquetes/img/caviahue-1.webp"
   },
   {
     "slug": "salta-humahuaca-cafayate",
@@ -205,7 +205,7 @@
       "Coordinación permanente"
     ],
     "price": "$1.510.000",
-    "image": "/paquetes/img/nqa-2.jpg"
+    "image": "/paquetes/img/nqa-2.webp"
   },
   {
     "slug": "san-juan-bajo-las-estrellas-bus",
@@ -221,7 +221,7 @@
       "Astroturismo"
     ],
     "price": "$1.869.000",
-    "image": "/paquetes/img/sanjuan-1.jpg"
+    "image": "/paquetes/img/sanjuan-1.webp"
   },
   {
     "slug": "talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-bus",
@@ -237,7 +237,7 @@
       "Con luna llena"
     ],
     "price": "$1.625.000",
-    "image": "/paquetes/img/talampaya-1.jpg"
+    "image": "/paquetes/img/talampaya-1.webp"
   },
   {
     "slug": "ushuaia-y-calafate",
@@ -253,7 +253,7 @@
       "2 Parques Nacionales"
     ],
     "price": "$1.375.000",
-    "image": "/paquetes/img/ushuaia-1.jpg"
+    "image": "/paquetes/img/ushuaia-1.webp"
   },
   {
     "slug": "nueva-york-y-miami",
@@ -269,7 +269,7 @@
       "Media pensión"
     ],
     "price": "USD 4.988",
-    "image": "/paquetes/img/nyc-miami-1.jpg"
+    "image": "/paquetes/img/nyc-miami-1.webp"
   },
   {
     "slug": "egipto-dubai-crucero-nilo",
@@ -285,7 +285,7 @@
       "Pensión completa"
     ],
     "price": "Consultar",
-    "image": "/paquetes/img/egipto-dubai-1.jpg"
+    "image": "/paquetes/img/egipto-dubai-1.webp"
   },
   {
     "slug": "rio-de-janeiro",
@@ -301,6 +301,6 @@
       "Asistencia médica"
     ],
     "price": "USD 1.326",
-    "image": "/paquetes/img/rio-1.jpg"
+    "image": "/paquetes/img/rio-1.webp"
   }
 ]

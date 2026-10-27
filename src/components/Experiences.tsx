@@ -55,6 +55,8 @@ export function Experiences() {
               <img
                 src={e.image}
                 alt={`${e.travelerName} en ${e.destination}`}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/0" />

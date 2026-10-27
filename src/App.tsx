@@ -1,14 +1,17 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { ReactLenis, useLenis } from 'lenis/react'
 import { Home } from '@/pages/Home'
-import { AllPackages } from '@/pages/AllPackages'
-import { PackageDetail } from '@/pages/PackageDetail'
-import { Contact } from '@/pages/Contact'
-import { NotFound } from '@/pages/NotFound'
 import { NAV_OFFSET } from '@/hooks/use-hash-scroll'
 import { Loader } from '@/components/Loader'
 import { SiteOpenContext } from '@/hooks/use-site-open'
+
+// La home va en el bundle principal; el resto de las páginas (sobre todo el
+// detalle de paquete, que arrastra los fragmentos HTML) se baja recién al entrar.
+const AllPackages = lazy(() => import('@/pages/AllPackages').then((m) => ({ default: m.AllPackages })))
+const PackageDetail = lazy(() => import('@/pages/PackageDetail').then((m) => ({ default: m.PackageDetail })))
+const Contact = lazy(() => import('@/pages/Contact').then((m) => ({ default: m.Contact })))
+const NotFound = lazy(() => import('@/pages/NotFound').then((m) => ({ default: m.NotFound })))
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -53,13 +56,15 @@ function App() {
       <SiteOpenContext.Provider value={siteOpen}>
         <BrowserRouter>
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/paquetes" element={<AllPackages />} />
-            <Route path="/paquetes/:slug" element={<PackageDetail />} />
-            <Route path="/contacto" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/paquetes" element={<AllPackages />} />
+              <Route path="/paquetes/:slug" element={<PackageDetail />} />
+              <Route path="/contacto" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </SiteOpenContext.Provider>
       <Loader onOpen={handleOpen} />

@@ -4,7 +4,7 @@ import { siteInfo } from '@/data'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import { WhatsappButton } from '@/components/WhatsappButton'
-import planeWingSky from '@/assets/destinations/plane-wing-sky.jpg'
+import planeWingSky from '@/assets/destinations/plane-wing-sky.webp'
 
 /** 404 genérica: cualquier ruta que no matchea nada en App.tsx cae acá. */
 export function NotFound() {

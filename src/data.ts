@@ -1,44 +1,44 @@
-import canasvieirasAereo from '@/assets/packages/canasvieiras-aereo.jpg'
-import camboriuSkylineHero from '@/assets/destinations/camboriu-skyline.jpg'
-import barilocheLago from '@/assets/destinations/bariloche-lago.jpg'
-import disneyCastle from '@/assets/destinations/disney-castle.jpg'
-import cardSaltaHumahuacaCafayate from '@/assets/globe/cards/salta-humahuaca-cafayate.jpg'
+import canasvieirasAereo from '@/assets/packages/canasvieiras-aereo.webp'
+import camboriuSkylineHero from '@/assets/destinations/camboriu-skyline.webp'
+import barilocheLago from '@/assets/destinations/bariloche-lago.webp'
+import disneyCastle from '@/assets/destinations/disney-castle.webp'
+import cardSaltaHumahuacaCafayate from '@/assets/globe/cards/salta-humahuaca-cafayate.webp'
 import cardSanJuanEstrellas from '@/assets/globe/cards/san-juan-estrellas.webp'
-import cardTalampaya from '@/assets/globe/cards/talampaya-laguna-brava-valle-luna.jpg'
-import cardCataratasIguazu from '@/assets/globe/cards/cataratas-iguazu.jpg'
-import cardBariloche from '@/assets/globe/cards/bariloche.jpg'
-import cardNeuquenCaviahue from '@/assets/globe/cards/neuquen-caviahue.jpg'
-import cardUshuaiaCalafate from '@/assets/globe/cards/ushuaia-calafate.jpg'
-import cardCamboriu from '@/assets/globe/cards/camboriu.jpg'
-import cardCanasvieiras from '@/assets/globe/cards/canasvieiras.jpg'
-import cardBombinhas from '@/assets/globe/cards/bombinhas.jpg'
-import cardBombas from '@/assets/globe/cards/bombas.jpg'
-import cardIngleses from '@/assets/globe/cards/ingleses.jpg'
-import cardQuatroIlhas from '@/assets/globe/cards/quatro-ilhas.jpg'
-import cardGramadosCanelaTorres from '@/assets/globe/cards/gramados-canela-torres.jpg'
-import cardRioDeJaneiro from '@/assets/globe/cards/rio-de-janeiro.jpg'
+import cardTalampaya from '@/assets/globe/cards/talampaya-laguna-brava-valle-luna.webp'
+import cardCataratasIguazu from '@/assets/globe/cards/cataratas-iguazu.webp'
+import cardBariloche from '@/assets/globe/cards/bariloche.webp'
+import cardNeuquenCaviahue from '@/assets/globe/cards/neuquen-caviahue.webp'
+import cardUshuaiaCalafate from '@/assets/globe/cards/ushuaia-calafate.webp'
+import cardCamboriu from '@/assets/globe/cards/camboriu.webp'
+import cardCanasvieiras from '@/assets/globe/cards/canasvieiras.webp'
+import cardBombinhas from '@/assets/globe/cards/bombinhas.webp'
+import cardBombas from '@/assets/globe/cards/bombas.webp'
+import cardIngleses from '@/assets/globe/cards/ingleses.webp'
+import cardQuatroIlhas from '@/assets/globe/cards/quatro-ilhas.webp'
+import cardGramadosCanelaTorres from '@/assets/globe/cards/gramados-canela-torres.webp'
+import cardRioDeJaneiro from '@/assets/globe/cards/rio-de-janeiro.webp'
 import cardUsaCostaACosta from '@/assets/globe/cards/estados-unidos-costa-a-costa.webp'
-import cardDisneyMedida from '@/assets/globe/cards/disney-a-medida.jpg'
-import cardNuevaYorkMiami from '@/assets/globe/cards/nueva-york-miami.jpg'
-import cardPeruAereo from '@/assets/globe/cards/peru-aereo.jpg'
-import cardPeruBoliviaBus from '@/assets/globe/cards/peru-bolivia-bus.jpg'
-import cardChileFiordosGlaciares from '@/assets/globe/cards/chile-fiordos-glaciares.jpg'
-import cardAfricaTodoIncluido from '@/assets/globe/cards/africa-todo-incluido.jpg'
-import cardEuropaClasicaEspana from '@/assets/globe/cards/europa-clasica-espana.jpg'
-import cardEuropaClasicaItalia from '@/assets/globe/cards/europa-clasica-italia.jpg'
-import cardEuropaClasicaFrancia from '@/assets/globe/cards/europa-clasica-francia.jpg'
+import cardDisneyMedida from '@/assets/globe/cards/disney-a-medida.webp'
+import cardNuevaYorkMiami from '@/assets/globe/cards/nueva-york-miami.webp'
+import cardPeruAereo from '@/assets/globe/cards/peru-aereo.webp'
+import cardPeruBoliviaBus from '@/assets/globe/cards/peru-bolivia-bus.webp'
+import cardChileFiordosGlaciares from '@/assets/globe/cards/chile-fiordos-glaciares.webp'
+import cardAfricaTodoIncluido from '@/assets/globe/cards/africa-todo-incluido.webp'
+import cardEuropaClasicaEspana from '@/assets/globe/cards/europa-clasica-espana.webp'
+import cardEuropaClasicaItalia from '@/assets/globe/cards/europa-clasica-italia.webp'
+import cardEuropaClasicaFrancia from '@/assets/globe/cards/europa-clasica-francia.webp'
 import cardEuropaMaximoReinoUnido from '@/assets/globe/cards/europa-maximo-reino-unido.webp'
-import cardEuropaMaximoFrancia from '@/assets/globe/cards/europa-maximo-francia.jpg'
-import cardEuropaMaximoAlemania from '@/assets/globe/cards/europa-maximo-alemania.jpg'
-import cardEuropaMaximoSuiza from '@/assets/globe/cards/europa-maximo-suiza.jpg'
-import cardEuropaMaximoItalia from '@/assets/globe/cards/europa-maximo-italia.jpg'
-import cardEuropaMaximoEspana from '@/assets/globe/cards/europa-maximo-espana.jpg'
-import cardEgiptoDubaiEgipto from '@/assets/globe/cards/egipto-dubai-egipto.jpg'
+import cardEuropaMaximoFrancia from '@/assets/globe/cards/europa-maximo-francia.webp'
+import cardEuropaMaximoAlemania from '@/assets/globe/cards/europa-maximo-alemania.webp'
+import cardEuropaMaximoSuiza from '@/assets/globe/cards/europa-maximo-suiza.webp'
+import cardEuropaMaximoItalia from '@/assets/globe/cards/europa-maximo-italia.webp'
+import cardEuropaMaximoEspana from '@/assets/globe/cards/europa-maximo-espana.webp'
+import cardEgiptoDubaiEgipto from '@/assets/globe/cards/egipto-dubai-egipto.webp'
 import cardEgiptoDubaiDubai from '@/assets/globe/cards/egipto-dubai-dubai.webp'
-import camboriuGrupo2 from '@/assets/experiences/camboriu-grupo-2.jpg'
-import camboriuGrupo3 from '@/assets/experiences/camboriu-grupo-3.jpg'
-import disneyGrupo from '@/assets/experiences/disney-grupo.jpg'
-import dubaiGrupo from '@/assets/experiences/dubai-grupo.jpg'
+import camboriuGrupo2 from '@/assets/experiences/camboriu-grupo-2.webp'
+import camboriuGrupo3 from '@/assets/experiences/camboriu-grupo-3.webp'
+import disneyGrupo from '@/assets/experiences/disney-grupo.webp'
+import dubaiGrupo from '@/assets/experiences/dubai-grupo.webp'
 
 // ---------------------------------------------------------------------------
 // Paquetes
@@ -109,7 +109,7 @@ export const packages: TravelPackage[] = [
     mode: 'Conectividad aérea',
     includes: ['Conectividad aérea', 'Safari + Zanzíbar', 'Todo incluido'],
     price: 'USD 8.035',
-    image: '/paquetes/img/africa-1.jpg',
+    image: '/paquetes/img/africa-1.webp',
     link: '/paquetes/africa-todo-incluido',
   },
   {
@@ -122,7 +122,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus mix',
     includes: ['Bus mix', 'Media pensión', 'Asistencia médica'],
     price: '$429.000',
-    image: '/paquetes/img/bariloche-1.jpg',
+    image: '/paquetes/img/bariloche-1.webp',
     link: '/paquetes/bariloche-bus',
   },
   {
@@ -135,7 +135,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo desde Córdoba',
     includes: ['Aéreo desde Córdoba', 'Desayuno incluido', 'Asistencia médica'],
     price: '$620.000',
-    image: '/paquetes/img/bariloche-1.jpg',
+    image: '/paquetes/img/bariloche-1.webp',
     link: '/paquetes/bariloche-aereo',
   },
   {
@@ -148,7 +148,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus semicama o cama',
     includes: ['Bus semicama o cama', 'Desayuno y cena', 'Assist Card'],
     price: 'USD 449',
-    image: '/paquetes/img/camboriu-1.jpg',
+    image: '/paquetes/img/camboriu-1.webp',
     link: '/paquetes/camboriu-bus',
   },
   {
@@ -161,7 +161,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo y traslados',
     includes: ['Aéreo y traslados', 'Desayuno y cena', 'Coordinación'],
     price: 'Consultar',
-    image: '/paquetes/img/canasvieiras-1.jpg',
+    image: '/paquetes/img/canasvieiras-1.webp',
     link: '/paquetes/canasvieiras-aereo',
   },
   {
@@ -174,7 +174,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo (Aerolíneas Argentinas)',
     includes: ['Aéreo (Aerolíneas Argentinas)', 'Excursiones a las Cataratas', 'Asistencia médica'],
     price: '$840.000',
-    image: '/paquetes/img/iguazu-1.jpg',
+    image: '/paquetes/img/iguazu-1.webp',
     link: '/paquetes/cataratas-del-iguazu-aereo',
   },
   {
@@ -187,7 +187,7 @@ export const packages: TravelPackage[] = [
     mode: 'Conectividad aérea',
     includes: ['Conectividad aérea', 'Pensión completa', 'Coordinación permanente'],
     price: 'USD 3.790',
-    image: '/paquetes/img/crucero-1.jpg',
+    image: '/paquetes/img/crucero-1.webp',
     link: '/paquetes/crucero-fiordos-glaciares-chilenos',
   },
   {
@@ -200,7 +200,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo vía Ámsterdam (Air France / KLM)',
     includes: ['Aéreo vía Ámsterdam (Air France / KLM)', 'Guía de habla hispana', 'Assist Card 100K'],
     price: 'USD 4.980',
-    image: '/paquetes/img/centroeuropa-1.jpg',
+    image: '/paquetes/img/centroeuropa-1.webp',
     link: '/paquetes/esencias-centroeuropeas',
   },
   {
@@ -213,7 +213,7 @@ export const packages: TravelPackage[] = [
     mode: 'Conectividad aérea',
     includes: ['Conectividad aérea', 'Costa a costa', 'Pensión completa'],
     price: 'USD 9.660',
-    image: '/paquetes/img/usa-1.jpg',
+    image: '/paquetes/img/usa-1.webp',
     link: '/paquetes/estados-unidos-costa-a-costa',
   },
   {
@@ -226,7 +226,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo desde Córdoba (COR)',
     includes: ['Aéreo desde Córdoba (COR)', '11 ciudades', 'Desayuno diario'],
     price: 'USD 5.112',
-    image: '/paquetes/img/europa-1.jpg',
+    image: '/paquetes/img/europa-1.webp',
     link: '/paquetes/europa-al-maximo-londres-madrid',
   },
   {
@@ -239,7 +239,7 @@ export const packages: TravelPackage[] = [
     mode: 'Conectividad aérea',
     includes: ['Conectividad aérea', 'Hoteles 4★', 'Pensión completa'],
     price: 'USD 9.525',
-    image: '/paquetes/img/europaclasica-1.jpg',
+    image: '/paquetes/img/europaclasica-1.webp',
     link: '/paquetes/europa-clasica-costa-amalfitana-toscana',
   },
   {
@@ -252,7 +252,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus cama última generación',
     includes: ['Bus cama última generación', 'Media pensión', 'Gramado + Torres'],
     price: 'USD 670',
-    image: '/paquetes/img/gramado-1.jpg',
+    image: '/paquetes/img/gramado-1.webp',
     link: '/paquetes/gramado-y-canela-con-torres-bus',
   },
   {
@@ -265,7 +265,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo desde Córdoba (Flybondi)',
     includes: ['Aéreo desde Córdoba (Flybondi)', 'Desayuno incluido', 'Excursión a Termas de Copahue'],
     price: '$990.000',
-    image: '/paquetes/img/caviahue-1.jpg',
+    image: '/paquetes/img/caviahue-1.webp',
     link: '/paquetes/neuquen-y-caviahue',
   },
   {
@@ -278,7 +278,7 @@ export const packages: TravelPackage[] = [
     mode: 'Conectividad aérea',
     includes: ['Conectividad aérea', 'Pensión completa', 'Coordinación permanente'],
     price: '$1.510.000',
-    image: '/paquetes/img/nqa-2.jpg',
+    image: '/paquetes/img/nqa-2.webp',
     link: '/paquetes/salta-humahuaca-cafayate',
   },
   {
@@ -291,7 +291,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus cama 5★',
     includes: ['Bus cama 5★', 'Pensión completa', 'Astroturismo'],
     price: '$1.869.000',
-    image: '/paquetes/img/sanjuan-1.jpg',
+    image: '/paquetes/img/sanjuan-1.webp',
     link: '/paquetes/san-juan-bajo-las-estrellas-bus',
   },
   {
@@ -304,7 +304,7 @@ export const packages: TravelPackage[] = [
     mode: 'Conectividad aérea',
     includes: ['Conectividad aérea', 'Pensión completa', 'Astroturismo'],
     price: '$1.869.000',
-    image: '/paquetes/img/sanjuan-1.jpg',
+    image: '/paquetes/img/sanjuan-1.webp',
     link: '/paquetes/san-juan-bajo-las-estrellas-aereo',
   },
   {
@@ -317,7 +317,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus cama 5★',
     includes: ['Bus cama 5★', 'Pensión completa', 'Con luna llena'],
     price: '$1.625.000',
-    image: '/paquetes/img/talampaya-1.jpg',
+    image: '/paquetes/img/talampaya-1.webp',
     link: '/paquetes/talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-bus',
   },
   {
@@ -330,7 +330,7 @@ export const packages: TravelPackage[] = [
     mode: 'Conectividad aérea',
     includes: ['Conectividad aérea', 'Pensión completa', 'Con luna llena'],
     price: '$1.625.000',
-    image: '/paquetes/img/talampaya-1.jpg',
+    image: '/paquetes/img/talampaya-1.webp',
     link: '/paquetes/talampaya-con-luna-llena-laguna-brava-y-valle-de-la-luna-aereo',
   },
   {
@@ -343,7 +343,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo desde Córdoba',
     includes: ['Aéreo desde Córdoba', 'Desayuno incluido', '2 Parques Nacionales'],
     price: '$1.375.000',
-    image: '/paquetes/img/ushuaia-1.jpg',
+    image: '/paquetes/img/ushuaia-1.webp',
     link: '/paquetes/ushuaia-y-calafate',
   },
   {
@@ -356,7 +356,7 @@ export const packages: TravelPackage[] = [
     mode: 'Conectividad aérea',
     includes: ['Conectividad aérea', 'Nueva York + Miami', 'Media pensión'],
     price: 'USD 4.988',
-    image: '/paquetes/img/nyc-miami-1.jpg',
+    image: '/paquetes/img/nyc-miami-1.webp',
     link: '/paquetes/nueva-york-y-miami',
   },
   {
@@ -369,7 +369,7 @@ export const packages: TravelPackage[] = [
     mode: 'Conectividad aérea',
     includes: ['Conectividad aérea', 'Egipto + Dubái', 'Pensión completa'],
     price: 'Consultar',
-    image: '/paquetes/img/egipto-dubai-1.jpg',
+    image: '/paquetes/img/egipto-dubai-1.webp',
     link: '/paquetes/egipto-dubai-crucero-nilo',
   },
   {
@@ -382,7 +382,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo desde Córdoba',
     includes: ['Aéreo desde Córdoba', 'Desayuno incluido', 'Asistencia médica'],
     price: 'USD 1.326',
-    image: '/paquetes/img/rio-1.jpg',
+    image: '/paquetes/img/rio-1.webp',
     link: '/paquetes/rio-de-janeiro',
   },
   {
@@ -408,7 +408,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus cama',
     includes: ['Bus cama', 'Media pensión', 'Excursiones incluidas'],
     price: 'USD 1.699',
-    image: '/paquetes/img/peru-bolivia-3.jpg',
+    image: '/paquetes/img/peru-bolivia-3.webp',
     link: '/paquetes/peru-y-bolivia-bus',
   },
   {
@@ -421,7 +421,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus mix última generación',
     includes: ['Bus mix última generación', 'Traslados in/out', 'Desayuno incluido'],
     price: 'USD 299',
-    image: '/paquetes/img/quatro-ilhas-1.jpg',
+    image: '/paquetes/img/quatro-ilhas-1.webp',
     link: '/paquetes/quatro-ilhas',
   },
   {
@@ -435,7 +435,7 @@ export const packages: TravelPackage[] = [
     includes: ['Hotelería a elección', 'Entradas a los parques', 'Asesoramiento personalizado'],
     price: 'Consultar',
     priceNote: 'Cotización a medida',
-    image: '/paquetes/img/disney-1.jpg',
+    image: '/paquetes/img/disney-1.webp',
     link: '/paquetes/disney-a-medida',
     highlight: true,
   },
@@ -449,7 +449,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo desde Córdoba',
     includes: ['Aéreo desde Córdoba', 'Traslados in/out', 'Desayuno incluido'],
     price: 'Desde USD 1.315',
-    image: '/paquetes/img/ingleses-1.jpg',
+    image: '/paquetes/img/ingleses-1.webp',
     link: '/paquetes/ingleses-aereo',
   },
   {
@@ -462,7 +462,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo desde Córdoba',
     includes: ['Aéreo desde Córdoba', 'Traslados in/out', 'Desayuno incluido'],
     price: 'Desde USD 1.045',
-    image: '/paquetes/img/bombinhas-1.jpg',
+    image: '/paquetes/img/bombinhas-1.webp',
     link: '/paquetes/bombinhas-aereo',
   },
   {
@@ -475,7 +475,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus mix última generación',
     includes: ['Bus mix última generación', 'Traslados in/out', 'Desayuno incluido'],
     price: 'USD 749',
-    image: '/paquetes/img/bombinhas-1.jpg',
+    image: '/paquetes/img/bombinhas-1.webp',
     link: '/paquetes/bombinhas-bus',
   },
   {
@@ -488,7 +488,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus mix última generación',
     includes: ['Bus mix última generación', 'Traslados in/out', 'Desayuno incluido'],
     price: 'USD 699',
-    image: '/paquetes/img/bombas-1.jpg',
+    image: '/paquetes/img/bombas-1.webp',
     link: '/paquetes/bombas-bus',
   },
   {
@@ -501,7 +501,7 @@ export const packages: TravelPackage[] = [
     mode: 'Aéreo y traslados',
     includes: ['Aéreo y traslados', 'Desayuno y cena', 'Coordinación'],
     price: 'Consultar',
-    image: '/paquetes/img/camboriu-1.jpg',
+    image: '/paquetes/img/camboriu-1.webp',
     link: '/paquetes/camboriu-aereo',
   },
   {
@@ -514,7 +514,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus semicama o cama',
     includes: ['Bus semicama o cama', 'Desayuno y cena', 'Assist Card'],
     price: 'Desde USD 549',
-    image: '/paquetes/img/canasvieiras-1.jpg',
+    image: '/paquetes/img/canasvieiras-1.webp',
     link: '/paquetes/canasvieiras-bus',
   },
   {
@@ -527,7 +527,7 @@ export const packages: TravelPackage[] = [
     mode: 'Bus mix',
     includes: ['Bus mix', 'Media pensión', 'Asistencia médica'],
     price: '$399.900',
-    image: '/paquetes/img/iguazu-1.jpg',
+    image: '/paquetes/img/iguazu-1.webp',
     link: '/paquetes/cataratas-del-iguazu-bus',
   },
 ]

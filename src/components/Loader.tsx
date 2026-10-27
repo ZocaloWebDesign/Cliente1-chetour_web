@@ -7,7 +7,8 @@ import {
   useTransform,
 } from 'framer-motion'
 import { useLenis } from 'lenis/react'
-import camboriuSkyline from '@/assets/destinations/camboriu-skyline.jpg'
+import camboriuSkyline from '@/assets/destinations/camboriu-skyline.webp'
+import camboriuSkylineSm from '@/assets/destinations/camboriu-skyline-sm.webp'
 
 // Pantalla de carga: fondo claro con el logo "CheTour" y un avión que lo cruza
 // de izquierda a derecha. La estela abre la pantalla en V detrás del avión:
@@ -18,8 +19,8 @@ import camboriuSkyline from '@/assets/destinations/camboriu-skyline.jpg'
 
 /** Mínimo que se ve el logo antes de que salga el avión (ms). */
 const MIN_HOLD = 1400
-/** Tope de espera a la primera foto y al globo para no dejar la pantalla colgada. */
-const MAX_WAIT = 5000
+/** Tope de espera a la primera foto (solo en la home) para no dejar la pantalla colgada. */
+const MAX_WAIT = 3500
 /** Duración del paso del avión (s). */
 const FLIGHT = 2.4
 /** Ancho de la estela en V, en % del ancho de pantalla. */
@@ -87,18 +88,21 @@ export function Loader({ onOpen }: { onOpen: () => void }) {
     }
   }, [lenis, phase])
 
-  // Espera el mínimo de marca, la primera foto del Hero ya decodificada y el
-  // chunk de three.js (el globo) descargado, así ese trabajo pesado ocurre
-  // mientras el logo está quieto y no en medio del vuelo.
+  // Espera el mínimo de marca y la primera foto del Hero ya decodificada.
   useEffect(() => {
     let cancelled = false
-    const img = new Image()
-    img.src = camboriuSkyline
-    const photo = img.decode().catch(() => {})
-    const globe = import('@/components/GlobeSection').catch(() => {})
+    // la foto del Hero es de la home: en las demás rutas no se espera. Es la
+    // misma variante (chica o grande) que va a pedir el Hero. El globo 3D NO
+    // se espera: queda tapado por el Hero y se monta recién después (Home.tsx).
+    let photo: Promise<unknown> = Promise.resolve()
+    if (window.location.pathname === '/') {
+      const img = new Image()
+      img.src = window.matchMedia('(max-width: 820px)').matches ? camboriuSkylineSm : camboriuSkyline
+      photo = img.decode().catch(() => {})
+    }
     const hold = new Promise((r) => window.setTimeout(r, reduced ? 600 : MIN_HOLD))
     const cap = new Promise((r) => window.setTimeout(r, MAX_WAIT))
-    Promise.all([hold, Promise.race([Promise.all([photo, globe]), cap])])
+    Promise.all([hold, Promise.race([photo, cap])])
       // dos frames de margen para que el montaje del sitio termine de pintar
       .then(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))))
       .then(() => {

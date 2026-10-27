@@ -11,14 +11,18 @@ import { useReducedMotion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLenis } from 'lenis/react'
 import { useNavigate } from 'react-router-dom'
-import camboriuSkyline from '@/assets/destinations/camboriu-skyline.jpg'
-import barilocheLago from '@/assets/destinations/bariloche-lago.jpg'
-import disneyPanorama from '@/assets/destinations/disney-castle-panorama.jpg'
-import canasvieirasPraia from '@/assets/destinations/canasvieiras-praia-hero.jpg'
-import proximosAfrica from '@/assets/destinations/proximos/africa.jpg'
-import proximosEeuu from '@/assets/destinations/proximos/estados-unidos.jpg'
-import proximosEuropa from '@/assets/destinations/proximos/europa.jpg'
-import proximosEgipto from '@/assets/destinations/proximos/egipto.jpg'
+import camboriuSkyline from '@/assets/destinations/camboriu-skyline.webp'
+import camboriuSkylineSm from '@/assets/destinations/camboriu-skyline-sm.webp'
+import barilocheLago from '@/assets/destinations/bariloche-lago.webp'
+import barilocheLagoSm from '@/assets/destinations/bariloche-lago-sm.webp'
+import disneyPanorama from '@/assets/destinations/disney-castle-panorama.webp'
+import disneyPanoramaSm from '@/assets/destinations/disney-castle-panorama-sm.webp'
+import canasvieirasPraia from '@/assets/destinations/canasvieiras-praia-hero.webp'
+import canasvieirasPraiaSm from '@/assets/destinations/canasvieiras-praia-hero-sm.webp'
+import proximosAfrica from '@/assets/destinations/proximos/africa.webp'
+import proximosEeuu from '@/assets/destinations/proximos/estados-unidos.webp'
+import proximosEuropa from '@/assets/destinations/proximos/europa.webp'
+import proximosEgipto from '@/assets/destinations/proximos/egipto.webp'
 import { NAV_OFFSET } from '@/hooks/use-hash-scroll'
 import { useSiteOpen } from '@/hooks/use-site-open'
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button'
@@ -40,6 +44,8 @@ type DestinationSlide = {
   ctaLabel: string
   ctaHref: string
   image: string
+  /** Versión de 900 px para pantallas chicas (cuarta parte del peso). */
+  imageSm: string
   /** Bajada de la miniatura (lugar puntual dentro del destino). */
   previewCaption: string
 }
@@ -56,6 +62,7 @@ const destinationSlides: DestinationSlide[] = [
     ctaLabel: 'Consultar',
     ctaHref: '/paquetes/camboriu-aereo',
     image: camboriuSkyline,
+    imageSm: camboriuSkylineSm,
     previewCaption: 'Praia Central, Brasil',
   },
   {
@@ -69,6 +76,7 @@ const destinationSlides: DestinationSlide[] = [
     ctaLabel: 'Consultar',
     ctaHref: '/paquetes/bariloche-aereo',
     image: barilocheLago,
+    imageSm: barilocheLagoSm,
     previewCaption: 'Lago Nahuel Huapi',
   },
   {
@@ -82,6 +90,7 @@ const destinationSlides: DestinationSlide[] = [
     ctaLabel: 'Consultar',
     ctaHref: '/paquetes/disney-a-medida',
     image: disneyPanorama,
+    imageSm: disneyPanoramaSm,
     previewCaption: 'Magic Kingdom, Florida',
   },
   {
@@ -95,6 +104,7 @@ const destinationSlides: DestinationSlide[] = [
     ctaLabel: 'Consultar',
     ctaHref: '/paquetes/canasvieiras-aereo',
     image: canasvieirasPraia,
+    imageSm: canasvieirasPraiaSm,
     previewCaption: 'Ilha de Santa Catarina',
   },
 ]
@@ -122,16 +132,21 @@ const railItems = [
   ...destinationSlides.map((s) => ({
     label: s.label,
     bg: s.image as string | null,
-    previewImage: s.image,
+    bgSm: s.imageSm as string | null,
+    previewImage: s.imageSm,
     caption: s.previewCaption,
   })),
   {
     label: finalSlide.label,
     bg: null,
+    bgSm: null,
     previewImage: finalSlide.previewImage,
     caption: finalSlide.previewCaption,
   },
 ]
+
+/** Mismo corte que el @media de .hero-bg en index.css. */
+const SMALL_SCREEN = '(max-width: 820px)'
 
 const N = railItems.length
 const LAST = N - 1
@@ -189,10 +204,12 @@ export function Hero() {
   // decodifica hasta el primer cambio: ese decode de un JPG de ~2000px en pleno
   // cross-fade era el tirón. Se decodifican por adelantado.
   useEffect(() => {
+    const small = window.matchMedia(SMALL_SCREEN).matches
     for (const it of railItems) {
-      if (!it.bg) continue
+      const src = small ? it.bgSm : it.bg
+      if (!src) continue
       const img = new Image()
-      img.src = it.bg
+      img.src = src
       img.decode().catch(() => {})
     }
   }, [])
@@ -246,7 +263,11 @@ export function Hero() {
           <div
             key={it.label}
             className={`hero-bg${it.bg ? '' : ' hero-bg--solid'}${cur === i ? ' is-active' : ''}`}
-            style={it.bg ? { backgroundImage: `url(${it.bg})` } : undefined}
+            style={
+              it.bg
+                ? ({ '--bg': `url(${it.bg})`, '--bg-sm': `url(${it.bgSm})` } as CSSProperties)
+                : undefined
+            }
           />
         ))}
       </div>

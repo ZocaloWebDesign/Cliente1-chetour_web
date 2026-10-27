@@ -123,7 +123,7 @@ export function PackageDetail() {
         {/* hero */}
         <section className="relative">
           <div className="relative h-[62vh] min-h-[420px] w-full overflow-hidden bg-twilight-950 sm:h-[78vh]">
-            <img src={hero} alt={pkg.name} className="h-full w-full object-cover" />
+            <img src={hero} alt={pkg.name} fetchPriority="high" decoding="async" className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-twilight-950/80 via-twilight-950/20 to-transparent" />
 
             {pkg.heroCredit && (
@@ -259,7 +259,7 @@ export function PackageDetail() {
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   className="aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 shadow-sm dark:border-neutral-800"
                 >
-                  <img src={src} alt={`${pkg.name} ${i + 1}`} className="h-full w-full object-cover" />
+                  <img src={src} alt={`${pkg.name} ${i + 1}`} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 </motion.div>
               ))}
             </div>
