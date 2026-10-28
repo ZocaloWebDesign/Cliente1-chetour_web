@@ -946,7 +946,13 @@ export function GlobeSection() {
                 hoveredCountry ? 'cursor-pointer' : 'cursor-grab',
               )}
             >
-              <canvas ref={canvasRef} className="h-full w-full" />
+              {/* data-lenis-prevent-touch: con syncTouch Lenis scrollea la página con
+                  cualquier arrastre táctil; sobre el globo el dedo solo lo gira. */}
+              <canvas
+                ref={canvasRef}
+                className="h-full w-full touch-none"
+                data-lenis-prevent-touch
+              />
               {hoveredName && (
                 <div className="pointer-events-none absolute inset-x-0 -top-6 flex justify-center">
                   <span className="rounded-full bg-white/90 px-3 py-1 text-sm font-medium text-neutral-900 shadow-lg backdrop-blur dark:bg-neutral-900/90 dark:text-white">
