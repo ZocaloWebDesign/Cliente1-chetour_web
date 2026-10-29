@@ -2,7 +2,8 @@ backend:
   name: github
   repo: ZocaloWebDesign/Cliente1-chetour_web
   branch: cms   # prueba: al unir a main, cambiar a main
-  base_url: https://decap-oauth-proxy-roan.vercel.app
+  base_url: https://decap-oauth-proxy-roan.vercel.app   # login por contraseña (proxy compartido)
+  api_root: https://decap-oauth-proxy-roan.vercel.app/gh
 
 media_folder: public/paquetes/img
 public_folder: /paquetes/img
