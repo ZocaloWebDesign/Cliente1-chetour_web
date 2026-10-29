@@ -11,6 +11,8 @@ locale: es
 collections:
   - name: paquetes
     label: Paquetes de viaje
+    editor:
+      preview: false
     files:
       - name: paquetes
         label: Paquetes
