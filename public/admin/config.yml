@@ -1,0 +1,39 @@
+backend:
+  name: github
+  repo: ZocaloWebDesign/Cliente1-chetour_web
+  branch: cms   # prueba: al unir a main, cambiar a main
+  base_url: https://decap-oauth-proxy-roan.vercel.app
+
+media_folder: public/paquetes/img
+public_folder: /paquetes/img
+locale: es
+
+collections:
+  - name: paquetes
+    label: Paquetes de viaje
+    files:
+      - name: paquetes
+        label: Paquetes
+        file: src/content/packages.json
+        fields:
+          - name: paquetes
+            label: Paquetes
+            widget: list
+            allow_add: false
+            root: true
+            label_singular: paquete
+            summary: "{{fields.name}} · {{fields.price}}"
+            fields:
+              - { name: slug, label: Identificador (no cambiar), widget: hidden }
+              - { name: name, label: Nombre del paquete, widget: string }
+              - { name: destination, label: Descripción corta, widget: string }
+              - { name: duration, label: Duración, widget: string }
+              - { name: departure, label: Salida, widget: string }
+              - { name: mode, label: Modalidad, widget: string }
+              - name: includes
+                label: Qué incluye (3 ítems)
+                widget: list
+                field: { name: item, label: Ítem, widget: string }
+              - { name: price, label: Precio, widget: string, hint: "Ej: USD 8.035, $429.000 o Consultar" }
+              - { name: priceNote, label: Nota del precio (opcional), widget: string, required: false }
+              - { name: image, label: Imagen de la tarjeta, widget: image }
