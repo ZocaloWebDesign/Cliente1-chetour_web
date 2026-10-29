@@ -51,6 +51,21 @@ function App() {
   const [siteOpen, setSiteOpen] = useState(false)
   const handleOpen = useCallback(() => setSiteOpen(true), [])
 
+  // El Loader se muestra una sola vez por sesión: al recargar o abrir otra
+  // página del sitio en la misma pestaña ya no vuelve a aparecer.
+  const loaderSeen = useMemo(() => {
+    try {
+      const seen = sessionStorage.getItem('ct-loader') === '1'
+      sessionStorage.setItem('ct-loader', '1')
+      return seen
+    } catch {
+      return false
+    }
+  }, [])
+  useEffect(() => {
+    if (loaderSeen) setSiteOpen(true)
+  }, [loaderSeen])
+
   return (
     <ReactLenis root options={{ smoothWheel: !prefersReducedMotion, syncTouch: !prefersReducedMotion }}>
       <SiteOpenContext.Provider value={siteOpen}>
@@ -67,7 +82,7 @@ function App() {
           </Suspense>
         </BrowserRouter>
       </SiteOpenContext.Provider>
-      <Loader onOpen={handleOpen} />
+      {!loaderSeen && <Loader onOpen={handleOpen} />}
     </ReactLenis>
   )
 }

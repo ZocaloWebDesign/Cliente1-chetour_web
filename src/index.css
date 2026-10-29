@@ -1340,7 +1340,7 @@
    (blanca, con degradé) viajan por la línea central. Colores sacados del logo:
    "Che" y el avioncito en teal, "Tour" en azul casi negro. */
 .loader {
-  --loader-bg: #f4f2f0;
+  --loader-bg: #fff;
   --loader-teal: #16949f; /* teal del logo, apenas más oscuro para llegar a contraste 3:1 en texto grande */
   --loader-ink: #0c1e30;
   position: fixed;
