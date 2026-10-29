@@ -20,7 +20,6 @@ collections:
             label: Paquetes
             widget: list
             allow_add: false
-            root: true
             label_singular: paquete
             summary: "{{fields.name}} · {{fields.price}}"
             fields:

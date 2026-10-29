@@ -275,7 +275,7 @@ const packagesBase: PackageBase[] = [
 type PackageContent = Omit<TravelPackage, keyof PackageBase>
 
 export const packages: TravelPackage[] = packagesBase.map((base) => {
-  const content = (packagesContent as (PackageContent & { slug: string })[]).find((p) => p.slug === base.slug)
+  const content = (packagesContent.paquetes as (PackageContent & { slug: string })[]).find((p) => p.slug === base.slug)
   if (!content) throw new Error(`Falta el paquete "${base.slug}" en src/content/packages.json`)
   return { ...base, ...content }
 })
