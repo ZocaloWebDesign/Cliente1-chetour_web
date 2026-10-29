@@ -32,15 +32,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "África Todo Incluido — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/africa-1.jpg",
+        "src": "/paquetes/img/africa-1.webp",
         "caption": "Vehículo de safari recorriendo la sabana de Tanzania."
       },
       {
-        "src": "/paquetes/img/africa-2.jpg",
+        "src": "/paquetes/img/africa-2.webp",
         "caption": "Elefantes al paso del vehículo en el Parque Nacional Tarangire."
       },
       {
-        "src": "/paquetes/img/africa-3.jpg",
+        "src": "/paquetes/img/africa-3.webp",
         "caption": "Las playas de arena blanca de Zanzíbar, frente al océano Índico."
       }
     ]
@@ -57,15 +57,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Bariloche en Bus — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/bariloche-1.jpg",
+        "src": "/paquetes/img/bariloche-1.webp",
         "caption": "El lago Nahuel Huapi y los cerros nevados de Bariloche."
       },
       {
-        "src": "/paquetes/img/bariloche-2.jpg",
+        "src": "/paquetes/img/bariloche-2.webp",
         "caption": "Una bahía de aguas turquesas entre el bosque andino patagónico."
       },
       {
-        "src": "/paquetes/img/bariloche-3.jpg",
+        "src": "/paquetes/img/bariloche-3.webp",
         "caption": "Vista aérea de los lagos y bosques de la Patagonia andina."
       }
     ]
@@ -82,15 +82,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Bariloche Aéreo — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/bariloche-1.jpg",
+        "src": "/paquetes/img/bariloche-1.webp",
         "caption": "El lago Nahuel Huapi y los cerros nevados de Bariloche."
       },
       {
-        "src": "/paquetes/img/bariloche-2.jpg",
+        "src": "/paquetes/img/bariloche-2.webp",
         "caption": "Una bahía de aguas turquesas entre el bosque andino patagónico."
       },
       {
-        "src": "/paquetes/img/bariloche-3.jpg",
+        "src": "/paquetes/img/bariloche-3.webp",
         "caption": "Vista aérea de los lagos y bosques de la Patagonia andina."
       }
     ]
@@ -107,15 +107,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Camboriú en Bus — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/camboriu-1.jpg",
+        "src": "/paquetes/img/camboriu-1.webp",
         "caption": "La Playa Central de Balneário Camboriú y su fila de rascacielos sobre el mar."
       },
       {
-        "src": "/paquetes/img/camboriu-2.jpg",
+        "src": "/paquetes/img/camboriu-2.webp",
         "caption": "La rueda gigante de Camboriú y el skyline iluminado al atardecer."
       },
       {
-        "src": "/paquetes/img/camboriu-3.jpg",
+        "src": "/paquetes/img/camboriu-3.webp",
         "caption": "Vista desde el mar hacia el skyline de Balneário Camboriú."
       }
     ]
@@ -132,15 +132,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Canasvieiras Aéreo — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/canasvieiras-1.jpg",
+        "src": "/paquetes/img/canasvieiras-1.webp",
         "caption": "Vista aérea de la Praia de Canasvieiras y su costanera."
       },
       {
-        "src": "/paquetes/img/canasvieiras-2.jpg",
+        "src": "/paquetes/img/canasvieiras-2.webp",
         "caption": "Atardecer de fuego sobre la playa de Canasvieiras."
       },
       {
-        "src": "/paquetes/img/canasvieiras-3.jpg",
+        "src": "/paquetes/img/canasvieiras-3.webp",
         "caption": "Costa rocosa de Canasvieiras, con una isla frente a la playa."
       }
     ]
@@ -157,15 +157,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Cataratas del Iguazú Aéreo — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/iguazu-1.jpg",
+        "src": "/paquetes/img/iguazu-1.webp",
         "caption": "Panorámica de las Cataratas del Iguazú desde las pasarelas."
       },
       {
-        "src": "/paquetes/img/iguazu-2.jpg",
+        "src": "/paquetes/img/iguazu-2.webp",
         "caption": "Los saltos de agua entre la vegetación selvática de Iguazú."
       },
       {
-        "src": "/paquetes/img/iguazu-3.jpg",
+        "src": "/paquetes/img/iguazu-3.webp",
         "caption": "Las pasarelas sobre el río, frente a la cortina de agua."
       }
     ]
@@ -182,15 +182,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Crucero por Fiordos y Glaciares Chilenos — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/crucero-1.jpg",
+        "src": "/paquetes/img/crucero-1.webp",
         "caption": "Navegación entre los fiordos y canales patagónicos a bordo de un crucero de expedición."
       },
       {
-        "src": "/paquetes/img/crucero-2.jpg",
+        "src": "/paquetes/img/crucero-2.webp",
         "caption": "Frente de glaciar y témpanos de hielo azul en los canales del sur."
       },
       {
-        "src": "/paquetes/img/crucero-3.jpg",
+        "src": "/paquetes/img/crucero-3.webp",
         "caption": "Glaciar descendiendo entre montañas hacia los canales de la Patagonia chilena."
       }
     ]
@@ -207,15 +207,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Esencias Centroeuropeas — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/centroeuropa-1.jpg",
+        "src": "/paquetes/img/centroeuropa-1.webp",
         "caption": "Ámsterdam: los canales y las casas históricas al atardecer."
       },
       {
-        "src": "/paquetes/img/centroeuropa-2.jpg",
+        "src": "/paquetes/img/centroeuropa-2.webp",
         "caption": "Viena: la fachada curva de la Hofburg, el antiguo palacio imperial."
       },
       {
-        "src": "/paquetes/img/centroeuropa-3.jpg",
+        "src": "/paquetes/img/centroeuropa-3.webp",
         "caption": "Múnich: el casco antiguo desde las alturas."
       }
     ]
@@ -232,15 +232,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Estados Unidos de Costa a Costa — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/usa-1.jpg",
+        "src": "/paquetes/img/usa-1.webp",
         "caption": "Gran Cañón del Colorado: sobrevuelo en helicóptero sobre los cañones."
       },
       {
-        "src": "/paquetes/img/usa-2.jpg",
+        "src": "/paquetes/img/usa-2.webp",
         "caption": "Nueva York: el Empire State y el skyline de Manhattan al atardecer."
       },
       {
-        "src": "/paquetes/img/usa-3.jpg",
+        "src": "/paquetes/img/usa-3.webp",
         "caption": "Skylines y rascacielos de las grandes ciudades de Estados Unidos."
       }
     ]
@@ -257,15 +257,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Europa al Máximo, de Londres a Madrid — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/europa-1.jpg",
+        "src": "/paquetes/img/europa-1.webp",
         "caption": "Londres: el London Eye y el Támesis iluminados."
       },
       {
-        "src": "/paquetes/img/europa-2.jpg",
+        "src": "/paquetes/img/europa-2.webp",
         "caption": "París: los tejados de la ciudad y la Torre Eiffel al atardecer."
       },
       {
-        "src": "/paquetes/img/europa-3.jpg",
+        "src": "/paquetes/img/europa-3.webp",
         "caption": "Roma: el Coliseo iluminado."
       }
     ]
@@ -282,15 +282,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Europa Clásica, con Costa Amalfitana y la Toscana — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/europaclasica-1.jpg",
+        "src": "/paquetes/img/europaclasica-1.webp",
         "caption": "La Costa Amalfitana: pueblos blancos sobre el mar turquesa."
       },
       {
-        "src": "/paquetes/img/europaclasica-2.jpg",
+        "src": "/paquetes/img/europaclasica-2.webp",
         "caption": "Positano, con sus casas de colores colgadas de la ladera sobre el mar."
       },
       {
-        "src": "/paquetes/img/europaclasica-3.jpg",
+        "src": "/paquetes/img/europaclasica-3.webp",
         "caption": "Florencia: el Ponte Vecchio sobre el río Arno."
       }
     ]
@@ -307,15 +307,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Gramado y Canela con Torres — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/gramado-1.jpg",
+        "src": "/paquetes/img/gramado-1.webp",
         "caption": "La arquitectura alpina de Gramado, con su torre reloj al atardecer."
       },
       {
-        "src": "/paquetes/img/gramado-2.jpg",
+        "src": "/paquetes/img/gramado-2.webp",
         "caption": "La playa de Torres y sus formaciones rocosas sobre el mar."
       },
       {
-        "src": "/paquetes/img/gramado-3.jpg",
+        "src": "/paquetes/img/gramado-3.webp",
         "caption": "Vista aérea de Torres, con el litoral de Río Grande do Sul."
       }
     ]
@@ -332,15 +332,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Neuquén y Caviahue — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/caviahue-1.jpg",
+        "src": "/paquetes/img/caviahue-1.webp",
         "caption": "El lago Caviahue y el volcán Copahue nevado."
       },
       {
-        "src": "/paquetes/img/caviahue-2.jpg",
+        "src": "/paquetes/img/caviahue-2.webp",
         "caption": "El Salto del Agrio, cascada entre rocas rojizas."
       },
       {
-        "src": "/paquetes/img/caviahue-3.jpg",
+        "src": "/paquetes/img/caviahue-3.webp",
         "caption": "Bosque andino en los alrededores de Caviahue."
       }
     ]
@@ -357,15 +357,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Salta, Humahuaca y Cafayate — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/nqa-2.jpg",
+        "src": "/paquetes/img/nqa-2.webp",
         "caption": "Serranía del Hornocal, cerro de los 14 colores en Humahuaca."
       },
       {
-        "src": "/paquetes/img/nqa-3.jpg",
+        "src": "/paquetes/img/nqa-3.webp",
         "caption": "Formaciones de arenisca rojiza en la Quebrada de las Conchas, Cafayate."
       },
       {
-        "src": "/paquetes/img/nqa-5.jpg",
+        "src": "/paquetes/img/nqa-5.webp",
         "caption": "Paisaje de cañones y viñedos camino a Cafayate."
       }
                       ]
@@ -382,11 +382,11 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "San Juan Bajo las Estrellas — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/sanjuan-1.jpg",
+        "src": "/paquetes/img/sanjuan-1.webp",
         "caption": "Formaciones rocosas del Parque Nacional Sierra de las Quijadas, en San Juan."
       },
       {
-        "src": "/paquetes/img/sanjuan-2.jpg",
+        "src": "/paquetes/img/sanjuan-2.webp",
         "caption": "La Pampa del Leoncito, bajo el cielo despejado de San Juan."
       }
     ]
@@ -403,11 +403,11 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "San Juan Bajo las Estrellas Aéreo — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/sanjuan-1.jpg",
+        "src": "/paquetes/img/sanjuan-1.webp",
         "caption": "Formaciones rocosas del Parque Nacional Sierra de las Quijadas, en San Juan."
       },
       {
-        "src": "/paquetes/img/sanjuan-2.jpg",
+        "src": "/paquetes/img/sanjuan-2.webp",
         "caption": "La Pampa del Leoncito, bajo el cielo despejado de San Juan."
       }
     ]
@@ -424,15 +424,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/talampaya-1.jpg",
+        "src": "/paquetes/img/talampaya-1.webp",
         "caption": "Laguna Brava, con flamencos andinos y la cordillera nevada de fondo."
       },
       {
-        "src": "/paquetes/img/talampaya-2.jpg",
+        "src": "/paquetes/img/talampaya-2.webp",
         "caption": "Los cerros de arcilla de colores del Valle de la Luna."
       },
       {
-        "src": "/paquetes/img/talampaya-3.jpg",
+        "src": "/paquetes/img/talampaya-3.webp",
         "caption": "Flamencos volando sobre Laguna Brava, con el volcán nevado de fondo."
       }
     ]
@@ -449,15 +449,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Talampaya con Luna Llena, Laguna Brava y Valle de la Luna Aéreo — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/talampaya-1.jpg",
+        "src": "/paquetes/img/talampaya-1.webp",
         "caption": "Laguna Brava, con flamencos andinos y la cordillera nevada de fondo."
       },
       {
-        "src": "/paquetes/img/talampaya-2.jpg",
+        "src": "/paquetes/img/talampaya-2.webp",
         "caption": "Los cerros de arcilla de colores del Valle de la Luna."
       },
       {
-        "src": "/paquetes/img/talampaya-3.jpg",
+        "src": "/paquetes/img/talampaya-3.webp",
         "caption": "Flamencos volando sobre Laguna Brava, con el volcán nevado de fondo."
       }
     ]
@@ -474,15 +474,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Ushuaia y Calafate — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/ushuaia-1.jpg",
+        "src": "/paquetes/img/ushuaia-1.webp",
         "caption": "El Glaciar Perito Moreno, en el Parque Nacional Los Glaciares."
       },
       {
-        "src": "/paquetes/img/ushuaia-2.jpg",
+        "src": "/paquetes/img/ushuaia-2.webp",
         "caption": "El faro Les Éclaireurs en el Canal Beagle, cerca de Ushuaia."
       },
       {
-        "src": "/paquetes/img/ushuaia-3.jpg",
+        "src": "/paquetes/img/ushuaia-3.webp",
         "caption": "Glaciares y témpanos entre las montañas de la Patagonia austral."
       }
     ]
@@ -532,19 +532,19 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Perú y Bolivia — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/peru-bolivia-3.jpg",
+        "src": "/paquetes/img/peru-bolivia-3.webp",
         "caption": "El Lago Titicaca, el lago navegable más alto del mundo, entre Bolivia y Perú."
       },
       {
-        "src": "/paquetes/img/peru-bolivia-6.jpg",
+        "src": "/paquetes/img/peru-bolivia-6.webp",
         "caption": "La Plaza de Armas de Cusco, iluminada al atardecer."
       },
       {
-        "src": "/paquetes/img/peru-bolivia-5.jpg",
+        "src": "/paquetes/img/peru-bolivia-5.webp",
         "caption": "Arequipa, la Ciudad Blanca, con el volcán Misti de fondo."
       },
       {
-        "src": "/paquetes/img/peru-bolivia-2.jpg",
+        "src": "/paquetes/img/peru-bolivia-2.webp",
         "caption": "El Cerro de los Siete Colores, sobre el pueblo de Purmamarca."
       }
                 ]
@@ -561,15 +561,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Quatro Ilhas — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/quatro-ilhas-1.jpg",
+        "src": "/paquetes/img/quatro-ilhas-1.webp",
         "caption": "Vista aérea de la Praia de Quatro Ilhas, una bahía de arena blanca entre morros verdes."
       },
       {
-        "src": "/paquetes/img/quatro-ilhas-2.jpg",
+        "src": "/paquetes/img/quatro-ilhas-2.webp",
         "caption": "Vista aérea de Quatro Ilhas a pleno verano, con la playa repleta de sombrillas de colores."
       },
       {
-        "src": "/paquetes/img/quatro-ilhas-3.jpg",
+        "src": "/paquetes/img/quatro-ilhas-3.webp",
         "caption": "Las casas de colores sobre la playa de Quatro Ilhas, con el morro verde de fondo."
       }
                       ]
@@ -586,19 +586,19 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Disney a Medida — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/disney-1.jpg",
+        "src": "/paquetes/img/disney-1.webp",
         "caption": "El castillo de Cenicienta en Magic Kingdom, Walt Disney World."
       },
       {
-        "src": "/paquetes/img/disney-2.jpg",
+        "src": "/paquetes/img/disney-2.webp",
         "caption": "Fuegos artificiales sobre el castillo de Magic Kingdom."
       },
       {
-        "src": "/paquetes/img/disney-3.jpg",
+        "src": "/paquetes/img/disney-3.webp",
         "caption": "La esfera de Epcot en Walt Disney World."
       },
       {
-        "src": "/paquetes/img/disney-4.jpg",
+        "src": "/paquetes/img/disney-4.webp",
         "caption": "Animal Kingdom, el parque temático dedicado a la naturaleza y los animales."
       }
                 ]
@@ -615,15 +615,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Ingleses Aéreo — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/ingleses-1.jpg",
+        "src": "/paquetes/img/ingleses-1.webp",
         "caption": "La Praia dos Ingleses, con olas abiertas al Atlántico y los morros al fondo."
       },
       {
-        "src": "/paquetes/img/ingleses-2.jpg",
+        "src": "/paquetes/img/ingleses-2.webp",
         "caption": "Puesto de guardavidas y sombrillas de colores en las playas del norte de Florianópolis."
       },
       {
-        "src": "/paquetes/img/ingleses-3.jpg",
+        "src": "/paquetes/img/ingleses-3.webp",
         "caption": "Vista aérea de la Praia dos Ingleses, con sus dunas y el pueblo frente al mar."
       }
     ]
@@ -640,15 +640,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Bombinhas Aéreo — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/bombinhas-1.jpg",
+        "src": "/paquetes/img/bombinhas-1.webp",
         "caption": "Vista aérea de una cala escondida de aguas turquesas en Bombinhas."
       },
       {
-        "src": "/paquetes/img/bombinhas-2.jpg",
+        "src": "/paquetes/img/bombinhas-2.webp",
         "caption": "Vista aérea de la península de Bombinhas, entre dos playas."
       },
       {
-        "src": "/paquetes/img/bombinhas-3.jpg",
+        "src": "/paquetes/img/bombinhas-3.webp",
         "caption": "Panorámica aérea de la bahía y el centro de Bombinhas."
       }
     ]
@@ -665,15 +665,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Bombinhas — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/bombinhas-1.jpg",
+        "src": "/paquetes/img/bombinhas-1.webp",
         "caption": "Vista aérea de una cala escondida de aguas turquesas en Bombinhas."
       },
       {
-        "src": "/paquetes/img/bombinhas-2.jpg",
+        "src": "/paquetes/img/bombinhas-2.webp",
         "caption": "Vista aérea de la península de Bombinhas, entre dos playas."
       },
       {
-        "src": "/paquetes/img/bombinhas-3.jpg",
+        "src": "/paquetes/img/bombinhas-3.webp",
         "caption": "Panorámica aérea de la bahía y el centro de Bombinhas."
       }
     ]
@@ -690,19 +690,19 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Bombas — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/bombas-1.jpg",
+        "src": "/paquetes/img/bombas-1.webp",
         "caption": "El mar tranquilo de la Praia de Bombas, en Santa Catarina."
       },
       {
-        "src": "/paquetes/img/bombas-2.jpg",
+        "src": "/paquetes/img/bombas-2.webp",
         "caption": "La Praia de Bombas, junto a Bombinhas."
       },
       {
-        "src": "/paquetes/img/bombas-3.jpg",
+        "src": "/paquetes/img/bombas-3.webp",
         "caption": "Atardecer en la Praia de Bombas."
       },
       {
-        "src": "/paquetes/img/bombas-4.jpg",
+        "src": "/paquetes/img/bombas-4.webp",
         "caption": "Vista aérea de la Praia de Bombas."
       }
                 ]
@@ -719,15 +719,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Camboriú Aéreo — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/camboriu-1.jpg",
+        "src": "/paquetes/img/camboriu-1.webp",
         "caption": "La Playa Central de Balneário Camboriú y su fila de rascacielos sobre el mar."
       },
       {
-        "src": "/paquetes/img/camboriu-2.jpg",
+        "src": "/paquetes/img/camboriu-2.webp",
         "caption": "La rueda gigante de Camboriú y el skyline iluminado al atardecer."
       },
       {
-        "src": "/paquetes/img/camboriu-3.jpg",
+        "src": "/paquetes/img/camboriu-3.webp",
         "caption": "Vista desde el mar hacia el skyline de Balneário Camboriú."
       }
     ]
@@ -744,15 +744,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Canasvieiras en Bus — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/canasvieiras-1.jpg",
+        "src": "/paquetes/img/canasvieiras-1.webp",
         "caption": "Vista aérea de la Praia de Canasvieiras y su costanera."
       },
       {
-        "src": "/paquetes/img/canasvieiras-2.jpg",
+        "src": "/paquetes/img/canasvieiras-2.webp",
         "caption": "Atardecer de fuego sobre la playa de Canasvieiras."
       },
       {
-        "src": "/paquetes/img/canasvieiras-3.jpg",
+        "src": "/paquetes/img/canasvieiras-3.webp",
         "caption": "Costa rocosa de Canasvieiras, con una isla frente a la playa."
       }
     ]
@@ -769,15 +769,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Cataratas del Iguazú en Bus — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/iguazu-1.jpg",
+        "src": "/paquetes/img/iguazu-1.webp",
         "caption": "Panorámica de las Cataratas del Iguazú desde las pasarelas."
       },
       {
-        "src": "/paquetes/img/iguazu-2.jpg",
+        "src": "/paquetes/img/iguazu-2.webp",
         "caption": "Los saltos de agua entre la vegetación selvática de Iguazú."
       },
       {
-        "src": "/paquetes/img/iguazu-3.jpg",
+        "src": "/paquetes/img/iguazu-3.webp",
         "caption": "Las pasarelas sobre el río, frente a la cortina de agua."
       }
     ]
@@ -794,27 +794,27 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Nueva York y Miami — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/nyc-miami-1.jpg",
+        "src": "/paquetes/img/nyc-miami-1.webp",
         "caption": "Times Square iluminada, en el corazón de Manhattan."
       },
       {
-        "src": "/paquetes/img/nyc-miami-2.jpg",
+        "src": "/paquetes/img/nyc-miami-2.webp",
         "caption": "El puente de Brooklyn y el skyline del Bajo Manhattan al atardecer."
       },
       {
-        "src": "/paquetes/img/nyc-miami-3.jpg",
+        "src": "/paquetes/img/nyc-miami-3.webp",
         "caption": "Una calle del Bajo Manhattan con vista a los rascacielos del Financial District."
       },
       {
-        "src": "/paquetes/img/nyc-miami-4.jpg",
+        "src": "/paquetes/img/nyc-miami-4.webp",
         "caption": "Vista aérea de la costa de Miami."
       },
       {
-        "src": "/paquetes/img/nyc-miami-5.jpg",
+        "src": "/paquetes/img/nyc-miami-5.webp",
         "caption": "Rascacielos y avenidas de Brickell, el distrito financiero de Miami."
       },
       {
-        "src": "/paquetes/img/nyc-miami-6.jpg",
+        "src": "/paquetes/img/nyc-miami-6.webp",
         "caption": "Ocean Drive, la icónica avenida Art Déco de Miami Beach."
       }
     ]
@@ -831,27 +831,27 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Egipto y Dubái con Crucero en el Nilo — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/egipto-dubai-1.jpg",
+        "src": "/paquetes/img/egipto-dubai-1.webp",
         "caption": "Las pirámides de Guiza en El Cairo, Egipto."
       },
       {
-        "src": "/paquetes/img/egipto-dubai-2.jpg",
+        "src": "/paquetes/img/egipto-dubai-2.webp",
         "caption": "La Ciudadela y la Mezquita de Muhammad Ali sobre la ciudad de El Cairo."
       },
       {
-        "src": "/paquetes/img/egipto-dubai-3.jpg",
+        "src": "/paquetes/img/egipto-dubai-3.webp",
         "caption": "Callejón del Bazar Khan El Khalili en El Cairo."
       },
       {
-        "src": "/paquetes/img/egipto-dubai-4.jpg",
+        "src": "/paquetes/img/egipto-dubai-4.webp",
         "caption": "Dunas del desierto de Dubái."
       },
       {
-        "src": "/paquetes/img/egipto-dubai-5.jpg",
+        "src": "/paquetes/img/egipto-dubai-5.webp",
         "caption": "El Burj Khalifa y el skyline de Dubái."
       },
       {
-        "src": "/paquetes/img/egipto-dubai-6.jpg",
+        "src": "/paquetes/img/egipto-dubai-6.webp",
         "caption": "Los templos de Abú Simbel, tallados en la roca junto al Nilo."
       }
     ]
@@ -868,15 +868,15 @@ export const packageStaticPages: Record<string, PackageStaticEntry> = {
     "shareTitle": "Río de Janeiro — CheTour Viajes",
     "photos": [
       {
-        "src": "/paquetes/img/rio-1.jpg",
+        "src": "/paquetes/img/rio-1.webp",
         "caption": "El Cristo Redentor, con la Bahía de Guanabara de fondo."
       },
       {
-        "src": "/paquetes/img/rio-2.jpg",
+        "src": "/paquetes/img/rio-2.webp",
         "caption": "Vista aérea de la playa de Copacabana y su costanera."
       },
       {
-        "src": "/paquetes/img/rio-3.jpg",
+        "src": "/paquetes/img/rio-3.webp",
         "caption": "La playa de Ipanema, con el cerro Dois Irmãos de fondo."
       }
                       ]

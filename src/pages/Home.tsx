@@ -7,6 +7,7 @@ import { Experiences } from '@/components/Experiences'
 import { About } from '@/components/About'
 import { Cta } from '@/components/Cta'
 import { Footer } from '@/components/Footer'
+import { useSiteOpen } from '@/hooks/use-site-open'
 
 // three.js pesa varios cientos de KB: se separa en su propio chunk y se
 // carga en paralelo al bundle principal en vez de bloquear el primer paint.
@@ -16,6 +17,27 @@ const GlobeSection = lazy(() =>
 
 export function Home() {
   const reduced = useReducedMotion()
+
+  // El globo (three.js: ~700 KB y ~1 s de CPU en un celular medio) queda tapado
+  // por el Hero al cargar, así que no se monta hasta que se abre la pantalla de
+  // carga y el navegador está ocioso, o hasta el primer scroll (lo que pase antes).
+  const siteOpen = useSiteOpen()
+  const [globeOn, setGlobeOn] = useState(false)
+  useEffect(() => {
+    if (!siteOpen || globeOn) return
+    const mount = () => setGlobeOn(true)
+    // Safari no tiene requestIdleCallback
+    const hasIdle = 'requestIdleCallback' in window
+    const idle = hasIdle
+      ? window.requestIdleCallback(mount, { timeout: 2500 })
+      : window.setTimeout(mount, 1200)
+    window.addEventListener('scroll', mount, { once: true, passive: true })
+    return () => {
+      if (hasIdle) window.cancelIdleCallback(idle)
+      else window.clearTimeout(idle)
+      window.removeEventListener('scroll', mount)
+    }
+  }, [siteOpen, globeOn])
 
   // --- Transición "persiana" Hero → GlobeSection --------------------------------
   // La GlobeSection queda QUIETA en su lugar; el Hero —una capa superpuesta por
@@ -59,9 +81,13 @@ export function Home() {
               <Hero />
             </motion.div>
             <div className="hero-reveal__globe">
-              <Suspense fallback={<div className="min-h-[70vh]" />}>
-                <GlobeSection />
-              </Suspense>
+              {globeOn ? (
+                <Suspense fallback={<div className="min-h-[70vh]" />}>
+                  <GlobeSection />
+                </Suspense>
+              ) : (
+                <div className="min-h-[70vh]" />
+              )}
             </div>
           </div>
           <div className="hero-reveal__spacer" aria-hidden />

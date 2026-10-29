@@ -25,6 +25,8 @@ export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number 
         <img
           src={pkg.image}
           alt={pkg.destination}
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent" />

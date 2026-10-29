@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
-import canasvieirasBus from '@/assets/packages/canasvieiras-bus.jpg'
+import canasvieirasBus from '@/assets/packages/canasvieiras-bus.webp'
 import { siteInfo, values } from '@/data'
 
 export function About() {
@@ -17,6 +17,8 @@ export function About() {
           <img
             src={canasvieirasBus}
             alt="Destino de viaje CheTour"
+            loading="lazy"
+            decoding="async"
             className="aspect-[4/3] w-full rounded-[2.5rem] object-cover shadow-xl"
           />
           <motion.div
