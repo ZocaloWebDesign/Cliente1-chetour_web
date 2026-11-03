@@ -23,6 +23,7 @@ import proximosAfrica from '@/assets/destinations/proximos/africa.webp'
 import proximosEeuu from '@/assets/destinations/proximos/estados-unidos.webp'
 import proximosEuropa from '@/assets/destinations/proximos/europa.webp'
 import proximosEgipto from '@/assets/destinations/proximos/egipto.webp'
+import proximosEgiptoSm from '@/assets/destinations/proximos/egipto-sm.webp'
 import { NAV_OFFSET } from '@/hooks/use-hash-scroll'
 import { useSiteOpen } from '@/hooks/use-site-open'
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button'
@@ -119,7 +120,8 @@ const multiPanels = [
 
 const finalSlide = {
   label: 'Próximos destinos',
-  previewImage: proximosEgipto,
+  // miniatura liviana para el riel; la foto grande solo se usa en el panel final
+  previewImage: proximosEgiptoSm,
   previewCaption: 'África · EE.UU. · Europa · Egipto',
   ctaLabel: 'Explorar',
   ctaHref: '#destinos',
@@ -189,6 +191,17 @@ export function Hero() {
   const paused = tabHidden || focusPause || !siteOpen
 
   const go = useCallback((i: number) => setCur(((i % N) + N) % N), [])
+
+  // Las 4 fotos del slide final no se ven hasta llegar ahí: se piden cuando
+  // falta un slide para llegar (o a los 6 s de abrir el sitio), no en la carga.
+  const [panelsOn, setPanelsOn] = useState(false)
+  useEffect(() => {
+    if (panelsOn) return
+    if (cur >= LAST - 1) { setPanelsOn(true); return }
+    if (!siteOpen) return
+    const t = window.setTimeout(() => setPanelsOn(true), 6000)
+    return () => window.clearTimeout(t)
+  }, [cur, siteOpen, panelsOn])
 
   // Con animación visible, el cambio de slide lo dispara el final de la barra
   // de progreso (onAnimationEnd más abajo): así la barra y el cambio quedan
@@ -339,7 +352,7 @@ export function Hero() {
             <div key={p.name} className="hero-multi-panel">
               <div
                 className="hero-multi-panel-bg"
-                style={{ backgroundImage: `url(${p.image})` }}
+                style={panelsOn ? { backgroundImage: `url(${p.image})` } : undefined}
               />
               <span className="hero-multi-name">{p.name}</span>
             </div>

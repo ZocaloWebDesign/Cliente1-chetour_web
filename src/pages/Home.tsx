@@ -19,23 +19,22 @@ export function Home() {
   const reduced = useReducedMotion()
 
   // El globo (three.js: ~700 KB y ~1 s de CPU en un celular medio) queda tapado
-  // por el Hero al cargar, así que no se monta hasta que se abre la pantalla de
-  // carga y el navegador está ocioso, o hasta el primer scroll (lo que pase antes).
+  // por el Hero al cargar, así que no se monta hasta que la persona interactúa
+  // (scroll, toque o tecla) o, si se queda quieta, a los 8 s de abrirse el sitio.
+  // Antes se montaba al primer rato libre (2,5 s) y trababa el celular justo
+  // mientras cargaba la página.
   const siteOpen = useSiteOpen()
   const [globeOn, setGlobeOn] = useState(false)
   useEffect(() => {
     if (!siteOpen || globeOn) return
     const mount = () => setGlobeOn(true)
-    // Safari no tiene requestIdleCallback
-    const hasIdle = 'requestIdleCallback' in window
-    const idle = hasIdle
-      ? window.requestIdleCallback(mount, { timeout: 2500 })
-      : window.setTimeout(mount, 1200)
-    window.addEventListener('scroll', mount, { once: true, passive: true })
+    const timer = window.setTimeout(mount, 8000)
+    const opts = { once: true, passive: true } as const
+    const events = ['scroll', 'wheel', 'touchstart', 'keydown'] as const
+    events.forEach((e) => window.addEventListener(e, mount, opts))
     return () => {
-      if (hasIdle) window.cancelIdleCallback(idle)
-      else window.clearTimeout(idle)
-      window.removeEventListener('scroll', mount)
+      window.clearTimeout(timer)
+      events.forEach((e) => window.removeEventListener(e, mount))
     }
   }, [siteOpen, globeOn])
 
