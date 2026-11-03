@@ -69,7 +69,7 @@ export function Home() {
   return (
     <div className="min-h-screen text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <Nav />
-      <main className="relative">
+      <main id="contenido" className="relative">
         <div className="hero-reveal">
           <div className="hero-reveal__pin">
             <motion.div

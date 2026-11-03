@@ -12,7 +12,7 @@ export function NotFound() {
     <div className="min-h-screen text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <Nav />
 
-      <main className="relative flex min-h-[calc(100vh-88px)] items-center justify-center overflow-hidden px-6 py-24">
+      <main id="contenido" className="relative flex min-h-[calc(100vh-88px)] items-center justify-center overflow-hidden px-6 py-24">
         <img src={planeWingSky} alt="" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-twilight-950/50 via-twilight-950/40 to-twilight-950/85" />
 

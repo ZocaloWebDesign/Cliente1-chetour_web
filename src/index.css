@@ -90,7 +90,7 @@
     --secondary: oklch(0.97 0 0);
     --secondary-foreground: oklch(0.205 0 0);
     --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
+    --muted-foreground: oklch(0.5 0 0);
     --accent: oklch(0.97 0 0);
     --accent-foreground: oklch(0.205 0 0);
     --destructive: oklch(0.577 0.245 27.325);
@@ -348,8 +348,8 @@
 .hero-dot {
   display: grid;
   place-items: center;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   padding: 0;
 }
 .hero-dot::after {
@@ -1426,4 +1426,30 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .loader-mark { animation: none; }
+}
+
+/* accesibilidad: sin movimiento continuo si la persona pidió reducirlo */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob,
+  .animate-blob-slow,
+  .animate-float-y,
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* accesibilidad: enlace para saltar al contenido (solo se ve con el foco) */
+.skip-link {
+  position: fixed;
+  left: 12px;
+  top: -100px;
+  z-index: 10000;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #fff;
+  color: #0e2a44;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 12px;
 }

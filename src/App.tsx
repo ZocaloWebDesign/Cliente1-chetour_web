@@ -70,6 +70,23 @@ function App() {
     <ReactLenis root options={{ smoothWheel: !prefersReducedMotion, syncTouch: !prefersReducedMotion }}>
       <SiteOpenContext.Provider value={siteOpen}>
         <BrowserRouter>
+          <div role="navigation" aria-label="Accesos rápidos">
+          <a
+            href="#contenido"
+            className="skip-link"
+            onClick={(e) => {
+              e.preventDefault()
+              const main = document.getElementById('contenido')
+              if (main) {
+                main.setAttribute('tabindex', '-1')
+                main.focus()
+                main.scrollIntoView()
+              }
+            }}
+          >
+            Saltar al contenido
+          </a>
+          </div>
           <ScrollToTop />
           <Suspense fallback={<div className="min-h-screen" />}>
             <Routes>

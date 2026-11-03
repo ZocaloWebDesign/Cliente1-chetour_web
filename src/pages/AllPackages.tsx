@@ -25,7 +25,7 @@ export function AllPackages() {
     <div className="min-h-screen text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <Nav />
 
-      <main>
+      <main id="contenido">
         <section className="bg-twilight-950 pt-28 pb-16 sm:pt-32 sm:pb-20">
           <div className="mx-auto max-w-3xl px-6 text-center">
             <motion.span

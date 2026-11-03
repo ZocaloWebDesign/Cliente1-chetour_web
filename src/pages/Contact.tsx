@@ -199,7 +199,7 @@ export function Contact() {
     <div className="min-h-screen text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <Nav />
 
-      <main>
+      <main id="contenido">
         {/* hero */}
         <section className="bg-twilight-950 pt-40 pb-20 sm:pt-48 sm:pb-24">
           <div className="mx-auto max-w-3xl px-6 text-center">

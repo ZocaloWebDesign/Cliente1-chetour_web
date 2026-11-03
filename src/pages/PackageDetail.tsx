@@ -89,7 +89,7 @@ export function PackageDetail() {
     return (
       <div className="min-h-screen text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
         <Nav forceSolid />
-        <main className="mx-auto flex max-w-2xl flex-col items-center px-6 py-40 text-center">
+        <main id="contenido" className="mx-auto flex max-w-2xl flex-col items-center px-6 py-40 text-center">
           <h1 className="text-2xl font-semibold">No encontramos ese paquete</h1>
           <p className="mt-3 text-neutral-500 dark:text-neutral-400">
             Puede que el link esté mal escrito o el paquete ya no esté disponible.
@@ -119,7 +119,7 @@ export function PackageDetail() {
     <div className="min-h-screen text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <Nav />
 
-      <main>
+      <main id="contenido">
         {/* hero */}
         <section className="relative">
           <div className="relative h-[62vh] min-h-[420px] w-full overflow-hidden bg-twilight-950 sm:h-[78vh]">
