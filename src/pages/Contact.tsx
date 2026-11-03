@@ -531,7 +531,7 @@ export function Contact() {
 
 function inputClass(hasError: boolean) {
   return [
-    'w-full rounded-xl border bg-white px-4 py-2.5 text-sm outline-none transition',
+    'w-full scroll-mt-28 rounded-xl border bg-white px-4 py-2.5 text-base outline-none transition sm:text-sm',
     'focus:border-sea-600 focus:ring-2 focus:ring-sea-600/20',
     'dark:bg-neutral-900 dark:text-neutral-100',
     hasError ? 'border-red-400' : 'border-neutral-200 dark:border-neutral-800',

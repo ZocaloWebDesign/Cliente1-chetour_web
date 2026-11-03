@@ -1,8 +1,34 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { MessageCircle } from 'lucide-react'
 import { siteInfo } from '@/data'
 
 export function WhatsappButton() {
+  // Con el teclado del celular abierto (campo con foco o pantalla visible
+  // mucho más baja que la ventana) el botón flotante tapaba el formulario.
+  const [keyboardOpen, setKeyboardOpen] = useState(false)
+
+  useEffect(() => {
+    const isField = (el: EventTarget | null) =>
+      el instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName)
+    const onIn = (e: FocusEvent) => isField(e.target) && setKeyboardOpen(true)
+    const onOut = () => setKeyboardOpen(false)
+    const vv = window.visualViewport
+    const onResize = () => {
+      if (vv) setKeyboardOpen(window.innerHeight - vv.height > 150)
+    }
+    document.addEventListener('focusin', onIn)
+    document.addEventListener('focusout', onOut)
+    vv?.addEventListener('resize', onResize)
+    return () => {
+      document.removeEventListener('focusin', onIn)
+      document.removeEventListener('focusout', onOut)
+      vv?.removeEventListener('resize', onResize)
+    }
+  }, [])
+
+  if (keyboardOpen) return null
+
   return (
     <motion.a
       href={`https://wa.me/${siteInfo.whatsapp}`}
