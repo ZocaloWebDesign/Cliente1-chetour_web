@@ -122,6 +122,7 @@ type FormState = {
   fecha: string
   mensaje: string
   novedades: boolean
+  acepta: boolean
 }
 
 const EMPTY_FORM: FormState = {
@@ -133,6 +134,7 @@ const EMPTY_FORM: FormState = {
   fecha: '',
   mensaje: '',
   novedades: false,
+  acepta: false,
 }
 
 const REQUIRED_MESSAGES: Partial<Record<keyof FormState, string>> = {
@@ -140,6 +142,7 @@ const REQUIRED_MESSAGES: Partial<Record<keyof FormState, string>> = {
   tel: 'Necesitamos un teléfono o WhatsApp para responderte.',
   email: 'Escribí un email válido (ej. nombre@correo.com).',
   destino: 'Elegí un destino, o "Todavía no lo sé".',
+  acepta: 'Para enviar tu consulta tenés que aceptar la Política de privacidad.',
 }
 
 function buildMessage(form: FormState) {
@@ -171,6 +174,7 @@ export function Contact() {
     if (!form.tel.trim()) next.tel = REQUIRED_MESSAGES.tel
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = REQUIRED_MESSAGES.email
     if (!form.destino) next.destino = REQUIRED_MESSAGES.destino
+    if (!form.acepta) next.acepta = REQUIRED_MESSAGES.acepta
     setErrors(next)
     return Object.keys(next).length === 0
   }
@@ -356,6 +360,32 @@ export function Contact() {
                   />
                 </Field>
 
+                <div>
+                  <label className="flex items-start gap-2.5 text-sm text-neutral-700 dark:text-neutral-300">
+                    <input
+                      type="checkbox"
+                      required
+                      checked={form.acepta}
+                      onChange={(e) => update('acepta', e.target.checked)}
+                      aria-invalid={Boolean(errors.acepta)}
+                      aria-describedby={errors.acepta ? 'acepta-error' : undefined}
+                      className="mt-0.5 h-4 w-4 rounded border-neutral-300 text-sea-600 dark:border-neutral-700"
+                    />
+                    <span>
+                      Leí y acepto la{' '}
+                      <a href="/politica-de-privacidad.html" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+                        Política de privacidad
+                      </a>{' '}
+                      y que CheTour Viajes use mis datos para responder esta consulta. <span className="text-red-500">*</span>
+                    </span>
+                  </label>
+                  {errors.acepta && (
+                    <p id="acepta-error" role="alert" className="mt-1.5 text-xs text-red-500">
+                      {errors.acepta}
+                    </p>
+                  )}
+                </div>
+
                 <label className="flex items-start gap-2.5 text-sm text-neutral-600 dark:text-neutral-400">
                   <input
                     type="checkbox"
@@ -384,7 +414,7 @@ export function Contact() {
                 </div>
 
                 <p className="text-xs text-neutral-400 dark:text-neutral-600">
-                  Al enviar aceptás que CheTour Viajes use tus datos para responder tu consulta.
+                  Tus datos se envían por WhatsApp o por email, según el botón que elijas, y solo se usan para responder tu consulta. Las novedades por email son opcionales y podés pedir que te saquemos cuando quieras.
                 </p>
               </form>
             )}

@@ -37,6 +37,8 @@ const itemVariants: Variants = {
   },
 }
 
+const { titular } = siteInfo
+
 export function Footer() {
   const handleHashClick = useHashScroll()
 
@@ -168,6 +170,26 @@ export function Footer() {
       >
         <p>
           © {new Date().getFullYear()} {siteInfo.name}. Todos los derechos reservados.
+        </p>
+        <nav aria-label="Información legal" className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
+          <a href="/politica-de-privacidad.html" className="underline underline-offset-4">Política de privacidad</a>
+          <a href="/politica-de-cookies.html" className="underline underline-offset-4">Política de cookies</a>
+          <a href="/terminos-y-condiciones.html" className="underline underline-offset-4">Términos y condiciones</a>
+          <a href="/arrepentimiento.html" className="font-semibold underline underline-offset-4">Botón de arrepentimiento</a>
+        </nav>
+        <p className="mx-auto mt-2 max-w-2xl text-xs text-muted-foreground/80">
+          {[
+            ['Razón social', titular.razonSocial],
+            ['CUIT', titular.cuit],
+            ['Condición frente al IVA', titular.condicionIva],
+            ['Domicilio', titular.domicilio],
+            ['Viajes de la agencia', titular.agenciaResponsable],
+            ['Legajo de la agencia N.º', titular.legajo],
+            ['Atención', titular.horario],
+          ]
+            .filter(([, valor]) => valor)
+            .map(([etiqueta, valor]) => `${etiqueta}: ${valor}`)
+            .join(' · ')}
         </p>
         <p className="mt-1.5 text-xs text-muted-foreground/70">
           Sitio diseñado y desarrollado por{' '}

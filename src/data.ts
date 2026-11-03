@@ -541,6 +541,9 @@ export const siteInfo = {
   instagram: 'https://instagram.com/chetourviajes',
   tiktok: 'https://tiktok.com/@chetour_viajes',
   founders: 'Bruno Boetto y Máximo Levrino',
+  // Datos del titular que exige la ley (agencia de viajes y defensa del consumidor).
+  // Se completan con datos REALES del cliente; el pie solo muestra los que no están vacíos.
+  titular: { razonSocial: 'Bruno Boetto y Máximo Levrino', cuit: '', condicionIva: '', domicilio: '', agenciaResponsable: 'Vedelago Viajes', legajo: '', horario: 'Lunes a sábados de 9 a 19 h' },
 }
 
 export const values = [

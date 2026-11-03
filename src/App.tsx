@@ -5,6 +5,7 @@ import { Home } from '@/pages/Home'
 import { NAV_OFFSET } from '@/hooks/use-hash-scroll'
 import { Loader } from '@/components/Loader'
 import { SiteOpenContext } from '@/hooks/use-site-open'
+import { BotonArrepentimiento } from '@/components/BotonArrepentimiento'
 
 // La home va en el bundle principal; el resto de las páginas (sobre todo el
 // detalle de paquete, que arrastra los fragmentos HTML) se baja recién al entrar.
@@ -79,6 +80,7 @@ function App() {
               <Route path="/contacto" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+        <BotonArrepentimiento />
           </Suspense>
         </BrowserRouter>
       </SiteOpenContext.Provider>
