@@ -11,29 +11,64 @@ import { useSiteOpen } from '@/hooks/use-site-open'
 
 // three.js pesa varios cientos de KB: se separa en su propio chunk y se
 // carga en paralelo al bundle principal en vez de bloquear el primer paint.
-const GlobeSection = lazy(() =>
-  import('@/components/GlobeSection').then((m) => ({ default: m.GlobeSection }))
-)
+const loadGlobe = () => import('@/components/GlobeSection')
+const GlobeSection = lazy(() => loadGlobe().then((m) => ({ default: m.GlobeSection })))
+
+// Equipos justos de CPU/memoria o con "ahorro de datos": el globo no se arma
+// por adelantado, solo cuando la persona interactúa.
+const isLowEnd = () => {
+  const nav = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } }
+  return (
+    !!nav.connection?.saveData ||
+    (nav.hardwareConcurrency ?? 4) < 4 ||
+    (nav.deviceMemory ?? 8) < 4
+  )
+}
+
+const whenIdle = (cb: () => void, timeout: number) =>
+  typeof window.requestIdleCallback === 'function'
+    ? window.requestIdleCallback(cb, { timeout })
+    : window.setTimeout(cb, 200)
 
 export function Home() {
   const reduced = useReducedMotion()
 
   // El globo (three.js: ~700 KB y ~1 s de CPU en un celular medio) queda tapado
-  // por el Hero al cargar, así que no se monta hasta que la persona interactúa
-  // (scroll, toque o tecla) o, si se queda quieta, a los 8 s de abrirse el sitio.
-  // Antes se montaba al primer rato libre (2,5 s) y trababa el celular justo
-  // mientras cargaba la página.
+  // por el Hero al cargar. Armarlo justo cuando la persona empieza a scrollear
+  // trababa la transición Hero → globo (se descargaba, evaluaba y construía
+  // mientras el Hero subía), así que se prepara por adelantado en dos pasos y
+  // en momentos libres, ya con el sitio abierto:
+  //   1. a los ~2 s se baja y evalúa el código (sin crear WebGL ni geometrías);
+  //   2. en equipos con recursos, justo después se monta el globo, que sigue
+  //      sin dibujar mientras el Hero lo tapa (ver hero-cover.ts).
+  // En equipos justos el paso 2 espera a la primera interacción (scroll, toque
+  // o tecla) o, si la persona no se mueve, a los 8 s.
   const siteOpen = useSiteOpen()
   const [globeOn, setGlobeOn] = useState(false)
   useEffect(() => {
     if (!siteOpen || globeOn) return
-    const mount = () => setGlobeOn(true)
-    const timer = window.setTimeout(mount, 8000)
+    const mount = () => {
+      void loadGlobe()
+      setGlobeOn(true)
+    }
+    const lowEnd = isLowEnd()
+    let idle = 0
+    const timer = window.setTimeout(() => {
+      idle = whenIdle(() => {
+        void loadGlobe().then(() => {
+          if (!lowEnd) idle = whenIdle(mount, 3000)
+        })
+      }, 3000)
+    }, 2000)
+    const fallback = window.setTimeout(mount, 8000)
     const opts = { once: true, passive: true } as const
     const events = ['scroll', 'wheel', 'touchstart', 'keydown'] as const
     events.forEach((e) => window.addEventListener(e, mount, opts))
     return () => {
       window.clearTimeout(timer)
+      window.clearTimeout(fallback)
+      if (typeof window.cancelIdleCallback === 'function') window.cancelIdleCallback(idle)
+      window.clearTimeout(idle)
       events.forEach((e) => window.removeEventListener(e, mount))
     }
   }, [siteOpen, globeOn])

@@ -64,7 +64,9 @@ function App() {
     }
   }, [])
   useEffect(() => {
-    if (loaderSeen) setSiteOpen(true)
+    if (!loaderSeen) return
+    setSiteOpen(true)
+    document.getElementById('boot')?.remove()
   }, [loaderSeen])
 
   return (

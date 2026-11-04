@@ -13,8 +13,31 @@
       content="CheTour, agencia de viajes: paquetes a Bariloche, Camboriú, Canasvieiras, Disney y más destinos. El puente hacia tu próxima aventura."
     />
     <title>CheTour viajes</title>
+    <style>
+      /* Pantalla de arranque: se pinta antes de que cargue el JS, con el mismo
+         aspecto que el Loader de React (que la reemplaza sin parpadeo). Así no
+         se ve la página vacía ni el home antes de la pantalla de carga. */
+      html,body{background:#fff}
+      #boot{position:fixed;inset:0;z-index:300}
+      #boot .loader-half{position:absolute;inset:0}
+      html.ct-seen #boot{display:none}
+    </style>
+    <script>
+      try{if(sessionStorage.getItem('ct-loader')==='1')document.documentElement.className+=' ct-seen'}catch(e){}
+    </script>
   </head>
   <body>
+    <div id="boot" class="loader" aria-hidden="true">
+      <div class="loader-half">
+        <div class="loader-mark">
+          <div class="loader-logo">
+            <svg class="loader-logo__icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            <span class="loader-name"><span class="loader-name__che">Che</span>Tour</span>
+          </div>
+          <span class="loader-tag">El puente hacia tu próxima aventura</span>
+        </div>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

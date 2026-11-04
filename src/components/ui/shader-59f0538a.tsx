@@ -7,7 +7,7 @@
 
 
 import { useEffect, useRef } from "react"
-import { heroCoversGlobe } from "@/lib/hero-cover"
+import { heroCoversGlobe, heroIsLifting } from "@/lib/hero-cover"
 
 const VERT = `attribute vec2 a_position;
 void main() {
@@ -510,12 +510,21 @@ export function ShaderBackground({ className }: { className?: string }) {
     // al salir del scroll 0 el hero empieza a destapar el shader: retomar
     window.addEventListener("scroll", requestRender, { passive: true })
 
+    let skipFrame = false
     const render = (now: number) => {
       raf = 0
       if (disposed || !visible || !inView) return
       if (heroCoversGlobe()) {
         lastNow = null
         return
+      }
+      // mientras el Hero sube, mitad de cuadros (ver hero-cover.ts)
+      if (heroIsLifting()) {
+        skipFrame = !skipFrame
+        if (skipFrame) {
+          raf = requestAnimationFrame(render)
+          return
+        }
       }
       const dt = lastNow === null ? 0 : Math.min((now - lastNow) / 1000, 0.1)
       lastNow = now

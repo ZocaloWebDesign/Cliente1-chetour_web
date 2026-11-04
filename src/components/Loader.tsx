@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import {
   animate,
   motion,
@@ -29,6 +29,11 @@ const WAKE = 38
 const END = 100 + WAKE + 4
 
 type Phase = 'hold' | 'flying' | 'done'
+
+// index.html trae una pantalla de arranque (#boot) ya pintada antes del JS. Si
+// existe, este Loader la reemplaza en el mismo frame y su logo no vuelve a
+// hacer el fundido de entrada (si no, el logo parpadearía al pasar de una a otra).
+const resumesBoot = typeof document !== 'undefined' && !!document.getElementById('boot')
 
 // Mismo avión del isotipo oficial (trazo redondeado), en teal de marca.
 const LOGO_PLANE =
@@ -66,6 +71,11 @@ export function Loader({ onOpen }: { onOpen: () => void }) {
   const [phase, setPhase] = useState<Phase>('hold')
   // posición de la punta de la estela / el avión, en % del ancho
   const x = useMotionValue(-10)
+
+  // antes del primer pintado de este componente, saca la pantalla de arranque
+  useLayoutEffect(() => {
+    document.getElementById('boot')?.remove()
+  }, [])
 
   // Sin scroll mientras la pantalla tapa la página. No se usa overflow:hidden
   // en <html>: al quitarlo aparecía la barra de scroll y todo el contenido se
@@ -159,7 +169,7 @@ export function Loader({ onOpen }: { onOpen: () => void }) {
 
   return (
     <div
-      className={`loader${phase === 'flying' && reduced ? ' is-fading' : ''}`}
+      className={`loader${resumesBoot ? ' loader--resumed' : ''}${phase === 'flying' && reduced ? ' is-fading' : ''}`}
       role="status"
       aria-label="Cargando CheTour"
     >

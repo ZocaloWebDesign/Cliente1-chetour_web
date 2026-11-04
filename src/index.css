@@ -1414,6 +1414,9 @@
   filter: drop-shadow(0 4px 10px rgba(12, 30, 48, 0.35));
   line-height: 0;
 }
+.loader--resumed .loader-mark {
+  animation: none;
+}
 .loader.is-fading {
   animation: loader-fade 0.4s ease forwards;
 }

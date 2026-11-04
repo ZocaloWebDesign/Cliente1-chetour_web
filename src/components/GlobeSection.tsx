@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Bus, Plane as PlaneIcon } from 'lucide-react'
 import { ShaderBackground } from '@/components/ui/shader-59f0538a'
-import { heroCoversGlobe } from '@/lib/hero-cover'
+import { heroCoversGlobe, heroIsLifting } from '@/lib/hero-cover'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import ConicPolygonGeometry from 'three-conic-polygon-geometry'
@@ -694,10 +694,19 @@ export function GlobeSection() {
     resizeObserver.observe(container)
 
     // --- Loop ----------------------------------------------------------
+    let skipFrame = false
     let frame = requestAnimationFrame(function loop() {
       if (heroCoversGlobe() || !globeInView || document.hidden) {
         frame = requestAnimationFrame(loop)
         return
+      }
+      // mientras el Hero sube, mitad de cuadros (ver hero-cover.ts)
+      if (heroIsLifting()) {
+        skipFrame = !skipFrame
+        if (skipFrame) {
+          frame = requestAnimationFrame(loop)
+          return
+        }
       }
       // el raycast corre solo cuando el puntero realmente se movió: así, cuando
       // el globo gira hacia un país en hover, el país no "se escapa" del cursor
