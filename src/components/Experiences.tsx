@@ -36,7 +36,7 @@ export function Experiences() {
               className="flex aspect-square flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-neutral-200 text-neutral-300 dark:border-neutral-800 dark:text-neutral-700"
             >
               <Camera className="h-6 w-6" />
-              <span className="text-[11px] font-medium">Próximamente</span>
+              <span className="text-xs font-medium">Próximamente</span>
             </motion.div>
           ))}
         </div>
@@ -55,6 +55,8 @@ export function Experiences() {
               <img
                 src={e.image}
                 alt={`${e.travelerName} en ${e.destination}`}
+                width={800}
+                height={800}
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"

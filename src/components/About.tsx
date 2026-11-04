@@ -17,6 +17,8 @@ export function About() {
           <img
             src={canasvieirasBus}
             alt="Destino de viaje CheTour"
+            width={1200}
+            height={900}
             loading="lazy"
             decoding="async"
             className="aspect-[4/3] w-full rounded-[2.5rem] object-cover shadow-xl"

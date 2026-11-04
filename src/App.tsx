@@ -90,7 +90,7 @@ function App() {
           </div>
           <ScrollToTop />
           <RouteHead />
-          <Suspense fallback={<div className="min-h-screen" />}>
+          <Suspense fallback={<div className="min-h-dvh" />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/paquetes" element={<AllPackages />} />

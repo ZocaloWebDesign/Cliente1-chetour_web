@@ -58,7 +58,7 @@ export function Footer() {
         <motion.a
           variants={itemVariants}
           href="/"
-          className="flex items-center gap-2 text-lg font-semibold tracking-tight"
+          className="flex min-h-11 items-center gap-2 text-lg font-semibold tracking-tight"
         >
           {/* Mismo isotipo que public/favicon.svg: cuadrado redondeado con
               degradé #153a5b -> turquoise-500 (no el círculo que usan Nav y
@@ -100,7 +100,7 @@ export function Footer() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleHashClick(e, item.href)}
-                className="group relative px-2 py-1"
+                className="group relative inline-flex min-h-11 items-center px-2 py-1"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -113,7 +113,7 @@ export function Footer() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link to={item.href} className="relative block px-2 py-1">
+                <Link to={item.href} className="relative flex min-h-11 items-center px-2 py-1">
                   {pill}
                 </Link>
               </motion.div>
@@ -150,7 +150,7 @@ export function Footer() {
                 target={external ? '_blank' : undefined}
                 rel={external ? 'noopener noreferrer' : undefined}
                 aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 transition-colors hover:bg-accent dark:border-white/15"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 transition-colors hover:bg-accent dark:border-white/15"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -172,10 +172,10 @@ export function Footer() {
           © {new Date().getFullYear()} {siteInfo.name}. Todos los derechos reservados.
         </p>
         <nav aria-label="Información legal" className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
-          <a href="/politica-de-privacidad.html" className="inline-flex min-h-6 items-center underline underline-offset-4">Política de privacidad</a>
-          <a href="/politica-de-cookies.html" className="inline-flex min-h-6 items-center underline underline-offset-4">Política de cookies</a>
-          <a href="/terminos-y-condiciones.html" className="inline-flex min-h-6 items-center underline underline-offset-4">Términos y condiciones</a>
-          <a href="/arrepentimiento.html" className="inline-flex min-h-6 items-center font-semibold underline underline-offset-4">Botón de arrepentimiento</a>
+          <a href="/politica-de-privacidad.html" className="inline-flex min-h-11 items-center underline underline-offset-4">Política de privacidad</a>
+          <a href="/politica-de-cookies.html" className="inline-flex min-h-11 items-center underline underline-offset-4">Política de cookies</a>
+          <a href="/terminos-y-condiciones.html" className="inline-flex min-h-11 items-center underline underline-offset-4">Términos y condiciones</a>
+          <a href="/arrepentimiento.html" className="inline-flex min-h-11 items-center font-semibold underline underline-offset-4">Botón de arrepentimiento</a>
         </nav>
         <p className="mt-3 text-xs text-muted-foreground">
           Consultas:{' '}
