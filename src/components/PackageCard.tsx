@@ -7,6 +7,26 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card'
 
 const MotionCard = motion.create(Card)
 
+// Fotos de public/paquetes/img/ que tienen versiones de 480 y 800 px (nombre-480.webp, nombre-800.webp).
+// El valor es el ancho de la foto original, necesario para el srcset.
+const ANCHO_ORIGINAL: Record<string, number> = {
+  'africa-1': 1600, 'bariloche-1': 1600, 'bombas-1': 1600, 'bombinhas-1': 1600,
+  'camboriu-1': 1600, 'canasvieiras-1': 1600, 'caviahue-1': 1400, 'centroeuropa-1': 1600,
+  'crucero-1': 1600, 'disney-1': 1600, 'egipto-dubai-1': 1600, 'europa-1': 1600,
+  'europaclasica-1': 1600, 'gramado-1': 1600, 'iguazu-1': 1600, 'ingleses-1': 1600,
+  'nqa-2': 1600, 'nyc-miami-1': 1600, 'peru-1': 1600, 'peru-bolivia-3': 1600,
+  'quatro-ilhas-1': 1600, 'rio-1': 1200, 'sanjuan-1': 1200, 'talampaya-1': 1200,
+  'usa-1': 1200, 'ushuaia-1': 1600,
+}
+
+function srcSetDe(image: string) {
+  const m = image.match(/^\/paquetes\/img\/([\w-]+)\.webp$/)
+  const ancho = m && ANCHO_ORIGINAL[m[1]]
+  if (!m || !ancho) return undefined
+  const base = `/paquetes/img/${m[1]}`
+  return `${base}-480.webp 480w, ${base}-800.webp 800w, ${base}.webp ${ancho}w`
+}
+
 export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number }) {
   return (
     <MotionCard
@@ -24,6 +44,8 @@ export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number 
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
           src={pkg.image}
+          srcSet={srcSetDe(pkg.image)}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           alt={pkg.destination}
           width={800}
           height={600}

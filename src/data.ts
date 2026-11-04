@@ -39,6 +39,14 @@ import camboriuGrupo2 from '@/assets/experiences/camboriu-grupo-2.webp'
 import camboriuGrupo3 from '@/assets/experiences/camboriu-grupo-3.webp'
 import disneyGrupo from '@/assets/experiences/disney-grupo.webp'
 import dubaiGrupo from '@/assets/experiences/dubai-grupo.webp'
+import camboriuGrupo2480 from '@/assets/experiences/camboriu-grupo-2-480.webp'
+import camboriuGrupo2800 from '@/assets/experiences/camboriu-grupo-2-800.webp'
+import camboriuGrupo3480 from '@/assets/experiences/camboriu-grupo-3-480.webp'
+import camboriuGrupo3800 from '@/assets/experiences/camboriu-grupo-3-800.webp'
+import disneyGrupo480 from '@/assets/experiences/disney-grupo-480.webp'
+import disneyGrupo800 from '@/assets/experiences/disney-grupo-800.webp'
+import dubaiGrupo480 from '@/assets/experiences/dubai-grupo-480.webp'
+import dubaiGrupo800 from '@/assets/experiences/dubai-grupo-800.webp'
 
 // ---------------------------------------------------------------------------
 // Paquetes
@@ -1126,6 +1134,8 @@ export const globeCountryCards: Record<string, GlobeCountryCards> = {
 
 export type Experience = {
   image: string
+  /** Versiones livianas para celular: srcset ya armado (480w, 800w y la original). */
+  srcSet?: string
   travelerName: string
   destination: string
   quote?: string
@@ -1140,8 +1150,8 @@ export type Experience = {
  *    { image: mariaCamboriu, travelerName: 'María', destination: 'Camboriú', quote: 'Un viaje increíble!' }
  */
 export const experiences: Experience[] = [
-  { image: disneyGrupo, travelerName: 'Grupo de amigos', destination: 'Disney' },
-  { image: camboriuGrupo2, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
-  { image: camboriuGrupo3, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
-  { image: dubaiGrupo, travelerName: 'Grupo de amigos', destination: 'Dubái' },
+  { image: disneyGrupo, srcSet: `${disneyGrupo480} 480w, ${disneyGrupo800} 800w, ${disneyGrupo} 1179w`, travelerName: 'Grupo de amigos', destination: 'Disney' },
+  { image: camboriuGrupo2, srcSet: `${camboriuGrupo2480} 480w, ${camboriuGrupo2800} 800w, ${camboriuGrupo2} 960w`, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
+  { image: camboriuGrupo3, srcSet: `${camboriuGrupo3480} 480w, ${camboriuGrupo3800} 800w, ${camboriuGrupo3} 960w`, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
+  { image: dubaiGrupo, srcSet: `${dubaiGrupo480} 480w, ${dubaiGrupo800} 800w, ${dubaiGrupo} 1179w`, travelerName: 'Grupo de amigos', destination: 'Dubái' },
 ]

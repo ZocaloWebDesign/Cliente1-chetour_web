@@ -54,6 +54,8 @@ export function Experiences() {
             >
               <img
                 src={e.image}
+                srcSet={e.srcSet}
+                sizes="(min-width: 1024px) 25vw, 50vw"
                 alt={`${e.travelerName} en ${e.destination}`}
                 width={800}
                 height={800}
