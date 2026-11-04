@@ -51,8 +51,8 @@ export function About() {
             Una agencia joven, hecha por viajeros
           </h2>
           <p className="mt-5 text-neutral-600 dark:text-neutral-400">
-            Somos una empresa de viajes joven y dinámica que opera de manera
-            virtual, fundada por <strong className="text-neutral-900 dark:text-neutral-200">{siteInfo.founders}</strong>.
+            CheTour es una agencia de viajes con salidas desde Córdoba: una
+            empresa joven y dinámica que opera de manera virtual, fundada por <strong className="text-neutral-900 dark:text-neutral-200">{siteInfo.founders}</strong>.
             Trabajamos en alianza con agencias consolidadas del sector,
             actuando como intermediarios de confianza para ofrecerte viajes
             seguros, accesibles y bien organizados.

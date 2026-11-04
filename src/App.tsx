@@ -4,6 +4,7 @@ import { ReactLenis, useLenis } from 'lenis/react'
 import { Home } from '@/pages/Home'
 import { NAV_OFFSET } from '@/hooks/use-hash-scroll'
 import { Loader } from '@/components/Loader'
+import { RouteHead } from '@/components/RouteHead'
 import { SiteOpenContext } from '@/hooks/use-site-open'
 
 // La home va en el bundle principal; el resto de las páginas (sobre todo el
@@ -88,6 +89,7 @@ function App() {
           </a>
           </div>
           <ScrollToTop />
+          <RouteHead />
           <Suspense fallback={<div className="min-h-screen" />}>
             <Routes>
               <Route path="/" element={<Home />} />

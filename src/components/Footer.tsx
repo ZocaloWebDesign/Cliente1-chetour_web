@@ -177,6 +177,15 @@ export function Footer() {
           <a href="/terminos-y-condiciones.html" className="inline-flex min-h-6 items-center underline underline-offset-4">Términos y condiciones</a>
           <a href="/arrepentimiento.html" className="inline-flex min-h-6 items-center font-semibold underline underline-offset-4">Botón de arrepentimiento</a>
         </nav>
+        <p className="mt-3 text-xs text-muted-foreground">
+          Consultas:{' '}
+          <a
+            href={`tel:+${siteInfo.whatsapp}`}
+            className="inline-flex min-h-6 items-center font-medium underline underline-offset-4"
+          >
+            {siteInfo.whatsappDisplay}
+          </a>
+        </p>
         <p className="mx-auto mt-2 max-w-2xl text-xs text-muted-foreground">
           {[
             ['Razón social', titular.razonSocial],

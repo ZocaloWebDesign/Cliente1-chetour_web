@@ -71,7 +71,7 @@ export function PackageCard({ pkg, index }: { pkg: TravelPackage; index: number 
           to={`/paquetes/${pkg.slug}`}
           className="inline-flex shrink-0 items-center gap-1 rounded-full bg-neutral-950 px-4 py-2.5 text-xs font-semibold text-white transition hover:scale-105 active:scale-95 dark:bg-white dark:text-neutral-950"
         >
-          Ver más
+          Ver más<span className="sr-only"> sobre {pkg.name}</span>
           <ArrowUpRight className="h-3.5 w-3.5" />
         </Link>
       </CardFooter>
