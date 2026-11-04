@@ -89,6 +89,19 @@ export function PackageStaticPage({ slug }: { slug: string }) {
   // useLayoutEffect (no useEffect): sincroniza --header-h con el alto real
   // del <Nav/> antes del primer pintado, para que no se vea un frame con el
   // hueco entre el header y el sub-nav mientras corrige el valor.
+  // El HTML de la ficha se inyecta a mano, una sola vez por ficha, en vez de
+  // con dangerouslySetInnerHTML: así React nunca vuelve a reescribirlo en un
+  // re-render posterior (por ejemplo cuando Lenis termina de iniciar) y no
+  // destruye los listeners ni los bloques .reveal que ya había enganchado
+  // initPackageStaticPage. Va ANTES del efecto de init para que el DOM exista.
+  useLayoutEffect(() => {
+    if (!html || !containerRef.current) return
+    containerRef.current.innerHTML = html
+    // El enlace «Saltar al contenido» del sitio apunta a #contenido; el <main>
+    // de las fichas (generadas desde HTML suelto) no traía ese id.
+    containerRef.current.querySelector('main')?.setAttribute('id', 'contenido')
+  }, [html])
+
   useLayoutEffect(() => {
     if (!html || !data || !containerRef.current) return
     return initPackageStaticPage(containerRef.current, data, lenis)
@@ -102,9 +115,7 @@ export function PackageStaticPage({ slug }: { slug: string }) {
           nav fijo transparente arranca "sólido" para que su texto no quede
           ilegible sobre el fondo claro de la ficha. */}
       <Nav forceSolid />
-      {html && (
-        <div className="pkg-page" ref={containerRef} dangerouslySetInnerHTML={{ __html: html }} />
-      )}
+      {html && <div className="pkg-page" ref={containerRef} />}
       <Footer />
     </div>
   )
