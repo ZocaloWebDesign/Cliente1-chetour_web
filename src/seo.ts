@@ -1,4 +1,4 @@
-import { packages, siteInfo } from '@/data'
+import { FAQS, packages, siteInfo } from '@/data'
 import { packageStaticPages } from '@/pages/package-static/manifest'
 
 /**
@@ -128,6 +128,14 @@ export function getRouteSeo(pathname: string): RouteSeo {
             { name: 'Inicio', path: '/' },
             { name: 'Contacto', path: '/contacto' },
           ]),
+          {
+            '@type': 'FAQPage',
+            mainEntity: FAQS.map(({ q, a }) => ({
+              '@type': 'Question',
+              name: q,
+              acceptedAnswer: { '@type': 'Answer', text: a },
+            })),
+          },
         ),
       ],
     }

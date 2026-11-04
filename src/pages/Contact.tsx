@@ -2,7 +2,7 @@ import { useState, type FormEvent, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { AtSign, Check, Clock, Globe, Mail, MessageCircle } from 'lucide-react'
-import { siteInfo } from '@/data'
+import { siteInfo, FAQS } from '@/data'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import { WhatsappButton } from '@/components/WhatsappButton'
@@ -90,28 +90,6 @@ const STEPS = [
   },
 ]
 
-const FAQS = [
-  {
-    q: '¿Atienden de forma presencial?',
-    a: 'No. La atención es 100% virtual: por WhatsApp, email e Instagram. Coordinamos todo el viaje a distancia, con la misma cercanía que en una oficina.',
-  },
-  {
-    q: '¿Con qué agencias trabajan?',
-    a: 'Operamos junto a Vedelago Viajes y otras agencias consolidadas del sector. Actuamos como tu intermediario de confianza para que viajes seguro y bien organizado.',
-  },
-  {
-    q: '¿Qué medios de pago y financiación aceptan?',
-    a: 'Depende de cada salida. Trabajamos con distintas opciones de financiación en pesos y en dólares; te las detallamos en la propuesta junto con el precio final.',
-  },
-  {
-    q: '¿Puedo pedir un viaje que no está en la web?',
-    a: 'Sí. Además de nuestras salidas grupales armamos viajes a medida —Camboriú, Disney, Caribe, Europa y más—. Escribinos con tu idea y lo diseñamos.',
-  },
-  {
-    q: '¿Cómo reservo una salida grupal?',
-    a: 'Escribinos por WhatsApp indicando la salida y la fecha elegida. Te confirmamos disponibilidad, el valor de la seña y los pasos para dejarla registrada.',
-  },
-]
 
 type FormState = {
   nombre: string

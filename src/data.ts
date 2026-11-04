@@ -1155,3 +1155,27 @@ export const experiences: Experience[] = [
   { image: camboriuGrupo3, srcSet: `${camboriuGrupo3480} 480w, ${camboriuGrupo3800} 800w, ${camboriuGrupo3} 960w`, travelerName: 'Grupo de amigos', destination: 'Camboriú' },
   { image: dubaiGrupo, srcSet: `${dubaiGrupo480} 480w, ${dubaiGrupo800} 800w, ${dubaiGrupo} 1179w`, travelerName: 'Grupo de amigos', destination: 'Dubái' },
 ]
+
+/** Preguntas frecuentes de la página de contacto (también alimentan el JSON-LD FAQPage de src/seo.ts). */
+export const FAQS = [
+  {
+    q: '¿Atienden de forma presencial?',
+    a: 'No. La atención es 100% virtual: por WhatsApp, email e Instagram. Coordinamos todo el viaje a distancia, con la misma cercanía que en una oficina.',
+  },
+  {
+    q: '¿Con qué agencias trabajan?',
+    a: 'Operamos junto a Vedelago Viajes y otras agencias consolidadas del sector. Actuamos como tu intermediario de confianza para que viajes seguro y bien organizado.',
+  },
+  {
+    q: '¿Qué medios de pago y financiación aceptan?',
+    a: 'Depende de cada salida. Trabajamos con distintas opciones de financiación en pesos y en dólares; te las detallamos en la propuesta junto con el precio final.',
+  },
+  {
+    q: '¿Puedo pedir un viaje que no está en la web?',
+    a: 'Sí. Además de nuestras salidas grupales armamos viajes a medida —Camboriú, Disney, Caribe, Europa y más—. Escribinos con tu idea y lo diseñamos.',
+  },
+  {
+    q: '¿Cómo reservo una salida grupal?',
+    a: 'Escribinos por WhatsApp indicando la salida y la fecha elegida. Te confirmamos disponibilidad, el valor de la seña y los pasos para dejarla registrada.',
+  },
+]
