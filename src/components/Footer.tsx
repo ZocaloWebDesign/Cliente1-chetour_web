@@ -203,7 +203,7 @@ export function Footer() {
         <p className="mt-1.5 text-xs text-muted-foreground">
           Sitio diseñado y desarrollado por{' '}
           <a
-            href="https://new-landing-zocalo.vercel.app/"
+            href="https://zocalodigital.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-muted-foreground underline decoration-dotted underline-offset-4 transition-colors hover:text-sea-600 dark:hover:text-turquoise-300"
