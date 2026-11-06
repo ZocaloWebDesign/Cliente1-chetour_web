@@ -139,7 +139,7 @@ export function PackageDetail() {
                 <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
                   {accent ? (
                     <>
-                      {base} <em className="font-accent font-normal italic text-turquoise-300">{accent}</em>
+                      {base} <em className="not-italic text-turquoise-300">{accent}</em>
                     </>
                   ) : (
                     pkg.name
